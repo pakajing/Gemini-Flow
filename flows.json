@@ -2196,6 +2196,11 @@
                 "t": "delete",
                 "p": "statusCode",
                 "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
             }
         ],
         "action": "",
