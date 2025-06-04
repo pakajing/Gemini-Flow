@@ -4461,7 +4461,8 @@
         "y": 880,
         "wires": [
             [
-                "623181450612a19f"
+                "623181450612a19f",
+                "7993d167843be75d"
             ]
         ]
     },
@@ -4536,6 +4537,23 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1150,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7993d167843be75d",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "http",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
         "y": 820,
         "wires": []
     }
