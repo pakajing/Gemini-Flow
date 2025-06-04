@@ -450,7 +450,7 @@
             "20107de6bd37a1b5",
             "c6316525076d23bd"
         ],
-        "x": 1034,
+        "x": 1104,
         "y": 359,
         "w": 262,
         "h": 262
@@ -1957,8 +1957,7 @@
         "y": 520,
         "wires": [
             [
-                "8b15a63895cb51a3",
-                "9f0e4b157f97680a"
+                "8b15a63895cb51a3"
             ]
         ],
         "l": false
@@ -2066,7 +2065,7 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1155,
+        "x": 1225,
         "y": 520,
         "wires": [
             [
@@ -2094,7 +2093,7 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1155,
+        "x": 1225,
         "y": 460,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -2150,7 +2149,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1095,
+        "x": 1165,
         "y": 520,
         "wires": [
             [
@@ -2185,7 +2184,7 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1155,
+        "x": 1225,
         "y": 580,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -2251,7 +2250,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1255,
+        "x": 1325,
         "y": 520,
         "wires": [
             [
@@ -2341,7 +2340,7 @@
         "g": "7b9495278bbc1acd",
         "name": "[8] 📖 Doc - Upload File",
         "info": "",
-        "x": 1160,
+        "x": 1230,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -4054,7 +4053,7 @@
         "props": [
             {
                 "p": "fileName",
-                "v": "files/a7rbz96wjg38",
+                "v": "files/y04uvbomu0en",
                 "vt": "str"
             },
             {
