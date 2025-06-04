@@ -1308,7 +1308,7 @@
         "wires": [
             [
                 "8b15a63895cb51a3",
-                "aba3f61d19b83110"
+                "a5e7a5ce7a1abf87"
             ]
         ],
         "l": false
@@ -1405,10 +1405,12 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1405,
-        "y": 720,
+        "x": 1105,
+        "y": 660,
         "wires": [
-            []
+            [
+                "5eedb1308b3932a6"
+            ]
         ],
         "l": false
     },
