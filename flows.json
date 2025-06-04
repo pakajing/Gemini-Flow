@@ -326,7 +326,9 @@
         "x": 915,
         "y": 200,
         "wires": [
-            []
+            [
+                "f60f93918df2a827"
+            ]
         ],
         "l": false
     },
@@ -628,6 +630,157 @@
                 "13443591230511c3"
             ]
         ],
+        "l": false
+    },
+    {
+        "id": "d7f2baca4a091580",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Save Media type",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mediaType",
+                "pt": "msg",
+                "to": "iconik.output.payload.objects[0].metadata[0].internet_media_type",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "authHeaders",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "230e41d4586e1df9",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Assets Format Error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "counter",
+        "x": 745,
+        "y": 560,
+        "wires": [],
+        "icon": "font-awesome/fa-warning",
+        "l": false
+    },
+    {
+        "id": "f60f93918df2a827",
+        "type": "iconik-files-client",
+        "z": "bb119fa58e5b3485",
+        "name": "GET Asset Formats",
+        "selectedOperation": {
+            "method": "get",
+            "path": "/v1/assets/{asset_id}/formats/",
+            "summary": "Get all asset's formats",
+            "description": "Get all asset's formats\n\nRequired roles:\n - can_read_formats\n",
+            "tag": "Other",
+            "operationId": "get_v1_assets__asset_id__formats_"
+        },
+        "api": "api-0",
+        "errorHandlingModeSelectedIndex": 1,
+        "security": [],
+        "requestContentTypeSelectedIndex": 0,
+        "responseContentTypeSelectedIndex": 0,
+        "parameters": [
+            {
+                "name": "asset_id",
+                "value": "asset_id",
+                "in": "path",
+                "refType": "msg"
+            },
+            {
+                "name": "per_page",
+                "value": "",
+                "in": "query",
+                "refType": "type"
+            },
+            {
+                "name": "last_id",
+                "value": "",
+                "in": "query",
+                "refType": "type"
+            }
+        ],
+        "uiFeatures": {
+            "operations": {
+                "advancedMode": true
+            }
+        },
+        "outputs": 2,
+        "output": "iconik.output",
+        "host": {
+            "type": "string",
+            "value": "",
+            "refType": "type"
+        },
+        "x": 1035,
+        "y": 200,
+        "wires": [
+            [
+                "35b8dea63f9feb3a"
+            ],
+            [
+                "c1897c6216b8e8dc"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "35b8dea63f9feb3a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Iconik Get Format",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1035,
+        "y": 140,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "c1897c6216b8e8dc",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Iconik Get Format",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1035,
+        "y": 260,
+        "wires": [],
+        "icon": "node-red/alert.svg",
         "l": false
     }
 ]
