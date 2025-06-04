@@ -4422,7 +4422,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Read File to Context",
-        "func": "const filePath = 'temp_video.mp4';\nmsg.apiKey = 'AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k';\n\nmsg.fileBuffer = fs.readFileSync(filePath);\nmsg.fileSize = msg.fileBuffer.length;\n\nreturn msg;",
+        "func": "const filePath = '/tmp/temp_video.mp4';\nmsg.apiKey = 'AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k';\n\nmsg.fileBuffer = fs.readFileSync(filePath);\nmsg.fileSize = msg.fileBuffer.length;\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
