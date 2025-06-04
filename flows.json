@@ -1413,25 +1413,6 @@
         "l": false
     },
     {
-        "id": "e54c738fe20e1352",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Google AI File Upload",
-        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\n(async () => {\n    try {\n        // Initialize the Google AI File Manager with the provided API key\n        const fileManager = new GoogleAIFileManager(msg.apiKey);\n\n        // Upload the file with the specified filename and options\n        const uploadResponse = await fileManager.uploadFile(msg.filename, {\n            mimeType: \"video/mp4\", // Specify the MIME type of the file\n            displayName: msg.filename // Use the filename as the display name\n        });\n\n        // Set the upload response as the payload\n        msg.payload = uploadResponse;\n\n        // Return the updated message object\n        return msg;\n    } catch (error) {\n        // Handle any errors that occur during the upload process\n        node.error(\"File upload failed\", error);\n        msg.payload = {\n            error: \"File upload failed\",\n            details: error.message\n        };\n        return msg;\n    }\n})();",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1000,
-        "y": 960,
-        "wires": [
-            []
-        ],
-        "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
         "id": "aba3f61d19b83110",
         "type": "function",
         "z": "bb119fa58e5b3485",
