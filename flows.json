@@ -1486,7 +1486,7 @@
         "z": "bb119fa58e5b3485",
         "g": "918806d2d79fe6e6",
         "name": "Debug OK: Iconik Get Format",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
