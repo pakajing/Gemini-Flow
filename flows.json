@@ -1438,7 +1438,7 @@
         "parameters": [
             {
                 "name": "asset_id",
-                "value": "asset_id",
+                "value": "iconik.webhook.asset_ids[0]",
                 "in": "path",
                 "refType": "msg"
             },
