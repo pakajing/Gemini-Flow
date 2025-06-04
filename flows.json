@@ -2674,7 +2674,9 @@
         "x": 735,
         "y": 720,
         "wires": [
-            []
+            [
+                "0a00ea4d7c10bef4"
+            ]
         ],
         "l": false
     },
@@ -2715,5 +2717,22 @@
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
+    },
+    {
+        "id": "0a00ea4d7c10bef4",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 720,
+        "wires": []
     }
 ]
