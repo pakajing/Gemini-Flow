@@ -4846,7 +4846,8 @@
         "y": 780,
         "wires": [
             [
-                "cee667defe70948f"
+                "cee667defe70948f",
+                "e9bd83a847a44710"
             ]
         ],
         "l": false
@@ -5035,43 +5036,13 @@
         ]
     },
     {
-        "id": "1a1a1a1a1a1a1a1a",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "Start Flow",
-        "props": [
-            {
-                "p": "iconik.get_proxies.payload.objects[0].metadata[0].size",
-                "v": "299082367",
-                "vt": "str"
-            },
-            {
-                "p": "url",
-                "v": "https://storage.googleapis.com/iconik-eu-proxies/9e392c9c-e28e-11ec-8906-82ba1484052f/be58fd7c-2e40-11ef-b7b3-4221c25f1e76.mp4?...",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 960,
-        "wires": [
-            [
-                "e9bd83a847a44710"
-            ]
-        ]
-    },
-    {
         "id": "3c3c3c3c3c3c3c3c",
         "type": "exec",
         "z": "bb119fa58e5b3485",
         "command": "stat -c %s /tmp/temp_video.mp4",
         "addpay": false,
         "append": "",
-        "useSpawn": false,
+        "useSpawn": "false",
         "timer": "",
         "winHide": false,
         "oldrc": false,
@@ -5122,7 +5093,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Download to /tmp/temp_video2.mp4",
-        "func": "const path = \"/tmp/temp_video2.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
+        "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
