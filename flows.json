@@ -437,6 +437,27 @@
         "h": 242
     },
     {
+        "id": "7b9495278bbc1acd",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[8] Upload File",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "aba3f61d19b83110",
+            "5eedb1308b3932a6",
+            "9f0e4b157f97680a",
+            "43b5ac776f95284a",
+            "20107de6bd37a1b5",
+            "c6316525076d23bd"
+        ],
+        "x": 1034,
+        "y": 359,
+        "w": 252,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -2038,6 +2059,7 @@
         "id": "aba3f61d19b83110",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "7b9495278bbc1acd",
         "name": "Upload File to FileAPI(Google)",
         "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\ntry {\n    const uploadResponse = await fileManager.uploadFile(msg.filename, {\n        mimeType: \"video/mp4\",\n        displayName: msg.filename\n    });\n\n    msg.payload = {\n        statusCode: 200,\n        statusInfo: \"File uploaded successfully\",\n        uploadResponse: uploadResponse\n    };\n\n    return [msg, null]; // Output 1: success\n} catch (error) {\n    node.error(\"File upload failed\", error);\n\n    msg.payload = {\n        statusCode: 500,\n        statusInfo: \"File upload failed\",\n        error: error.message\n    };\n\n    return [null, msg]; // Output 2: failure\n}\n",
         "outputs": 2,
@@ -2056,7 +2078,7 @@
             }
         ],
         "x": 1135,
-        "y": 520,
+        "y": 500,
         "wires": [
             [
                 "5eedb1308b3932a6",
@@ -2073,6 +2095,7 @@
         "id": "5eedb1308b3932a6",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "7b9495278bbc1acd",
         "name": "Debug OK: Upload File",
         "active": true,
         "tosidebar": true,
@@ -2083,7 +2106,7 @@
         "statusVal": "payload.statusCode",
         "statusType": "msg",
         "x": 1135,
-        "y": 460,
+        "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2092,6 +2115,7 @@
         "id": "9f0e4b157f97680a",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "7b9495278bbc1acd",
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
@@ -2108,7 +2132,7 @@
         "to": "",
         "reg": false,
         "x": 1075,
-        "y": 520,
+        "y": 500,
         "wires": [
             [
                 "aba3f61d19b83110"
@@ -2132,6 +2156,7 @@
         "id": "43b5ac776f95284a",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "7b9495278bbc1acd",
         "name": "Debug Error: Upload File",
         "active": true,
         "tosidebar": true,
@@ -2142,7 +2167,7 @@
         "statusVal": "payload.statusCode",
         "statusType": "msg",
         "x": 1135,
-        "y": 580,
+        "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2151,6 +2176,7 @@
         "id": "20107de6bd37a1b5",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "7b9495278bbc1acd",
         "name": "Save File Response and Clean Payload",
         "rules": [
             {
@@ -2179,7 +2205,7 @@
         "to": "",
         "reg": false,
         "x": 1235,
-        "y": 520,
+        "y": 500,
         "wires": [
             []
         ],
@@ -2276,5 +2302,17 @@
         "x": 690,
         "y": 820,
         "wires": []
+    },
+    {
+        "id": "c6316525076d23bd",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "7b9495278bbc1acd",
+        "name": "[8] 📖 Doc - Upload File",
+        "info": "",
+        "x": 1160,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
     }
 ]
