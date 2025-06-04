@@ -3097,7 +3097,8 @@
         "y": 500,
         "wires": [
             [
-                "cd7be5c741a1d232"
+                "cd7be5c741a1d232",
+                "f5f75eab64a752aa"
             ]
         ],
         "l": false
@@ -3180,9 +3181,7 @@
             [
                 "bcd28e87e37b32b0"
             ],
-            [
-                "3d426f8308661af0"
-            ]
+            []
         ]
     },
     {
@@ -3254,34 +3253,11 @@
         "wires": []
     },
     {
-        "id": "3d426f8308661af0",
-        "type": "delay",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "20",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1480,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "8c6fcd7eb82a6a57",
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Gemini file poll",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -3300,7 +3276,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Gemini file poll",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -3313,5 +3289,82 @@
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "f5f75eab64a752aa",
+        "type": "switch",
+        "z": "bb119fa58e5b3485",
+        "name": "State ACTIVE?",
+        "property": "payload.file.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ACTIVE",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "PROCESSING",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1555,
+        "y": 500,
+        "wires": [
+            [],
+            [
+                "d5fecac62090b2c0",
+                "3d426f8308661af0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "d5fecac62090b2c0",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Gemini File status",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1555,
+        "y": 540,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "3d426f8308661af0",
+        "type": "delay",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "20",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1700,
+        "y": 500,
+        "wires": [
+            [
+                "5f3f4e8d583182d0"
+            ]
+        ]
     }
 ]
