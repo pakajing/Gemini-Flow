@@ -3837,7 +3837,7 @@
         "statusVal": "files",
         "statusType": "msg",
         "x": 1455,
-        "y": 460,
+        "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3986,5 +3986,28 @@
         "x": 1220,
         "y": 760,
         "wires": []
+    },
+    {
+        "id": "4e6ceaa27a504c87",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "function 3",
+        "func": "/**\n * Node-RED Function: Gemini Image Generation\n *\n * INPUT: msg.apiKey (Gemini API Key)\n *        msg.prompt (text prompt for image generation)\n * OUTPUT: msg.images (array of base64 encoded images)\n */\n\nconst { GoogleGenAI } = await import(\"@google/genai\");\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini Image Generation: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.prompt || typeof msg.prompt !== \"string\") {\n  node.error(\"Gemini Image Generation: msg.prompt missing or invalid\", msg);\n  return null;\n}\n\nasync function generateImages(apiKey, prompt) {\n  const ai = new GoogleGenAI({ apiKey });\n\n  const response = await ai.models.generateImages({\n    model: 'imagen-3.0-generate-002',\n    prompt: prompt,\n    config: {\n      numberOfImages: 4,\n    },\n  });\n\n  return response.generatedImages.map(img => img.image.imageBytes);\n}\n\nreturn generateImages(msg.apiKey, msg.prompt)\n  .then(images => {\n    msg.images = images;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`Image generation failed: ${err.message}`, msg);\n    return null;\n  });\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "googleGenai",
+                "module": "@google/genai"
+            }
+        ],
+        "x": 1460,
+        "y": 700,
+        "wires": [
+            []
+        ]
     }
 ]
