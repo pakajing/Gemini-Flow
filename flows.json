@@ -4966,5 +4966,63 @@
         "x": 630,
         "y": 1320,
         "wires": []
+    },
+    {
+        "id": "7d082830813e4577",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "function 3",
+        "func": "const fs = require(\"fs\");\nconst https = require(\"https\");\nconst path = \"/tmp/temp_video.mp4\";\nconst url = \"https://storage.googleapis.com/iconik-eu-proxies/9e392c9c-e28e-11ec-8906-82ba1484052f/be58fd7c-2e40-11ef-b7b3-4221c25f1e76.mp4?GoogleAccessId=bucket-access%40iconik-production-environments.iam.gserviceaccount.com&Expires=1749114968&Signature=fkHotWVKZzqGh2Qnv%2BgMRNXHsxLwgYHP6sI9GUqnUelvzTPX%2B64P1d1lf2Uz0yR6WI7Bi6XgCTPOBa55u6%2B%2B0qYsRHb0ydV3GuSdueEQOLdTEZIpNVTRU9mwH9RP8lhJjm3nthCkV3MkFvxMwycfFRhtOf%2FZE%2FXQPavHdFoczyqvWPTN1%2BZ52Xej7WefQfU0e1C%2Flg7WM01E%2FV%2F4LHB2Ab19al0pYc9pDuZ8pxGwwl3PADCTeJgbwNG36%2BthF3PC2SCCEuwlVSOilfJfkLpaXkzOdUrsfNVggXeCQaSJWNlzdZ7LRpuYxQlfrZ1Q1qbvIhBkiFtDBa3cfQz0Jv4WRw%3D%3D&response-content-disposition=attachment%3B%20filename%3D%22tearsofsteel_4k_cut-lowres.mp4%22%3B%20filename%2A%3Dutf-8%27%27tearsofsteel_4k_cut-lowres.mp4\";  // <-- Replace dynamically or via msg.url\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path); // cleanup\n        reject(err);\n    });\n});\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 1440,
+        "wires": [
+            [
+                "57b27546a135f2c0"
+            ]
+        ]
+    },
+    {
+        "id": "e49c9e3adbf880df",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "",
+        "x": 110,
+        "y": 1380,
+        "wires": [
+            [
+                "7d082830813e4577"
+            ]
+        ]
+    },
+    {
+        "id": "57b27546a135f2c0",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 1500,
+        "wires": []
     }
 ]
