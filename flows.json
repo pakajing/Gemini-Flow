@@ -614,15 +614,7 @@
         "z": "bb119fa58e5b3485",
         "g": "d29e7cdb2d5dd084",
         "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
+        "rules": [],
         "action": "",
         "property": "",
         "from": "",
