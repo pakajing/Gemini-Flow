@@ -933,7 +933,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1545,
+        "x": 1555,
         "y": 200,
         "wires": [
             [
@@ -1004,7 +1004,7 @@
             "value": "",
             "refType": "type"
         },
-        "x": 1685,
+        "x": 1675,
         "y": 200,
         "wires": [
             [
@@ -1029,7 +1029,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1685,
+        "x": 1675,
         "y": 140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -1048,7 +1048,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1685,
+        "x": 1675,
         "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
