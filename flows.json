@@ -3524,7 +3524,7 @@
         "z": "bb119fa58e5b3485",
         "name": "Get file state",
         "method": "GET",
-        "ret": "txt",
+        "ret": "obj",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
@@ -3546,7 +3546,7 @@
         "wires": [
             [
                 "1e4b15291ecd905b",
-                "26ab50404625f7b2"
+                "35e25fd2f23e27c7"
             ]
         ],
         "l": false
@@ -3635,13 +3635,10 @@
         "property": "payload",
         "action": "obj",
         "pretty": false,
-        "x": 1575,
-        "y": 500,
+        "x": 1535,
+        "y": 560,
         "wires": [
-            [
-                "35e25fd2f23e27c7",
-                "56a46021eca67fe3"
-            ]
+            []
         ],
         "l": false
     },
