@@ -686,7 +686,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1205,
+        "x": 1195,
         "y": 200,
         "wires": [
             [
@@ -746,7 +746,7 @@
             "value": "",
             "refType": "type"
         },
-        "x": 1125,
+        "x": 1115,
         "y": 200,
         "wires": [
             [
@@ -773,7 +773,7 @@
         "targetType": "full",
         "statusVal": "iconik.output.statusCode",
         "statusType": "msg",
-        "x": 1125,
+        "x": 1115,
         "y": 140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -793,7 +793,7 @@
         "targetType": "full",
         "statusVal": "iconik.output.statusCode",
         "statusType": "msg",
-        "x": 1125,
+        "x": 1115,
         "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
