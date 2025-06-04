@@ -280,29 +280,8 @@
                 "t": "set",
                 "p": "assetId",
                 "pt": "msg",
-                "to": "payload.asset_ids[0]",
+                "to": "iconik.webhook.asset_ids[0]",
                 "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.email",
-                "pt": "msg",
-                "to": "SECRETS.ICONIK_USERNAME",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.password",
-                "pt": "msg",
-                "to": "SECRETS.ICONIK_PASSWORD",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.base_url",
-                "pt": "msg",
-                "to": "SECRETS.ICONIK_BASE_URL",
-                "tot": "global"
             }
         ],
         "action": "",
@@ -498,7 +477,8 @@
         "y": 200,
         "wires": [
             [
-                "7216e47d5518efdb"
+                "7216e47d5518efdb",
+                "80369f7995b0a4cc"
             ],
             [
                 "29ee64773863c673"
