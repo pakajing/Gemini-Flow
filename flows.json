@@ -2766,7 +2766,7 @@
                 "t": "set",
                 "p": "url",
                 "pt": "msg",
-                "to": "https://generativelanguage.googleapis.com/v1beta/models/models/gemini-pro-vision:generateContent",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/models/gemini-2.0-flash:generateContent",
                 "tot": "str"
             },
             {
