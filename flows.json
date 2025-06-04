@@ -2211,7 +2211,9 @@
         "x": 1235,
         "y": 500,
         "wires": [
-            []
+            [
+                "e275a6f33aae3894"
+            ]
         ],
         "l": false
     },
@@ -3414,5 +3416,22 @@
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "e275a6f33aae3894",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 560,
+        "wires": []
     }
 ]
