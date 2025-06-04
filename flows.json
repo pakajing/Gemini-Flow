@@ -142,9 +142,7 @@
             "13443591230511c3",
             "7216e47d5518efdb",
             "29ee64773863c673",
-            "b0f74a4e97da0dc1",
-            "0e747cada7762075",
-            "1e7e54cf692c0be1"
+            "b0f74a4e97da0dc1"
         ],
         "x": 454,
         "y": 339,
@@ -169,7 +167,7 @@
         "type": "function",
         "z": "97b77bc4b98052be",
         "name": "Get Secrets",
-        "func": "// Retrieve secrets from global context (Vault)\nvar confluence_email = global.get(\"SECRETS.confluence_email\");\nvar confluence_token = global.get(\"SECRETS.confluence_token\");\nvar confluence_url = global.get(\"SECRETS.confluence_url\");\nvar pinecone_apiKey = global.get(\"SECRETS.pinecone_ApiKey\");\nvar slack_token = global.get(\"SECRETS.slack_token\");\n\n// Check for each required secret individually\nif (!confluence_email) {\n    node.error(\"❌ Global.SECRETS.confluence_email is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.confluence_email is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg]; \n}\n\nif (!confluence_token) {\n    node.error(\"❌ Global.SECRETS.confluence_token is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.confluence_token is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\nif (!confluence_url) {\n    node.error(\"❌ Global.SECRETS.confluence_url is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.confluence_url is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\nif (!pinecone_apiKey) {\n    node.error(\"❌ Global.SECRETS.pinecone_apiKey is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.pinecone_apiKey is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\nif (!slack_token) {\n    node.error(\"❌ Global.SECRETS.slack_token is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.slack_token is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\n// Construct the message secret\nmsg.secret = {\n    \"confluence_email\": confluence_email,\n    \"confluence_token\": confluence_token,\n    \"confluence_url\": confluence_url,\n    \"pinecone_apiKey\": pinecone_apiKey,\n    \"slack_token\": slack_token\n};\n\nmsg.statusCode = 200;\n\nreturn [msg, null]; // All good, send to output 1\n",
+        "func": "// Retrieve secrets from global context (Vault)\nvar GeminiApiKey = global.get(\"SECRETS.GEMINI_API_KEY\");\nvar GeminiModel = global.get(\"SECRETS.GEMINI_MODEL\");\nvar IconikBaseUrl = global.get(\"SECRETS.ICONIK_BASE_URL\");\nvar IconikPassword = global.get(\"SECRETS.ICONIK_PASSWORD\");\nvar IconikUsername = global.get(\"SECRETS.ICONIK_USERNAME\");\n\n// Check for each required secret individually\nif (!GeminiApiKey) {\n    node.error(\"❌ Global.SECRETS.GEMINI_API_KEY is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.GEMINI_API_KEY is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg]; \n}\n\nif (!GeminiModel) {\n    node.error(\"❌ Global.SECRETS.GEMINI_MODEL is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.GEMINI_MODEL is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\nif (!IconikBaseUrl) {\n    node.error(\"❌ Global.SECRETS.ICONIK_BASE_URL is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.ICONIK_BASE_URL is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\nif (!IconikPassword) {\n    node.error(\"❌ Global.SECRETS.ICONIK_PASSWORD is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.ICONIK_PASSWORD is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\nif (!IconikUsername) {\n    node.error(\"❌ Global.SECRETS.ICONIK_USERNAME is not set. Please Check Space SECRET\");\n    msg.error = \"Global.SECRETS.ICONIK_USERNAME is not set. Please Check Space SECRET\";\n    msg.statusCode = 404;\n    return [null, msg];\n}\n\n// Construct the message secret\nmsg.secret = {\n    \"GeminiApiKey\": GeminiApiKey,\n    \"GeminiModel\": GeminiModel,\n    \"IconikBaseUrl\": IconikBaseUrl,\n    \"IconikPassword\": IconikPassword,\n    \"IconikUsername\": IconikUsername\n};\n\nmsg.statusCode = 200;\n\nreturn [msg, null]; // All good, send to output 1\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -500,8 +498,7 @@
         "y": 500,
         "wires": [
             [
-                "7216e47d5518efdb",
-                "1e7e54cf692c0be1"
+                "7216e47d5518efdb"
             ],
             [
                 "29ee64773863c673"
@@ -563,51 +560,6 @@
         "y": 380,
         "wires": [],
         "icon": "font-awesome/fa-book"
-    },
-    {
-        "id": "0e747cada7762075",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "d69961b899aa3d05",
-        "name": "Debug OK: Slack Bearer ",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "statusCode",
-        "statusType": "msg",
-        "x": 615,
-        "y": 440,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false,
-        "info": "# Flow Debug Get Secret\n\n## Description\nThis `Debug` node is used to verify the successful retrieval of secrets. It logs the full message object (`msg`) to the debug sidebar and displays the `msg.statusCode` in the node's status field for quick monitoring.\n\n## Input\n- **Trigger:**\n  - The node is triggered by the output of a preceding node in the flow, typically after a secret retrieval process.\n- **Context / Global Vars:** None required.\n- **Expected Secrets:** None required.\n\n## Output\n- **Success Path:**\n  - Logs the full incoming message (`msg`) to the debug sidebar.\n  - Displays the `msg.statusCode` in the node's status field for quick reference.\n  - Outputs the message for further processing if connected downstream.\n- **Error Path:**\n  - This node does not handle errors but can be used to inspect issues in the incoming message.\n\n## Notes\n> - The debug node is disabled by default. Enable it to view logs in the debug sidebar.\n> - Use this node during development or troubleshooting to ensure secrets are being retrieved and processed correctly.\n> - The `msg.statusCode` is displayed in the node's status field for quick monitoring of the HTTP response status.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)\n"
-    },
-    {
-        "id": "1e7e54cf692c0be1",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "g": "d69961b899aa3d05",
-        "name": "Bearer Slack",
-        "func": "// Retrieve the Slack token from global secrets\nvar slack_token = global.get(\"SECRETS.slack_token\");\n\n// Ensure the token exists before proceeding\nif (!slack_token) {\n    node.error(\"Slack token is not available in global secrets.\", msg);\n    return null; // Stop further processing\n}\n\n// Set the Authorization header with the Bearer token\nmsg.headers = {\n    \"Authorization\": `Bearer ${slack_token}`\n};\n\n// Return the modified message object\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 615,
-        "y": 500,
-        "wires": [
-            [
-                "0e747cada7762075"
-            ]
-        ],
-        "icon": "font-awesome/fa-lock",
-        "l": false,
-        "info": "# Bearer Slack\n\n## Purpose\nThis function node sets the `Authorization` header in the `msg` object with a Bearer token for Slack API requests.\n\n## Input\n- The `msg` object is passed into the node.\n- The Slack token is retrieved from the global context under `SECRETS.slack_token`.\n\n## Output\n- The `msg` object is returned with an updated `headers` property containing the `Authorization` header.\n\n## Logic\n1. Retrieve the Slack token from the global context (`SECRETS.slack_token`).\n2. Check if the token exists:\n   - If not, log an error and stop further processing.\n3. Add the `Authorization` header to the `msg.headers` object with the Bearer token.\n4. Return the modified `msg` object.\n\n## Notes\n> Ensure that the Slack token is securely stored in the global `SECRETS` object and accessible to this node.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
     },
     {
         "id": "4ba858c9bd77a3a7",
