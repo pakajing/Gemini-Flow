@@ -456,6 +456,28 @@
         "h": 262
     },
     {
+        "id": "4a5f270e7e34714c",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[7] Download Proxy",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "cee667defe70948f",
+            "e82edd5464bf08da",
+            "de2b376541d17335",
+            "20e7594f4028321b",
+            "ea7e0cc8aa8ba6ab",
+            "d83f3e4df6ce480a",
+            "711b16e72058a346"
+        ],
+        "x": 234,
+        "y": 619,
+        "w": 292,
+        "h": 202
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -1822,7 +1844,7 @@
             ],
             [
                 "c17bc71b9a4caec4",
-                "1a313660c43ee208"
+                "ea7e0cc8aa8ba6ab"
             ]
         ],
         "l": false
@@ -4702,5 +4724,163 @@
                 "766a3fcca5fb2b44"
             ]
         ]
+    },
+    {
+        "id": "cee667defe70948f",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Download Proxy",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 335,
+        "y": 780,
+        "wires": [
+            [
+                "e82edd5464bf08da",
+                "20e7594f4028321b"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "e82edd5464bf08da",
+        "type": "file",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Write File",
+        "filename": "/tmp/temp_video.mp4",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 395,
+        "y": 780,
+        "wires": [
+            [
+                "de2b376541d17335"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "de2b376541d17335",
+        "type": "file in",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Read File",
+        "filename": "/tmp/temp_video.mp4",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": true,
+        "x": 455,
+        "y": 780,
+        "wires": [
+            [
+                "d83f3e4df6ce480a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "20e7594f4028321b",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Debug OK: Fetch Proxies",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 335,
+        "y": 720,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "ea7e0cc8aa8ba6ab",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Save Auth Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "authHeaders",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "iconik.url",
+                "tot": "msg"
+            }
+        ],
+        "x": 275,
+        "y": 780,
+        "wires": [
+            [
+                "cee667defe70948f"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "d83f3e4df6ce480a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Debug OK: Write File",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 455,
+        "y": 720,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "711b16e72058a346",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "[7] 📖 Doc - Download Proxy",
+        "info": "",
+        "x": 380,
+        "y": 660,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
     }
 ]
