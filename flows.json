@@ -262,7 +262,6 @@
             "label": true
         },
         "nodes": [
-            "80369f7995b0a4cc",
             "84e099d8f84ae022",
             "80b502eb86aee4bc",
             "f4319404be2c2735",
@@ -1013,35 +1012,6 @@
         "icon": "font-awesome/fa-book"
     },
     {
-        "id": "80369f7995b0a4cc",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "g": "4e89c03817358d25",
-        "name": "Save Asset ID & Set Credentials",
-        "rules": [
-            {
-                "t": "set",
-                "p": "assetId",
-                "pt": "msg",
-                "to": "iconik.webhook.asset_ids[0]",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 755,
-        "y": 200,
-        "wires": [
-            [
-                "80b502eb86aee4bc"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "84e099d8f84ae022",
         "type": "change",
         "z": "bb119fa58e5b3485",
@@ -1223,7 +1193,7 @@
         "wires": [
             [
                 "7216e47d5518efdb",
-                "80369f7995b0a4cc"
+                "80b502eb86aee4bc"
             ],
             [
                 "29ee64773863c673"
