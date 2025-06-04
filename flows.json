@@ -2766,7 +2766,7 @@
                 "t": "set",
                 "p": "url",
                 "pt": "msg",
-                "to": "https://generativelanguage.googleapis.com/v1beta/models/\" & model & \":generateContent",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/models/gemini-pro-vision:generateContent",
                 "tot": "str"
             },
             {
@@ -3004,6 +3004,42 @@
             [
                 "6f1cabb71c4652da"
             ]
+        ],
+        "l": false
+    },
+    {
+        "id": "c070f7d9b66e90ea",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Url",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/\" & model & \":generateContent",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "authHeaders",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1105,
+        "y": 780,
+        "wires": [
+            []
         ],
         "l": false
     }
