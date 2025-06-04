@@ -5046,8 +5046,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "Get File Size",
-        "x": 530,
-        "y": 960,
+        "x": 170,
+        "y": 1220,
         "wires": [
             [
                 "4d4d4d4d4d4d4d4d",
@@ -5065,8 +5065,8 @@
         "func": "\nconst expected = parseInt(msg.iconik.get_proxies.payload.objects[0].metadata[0].size);\nconst actual = parseInt(msg.payload.trim());\n\nmsg.result = actual === expected ? \"✅ File size matches\" : `❌ Size mismatch: ${actual} != ${expected}`;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 740,
-        "y": 960,
+        "x": 380,
+        "y": 1220,
         "wires": [
             [
                 "5e5e5e5e5e5e5e5e"
@@ -5084,8 +5084,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 960,
-        "y": 960,
+        "x": 600,
+        "y": 1220,
         "wires": []
     },
     {
@@ -5112,9 +5112,7 @@
         "x": 335,
         "y": 960,
         "wires": [
-            [
-                "3c3c3c3c3c3c3c3c"
-            ]
+            []
         ],
         "l": false
     },
@@ -5131,8 +5129,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 1080,
+        "x": 200,
+        "y": 1340,
         "wires": []
     }
 ]
