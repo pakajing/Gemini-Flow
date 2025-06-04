@@ -2712,7 +2712,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1200,
+        "x": 1560,
         "y": 720,
         "wires": []
     },
@@ -2808,7 +2808,7 @@
         "y": 720,
         "wires": [
             [
-                "0a00ea4d7c10bef4"
+                "41c5a0c10342a1bc"
             ]
         ],
         "l": false
@@ -2912,14 +2912,60 @@
         ]
     },
     {
-        "id": "c4baeb43e33516c9",
-        "type": "status",
+        "id": "41c5a0c10342a1bc",
+        "type": "http request",
         "z": "bb119fa58e5b3485",
-        "name": "",
-        "scope": null,
+        "name": "Gemini Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
         "x": 1100,
-        "y": 1060,
+        "y": 720,
         "wires": [
+            [
+                "0a00ea4d7c10bef4"
+            ]
+        ]
+    },
+    {
+        "id": "922775893b3f9e19",
+        "type": "switch",
+        "z": "bb119fa58e5b3485",
+        "name": "Success?",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1300,
+        "y": 800,
+        "wires": [
+            [],
             []
         ]
     }
