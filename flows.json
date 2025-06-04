@@ -428,12 +428,11 @@
         "nodes": [
             "fba603dcc61e0e8c",
             "e77a15478f3fd4a8",
-            "4e556b99f052016d",
-            "322cce0830af79e0"
+            "4e556b99f052016d"
         ],
-        "x": 604,
+        "x": 634,
         "y": 759,
-        "w": 392,
+        "w": 362,
         "h": 242
     },
     {
@@ -2207,7 +2206,9 @@
         "x": 1235,
         "y": 500,
         "wires": [
-            []
+            [
+                "d8623f819ca6d58b"
+            ]
         ],
         "l": false
     },
@@ -2286,24 +2287,6 @@
         "l": false
     },
     {
-        "id": "322cce0830af79e0",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "2b021cccaf858ffb",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 690,
-        "y": 820,
-        "wires": []
-    },
-    {
         "id": "c6316525076d23bd",
         "type": "comment",
         "z": "bb119fa58e5b3485",
@@ -2314,5 +2297,22 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "d8623f819ca6d58b",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 680,
+        "wires": []
     }
 ]
