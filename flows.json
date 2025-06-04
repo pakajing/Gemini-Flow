@@ -1759,7 +1759,7 @@
             },
             {
                 "t": "set",
-                "p": "assetName",
+                "p": "iconik.assetName",
                 "pt": "msg",
                 "to": "iconik.output.payload.objects[0].name",
                 "tot": "msg"
