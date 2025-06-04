@@ -3441,28 +3441,6 @@
         "wires": []
     },
     {
-        "id": "35e25fd2f23e27c7",
-        "type": "while-loop",
-        "z": "bb119fa58e5b3485",
-        "name": "Is Status Active? ",
-        "condi": "msg.payload.state !== \"ACTIVE\"",
-        "limit": true,
-        "limitTime": "60",
-        "time": "wla933c2eae34c402a",
-        "timeType": "msg",
-        "x": 1705,
-        "y": 900,
-        "wires": [
-            [
-                "cf48b48773b9aed4"
-            ],
-            [
-                "24aa412b7d47c7c6"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "8615818aaf9a2ee4",
         "type": "function",
         "z": "bb119fa58e5b3485",
@@ -3544,8 +3522,7 @@
         "y": 900,
         "wires": [
             [
-                "1e4b15291ecd905b",
-                "35e25fd2f23e27c7"
+                "1e4b15291ecd905b"
             ]
         ],
         "l": false
@@ -3564,44 +3541,6 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1615,
-        "y": 840,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "24aa412b7d47c7c6",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: True",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1705,
-        "y": 960,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "cf48b48773b9aed4",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: False",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1705,
         "y": 840,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3673,7 +3612,8 @@
         "y": 500,
         "wires": [
             [
-                "f509407a070a4c76"
+                "f509407a070a4c76",
+                "35e25fd2f23e27c7"
             ],
             [
                 "787adb3fd8dfb255"
@@ -3795,5 +3735,65 @@
         "x": 1460,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "35e25fd2f23e27c7",
+        "type": "while-loop",
+        "z": "bb119fa58e5b3485",
+        "name": "Is Status Active? ",
+        "condi": "msg.uploadResponse.status!== \"ACTIVE\"",
+        "limit": true,
+        "limitTime": "60",
+        "time": "wla933c2eae34c402a",
+        "timeType": "msg",
+        "x": 1605,
+        "y": 500,
+        "wires": [
+            [
+                "cf48b48773b9aed4"
+            ],
+            [
+                "24aa412b7d47c7c6"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "24aa412b7d47c7c6",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: True",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1605,
+        "y": 560,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "cf48b48773b9aed4",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: False",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1605,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
