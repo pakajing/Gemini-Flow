@@ -430,8 +430,8 @@
             "e77a15478f3fd4a8",
             "4e556b99f052016d"
         ],
-        "x": 494,
-        "y": 1199,
+        "x": 514,
+        "y": 1739,
         "w": 362,
         "h": 242
     },
@@ -2235,8 +2235,8 @@
                 "type": "str"
             }
         ],
-        "x": 640,
-        "y": 1380,
+        "x": 660,
+        "y": 1920,
         "wires": [
             [
                 "e77a15478f3fd4a8"
@@ -2260,8 +2260,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 795,
-        "y": 1240,
+        "x": 815,
+        "y": 1780,
         "wires": [],
         "icon": "font-awesome/fa-exclamation-circle",
         "l": false
@@ -2280,8 +2280,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "counter",
-        "x": 785,
-        "y": 1400,
+        "x": 805,
+        "y": 1940,
         "wires": [],
         "icon": "font-awesome/fa-warning",
         "l": false
@@ -2297,25 +2297,6 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
-    },
-    {
-        "id": "e4cfda2ae41f5038",
-        "type": "template",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Prompt",
-        "field": "userPrompt",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
-        "output": "str",
-        "x": 670,
-        "y": 940,
-        "wires": [
-            [
-                "9b217d271f42e5b2"
-            ]
-        ]
     },
     {
         "id": "34b7d8445af983fd",
@@ -2438,8 +2419,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1540,
-        "y": 900,
+        "x": 1560,
+        "y": 1440,
         "wires": [
             [
                 "4c5fb01131766919"
@@ -2458,8 +2439,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 960,
+        "x": 340,
+        "y": 1500,
         "wires": [
             [
                 "ed4e8db8c18ea28d"
@@ -2480,8 +2461,8 @@
         "syntax": "mustache",
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
-        "x": 830,
-        "y": 940,
+        "x": 850,
+        "y": 1480,
         "wires": [
             [
                 "32855f76244618c9"
@@ -2500,8 +2481,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1330,
-        "y": 980,
+        "x": 1350,
+        "y": 1520,
         "wires": [
             []
         ]
@@ -2518,8 +2499,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1340,
-        "y": 900,
+        "x": 1360,
+        "y": 1440,
         "wires": [
             [
                 "34b7d8445af983fd"
@@ -2538,8 +2519,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
-        "y": 940,
+        "x": 530,
+        "y": 1480,
         "wires": [
             [
                 "e4cfda2ae41f5038"
@@ -2575,8 +2556,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
-        "y": 940,
+        "x": 990,
+        "y": 1480,
         "wires": [
             [
                 "d5b4a87a6cefb6c9"
@@ -2591,8 +2572,8 @@
         "property": "responseText.content",
         "action": "",
         "pretty": false,
-        "x": 1710,
-        "y": 900,
+        "x": 1730,
+        "y": 1440,
         "wires": [
             []
         ]
@@ -2602,8 +2583,8 @@
         "type": "subflow:0876dbcda80b1dec",
         "z": "bb119fa58e5b3485",
         "name": "",
-        "x": 1140,
-        "y": 940,
+        "x": 1160,
+        "y": 1480,
         "wires": [
             [
                 "17befd5a4b7f684f"
@@ -2675,7 +2656,7 @@
         "y": 720,
         "wires": [
             [
-                "0a00ea4d7c10bef4"
+                "26b4a64ae183c139"
             ]
         ],
         "l": false
@@ -2731,8 +2712,215 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 900,
+        "x": 1200,
         "y": 720,
         "wires": []
+    },
+    {
+        "id": "e4cfda2ae41f5038",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Prompt",
+        "field": "userPrompt",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
+        "output": "str",
+        "x": 690,
+        "y": 1480,
+        "wires": [
+            [
+                "9b217d271f42e5b2"
+            ]
+        ]
+    },
+    {
+        "id": "26b4a64ae183c139",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Prompt",
+        "field": "userPrompt",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
+        "output": "str",
+        "x": 795,
+        "y": 720,
+        "wires": [
+            [
+                "1f8c1b6bdc1fa53d"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "1f8c1b6bdc1fa53d",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
+        "output": "json",
+        "x": 865,
+        "y": 720,
+        "wires": [
+            [
+                "6f1cabb71c4652da"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "6f1cabb71c4652da",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Url",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/\" & model & \":generateContent",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "authHeaders",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 945,
+        "y": 720,
+        "wires": [
+            [
+                "0a00ea4d7c10bef4"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7271b87a36384d42",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Gemini Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
+        "x": 1100,
+        "y": 960,
+        "wires": [
+            [
+                "5b5d6bb37b9005f6"
+            ]
+        ]
+    },
+    {
+        "id": "5b5d6bb37b9005f6",
+        "type": "switch",
+        "z": "bb119fa58e5b3485",
+        "name": "Success?",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1260,
+        "y": 960,
+        "wires": [
+            [
+                "90bae9be7c39ac67"
+            ],
+            [
+                "f514b78ed9cfc713"
+            ]
+        ]
+    },
+    {
+        "id": "f514b78ed9cfc713",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Error Status",
+        "func": "const errorMsg = \"Gemini Error\"\nnode.status({fill:\"red\",shape:\"ring\",text:errorMsg});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "90bae9be7c39ac67",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Success Status",
+        "func": "node.status({fill:\"green\",shape:\"ring\",text:\"Success\"});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1510,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4baeb43e33516c9",
+        "type": "status",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "scope": null,
+        "x": 1100,
+        "y": 1060,
+        "wires": [
+            []
+        ]
     }
 ]
