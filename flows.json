@@ -337,14 +337,14 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "g": "4e89c03817358d25",
-        "name": "Debug OK: Auth Iconik",
+        "name": "Debug Error: Auth Iconik",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "",
+        "statusVal": "payload",
         "statusType": "auto",
         "x": 835,
         "y": 260,
@@ -668,27 +668,10 @@
         "x": 1115,
         "y": 200,
         "wires": [
-            []
+            [
+                "62e2db5dec5eeda8"
+            ]
         ],
-        "l": false
-    },
-    {
-        "id": "230e41d4586e1df9",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Assets Format Error",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "counter",
-        "x": 745,
-        "y": 560,
-        "wires": [],
-        "icon": "font-awesome/fa-warning",
         "l": false
     },
     {
@@ -777,7 +760,7 @@
         "id": "c1897c6216b8e8dc",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Iconik Get Format",
+        "name": "Debug Error: Iconik Get Format",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -790,6 +773,69 @@
         "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "62e2db5dec5eeda8",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Check MediaType",
+        "func": "// Define supported media types for images and videos\nconst supportedMediaTypes = {\n  image: [\"image/jpeg\", \"image/png\", \"image/webp\", \"image/heic\", \"image/heif\"],\n  video: [\"video/mp4\", \"video/mpeg\", \"video/mov\", \"video/avi\", \"video/x-flv\", \"video/mpg\", \"video/webm\", \"video/wmx\", \"video/3gpp\"]\n};\n\n// Extract the media type from the incoming message\nconst assetMediaType = msg.mediaType;\n\n// Function to check if the media type is supported\nconst isSupportedMediaType = (type, mediaType) => supportedMediaTypes[type].includes(mediaType);\n\ntry {\n  // Validate the media type\n  if (!isSupportedMediaType('image', assetMediaType) && !isSupportedMediaType('video', assetMediaType)) {\n    // If unsupported, set the error message and supported media types\n    msg.payload = `The selected asset has a media type of \"${assetMediaType}\", which is not among the supported media types. Please choose a compatible media type.`;\n    msg.supportedMediaTypes = supportedMediaTypes;\n    msg.statusCode = 400; // Set status code for unsupported media type\n    return [null, msg]; // Send to output 2\n  } else {\n    // If supported, set a success message\n    msg.payload = `The selected asset has a supported media type: \"${assetMediaType}\".`;\n    msg.statusCode = 200; // Set status code for supported media type\n    return [msg, null]; // Send to output 1\n  }\n} catch (error) {\n  // Handle unexpected errors\n  node.error(\"An error occurred while checking the media type\", msg);\n  msg.payload = \"An internal error occurred.\";\n  msg.statusCode = 500; // Set status code for internal error\n  return [null, msg]; // Send to output 2\n}",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 705,
+        "y": 420,
+        "wires": [
+            [
+                "016fac0e773e7897"
+            ],
+            [
+                "c6921afbb473bc70"
+            ]
+        ],
+        "l": false,
+        "info": "# Check MediaType\n\n## Purpose\nThis function node checks if the provided media type is supported for processing. It categorizes media types into `image` and `video` and validates the input against predefined lists of supported types.\n\n## Input\n- `msg.mediaType`: A string representing the media type of the asset (e.g., `image/jpeg`, `video/mp4`).\n\n## Output\n- **Output 1**: For supported media types.\n  - `msg.payload`: A success message indicating the media type is supported.\n  - `msg.statusCode`: `200` (HTTP status code for success).\n- **Output 2**: For unsupported media types or errors.\n  - `msg.payload`: An error message indicating the media type is unsupported or an internal error occurred.\n  - `msg.supportedMediaTypes`: An object listing all supported media types.\n  - `msg.statusCode`: `400` for unsupported media types, `500` for internal errors.\n\n## Logic\n1. Define supported media types for `image` and `video` categories.\n2. Extract the `mediaType` from the incoming `msg` object.\n3. Check if the `mediaType` exists in either the `image` or `video` list.\n4. If unsupported:\n   - Set an error message and include the list of supported media types.\n   - Set `msg.statusCode` to `400` and send the message to **Output 2**.\n5. If supported:\n   - Set a success message.\n   - Set `msg.statusCode` to `200` and send the message to **Output 1**.\n6. Handle unexpected errors by setting an internal error message and `msg.statusCode` to `500`.\n\n## Notes\n> Ensure the `msg.mediaType` field is provided in the input message. If missing, the function will treat it as unsupported.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "c6921afbb473bc70",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Check MediaType",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 705,
+        "y": 480,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "016fac0e773e7897",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Check MediaType",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 705,
+        "y": 360,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     }
 ]
