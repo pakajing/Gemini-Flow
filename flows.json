@@ -3826,7 +3826,7 @@
         "func": "/**\n * Gemini – List ALL Files (REST, no SDK)\n *\n *  OUTPUT 1 – success : msg.files   → array of file objects\n *  OUTPUT 2 – error   : msg         → original message with error logged\n *\n *  Needs:\n *       • msg.apiKey   – your Gemini API key (string)\n *       • Node 18+ (built-in fetch)                    OR\n *         external-modules enabled + `npm i node-fetch`\n */\n\n //──────────────────────────────────────────────────────────────\n // 0.  Ensure we have an API key and a fetch implementation\n //──────────────────────────────────────────────────────────────\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n    node.error(\"Gemini List: msg.apiKey missing or invalid\", msg);\n    return [ null, msg ];                 // error output (#2)\n}\n\nconst fetch =\n      globalThis.fetch                // Node 18+\n      ?? (await (import(\"node-fetch\"))).default;   // fallback if allowed\n\n//──────────────────────────────────────────────────────────────\n// 1. Helper that pulls *all* pages\n//──────────────────────────────────────────────────────────────\nasync function listAllFiles(key) {\n    const files = [];\n    let pageToken;\n\n    do {\n        const qs = new URLSearchParams({ key, pageSize: \"100\" });\n        if (pageToken) qs.append(\"pageToken\", pageToken);\n\n        const url = `https://generativelanguage.googleapis.com/v1beta/files?${qs}`;\n        const res = await fetch(url);\n        const bodyText = await res.text();\n\n        // Backend bug: sometimes returns HTML 500 while warming up → retry\n        if (!res.ok) {\n            if (res.status === 500 && bodyText.includes(\"<!DOCTYPE html\")) {\n                node.warn(\"Gemini listFiles returned HTML 500 – retrying in 2 s\");\n                await new Promise(r => setTimeout(r, 2000));\n                continue;\n            }\n            throw new Error(`HTTP ${res.status}: ${bodyText.slice(0,120)}`);\n        }\n\n        let body;\n        try {\n            body = JSON.parse(bodyText);\n        } catch {\n            node.warn(\"listFiles response not JSON – retrying in 2 s\");\n            await new Promise(r => setTimeout(r, 2000));\n            continue;\n        }\n\n        files.push(...(body.files || []));\n        pageToken = body.nextPageToken;\n    } while (pageToken);\n\n    return files;\n}\n\n//──────────────────────────────────────────────────────────────\n// 2. Run it and route to the two outputs\n//──────────────────────────────────────────────────────────────\nreturn listAllFiles(msg.apiKey)\n    .then(all => {\n        msg.files = all;          // expose list downstream\n        return [ msg, null ];     // success output (#1)\n    })\n    .catch(err => {\n        node.error(`Gemini listFiles failed: ${err.message || err}`, msg);\n        return [ null, msg ];     // error output (#2)\n    });\n",
         "outputs": 2,
         "timeout": 0,
-        "noerr": 3,
+        "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
@@ -3840,7 +3840,7 @@
             },
             {
                 "var": "nodeFetch",
-                "module": "nodeFetch"
+                "module": "node-fetch"
             }
         ],
         "x": 1435,
