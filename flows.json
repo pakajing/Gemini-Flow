@@ -1956,7 +1956,8 @@
         "y": 520,
         "wires": [
             [
-                "8b15a63895cb51a3"
+                "8b15a63895cb51a3",
+                "9f0e4b157f97680a"
             ]
         ],
         "l": false
@@ -2068,8 +2069,7 @@
         "y": 500,
         "wires": [
             [
-                "5eedb1308b3932a6",
-                "20107de6bd37a1b5"
+                "5eedb1308b3932a6"
             ],
             [
                 "43b5ac776f95284a"
@@ -2084,7 +2084,7 @@
         "z": "bb119fa58e5b3485",
         "g": "7b9495278bbc1acd",
         "name": "Debug OK: Upload File",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -2111,6 +2111,36 @@
                 "pt": "msg",
                 "to": "SECRETS.GEMINI_API_KEY",
                 "tot": "global"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "parts",
+                "pt": "msg"
             }
         ],
         "action": "",
