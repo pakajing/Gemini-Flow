@@ -1176,7 +1176,7 @@
             ],
             [
                 "c17bc71b9a4caec4",
-                "593245d270ac9b82"
+                "1a313660c43ee208"
             ]
         ],
         "l": false
@@ -1347,12 +1347,45 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
+        "statusVal": "statusCode",
+        "statusType": "msg",
         "x": 775,
         "y": 460,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "1a313660c43ee208",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Save Auth Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "authHeaders",
+                "pt": "msg",
+                "to": "headers",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 725,
+        "y": 520,
+        "wires": [
+            [
+                "593245d270ac9b82"
+            ]
+        ],
         "l": false
     }
 ]
