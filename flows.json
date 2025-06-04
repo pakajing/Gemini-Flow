@@ -4838,7 +4838,7 @@
                 "t": "set",
                 "p": "url",
                 "pt": "msg",
-                "to": "iconik.url",
+                "to": "iconik.get_proxies.payload.objects[0].url",
                 "tot": "msg"
             }
         ],
