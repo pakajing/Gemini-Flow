@@ -2218,6 +2218,31 @@
                 "t": "delete",
                 "p": "filename",
                 "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "parts",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -3772,41 +3797,6 @@
                 "pt": "msg",
                 "to": "SECRETS.GEMINI_API_KEY",
                 "tot": "global"
-            },
-            {
-                "t": "delete",
-                "p": "statusCode",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "responseUrl",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "redirectList",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "retry",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "url",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "parts",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
             }
         ],
         "action": "",
@@ -3818,7 +3808,7 @@
         "y": 520,
         "wires": [
             [
-                "71eeabdc3545298c"
+                "template_set_fileName"
             ]
         ],
         "l": false
@@ -3985,7 +3975,7 @@
                 "module": "@google/genai"
             }
         ],
-        "x": 1460,
+        "x": 1520,
         "y": 700,
         "wires": [
             [
@@ -4006,27 +3996,45 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1620,
+        "x": 1700,
         "y": 700,
         "wires": []
     },
     {
-        "id": "71eeabdc3545298c",
+        "id": "template_set_fileName",
         "type": "template",
         "z": "bb119fa58e5b3485",
-        "name": "",
-        "field": "prompt",
+        "name": "Set fileName",
+        "field": "payload",
         "fieldType": "msg",
-        "format": "handlebars",
+        "format": "json",
         "syntax": "mustache",
-        "template": "{\n  \"apiKey\": \"{{{apiKey}}}\",\n  \"prompt\": \"this is a test\"\n}\n",
-        "output": "str",
-        "x": 1340,
-        "y": 620,
+        "template": "{\n    \"fileName\": \"{{payload.uploadResponse.file.name}}\"\n}",
+        "output": "json",
+        "x": 1410,
+        "y": 600,
         "wires": [
             [
+                "6776409fff77979b",
                 "4e6ceaa27a504c87"
             ]
         ]
+    },
+    {
+        "id": "6776409fff77979b",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 660,
+        "wires": []
     }
 ]
