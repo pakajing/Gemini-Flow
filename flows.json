@@ -2631,12 +2631,10 @@
         "syntax": "plain",
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
-        "x": 675,
+        "x": 755,
         "y": 720,
         "wires": [
-            [
-                "8f14f2d0ab60c0d3"
-            ]
+            []
         ],
         "l": false
     },
@@ -2652,7 +2650,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 735,
+        "x": 875,
         "y": 720,
         "wires": [
             [
@@ -2746,7 +2744,7 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 795,
+        "x": 935,
         "y": 720,
         "wires": [
             [
@@ -2766,7 +2764,7 @@
         "syntax": "mustache",
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
-        "x": 875,
+        "x": 1015,
         "y": 720,
         "wires": [
             [
@@ -2804,7 +2802,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 955,
+        "x": 1095,
         "y": 720,
         "wires": [
             [
@@ -2934,7 +2932,7 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1100,
+        "x": 1240,
         "y": 720,
         "wires": [
             [
