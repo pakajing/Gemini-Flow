@@ -4978,7 +4978,16 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            },
+            {
+                "var": "https",
+                "module": "https"
+            }
+        ],
         "x": 200,
         "y": 1440,
         "wires": [
