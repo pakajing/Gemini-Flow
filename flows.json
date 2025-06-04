@@ -3967,7 +3967,12 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
+        "libs": [
+            {
+                "var": "GoogleGenai",
+                "module": "@google/genai"
+            }
+        ],
         "x": 1260,
         "y": 660,
         "wires": [
