@@ -1306,7 +1306,9 @@
         "x": 915,
         "y": 520,
         "wires": [
-            []
+            [
+                "8b15a63895cb51a3"
+            ]
         ],
         "l": false
     },
@@ -1386,6 +1388,25 @@
                 "593245d270ac9b82"
             ]
         ],
+        "l": false
+    },
+    {
+        "id": "8b15a63895cb51a3",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Write File",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 915,
+        "y": 460,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     }
 ]
