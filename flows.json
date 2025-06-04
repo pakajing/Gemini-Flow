@@ -3417,9 +3417,10 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1180,
-        "y": 660,
-        "wires": []
+        "x": 1315,
+        "y": 560,
+        "wires": [],
+        "l": false
     },
     {
         "id": "6d09b7a433e66101",
