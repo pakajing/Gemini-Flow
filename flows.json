@@ -6,5 +6,16 @@
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "413d709fa3d4b4a0",
+        "type": "qibb-secret-manager-sync",
+        "z": "3887a97abab1ae29",
+        "name": "",
+        "SYNC_PERIOD": "30min",
+        "SYNC_ON_DEPLOY": true,
+        "x": 120,
+        "y": 40,
+        "wires": []
     }
 ]
