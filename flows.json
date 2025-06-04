@@ -2189,7 +2189,7 @@
                 "t": "set",
                 "p": "fileUri",
                 "pt": "msg",
-                "to": "payload.file.uri",
+                "to": "payload.uploadResponse.file.uri",
                 "tot": "msg"
             },
             {
