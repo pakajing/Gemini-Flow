@@ -1436,8 +1436,8 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Upload File to FileAPI(Google)",
-        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\n// Upload the file and specify display name\ntry {\n    const uploadResponse = await fileManager.uploadFile(msg.filename, {\n        mimeType: \"video/mp4\",\n        displayName: msg.filename\n    });\n\n    msg.payload = {\n        statusCode: 200,\n        message: \"File uploaded successfully\",\n        uploadResponse: uploadResponse\n    };\n\n    return msg;\n} catch (error) {\n    node.error(\"File upload failed\", error);\n\n    msg.payload = {\n        statusCode: 500,\n        message: \"File upload failed\",\n        error: error.message\n    };\n\n    return msg;\n}\n",
-        "outputs": 1,
+        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\ntry {\n    const uploadResponse = await fileManager.uploadFile(msg.filename, {\n        mimeType: \"video/mp4\",\n        displayName: msg.filename\n    });\n\n    msg.payload = {\n        statusCode: 200,\n        statusInfo: \"File uploaded successfully\",\n        uploadResponse: uploadResponse\n    };\n\n    return [msg, null]; // Output 1: success\n} catch (error) {\n    node.error(\"File upload failed\", error);\n\n    msg.payload = {\n        statusCode: 500,\n        statusInfo: \"File upload failed\",\n        error: error.message\n    };\n\n    return [null, msg]; // Output 2: failure\n}\n",
+        "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
@@ -1453,10 +1453,13 @@
             }
         ],
         "x": 1135,
-        "y": 680,
+        "y": 520,
         "wires": [
             [
                 "5eedb1308b3932a6"
+            ],
+            [
+                "43b5ac776f95284a"
             ]
         ],
         "l": false,
@@ -1473,10 +1476,10 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1165,
-        "y": 620,
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1135,
+        "y": 460,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -1500,8 +1503,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1065,
-        "y": 620,
+        "x": 1075,
+        "y": 520,
         "wires": [
             [
                 "aba3f61d19b83110"
@@ -1520,5 +1523,24 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "43b5ac776f95284a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: Upload File",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1135,
+        "y": 580,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
     }
 ]
