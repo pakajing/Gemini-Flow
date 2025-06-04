@@ -1957,7 +1957,7 @@
         "wires": [
             [
                 "8b15a63895cb51a3",
-                "0f4eb2ab142dba2c"
+                "9f0e4b157f97680a"
             ]
         ],
         "l": false
@@ -3957,8 +3957,8 @@
                 "module": "@google-cloud/storage"
             }
         ],
-        "x": 1160,
-        "y": 520,
+        "x": 1140,
+        "y": 660,
         "wires": [
             [
                 "a3091cf2245c7b13"
@@ -3978,8 +3978,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1240,
-        "y": 620,
+        "x": 1220,
+        "y": 760,
         "wires": []
     }
 ]
