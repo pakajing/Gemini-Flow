@@ -70,6 +70,170 @@
         }
     },
     {
+        "id": "0876dbcda80b1dec",
+        "type": "subflow",
+        "name": "Gemini",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "59b02e1c91e53481"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "2bbab8881ba82345",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 760,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "64b27d75ce428fdf",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#FFFFFF",
+        "icon": "google-gemini-nodes/icon.svg",
+        "status": {
+            "x": 320,
+            "y": 180,
+            "wires": [
+                {
+                    "id": "03f3f26fe7caf8ee",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "fec23f0ed22e717d",
+        "type": "subflow",
+        "name": "Processing Video Option(s)",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "38e1799bc51ee9bf"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1700,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "b7eb442e8678853c",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1700,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "cc05ebf194dc733c",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "HIGHLIGHTS",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "label": {
+                        "en-US": "Highlights"
+                    },
+                    "type": "checkbox"
+                }
+            },
+            {
+                "name": "KEYWORDS",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "label": {
+                        "en-US": "Keywords"
+                    },
+                    "type": "checkbox"
+                }
+            },
+            {
+                "name": "SUMMARY",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "label": {
+                        "en-US": "Summary"
+                    },
+                    "type": "checkbox"
+                }
+            },
+            {
+                "name": "CAPTIONING",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "label": {
+                        "en-US": "Video Captioning"
+                    },
+                    "type": "checkbox"
+                }
+            },
+            {
+                "name": "ACTION_RECOGNITION",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "label": {
+                        "en-US": "Action Recognition"
+                    },
+                    "type": "checkbox"
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#FFFFFF",
+        "icon": "google-gemini-nodes/icon.svg",
+        "status": {
+            "x": 280,
+            "y": 180,
+            "wires": [
+                {
+                    "id": "8cec81fe905fcb0c",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
         "id": "269b642acef88503",
         "type": "group",
         "z": "bb119fa58e5b3485",
@@ -252,6 +416,27 @@
         "h": 202
     },
     {
+        "id": "2b021cccaf858ffb",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "Generate Gemini AI Content",
+        "style": {
+            "fill": "#001f60",
+            "label": true,
+            "fill-opacity": "0.5"
+        },
+        "nodes": [
+            "fba603dcc61e0e8c",
+            "e77a15478f3fd4a8",
+            "4e556b99f052016d",
+            "322cce0830af79e0"
+        ],
+        "x": 604,
+        "y": 759,
+        "w": 392,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -293,6 +478,443 @@
         "y": 80,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "59b02e1c91e53481",
+        "type": "http request",
+        "z": "0876dbcda80b1dec",
+        "name": "Gemini Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "8a1b82da44edc556"
+            ]
+        ]
+    },
+    {
+        "id": "8a1b82da44edc556",
+        "type": "switch",
+        "z": "0876dbcda80b1dec",
+        "name": "Success?",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "2bbab8881ba82345"
+            ],
+            [
+                "64b27d75ce428fdf"
+            ]
+        ]
+    },
+    {
+        "id": "64b27d75ce428fdf",
+        "type": "function",
+        "z": "0876dbcda80b1dec",
+        "name": "Set Error Status",
+        "func": "const errorMsg = \"Gemini Error\"\nnode.status({fill:\"red\",shape:\"ring\",text:errorMsg});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bbab8881ba82345",
+        "type": "function",
+        "z": "0876dbcda80b1dec",
+        "name": "Set Success Status",
+        "func": "node.status({fill:\"green\",shape:\"ring\",text:\"Success\"});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "03f3f26fe7caf8ee",
+        "type": "status",
+        "z": "0876dbcda80b1dec",
+        "name": "",
+        "scope": null,
+        "x": 200,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a0d786322aa3b0e6",
+        "type": "template",
+        "z": "fec23f0ed22e717d",
+        "name": "Set Prompt",
+        "field": "userPrompt",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
+        "output": "str",
+        "x": 550,
+        "y": 80,
+        "wires": [
+            [
+                "273e62a62521a006"
+            ]
+        ]
+    },
+    {
+        "id": "d991eb2e4d23ab66",
+        "type": "change",
+        "z": "fec23f0ed22e717d",
+        "name": "Save Response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "responseText.content",
+                "pt": "msg",
+                "to": "payload.candidates[0].content.parts[0].text",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "responseText.safetyRatings",
+                "pt": "msg",
+                "to": "payload.candidates[0].safetyRatings",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "userPrompt",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "apiKey",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "uploadResponse",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "mediaType",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "filename",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "model",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "mediaType",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "displayName",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "noResultsFormat",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "formats",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "fileUri",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "uploadFileName",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1420,
+        "y": 40,
+        "wires": [
+            [
+                "b7eb442e8678853c"
+            ]
+        ]
+    },
+    {
+        "id": "38e1799bc51ee9bf",
+        "type": "function",
+        "z": "fec23f0ed22e717d",
+        "name": "Check Selected Option",
+        "func": "const highlights = env.get(\"HIGHLIGHTS\"); \nconst keywords = env.get(\"KEYWORDS\");\nconst summary = env.get(\"SUMMARY\");\nconst captioning = env.get(\"CAPTIONING\");\nconst actionRecognition = env.get(\"ACTION_RECOGNITION\")\nconst selectedOptions = [];\n\nmsg.model = global.get(\"SECRETS.GEMINI_MODEL\")\n\n// Determine the selected options\nif (highlights) {\n  selectedOptions.push(\"Highlights\");\n}\nif (keywords) {\n  selectedOptions.push(\"Keywords\");\n}\nif (summary) {\n  selectedOptions.push(\"Summary\");\n}\nif(captioning){\n  selectedOptions.push(\"Video Captioning\");\n}\nif(actionRecognition){\n  selectedOptions.push(\"Video Action Recognition\");\n}\n\nmsg.selectedOptions = selectedOptions\n\n// Validate that at least one option is selected\nif (!highlights && !keywords && !summary) {\n  const errorMsg = \"You must select at least one option\";\n  node.error(errorMsg);\n  node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n  setTimeout(() => node.status({}), 2000);\n  return [null, msg];\n}\n\n// Validate the model presence\nif (!msg.model) {\n  const errorMsg = \"You must provide a Gemini Model\";\n  node.error(errorMsg);\n  node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n  \n  setTimeout(() => node.status({}), 2000);\n  return [null, msg];\n}\n\nreturn [msg, null];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 100,
+        "wires": [
+            [
+                "9f2d542864f19abd"
+            ],
+            [
+                "cc05ebf194dc733c"
+            ]
+        ]
+    },
+    {
+        "id": "273e62a62521a006",
+        "type": "template",
+        "z": "fec23f0ed22e717d",
+        "name": "Set Payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
+        "output": "json",
+        "x": 710,
+        "y": 80,
+        "wires": [
+            [
+                "bb39e70e1554cbe9"
+            ]
+        ]
+    },
+    {
+        "id": "8cec81fe905fcb0c",
+        "type": "status",
+        "z": "fec23f0ed22e717d",
+        "name": "",
+        "scope": null,
+        "x": 180,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc05ebf194dc733c",
+        "type": "function",
+        "z": "fec23f0ed22e717d",
+        "name": "Set Error Response",
+        "func": "const errorMsg = \"Gemini Error\"\nnode.status({fill:\"red\",shape:\"ring\",text:errorMsg});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "17540a8355017c39",
+        "type": "function",
+        "z": "fec23f0ed22e717d",
+        "name": "Set Success Response",
+        "func": "node.status({fill:\"green\",shape:\"ring\",text:\"Success\"});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 40,
+        "wires": [
+            [
+                "d991eb2e4d23ab66"
+            ]
+        ]
+    },
+    {
+        "id": "9f2d542864f19abd",
+        "type": "function",
+        "z": "fec23f0ed22e717d",
+        "name": "Set Formats ",
+        "func": "const selectedOptions = msg.selectedOptions;\nconst outputFormats = {};\n\n// Check for Object Detection\nif (selectedOptions.includes(\"Highlights\")) {\n  const highlightsFormat = [\n    {\n      \"highlight\": \"[Brief description of the important moments]\",\n      \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n      \"duration\": \"Duration of the highlight in the video\"\n    }\n  ];\n  outputFormats.highlights = highlightsFormat;\n}\n\n// Check for Optical Character Recognition (OCR)\nif (selectedOptions.includes(\"Summary\")) {\n  const summaryFormat = \"Provide a detailed summary of the key events, scenes, and main content of the video\";\n  outputFormats.summary = summaryFormat;\n}\n\n// Check for Description\nif (selectedOptions.includes(\"Keywords\")) {\n  const keywordsFormat = [\n  \"Generate a list of most relevant keywords or topics related to the video content\"\n  ];\n  outputFormats.keywords = keywordsFormat;\n}\n\n// Check for Video Captioning \nif (selectedOptions.includes(\"Video Captioning\")){\n  const videoCaptioningFormat = [\n    {\n      \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n      \"sceneDescription\": {\n        \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n        \"objects\": [\n          {\n            \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n            \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n          }\n        ]\n      }\n    }\n  ]\n  outputFormats.videoCaptioning = videoCaptioningFormat\n}\n\n// Check for Video Action Recognition \nif (selectedOptions.includes(\"Video Action Recognition\")){\n  const actionRecognitionFormat = [\n    {\n      \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n      \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n      \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n      \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n      \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n    }\n  ]\n  outputFormats.actionRecognition = actionRecognitionFormat\n}\n\n// No Results Format\nconst noResultsFormat = [\n  {\n    \"option\": \"[Selected option]\",\n    \"message\": \"No descriptive content could be generated for this image.\"\n  }\n];\n\nmsg.noResultsFormat = JSON.stringify(noResultsFormat, null, 2);\nconst formattedOutput = JSON.stringify(outputFormats, null, 2);\n\nmsg.formats = formattedOutput;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 80,
+        "wires": [
+            [
+                "a0d786322aa3b0e6"
+            ]
+        ]
+    },
+    {
+        "id": "bb39e70e1554cbe9",
+        "type": "change",
+        "z": "fec23f0ed22e717d",
+        "name": "Set Url",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/\" & model & \":generateContent",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "authHeaders",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 80,
+        "wires": [
+            [
+                "99b6ba68b4ce8716"
+            ]
+        ]
+    },
+    {
+        "id": "b7eb442e8678853c",
+        "type": "json",
+        "z": "fec23f0ed22e717d",
+        "name": "",
+        "property": "responseText.content",
+        "action": "",
+        "pretty": false,
+        "x": 1590,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99b6ba68b4ce8716",
+        "type": "subflow:0876dbcda80b1dec",
+        "z": "fec23f0ed22e717d",
+        "name": "",
+        "x": 1020,
+        "y": 80,
+        "wires": [
+            [
+                "17540a8355017c39"
+            ],
+            [
+                "cc05ebf194dc733c"
+            ]
+        ]
     },
     {
         "id": "413d709fa3d4b4a0",
@@ -1562,5 +2184,97 @@
             []
         ],
         "l": false
+    },
+    {
+        "id": "fba603dcc61e0e8c",
+        "type": "subflow:fec23f0ed22e717d",
+        "z": "bb119fa58e5b3485",
+        "g": "2b021cccaf858ffb",
+        "name": "",
+        "env": [
+            {
+                "name": "SUMMARY",
+                "type": "bool",
+                "value": "true"
+            },
+            {
+                "name": "CAPTIONING",
+                "type": "bool",
+                "value": "true"
+            },
+            {
+                "name": "MODEL",
+                "value": "gemini-1.5-pro",
+                "type": "str"
+            }
+        ],
+        "x": 780,
+        "y": 940,
+        "wires": [
+            [
+                "e77a15478f3fd4a8"
+            ],
+            [
+                "4e556b99f052016d"
+            ]
+        ]
+    },
+    {
+        "id": "e77a15478f3fd4a8",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "2b021cccaf858ffb",
+        "name": "Text Generated",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 935,
+        "y": 800,
+        "wires": [],
+        "icon": "font-awesome/fa-exclamation-circle",
+        "l": false
+    },
+    {
+        "id": "4e556b99f052016d",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "2b021cccaf858ffb",
+        "name": "Gemini Error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "counter",
+        "x": 925,
+        "y": 960,
+        "wires": [],
+        "icon": "font-awesome/fa-warning",
+        "l": false
+    },
+    {
+        "id": "322cce0830af79e0",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "2b021cccaf858ffb",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 820,
+        "wires": []
     }
 ]
