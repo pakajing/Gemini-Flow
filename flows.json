@@ -3468,50 +3468,17 @@
         "limitTime": "60",
         "time": "wla933c2eae34c402a",
         "timeType": "msg",
-        "x": 1400,
-        "y": 660,
+        "x": 1595,
+        "y": 500,
         "wires": [
             [
-                "91e20528c7aab34d"
+                "cf48b48773b9aed4"
             ],
             [
-                "767cb2ad91a4a0e4"
+                "24aa412b7d47c7c6"
             ]
-        ]
-    },
-    {
-        "id": "91e20528c7aab34d",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 7",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1560,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "767cb2ad91a4a0e4",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 8",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1440,
-        "y": 800,
-        "wires": []
+        ],
+        "l": false
     },
     {
         "id": "8615818aaf9a2ee4",
@@ -3596,7 +3563,8 @@
         "y": 500,
         "wires": [
             [
-                "1e4b15291ecd905b"
+                "1e4b15291ecd905b",
+                "35e25fd2f23e27c7"
             ]
         ],
         "l": false
@@ -3634,6 +3602,44 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1515,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "24aa412b7d47c7c6",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: True",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1605,
+        "y": 560,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "cf48b48773b9aed4",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: False",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1605,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
