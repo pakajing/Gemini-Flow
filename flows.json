@@ -3633,7 +3633,7 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "attempt",
+        "statusVal": "uploadResponse.status",
         "statusType": "msg",
         "x": 1475,
         "y": 440,
@@ -3735,7 +3735,8 @@
                 "cf48b48773b9aed4"
             ],
             [
-                "24aa412b7d47c7c6"
+                "24aa412b7d47c7c6",
+                "0efcf4cff626690b"
             ]
         ],
         "l": false
