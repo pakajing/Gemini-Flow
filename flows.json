@@ -1821,7 +1821,8 @@
                 "1912e80aa826d7f5"
             ],
             [
-                "c17bc71b9a4caec4"
+                "c17bc71b9a4caec4",
+                "1a313660c43ee208"
             ]
         ],
         "l": false
@@ -1832,7 +1833,7 @@
         "z": "bb119fa58e5b3485",
         "g": "1eba5f0f11ebce0e",
         "name": "Debug OK: Iconik Image",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1852,7 +1853,7 @@
         "z": "bb119fa58e5b3485",
         "g": "1eba5f0f11ebce0e",
         "name": "Debug OK: Iconik Video",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1955,8 +1956,7 @@
         "y": 520,
         "wires": [
             [
-                "8b15a63895cb51a3",
-                "9f0e4b157f97680a"
+                "8b15a63895cb51a3"
             ]
         ],
         "l": false
@@ -2028,7 +2028,7 @@
         "z": "bb119fa58e5b3485",
         "g": "5f2970019d9fe440",
         "name": "Debug OK: Write File",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
