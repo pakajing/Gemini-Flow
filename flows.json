@@ -1308,5 +1308,30 @@
             []
         ],
         "l": false
+    },
+    {
+        "id": "9f0e4b157f97680a",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 520,
+        "wires": [
+            []
+        ]
     }
 ]
