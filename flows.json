@@ -4163,7 +4163,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Prepare Upload Request",
-        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = \"/tmp/temp_video.mp4\";\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"video/mp4\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;\n",
+        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = \"temp_video.mp4\";\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"video/mp4\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -4422,7 +4422,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Read File to Context",
-        "func": "const filePath = '/tmp/temp_video.mp4';\nmsg.apiKey = 'AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k';\n\nmsg.fileBuffer = fs.readFileSync(filePath);\nmsg.fileSize = msg.fileBuffer.length;\n\nreturn msg;",
+        "func": "const filePath = 'temp_video.mp4';\nmsg.apiKey = 'AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k';\n\nmsg.fileBuffer = fs.readFileSync(filePath);\nmsg.fileSize = msg.fileBuffer.length;\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -5094,7 +5094,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Download to /tmp/temp_video.mp4",
-        "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
+        "func": "const path = \"temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -5113,7 +5113,9 @@
         "x": 335,
         "y": 960,
         "wires": [
-            []
+            [
+                "6fff48a362cc4e88"
+            ]
         ],
         "l": false
     },
@@ -5132,6 +5134,23 @@
         "statusType": "auto",
         "x": 200,
         "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "6fff48a362cc4e88",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 940,
         "wires": []
     }
 ]
