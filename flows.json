@@ -3575,7 +3575,7 @@
         "z": "bb119fa58e5b3485",
         "name": "Get file state",
         "method": "GET",
-        "ret": "obj",
+        "ret": "txt",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
