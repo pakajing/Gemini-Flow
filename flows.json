@@ -430,8 +430,8 @@
             "e77a15478f3fd4a8",
             "4e556b99f052016d"
         ],
-        "x": 634,
-        "y": 759,
+        "x": 494,
+        "y": 1199,
         "w": 362,
         "h": 242
     },
@@ -2235,8 +2235,8 @@
                 "type": "str"
             }
         ],
-        "x": 780,
-        "y": 940,
+        "x": 640,
+        "y": 1380,
         "wires": [
             [
                 "e77a15478f3fd4a8"
@@ -2260,8 +2260,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 935,
-        "y": 800,
+        "x": 795,
+        "y": 1240,
         "wires": [],
         "icon": "font-awesome/fa-exclamation-circle",
         "l": false
@@ -2280,8 +2280,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "counter",
-        "x": 925,
-        "y": 960,
+        "x": 785,
+        "y": 1400,
         "wires": [],
         "icon": "font-awesome/fa-warning",
         "l": false
@@ -2314,5 +2314,320 @@
         "x": 1040,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "e4cfda2ae41f5038",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Prompt",
+        "field": "userPrompt",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
+        "output": "str",
+        "x": 670,
+        "y": 940,
+        "wires": [
+            [
+                "9b217d271f42e5b2"
+            ]
+        ]
+    },
+    {
+        "id": "34b7d8445af983fd",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Save Response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "responseText.content",
+                "pt": "msg",
+                "to": "payload.candidates[0].content.parts[0].text",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "responseText.safetyRatings",
+                "pt": "msg",
+                "to": "payload.candidates[0].safetyRatings",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "userPrompt",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "apiKey",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "uploadResponse",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "mediaType",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "filename",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "model",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "mediaType",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "displayName",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "noResultsFormat",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "formats",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "fileUri",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "uploadFileName",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1540,
+        "y": 900,
+        "wires": [
+            [
+                "4c5fb01131766919"
+            ]
+        ]
+    },
+    {
+        "id": "04012d78b815481e",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Check Selected Option",
+        "func": "const highlights = env.get(\"HIGHLIGHTS\"); \nconst keywords = env.get(\"KEYWORDS\");\nconst summary = env.get(\"SUMMARY\");\nconst captioning = env.get(\"CAPTIONING\");\nconst actionRecognition = env.get(\"ACTION_RECOGNITION\")\nconst selectedOptions = [];\n\nmsg.model = global.get(\"SECRETS.GEMINI_MODEL\")\n\n// Determine the selected options\nif (highlights) {\n  selectedOptions.push(\"Highlights\");\n}\nif (keywords) {\n  selectedOptions.push(\"Keywords\");\n}\nif (summary) {\n  selectedOptions.push(\"Summary\");\n}\nif(captioning){\n  selectedOptions.push(\"Video Captioning\");\n}\nif(actionRecognition){\n  selectedOptions.push(\"Video Action Recognition\");\n}\n\nmsg.selectedOptions = selectedOptions\n\n// Validate that at least one option is selected\nif (!highlights && !keywords && !summary) {\n  const errorMsg = \"You must select at least one option\";\n  node.error(errorMsg);\n  node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n  setTimeout(() => node.status({}), 2000);\n  return [null, msg];\n}\n\n// Validate the model presence\nif (!msg.model) {\n  const errorMsg = \"You must provide a Gemini Model\";\n  node.error(errorMsg);\n  node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n  \n  setTimeout(() => node.status({}), 2000);\n  return [null, msg];\n}\n\nreturn [msg, null];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 960,
+        "wires": [
+            [
+                "ed4e8db8c18ea28d"
+            ],
+            [
+                "16148f21184c4cb9"
+            ]
+        ]
+    },
+    {
+        "id": "9b217d271f42e5b2",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
+        "output": "json",
+        "x": 830,
+        "y": 940,
+        "wires": [
+            [
+                "32855f76244618c9"
+            ]
+        ]
+    },
+    {
+        "id": "16148f21184c4cb9",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Error Response",
+        "func": "const errorMsg = \"Gemini Error\"\nnode.status({fill:\"red\",shape:\"ring\",text:errorMsg});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1330,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "17befd5a4b7f684f",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Success Response",
+        "func": "node.status({fill:\"green\",shape:\"ring\",text:\"Success\"});\nsetTimeout(() => {\n  node.status({});\n}, 2000);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1340,
+        "y": 900,
+        "wires": [
+            [
+                "34b7d8445af983fd"
+            ]
+        ]
+    },
+    {
+        "id": "ed4e8db8c18ea28d",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Formats ",
+        "func": "const selectedOptions = msg.selectedOptions;\nconst outputFormats = {};\n\n// Check for Object Detection\nif (selectedOptions.includes(\"Highlights\")) {\n  const highlightsFormat = [\n    {\n      \"highlight\": \"[Brief description of the important moments]\",\n      \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n      \"duration\": \"Duration of the highlight in the video\"\n    }\n  ];\n  outputFormats.highlights = highlightsFormat;\n}\n\n// Check for Optical Character Recognition (OCR)\nif (selectedOptions.includes(\"Summary\")) {\n  const summaryFormat = \"Provide a detailed summary of the key events, scenes, and main content of the video\";\n  outputFormats.summary = summaryFormat;\n}\n\n// Check for Description\nif (selectedOptions.includes(\"Keywords\")) {\n  const keywordsFormat = [\n  \"Generate a list of most relevant keywords or topics related to the video content\"\n  ];\n  outputFormats.keywords = keywordsFormat;\n}\n\n// Check for Video Captioning \nif (selectedOptions.includes(\"Video Captioning\")){\n  const videoCaptioningFormat = [\n    {\n      \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n      \"sceneDescription\": {\n        \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n        \"objects\": [\n          {\n            \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n            \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n          }\n        ]\n      }\n    }\n  ]\n  outputFormats.videoCaptioning = videoCaptioningFormat\n}\n\n// Check for Video Action Recognition \nif (selectedOptions.includes(\"Video Action Recognition\")){\n  const actionRecognitionFormat = [\n    {\n      \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n      \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n      \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n      \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n      \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n    }\n  ]\n  outputFormats.actionRecognition = actionRecognitionFormat\n}\n\n// No Results Format\nconst noResultsFormat = [\n  {\n    \"option\": \"[Selected option]\",\n    \"message\": \"No descriptive content could be generated for this image.\"\n  }\n];\n\nmsg.noResultsFormat = JSON.stringify(noResultsFormat, null, 2);\nconst formattedOutput = JSON.stringify(outputFormats, null, 2);\n\nmsg.formats = formattedOutput;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 940,
+        "wires": [
+            [
+                "e4cfda2ae41f5038"
+            ]
+        ]
+    },
+    {
+        "id": "32855f76244618c9",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Url",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/\" & model & \":generateContent",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "authHeaders",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 940,
+        "wires": [
+            [
+                "d5b4a87a6cefb6c9"
+            ]
+        ]
+    },
+    {
+        "id": "4c5fb01131766919",
+        "type": "json",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "property": "responseText.content",
+        "action": "",
+        "pretty": false,
+        "x": 1710,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d5b4a87a6cefb6c9",
+        "type": "subflow:0876dbcda80b1dec",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "x": 1140,
+        "y": 940,
+        "wires": [
+            [
+                "17befd5a4b7f684f"
+            ],
+            [
+                "16148f21184c4cb9"
+            ]
+        ]
     }
 ]
