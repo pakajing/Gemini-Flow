@@ -1545,7 +1545,7 @@
         "z": "bb119fa58e5b3485",
         "g": "fd02e1eb88ae35ab",
         "name": "Debug OK: Check MediaType",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1599,6 +1599,11 @@
                 "t": "delete",
                 "p": "statusInfo",
                 "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "asset_id",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -1609,7 +1614,9 @@
         "x": 1555,
         "y": 200,
         "wires": [
-            []
+            [
+                "378749f3f7f8db51"
+            ]
         ],
         "l": false
     },
@@ -1635,7 +1642,7 @@
         "parameters": [
             {
                 "name": "asset_id",
-                "value": "asset_id",
+                "value": "iconik.webhook.asset_ids[0]",
                 "in": "path",
                 "refType": "msg"
             },
@@ -1695,7 +1702,7 @@
         "z": "bb119fa58e5b3485",
         "g": "55b3c47cc59469f5",
         "name": "Debug OK: Get Proxies",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1771,9 +1778,7 @@
         "x": 1775,
         "y": 200,
         "wires": [
-            [
-                "60f01beb32c02861"
-            ]
+            []
         ],
         "l": false
     },
