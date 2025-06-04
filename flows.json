@@ -4576,5 +4576,68 @@
         "x": 1660,
         "y": 820,
         "wires": []
+    },
+    {
+        "id": "7a893d1cfe2f891b",
+        "type": "exec",
+        "z": "bb119fa58e5b3485",
+        "command": "ls -lh temp_video.mp4",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 980,
+        "y": 1060,
+        "wires": [
+            [
+                "35c54a70ed21d5e7"
+            ],
+            [
+                "35c54a70ed21d5e7"
+            ],
+            [
+                "35c54a70ed21d5e7"
+            ]
+        ]
+    },
+    {
+        "id": "35c54a70ed21d5e7",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "050bd9cad638ea90",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "",
+        "x": 710,
+        "y": 1020,
+        "wires": [
+            [
+                "7a893d1cfe2f891b"
+            ]
+        ]
     }
 ]
