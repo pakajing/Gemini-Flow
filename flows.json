@@ -3807,9 +3807,7 @@
         "x": 1395,
         "y": 520,
         "wires": [
-            [
-                "template_set_fileName"
-            ]
+            []
         ],
         "l": false
     },
@@ -3963,7 +3961,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "function 3",
-        "func": "/**\n * Node-RED Function: Gemini File Metadata Fetch\n *\n * INPUT: msg.apiKey (Gemini API Key)\n *        msg.fileName (file identifier, e.g., files/abc-123)\n * OUTPUT: msg.fileMetadata (metadata of the requested file)\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.fileName || typeof msg.fileName !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.fileName missing or invalid\", msg);\n  return null;\n}\n\nasync function getFileMetadata(apiKey, fileName) {\n  const ai = new GoogleGenAI({ apiKey });\n\n  const fetchedFile = await ai.files.get({ name: fileName });\n\n  return fetchedFile;\n}\n\ngetFileMetadata(msg.apiKey, msg.fileName)\n  .then(fileMetadata => {\n    msg.fileMetadata = fileMetadata;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`File metadata fetch failed: ${err.message}`, msg);\n    return null;\n  });\n\nreturn null; // Explicitly indicate asynchronous flow",
+        "func": "/**\n * Node-RED Function: Gemini File Metadata Fetch\n *\n * INPUT: msg.apiKey (Gemini API Key)\n *        msg.fileName (file identifier, e.g., files/abc-123)\n * OUTPUT: msg.fileMetadata (metadata of the requested file)\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.fileName || typeof msg.payload.fileName !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.fileName missing or invalid\", msg);\n  return null;\n}\n\nasync function getFileMetadata(apiKey, fileName) {\n  const ai = new GoogleGenAI({ apiKey });\n\n  const fetchedFile = await ai.files.get({ name: fileName });\n\n  return fetchedFile;\n}\n\ngetFileMetadata(msg.apiKey, msg.fileName)\n  .then(fileMetadata => {\n    msg.fileMetadata = fileMetadata;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`File metadata fetch failed: ${err.message}`, msg);\n    return null;\n  });\n\nreturn null; // Explicitly indicate asynchronous flow",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3976,7 +3974,7 @@
             }
         ],
         "x": 1520,
-        "y": 700,
+        "y": 660,
         "wires": [
             [
                 "a3091cf2245c7b13"
@@ -3996,29 +3994,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1700,
-        "y": 700,
+        "x": 1520,
+        "y": 720,
         "wires": []
-    },
-    {
-        "id": "template_set_fileName",
-        "type": "template",
-        "z": "bb119fa58e5b3485",
-        "name": "Set fileName",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "{\n    \"fileName\": \"{{payload.uploadResponse.file.name}}\"\n}",
-        "output": "json",
-        "x": 1410,
-        "y": 600,
-        "wires": [
-            [
-                "6776409fff77979b",
-                "4e6ceaa27a504c87"
-            ]
-        ]
     },
     {
         "id": "6776409fff77979b",
@@ -4034,7 +4012,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1340,
-        "y": 660,
+        "y": 720,
         "wires": []
     },
     {
@@ -4044,7 +4022,7 @@
         "name": "",
         "props": [
             {
-                "p": "payload.uploadResponse.file.name",
+                "p": "fileName",
                 "v": "files/qy9igtslp6kp",
                 "vt": "str"
             }
@@ -4058,7 +4036,7 @@
         "y": 660,
         "wires": [
             [
-                "template_set_fileName"
+                "4e6ceaa27a504c87"
             ]
         ]
     }
