@@ -1405,10 +1405,11 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1150,
+        "x": 1035,
         "y": 520,
         "wires": [
             []
-        ]
+        ],
+        "l": false
     }
 ]
