@@ -4447,7 +4447,7 @@
         "z": "bb119fa58e5b3485",
         "name": "Start Resumable Session",
         "method": "use",
-        "ret": "obj",
+        "ret": "txt",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
