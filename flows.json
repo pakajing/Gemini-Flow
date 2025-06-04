@@ -4763,7 +4763,7 @@
         "appendNewline": false,
         "createDir": true,
         "overwriteFile": "true",
-        "encoding": "none",
+        "encoding": "binary",
         "x": 395,
         "y": 780,
         "wires": [
