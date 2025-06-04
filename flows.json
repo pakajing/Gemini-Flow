@@ -144,7 +144,7 @@
             "29ee64773863c673",
             "b0f74a4e97da0dc1"
         ],
-        "x": 454,
+        "x": 434,
         "y": 39,
         "w": 252,
         "h": 262,
@@ -494,7 +494,7 @@
         "z": "bb119fa58e5b3485",
         "g": "d69961b899aa3d05",
         "name": "",
-        "x": 575,
+        "x": 555,
         "y": 200,
         "wires": [
             [
@@ -521,7 +521,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 575,
+        "x": 555,
         "y": 140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -542,7 +542,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 575,
+        "x": 555,
         "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -556,7 +556,7 @@
         "g": "d69961b899aa3d05",
         "name": "[1] 📖 Doc - Get Secret",
         "info": "# Flow Get Secrets\n\n## Description\nThis flow retrieves secrets related to Gemini and Iconik from the global context (`global.get`) and validates their presence. If any secret is missing, an error is returned with a descriptive message. The retrieved secrets are then packaged into a `msg.secret` object for further use.\n\n## Nodes\n| Node ID | Node Type | Node Name |\n|---------|-----------|-----------|\n| 4f68b793021e13a7 | status     | (Unnamed) |\n| 3f9e95e7f7a71ea7 | function   | Get Secrets |\n| f9847233de5b9a97 | comment    | [1] 📖 Doc - Get Secrets |\n\n## Input\n- **Trigger:**\n  - No specific input is required. The function node retrieves secrets from the global context.\n- **Context / Global Vars:**\n  - `SECRETS.GEMINI_API_KEY`\n  - `SECRETS.GEMINI_MODEL`\n  - `SECRETS.ICONIK_BASE_URL`\n  - `SECRETS.ICONIK_PASSWORD`\n  - `SECRETS.ICONIK_USERNAME`\n\n## Output\n- **Success Path:**\n  - If all secrets are present:\n    - `msg.secret` contains the retrieved secrets as an object:\n      ```json\n      {\n        \"GeminiApiKey\": \"...\",\n        \"GeminiModel\": \"...\",\n        \"IconikBaseUrl\": \"...\",\n        \"IconikPassword\": \"...\",\n        \"IconikUsername\": \"...\"\n      }\n      ```\n    - `msg.statusCode` is set to `200`.\n    - The message is sent to Output 1.\n- **Error Path:**\n  - If any secret is missing:\n    - `msg.error` contains a descriptive error message (e.g., `Global.SECRETS.GEMINI_API_KEY is not set. Please Check Space SECRET`).\n    - `msg.statusCode` is set to `404`.\n    - The message is sent to Output 2.\n\n## Notes\n> - Ensure that the required secrets are properly configured in the global context before using this flow.\n> - This flow is critical for ensuring secure and authenticated interactions with Gemini and Iconik APIs.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)",
-        "x": 580,
+        "x": 560,
         "y": 80,
         "wires": [],
         "icon": "font-awesome/fa-book"
