@@ -430,7 +430,7 @@
             "4e556b99f052016d"
         ],
         "x": 514,
-        "y": 1739,
+        "y": 2619,
         "w": 362,
         "h": 242
     },
@@ -450,8 +450,8 @@
             "20107de6bd37a1b5",
             "c6316525076d23bd"
         ],
-        "x": 1104,
-        "y": 359,
+        "x": 1424,
+        "y": 1039,
         "w": 262,
         "h": 262
     },
@@ -2065,8 +2065,8 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1225,
-        "y": 520,
+        "x": 1545,
+        "y": 1200,
         "wires": [
             [
                 "5eedb1308b3932a6",
@@ -2093,8 +2093,8 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1225,
-        "y": 460,
+        "x": 1545,
+        "y": 1140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2149,8 +2149,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1165,
-        "y": 520,
+        "x": 1485,
+        "y": 1200,
         "wires": [
             [
                 "aba3f61d19b83110"
@@ -2184,8 +2184,8 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1225,
-        "y": 580,
+        "x": 1545,
+        "y": 1260,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2250,8 +2250,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1325,
-        "y": 520,
+        "x": 1645,
+        "y": 1200,
         "wires": [
             [
                 "8a435b17d1851e02"
@@ -2283,7 +2283,7 @@
             }
         ],
         "x": 660,
-        "y": 1920,
+        "y": 2800,
         "wires": [
             [
                 "e77a15478f3fd4a8"
@@ -2308,7 +2308,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 815,
-        "y": 1780,
+        "y": 2660,
         "wires": [],
         "icon": "font-awesome/fa-exclamation-circle",
         "l": false
@@ -2328,7 +2328,7 @@
         "statusVal": "",
         "statusType": "counter",
         "x": 805,
-        "y": 1940,
+        "y": 2820,
         "wires": [],
         "icon": "font-awesome/fa-warning",
         "l": false
@@ -2340,8 +2340,8 @@
         "g": "7b9495278bbc1acd",
         "name": "[8] 📖 Doc - Upload File",
         "info": "",
-        "x": 1230,
-        "y": 400,
+        "x": 1550,
+        "y": 1080,
         "wires": [],
         "icon": "font-awesome/fa-book"
     },
@@ -2467,7 +2467,7 @@
         "to": "",
         "reg": false,
         "x": 1560,
-        "y": 1440,
+        "y": 2320,
         "wires": [
             [
                 "4c5fb01131766919"
@@ -2487,7 +2487,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1500,
+        "y": 2380,
         "wires": [
             [
                 "ed4e8db8c18ea28d"
@@ -2509,7 +2509,7 @@
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
         "x": 850,
-        "y": 1480,
+        "y": 2360,
         "wires": [
             [
                 "32855f76244618c9"
@@ -2529,7 +2529,7 @@
         "finalize": "",
         "libs": [],
         "x": 1350,
-        "y": 1520,
+        "y": 2400,
         "wires": [
             []
         ]
@@ -2547,7 +2547,7 @@
         "finalize": "",
         "libs": [],
         "x": 1360,
-        "y": 1440,
+        "y": 2320,
         "wires": [
             [
                 "34b7d8445af983fd"
@@ -2567,7 +2567,7 @@
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 1480,
+        "y": 2360,
         "wires": [
             [
                 "e4cfda2ae41f5038"
@@ -2604,7 +2604,7 @@
         "to": "",
         "reg": false,
         "x": 990,
-        "y": 1480,
+        "y": 2360,
         "wires": [
             [
                 "d5b4a87a6cefb6c9"
@@ -2620,7 +2620,7 @@
         "action": "",
         "pretty": false,
         "x": 1730,
-        "y": 1440,
+        "y": 2320,
         "wires": [
             []
         ]
@@ -2631,7 +2631,7 @@
         "z": "bb119fa58e5b3485",
         "name": "",
         "x": 1160,
-        "y": 1480,
+        "y": 2360,
         "wires": [
             [
                 "17befd5a4b7f684f"
@@ -2654,7 +2654,7 @@
         "finalize": "",
         "libs": [],
         "x": 575,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "c6480ce55b348f13",
@@ -2679,7 +2679,7 @@
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
         "x": 755,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "8f14f2d0ab60c0d3"
@@ -2700,7 +2700,7 @@
         "finalize": "",
         "libs": [],
         "x": 815,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "26b4a64ae183c139"
@@ -2722,7 +2722,7 @@
         "statusVal": "selectedOptions",
         "statusType": "msg",
         "x": 575,
-        "y": 1160,
+        "y": 2040,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2741,7 +2741,7 @@
         "statusVal": "selectedOptions",
         "statusType": "msg",
         "x": 575,
-        "y": 1280,
+        "y": 2160,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2760,7 +2760,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1560,
-        "y": 1220,
+        "y": 2100,
         "wires": []
     },
     {
@@ -2775,7 +2775,7 @@
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
         "x": 690,
-        "y": 1480,
+        "y": 2360,
         "wires": [
             [
                 "9b217d271f42e5b2"
@@ -2794,7 +2794,7 @@
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
         "x": 895,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "7dea554c6ac7de37",
@@ -2833,7 +2833,7 @@
         "to": "",
         "reg": false,
         "x": 1095,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "41c5a0c10342a1bc"
@@ -2865,7 +2865,7 @@
             }
         ],
         "x": 1080,
-        "y": 1500,
+        "y": 2380,
         "wires": [
             [
                 "5b5d6bb37b9005f6"
@@ -2893,7 +2893,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1240,
-        "y": 1500,
+        "y": 2380,
         "wires": [
             [
                 "90bae9be7c39ac67"
@@ -2916,7 +2916,7 @@
         "finalize": "",
         "libs": [],
         "x": 1480,
-        "y": 1540,
+        "y": 2420,
         "wires": [
             []
         ]
@@ -2934,7 +2934,7 @@
         "finalize": "",
         "libs": [],
         "x": 1490,
-        "y": 1460,
+        "y": 2340,
         "wires": [
             []
         ]
@@ -2963,7 +2963,7 @@
             }
         ],
         "x": 1240,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "0a00ea4d7c10bef4"
@@ -2991,7 +2991,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1300,
-        "y": 1300,
+        "y": 2180,
         "wires": [
             [],
             []
@@ -3011,7 +3011,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 895,
-        "y": 1360,
+        "y": 2240,
         "wires": [],
         "l": false
     },
@@ -3027,7 +3027,7 @@
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
         "x": 1045,
-        "y": 1320,
+        "y": 2200,
         "wires": [
             []
         ],
@@ -3046,7 +3046,7 @@
         "finalize": "",
         "libs": [],
         "x": 975,
-        "y": 1220,
+        "y": 2100,
         "wires": [
             [
                 "6f1cabb71c4652da"
@@ -3084,7 +3084,7 @@
         "to": "",
         "reg": false,
         "x": 1105,
-        "y": 1280,
+        "y": 2160,
         "wires": [
             []
         ],
@@ -3103,7 +3103,7 @@
         "finalize": "",
         "libs": [],
         "x": 1845,
-        "y": 940,
+        "y": 1820,
         "wires": [
             [
                 "8c6fcd7eb82a6a57",
@@ -3133,7 +3133,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1900,
-        "y": 1200,
+        "y": 2080,
         "wires": [
             [
                 "9d519008cd96668f"
@@ -3157,7 +3157,7 @@
         "finalize": "",
         "libs": [],
         "x": 2090,
-        "y": 1200,
+        "y": 2080,
         "wires": [
             [
                 "340f70f7d4e36db0"
@@ -3185,7 +3185,7 @@
         "repair": false,
         "outputs": 2,
         "x": 2270,
-        "y": 1200,
+        "y": 2080,
         "wires": [
             [
                 "bcd28e87e37b32b0"
@@ -3207,7 +3207,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 2270,
-        "y": 1260,
+        "y": 2140,
         "wires": []
     },
     {
@@ -3224,7 +3224,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 2090,
-        "y": 1140,
+        "y": 2020,
         "wires": []
     },
     {
@@ -3241,7 +3241,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1600,
-        "y": 1100,
+        "y": 1980,
         "wires": []
     },
     {
@@ -3258,7 +3258,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 2060,
-        "y": 1260,
+        "y": 2140,
         "wires": []
     },
     {
@@ -3275,7 +3275,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1845,
-        "y": 880,
+        "y": 1760,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3294,7 +3294,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1965,
-        "y": 880,
+        "y": 1760,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3325,7 +3325,7 @@
         "repair": false,
         "outputs": 3,
         "x": 2045,
-        "y": 940,
+        "y": 1820,
         "wires": [
             [
                 "ab1bdb7c509b65a5"
@@ -3353,7 +3353,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 2055,
-        "y": 1000,
+        "y": 1880,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3376,7 +3376,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2310,
-        "y": 940,
+        "y": 1820,
         "wires": [
             [
                 "f1b6a7dfc122ec1d"
@@ -3401,7 +3401,7 @@
         "to": "",
         "reg": false,
         "x": 2155,
-        "y": 940,
+        "y": 1820,
         "wires": [
             [
                 "3d426f8308661af0"
@@ -3423,7 +3423,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 2065,
-        "y": 860,
+        "y": 1740,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3441,7 +3441,7 @@
         "finalize": "",
         "libs": [],
         "x": 1020,
-        "y": 1060,
+        "y": 1940,
         "wires": [
             [
                 "6c15da536f15063c"
@@ -3462,7 +3462,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1040,
-        "y": 1120,
+        "y": 2000,
         "wires": []
     },
     {
@@ -3478,7 +3478,7 @@
         "finalize": "",
         "libs": [],
         "x": 1685,
-        "y": 1000,
+        "y": 1880,
         "wires": [
             [
                 "0ee4b92377f89454"
@@ -3511,7 +3511,7 @@
             }
         ],
         "x": 1965,
-        "y": 940,
+        "y": 1820,
         "wires": [
             [
                 "cd7be5c741a1d232",
@@ -3544,7 +3544,7 @@
             }
         ],
         "x": 1735,
-        "y": 1000,
+        "y": 1880,
         "wires": [
             [
                 "1e4b15291ecd905b"
@@ -3566,7 +3566,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1735,
-        "y": 940,
+        "y": 1820,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3580,7 +3580,7 @@
         "action": "obj",
         "pretty": false,
         "x": 1345,
-        "y": 1160,
+        "y": 2040,
         "wires": [
             []
         ],
@@ -3603,8 +3603,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1895,
-        "y": 500,
+        "x": 2025,
+        "y": 1200,
         "wires": [
             [
                 "28d6c48d41f27f7f"
@@ -3633,8 +3633,8 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 2035,
-        "y": 500,
+        "x": 2165,
+        "y": 1200,
         "wires": [
             [
                 "f509407a070a4c76",
@@ -3660,8 +3660,8 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 2035,
-        "y": 440,
+        "x": 2165,
+        "y": 1140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3715,8 +3715,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1955,
-        "y": 500,
+        "x": 2085,
+        "y": 1200,
         "wires": [
             [
                 "41dc5b97da49fd1d"
@@ -3734,8 +3734,8 @@
         "limitTime": "60",
         "time": "counter",
         "timeType": "msg",
-        "x": 2155,
-        "y": 500,
+        "x": 2285,
+        "y": 1200,
         "wires": [
             [
                 "cf48b48773b9aed4"
@@ -3760,8 +3760,8 @@
         "targetType": "full",
         "statusVal": "counter",
         "statusType": "msg",
-        "x": 2155,
-        "y": 560,
+        "x": 2285,
+        "y": 1260,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3779,8 +3779,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 2155,
-        "y": 440,
+        "x": 2285,
+        "y": 1140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3804,8 +3804,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1395,
-        "y": 520,
+        "x": 1715,
+        "y": 1200,
         "wires": [
             []
         ],
@@ -3824,8 +3824,8 @@
         "targetType": "full",
         "statusVal": "files",
         "statusType": "msg",
-        "x": 1595,
-        "y": 440,
+        "x": 1825,
+        "y": 1120,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3843,8 +3843,8 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 2035,
-        "y": 560,
+        "x": 2165,
+        "y": 1260,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -3862,8 +3862,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1595,
-        "y": 580,
+        "x": 1825,
+        "y": 1260,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -3893,8 +3893,8 @@
                 "module": "node-fetch"
             }
         ],
-        "x": 1595,
-        "y": 520,
+        "x": 1825,
+        "y": 1200,
         "wires": [
             [
                 "0ab93d4988fe8e09"
@@ -3928,7 +3928,7 @@
         "output": "",
         "host": "",
         "x": 1390,
-        "y": 1080,
+        "y": 1960,
         "wires": [
             []
         ]
@@ -3951,7 +3951,7 @@
             }
         ],
         "x": 1360,
-        "y": 1000,
+        "y": 1880,
         "wires": [
             []
         ]
@@ -3973,8 +3973,8 @@
                 "module": "@google/genai"
             }
         ],
-        "x": 1260,
-        "y": 660,
+        "x": 1280,
+        "y": 1500,
         "wires": [
             [
                 "a3091cf2245c7b13"
@@ -3994,8 +3994,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1420,
-        "y": 660,
+        "x": 1440,
+        "y": 1500,
         "wires": []
     },
     {
@@ -4012,7 +4012,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1540,
-        "y": 1020,
+        "y": 1900,
         "wires": []
     },
     {
@@ -4037,8 +4037,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 1130,
-        "y": 660,
+        "x": 1150,
+        "y": 1500,
         "wires": [
             [
                 "4e6ceaa27a504c87"
@@ -4068,7 +4068,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 970,
-        "y": 720,
+        "y": 1600,
         "wires": [
             [
                 "dc0c5588c30a29c5"
@@ -4088,7 +4088,7 @@
         "finalize": "",
         "libs": [],
         "x": 1230,
-        "y": 720,
+        "y": 1600,
         "wires": [
             [
                 "f0d85a75e3e8494c"
@@ -4112,7 +4112,7 @@
         "senderr": false,
         "headers": [],
         "x": 1500,
-        "y": 720,
+        "y": 1600,
         "wires": [
             [
                 "49f0f0fa0dc4bcd7"
@@ -4133,7 +4133,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1730,
-        "y": 720,
+        "y": 1600,
         "wires": []
     },
     {
@@ -4154,7 +4154,7 @@
             }
         ],
         "x": 1070,
-        "y": 780,
+        "y": 1660,
         "wires": [
             [
                 "02a284a071dd6792"
@@ -4178,7 +4178,7 @@
         "senderr": false,
         "headers": [],
         "x": 1290,
-        "y": 780,
+        "y": 1660,
         "wires": [
             [
                 "1fdb61060179eeed"
@@ -4199,7 +4199,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1490,
-        "y": 780,
+        "y": 1660,
         "wires": []
     },
     {
@@ -4225,7 +4225,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 830,
-        "y": 780,
+        "y": 1660,
         "wires": [
             [
                 "fd6f3ec4e3d5c64f"
@@ -4244,7 +4244,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 790,
-        "y": 840,
+        "y": 1720,
         "wires": [
             [
                 "c87b4dc4f9be2124"
@@ -4268,7 +4268,7 @@
         "senderr": false,
         "headers": [],
         "x": 1010,
-        "y": 840,
+        "y": 1720,
         "wires": [
             [
                 "0595ae56a6c3a9cd"
@@ -4293,7 +4293,7 @@
             }
         ],
         "x": 1210,
-        "y": 840,
+        "y": 1720,
         "wires": [
             [
                 "c408bcdcf67876d1"
@@ -4314,7 +4314,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1420,
-        "y": 840,
+        "y": 1720,
         "wires": []
     },
     {
