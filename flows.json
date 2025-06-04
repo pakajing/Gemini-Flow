@@ -4231,5 +4231,88 @@
                 "fd6f3ec4e3d5c64f"
             ]
         ]
+    },
+    {
+        "id": "52eb4f146e7d98f0",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "Download Sample Image",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 790,
+        "y": 840,
+        "wires": [
+            [
+                "c87b4dc4f9be2124"
+            ]
+        ]
+    },
+    {
+        "id": "c87b4dc4f9be2124",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Fetch Sample PNG",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Example.jpg/320px-Example.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1010,
+        "y": 840,
+        "wires": [
+            [
+                "0595ae56a6c3a9cd"
+            ]
+        ]
+    },
+    {
+        "id": "0595ae56a6c3a9cd",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Save to Disk",
+        "func": "const fs = require(\"fs\");\nconst path = \"/home/node-red/sample-image.png\";\n\nfs.writeFileSync(path, msg.payload);\nmsg.payload = `Image saved to ${path}`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 1220,
+        "y": 840,
+        "wires": [
+            [
+                "c408bcdcf67876d1"
+            ]
+        ]
+    },
+    {
+        "id": "c408bcdcf67876d1",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Saved Message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 840,
+        "wires": []
     }
 ]
