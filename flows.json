@@ -3445,7 +3445,7 @@
         "type": "while-loop",
         "z": "bb119fa58e5b3485",
         "name": "Is Status Active? ",
-        "condi": "msg.gemini.Upload.uploadResponse.file.state !== \"ACTIVE\"",
+        "condi": "msg.payload.state !== \"ACTIVE\"",
         "limit": true,
         "limitTime": "60",
         "time": "wla933c2eae34c402a",
