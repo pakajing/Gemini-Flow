@@ -1382,7 +1382,9 @@
         "x": 1195,
         "y": 200,
         "wires": [
-            []
+            [
+                "62e2db5dec5eeda8"
+            ]
         ],
         "l": false
     },
@@ -1456,7 +1458,7 @@
         "z": "bb119fa58e5b3485",
         "g": "918806d2d79fe6e6",
         "name": "Debug OK: Iconik Get Format",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1543,7 +1545,7 @@
         "z": "bb119fa58e5b3485",
         "g": "fd02e1eb88ae35ab",
         "name": "Debug OK: Check MediaType",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1607,9 +1609,7 @@
         "x": 1555,
         "y": 200,
         "wires": [
-            [
-                "378749f3f7f8db51"
-            ]
+            []
         ],
         "l": false
     },
