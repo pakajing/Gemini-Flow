@@ -3962,8 +3962,8 @@
                 "module": "@google-cloud/storage"
             }
         ],
-        "x": 1040,
-        "y": 740,
+        "x": 1180,
+        "y": 840,
         "wires": [
             []
         ]
@@ -3973,7 +3973,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "function 3",
-        "func": "// Node-RED Function: Gemini Image Generation (correct usage with Setup tab)\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini Image Generation: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.prompt || typeof msg.prompt !== \"string\") {\n  node.error(\"Gemini Image Generation: msg.prompt missing or invalid\", msg);\n  return null;\n}\n\nasync function generateImages(apiKey, prompt) {\n  const ai = new GoogleGenAI({ apiKey });\n\n  const response = await ai.models.generateImages({\n    model: 'imagen-3.0-generate-002',\n    prompt: prompt,\n    config: { numberOfImages: 4 },\n  });\n\n  return response.generatedImages.map(img => img.image.imageBytes);\n}\n\ngenerateImages(msg.apiKey, msg.prompt)\n  .then(images => {\n    msg.images = images;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`Image generation failed: ${err.message}`, msg);\n  });\n\nreturn null; // Explicit async return\n",
+        "func": "/**\n * Node-RED Function: Gemini File Metadata Fetch\n *\n * INPUT: msg.apiKey (Gemini API Key)\n *        msg.fileName (file identifier, e.g., files/abc-123)\n * OUTPUT: msg.fileMetadata (metadata of the requested file)\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.fileName || typeof msg.fileName !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.fileName missing or invalid\", msg);\n  return null;\n}\n\nasync function getFileMetadata(apiKey, fileName) {\n  const ai = new GoogleGenAI({ apiKey });\n\n  const fetchedFile = await ai.files.get({ name: fileName });\n\n  return fetchedFile;\n}\n\ngetFileMetadata(msg.apiKey, msg.fileName)\n  .then(fileMetadata => {\n    msg.fileMetadata = fileMetadata;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`File metadata fetch failed: ${err.message}`, msg);\n    return null;\n  });\n\nreturn null; // Explicitly indicate asynchronous flow",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
