@@ -1438,7 +1438,7 @@
         "wires": [
             [
                 "5eedb1308b3932a6",
-                "f5a57c6f330d172d"
+                "20107de6bd37a1b5"
             ],
             [
                 "43b5ac776f95284a"
@@ -1526,11 +1526,25 @@
         "l": false
     },
     {
-        "id": "f5a57c6f330d172d",
+        "id": "20107de6bd37a1b5",
         "type": "change",
         "z": "bb119fa58e5b3485",
-        "name": "Set Gemini Paramaters ",
+        "name": "Save File Response and Clean Payload",
         "rules": [
+            {
+                "t": "set",
+                "p": "uploadResponse.fileName",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fileUri",
+                "pt": "msg",
+                "to": "payload.file.uri",
+                "tot": "msg"
+            },
             {
                 "t": "delete",
                 "p": "statusCode",
@@ -1542,7 +1556,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1225,
+        "x": 1235,
         "y": 520,
         "wires": [
             []
