@@ -3276,7 +3276,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Gemini file poll",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -3295,7 +3295,7 @@
         "type": "switch",
         "z": "bb119fa58e5b3485",
         "name": "State ACTIVE?",
-        "property": "payload.file.state",
+        "property": "payload.state",
         "propertyType": "msg",
         "rules": [
             {
