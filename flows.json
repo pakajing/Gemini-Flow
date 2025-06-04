@@ -105,10 +105,10 @@
             "26f513247a55ca64",
             "73f1b5ffaabb36a3"
         ],
-        "x": 414,
-        "y": 639,
-        "w": 272,
-        "h": 242
+        "x": 714,
+        "y": 39,
+        "w": 252,
+        "h": 262
     },
     {
         "id": "d29e7cdb2d5dd084",
@@ -310,8 +310,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 455,
-        "y": 780,
+        "x": 755,
+        "y": 200,
         "wires": [
             [
                 "80b502eb86aee4bc"
@@ -344,8 +344,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 615,
-        "y": 780,
+        "x": 915,
+        "y": 200,
         "wires": [
             []
         ],
@@ -365,8 +365,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 535,
-        "y": 840,
+        "x": 835,
+        "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -385,8 +385,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 535,
-        "y": 720,
+        "x": 835,
+        "y": 140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -398,8 +398,8 @@
         "g": "4e89c03817358d25",
         "name": "[2] 📖 Doc - Iconik Auth",
         "info": "",
-        "x": 560,
-        "y": 680,
+        "x": 840,
+        "y": 80,
         "wires": [],
         "icon": "font-awesome/fa-book"
     },
@@ -475,8 +475,8 @@
             "type": "cred",
             "value": "ftoeK1ytV9iG89GEFZagD2vHfbLncmuA0t6uyzrvTEtoBTRPVzCB6br8UM3jvPzk"
         },
-        "x": 535,
-        "y": 780,
+        "x": 835,
+        "y": 200,
         "wires": [
             [
                 "84e099d8f84ae022",
