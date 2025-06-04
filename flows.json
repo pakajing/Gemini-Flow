@@ -4611,8 +4611,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 1010,
-        "y": 1060,
+        "x": 430,
+        "y": 1480,
         "wires": [
             [
                 "35c54a70ed21d5e7"
@@ -4637,8 +4637,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1260,
-        "y": 1060,
+        "x": 680,
+        "y": 1480,
         "wires": []
     },
     {
@@ -4654,8 +4654,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "",
-        "x": 710,
-        "y": 1020,
+        "x": 130,
+        "y": 1440,
         "wires": [
             [
                 "7a893d1cfe2f891b"
@@ -4674,8 +4674,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 980,
-        "y": 1140,
+        "x": 400,
+        "y": 1560,
         "wires": [
             [
                 "e98a084b941a301b"
@@ -4700,8 +4700,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1260,
-        "y": 1140,
+        "x": 680,
+        "y": 1560,
         "wires": []
     },
     {
@@ -4717,8 +4717,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "",
-        "x": 710,
-        "y": 1100,
+        "x": 130,
+        "y": 1520,
         "wires": [
             [
                 "766a3fcca5fb2b44"
@@ -4846,8 +4846,7 @@
         "y": 780,
         "wires": [
             [
-                "e9bd83a847a44710",
-                "31ddea7ea80517eb"
+                "e9bd83a847a44710"
             ]
         ],
         "l": false
@@ -4895,8 +4894,8 @@
         "once": false,
         "onceDelay": "",
         "topic": "",
-        "x": 180,
-        "y": 1260,
+        "x": 160,
+        "y": 1680,
         "wires": [
             [
                 "http_download"
@@ -4919,8 +4918,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 380,
-        "y": 1260,
+        "x": 360,
+        "y": 1680,
         "wires": [
             [
                 "file_save",
@@ -4936,8 +4935,8 @@
         "filename": "/tmp/temp_video.mp4",
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 610,
-        "y": 1260,
+        "x": 590,
+        "y": 1680,
         "wires": [
             [
                 "debug_save"
@@ -4952,8 +4951,8 @@
         "active": true,
         "tosidebar": true,
         "complete": "payload",
-        "x": 380,
-        "y": 1320,
+        "x": 360,
+        "y": 1740,
         "wires": []
     },
     {
@@ -4964,8 +4963,8 @@
         "active": true,
         "tosidebar": true,
         "complete": "true",
-        "x": 630,
-        "y": 1320,
+        "x": 610,
+        "y": 1740,
         "wires": []
     },
     {
@@ -5110,30 +5109,14 @@
                 "module": "https"
             }
         ],
-        "x": 280,
-        "y": 1140,
+        "x": 335,
+        "y": 960,
         "wires": [
             [
                 "3c3c3c3c3c3c3c3c"
             ]
-        ]
-    },
-    {
-        "id": "31ddea7ea80517eb",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 11",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 200,
-        "y": 860,
-        "wires": []
+        ],
+        "l": false
     },
     {
         "id": "ed66bcd0ca7c94c7",
