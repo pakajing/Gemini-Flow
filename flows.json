@@ -407,9 +407,9 @@
             "e77a15478f3fd4a8",
             "4e556b99f052016d"
         ],
-        "x": 514,
-        "y": 2659,
-        "w": 352,
+        "x": 494,
+        "y": 1699,
+        "w": 432,
         "h": 202
     },
     {
@@ -1994,8 +1994,8 @@
                 "type": "str"
             }
         ],
-        "x": 660,
-        "y": 2800,
+        "x": 640,
+        "y": 1800,
         "wires": [
             [
                 "e77a15478f3fd4a8"
@@ -2019,8 +2019,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 735,
-        "y": 2700,
+        "x": 795,
+        "y": 1740,
         "wires": [],
         "icon": "font-awesome/fa-exclamation-circle",
         "l": false
@@ -2039,8 +2039,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "counter",
-        "x": 805,
-        "y": 2820,
+        "x": 865,
+        "y": 1860,
         "wires": [],
         "icon": "font-awesome/fa-warning",
         "l": false
@@ -2166,8 +2166,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1520,
-        "y": 2780,
+        "x": 1560,
+        "y": 1920,
         "wires": [
             [
                 "4c5fb01131766919"
@@ -2186,8 +2186,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 2840,
+        "x": 340,
+        "y": 1980,
         "wires": [
             [
                 "ed4e8db8c18ea28d"
@@ -2208,8 +2208,8 @@
         "syntax": "mustache",
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
-        "x": 810,
-        "y": 2820,
+        "x": 850,
+        "y": 1960,
         "wires": [
             [
                 "32855f76244618c9"
@@ -2228,8 +2228,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1310,
-        "y": 2860,
+        "x": 1350,
+        "y": 2000,
         "wires": [
             []
         ]
@@ -2246,8 +2246,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1320,
-        "y": 2780,
+        "x": 1360,
+        "y": 1920,
         "wires": [
             [
                 "34b7d8445af983fd"
@@ -2266,8 +2266,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 2820,
+        "x": 530,
+        "y": 1960,
         "wires": [
             [
                 "e4cfda2ae41f5038"
@@ -2303,8 +2303,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 950,
-        "y": 2820,
+        "x": 990,
+        "y": 1960,
         "wires": [
             [
                 "d5b4a87a6cefb6c9"
@@ -2319,8 +2319,8 @@
         "property": "responseText.content",
         "action": "",
         "pretty": false,
-        "x": 1690,
-        "y": 2780,
+        "x": 1730,
+        "y": 1920,
         "wires": [
             []
         ]
@@ -2330,8 +2330,8 @@
         "type": "subflow:0876dbcda80b1dec",
         "z": "bb119fa58e5b3485",
         "name": "",
-        "x": 1120,
-        "y": 2820,
+        "x": 1160,
+        "y": 1960,
         "wires": [
             [
                 "17befd5a4b7f684f"
@@ -2480,8 +2480,8 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 650,
-        "y": 2820,
+        "x": 690,
+        "y": 1960,
         "wires": [
             [
                 "9b217d271f42e5b2"
@@ -2572,8 +2572,8 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1000,
-        "y": 3020,
+        "x": 1040,
+        "y": 2160,
         "wires": [
             [
                 "5b5d6bb37b9005f6"
@@ -2600,8 +2600,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1240,
-        "y": 3020,
+        "x": 1280,
+        "y": 2160,
         "wires": [
             [
                 "90bae9be7c39ac67"
@@ -2623,8 +2623,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
-        "y": 3120,
+        "x": 1480,
+        "y": 2260,
         "wires": [
             []
         ]
@@ -2641,8 +2641,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1450,
-        "y": 3020,
+        "x": 1490,
+        "y": 2160,
         "wires": [
             []
         ]
