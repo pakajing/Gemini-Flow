@@ -393,30 +393,6 @@
         "h": 242
     },
     {
-        "id": "5f2970019d9fe440",
-        "type": "group",
-        "z": "bb119fa58e5b3485",
-        "name": "[7] Download Proxy",
-        "style": {
-            "label": true
-        },
-        "nodes": [
-            "e3df322b4395c4b8",
-            "593245d270ac9b82",
-            "7b587903328434c4",
-            "a2ea3d519a01e1a1",
-            "1a313660c43ee208",
-            "8b15a63895cb51a3",
-            "321a1621e0a7aed1",
-            "1859ed80ed890657",
-            "6f1172918ffaee90"
-        ],
-        "x": 924,
-        "y": 1579,
-        "w": 292,
-        "h": 202
-    },
-    {
         "id": "2b021cccaf858ffb",
         "type": "group",
         "z": "bb119fa58e5b3485",
@@ -432,30 +408,9 @@
             "4e556b99f052016d"
         ],
         "x": 514,
-        "y": 2619,
-        "w": 362,
-        "h": 242
-    },
-    {
-        "id": "7b9495278bbc1acd",
-        "type": "group",
-        "z": "bb119fa58e5b3485",
-        "name": "[8] Upload File",
-        "style": {
-            "label": true
-        },
-        "nodes": [
-            "aba3f61d19b83110",
-            "5eedb1308b3932a6",
-            "9f0e4b157f97680a",
-            "43b5ac776f95284a",
-            "20107de6bd37a1b5",
-            "c6316525076d23bd"
-        ],
-        "x": 1724,
-        "y": 1619,
-        "w": 262,
-        "h": 262
+        "y": 2659,
+        "w": 352,
+        "h": 202
     },
     {
         "id": "4a5f270e7e34714c",
@@ -530,6 +485,55 @@
         "y": 859,
         "w": 1052,
         "h": 82
+    },
+    {
+        "id": "beccbfe6d618a7ca",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "10-1 Check state",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "41dc5b97da49fd1d",
+            "0efcf4cff626690b",
+            "f509407a070a4c76",
+            "28d6c48d41f27f7f",
+            "35e25fd2f23e27c7",
+            "24aa412b7d47c7c6",
+            "cf48b48773b9aed4",
+            "d8fcce508cc82af4"
+        ],
+        "x": 1824,
+        "y": 959,
+        "w": 362,
+        "h": 202
+    },
+    {
+        "id": "0c53975c6ac43f46",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "11 fetch info",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "056246df9904ea45",
+            "aa06e61eb146281c",
+            "8f14f2d0ab60c0d3",
+            "c6480ce55b348f13",
+            "7d223f269faec961",
+            "0a00ea4d7c10bef4",
+            "26b4a64ae183c139",
+            "6f1cabb71c4652da",
+            "41c5a0c10342a1bc",
+            "7dea554c6ac7de37",
+            "68bcce7fd6fe1421"
+        ],
+        "x": 934,
+        "y": 1219,
+        "w": 1132,
+        "h": 202
     },
     {
         "id": "4f68b793021e13a7",
@@ -1968,374 +1972,6 @@
         "icon": "font-awesome/fa-book"
     },
     {
-        "id": "e3df322b4395c4b8",
-        "type": "file",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Write File",
-        "filename": "/tmp/temp_video.mp4",
-        "filenameType": "str",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 1085,
-        "y": 1740,
-        "wires": [
-            [
-                "7b587903328434c4"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "593245d270ac9b82",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Download Proxy",
-        "method": "GET",
-        "ret": "bin",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1025,
-        "y": 1740,
-        "wires": [
-            [
-                "e3df322b4395c4b8",
-                "a2ea3d519a01e1a1",
-                "1859ed80ed890657"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "7b587903328434c4",
-        "type": "file in",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Read File ",
-        "filename": "/tmp/temp_video.mp4",
-        "filenameType": "str",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": true,
-        "x": 1145,
-        "y": 1740,
-        "wires": [
-            [
-                "8b15a63895cb51a3"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "a2ea3d519a01e1a1",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Debug OK: Fetch Proxies",
-        "active": false,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "statusCode",
-        "statusType": "msg",
-        "x": 1025,
-        "y": 1680,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "1a313660c43ee208",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Save Auth Headers",
-        "rules": [
-            {
-                "t": "set",
-                "p": "headers",
-                "pt": "msg",
-                "to": "authHeaders",
-                "tot": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
-            },
-            {
-                "t": "set",
-                "p": "url",
-                "pt": "msg",
-                "to": "iconik.url",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 965,
-        "y": 1740,
-        "wires": [
-            [
-                "593245d270ac9b82"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "8b15a63895cb51a3",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Debug OK: Write File",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "iconik.assetName",
-        "statusType": "msg",
-        "x": 1145,
-        "y": 1680,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "aba3f61d19b83110",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "g": "7b9495278bbc1acd",
-        "name": "Upload File to FileAPI(Google)",
-        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nreturn (async () => {\n  const fm = new GoogleAIFileManager(msg.apiKey);\n\n  const uploadResponse = await fm.uploadFile(\n    msg.filename,\n    { mimeType: \"video/mp4\", displayName: msg.filename }\n  );\n\n  msg.payload = {\n    statusCode: 200,\n    statusInfo: \"File uploaded successfully\",\n    uploadResponse\n  };\n  return [msg, null];          // 1️⃣ success output\n})().catch(err => {\n  node.error(\"File upload failed\", err);\n  msg.payload = { statusCode: 500, statusInfo: \"File upload failed\", error: err.message };\n  return [null, msg];          // 2️⃣ error output\n});\n",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "googleGenerativeAiServer",
-                "module": "@google/generative-ai/server"
-            },
-            {
-                "var": "googleGenerativeAi",
-                "module": "@google/generative-ai"
-            }
-        ],
-        "x": 1845,
-        "y": 1780,
-        "wires": [
-            [
-                "5eedb1308b3932a6",
-                "20107de6bd37a1b5"
-            ],
-            [
-                "43b5ac776f95284a"
-            ]
-        ],
-        "l": false,
-        "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
-        "id": "5eedb1308b3932a6",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "7b9495278bbc1acd",
-        "name": "Debug OK: Upload File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload.statusCode",
-        "statusType": "msg",
-        "x": 1845,
-        "y": 1720,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "9f0e4b157f97680a",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "g": "7b9495278bbc1acd",
-        "name": "Set Gemini Paramaters ",
-        "rules": [
-            {
-                "t": "set",
-                "p": "apiKey",
-                "pt": "msg",
-                "to": "SECRETS.GEMINI_API_KEY",
-                "tot": "global"
-            },
-            {
-                "t": "delete",
-                "p": "statusCode",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "responseUrl",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "redirectList",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "retry",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "url",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "parts",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1785,
-        "y": 1780,
-        "wires": [
-            [
-                "aba3f61d19b83110"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "321a1621e0a7aed1",
-        "type": "comment",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "[7] 📖 Doc - Download Proxy",
-        "info": "",
-        "x": 1070,
-        "y": 1620,
-        "wires": [],
-        "icon": "font-awesome/fa-book"
-    },
-    {
-        "id": "43b5ac776f95284a",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "7b9495278bbc1acd",
-        "name": "Debug Error: Upload File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload.statusCode",
-        "statusType": "msg",
-        "x": 1845,
-        "y": 1840,
-        "wires": [],
-        "icon": "node-red/alert.svg",
-        "l": false
-    },
-    {
-        "id": "20107de6bd37a1b5",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "g": "7b9495278bbc1acd",
-        "name": "Save File Response and Clean Payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "gemini.upload",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "statusCode",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "filename",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "responseUrl",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "redirectList",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "retry",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "url",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "parts",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1945,
-        "y": 1780,
-        "wires": [
-            [
-                "8a435b17d1851e02"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "fba603dcc61e0e8c",
         "type": "subflow:fec23f0ed22e717d",
         "z": "bb119fa58e5b3485",
@@ -2383,8 +2019,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 815,
-        "y": 2660,
+        "x": 735,
+        "y": 2700,
         "wires": [],
         "icon": "font-awesome/fa-exclamation-circle",
         "l": false
@@ -2408,18 +2044,6 @@
         "wires": [],
         "icon": "font-awesome/fa-warning",
         "l": false
-    },
-    {
-        "id": "c6316525076d23bd",
-        "type": "comment",
-        "z": "bb119fa58e5b3485",
-        "g": "7b9495278bbc1acd",
-        "name": "[8] 📖 Doc - Upload File",
-        "info": "",
-        "x": 1850,
-        "y": 1660,
-        "wires": [],
-        "icon": "font-awesome/fa-book"
     },
     {
         "id": "34b7d8445af983fd",
@@ -2721,6 +2345,7 @@
         "id": "056246df9904ea45",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Check Selected Option",
         "func": "// Hardcoded test values (override env and global context)\nconst highlights = true;\nconst keywords = false;\nconst summary = true;\nconst captioning = true;\nconst actionRecognition = false;\n\nconst selectedOptions = [];\n\n// Hardcoded model for testing\nmsg.model = \"models/gemini-pro-vision\"; // replace with your actual model ID if needed\n\n// Determine the selected options\nif (highlights) {\n    selectedOptions.push(\"Highlights\");\n}\nif (keywords) {\n    selectedOptions.push(\"Keywords\");\n}\nif (summary) {\n    selectedOptions.push(\"Summary\");\n}\nif (captioning) {\n    selectedOptions.push(\"Video Captioning\");\n}\nif (actionRecognition) {\n    selectedOptions.push(\"Video Action Recognition\");\n}\n\nmsg.selectedOptions = selectedOptions;\n\n// Validate that at least one option is selected\nif (!highlights && !keywords && !summary && !captioning && !actionRecognition) {\n    const errorMsg = \"You must select at least one option\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\n// Validate the model presence\nif (!msg.model) {\n    const errorMsg = \"You must provide a Gemini Model\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\nreturn [msg, null];",
         "outputs": 2,
@@ -2729,8 +2354,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 535,
-        "y": 2560,
+        "x": 975,
+        "y": 1320,
         "wires": [
             [
                 "c6480ce55b348f13",
@@ -2747,6 +2372,7 @@
         "id": "aa06e61eb146281c",
         "type": "template",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Prompt Formats (Template)",
         "field": "payload",
         "fieldType": "msg",
@@ -2754,8 +2380,8 @@
         "syntax": "plain",
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
-        "x": 715,
-        "y": 2560,
+        "x": 1155,
+        "y": 1320,
         "wires": [
             [
                 "8f14f2d0ab60c0d3"
@@ -2767,6 +2393,7 @@
         "id": "8f14f2d0ab60c0d3",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Set Formats (from Template)",
         "func": "const selectedOptions = msg.selectedOptions;\nconst allFormats = msg.payload.formats || {};\nconst outputFormats = {};\n\n// Build output based on selected options\nfor (const option of selectedOptions) {\n    if (allFormats[option]) {\n        const key = option.toLowerCase().replace(/ /g, \"\");\n        outputFormats[key] = allFormats[option];\n    }\n}\n\n// Always add noResultsFormat\nmsg.noResultsFormat = JSON.stringify(msg.payload.noResultsFormat || [], null, 2);\nmsg.formats = JSON.stringify(outputFormats, null, 2);\n\nreturn msg;",
         "outputs": 1,
@@ -2775,8 +2402,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 775,
-        "y": 2560,
+        "x": 1215,
+        "y": 1320,
         "wires": [
             [
                 "26b4a64ae183c139"
@@ -2788,6 +2415,7 @@
         "id": "c6480ce55b348f13",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Debug OK: Check Selected Option",
         "active": false,
         "tosidebar": true,
@@ -2797,8 +2425,8 @@
         "targetType": "full",
         "statusVal": "selectedOptions",
         "statusType": "msg",
-        "x": 535,
-        "y": 2500,
+        "x": 975,
+        "y": 1260,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2807,6 +2435,7 @@
         "id": "7d223f269faec961",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Debug Error: Check Selected Option",
         "active": true,
         "tosidebar": true,
@@ -2816,8 +2445,8 @@
         "targetType": "full",
         "statusVal": "selectedOptions",
         "statusType": "msg",
-        "x": 535,
-        "y": 2620,
+        "x": 975,
+        "y": 1380,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2826,6 +2455,7 @@
         "id": "0a00ea4d7c10bef4",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
@@ -2835,8 +2465,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1520,
-        "y": 2560,
+        "x": 1960,
+        "y": 1320,
         "wires": []
     },
     {
@@ -2862,6 +2492,7 @@
         "id": "26b4a64ae183c139",
         "type": "template",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Set Prompt",
         "field": "userPrompt",
         "fieldType": "msg",
@@ -2869,8 +2500,8 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 855,
-        "y": 2560,
+        "x": 1295,
+        "y": 1320,
         "wires": [
             [
                 "7dea554c6ac7de37",
@@ -2883,6 +2514,7 @@
         "id": "6f1cabb71c4652da",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Set Url",
         "rules": [
             {
@@ -2908,8 +2540,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1055,
-        "y": 2560,
+        "x": 1495,
+        "y": 1320,
         "wires": [
             [
                 "41c5a0c10342a1bc"
@@ -2940,8 +2572,8 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1040,
-        "y": 2840,
+        "x": 1000,
+        "y": 3020,
         "wires": [
             [
                 "5b5d6bb37b9005f6"
@@ -2968,8 +2600,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1200,
-        "y": 2840,
+        "x": 1240,
+        "y": 3020,
         "wires": [
             [
                 "90bae9be7c39ac67"
@@ -2992,7 +2624,7 @@
         "finalize": "",
         "libs": [],
         "x": 1440,
-        "y": 2880,
+        "y": 3120,
         "wires": [
             []
         ]
@@ -3010,7 +2642,7 @@
         "finalize": "",
         "libs": [],
         "x": 1450,
-        "y": 2800,
+        "y": 3020,
         "wires": [
             []
         ]
@@ -3019,6 +2651,7 @@
         "id": "41c5a0c10342a1bc",
         "type": "http request",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "Gemini Request",
         "method": "POST",
         "ret": "obj",
@@ -3038,8 +2671,8 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1200,
-        "y": 2560,
+        "x": 1640,
+        "y": 1320,
         "wires": [
             [
                 "0a00ea4d7c10bef4"
@@ -3047,36 +2680,10 @@
         ]
     },
     {
-        "id": "922775893b3f9e19",
-        "type": "switch",
-        "z": "bb119fa58e5b3485",
-        "name": "Success?",
-        "property": "statusCode",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "200",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1260,
-        "y": 2640,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
         "id": "7dea554c6ac7de37",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "debug 2",
         "active": true,
         "tosidebar": true,
@@ -3086,33 +2693,16 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 855,
-        "y": 2700,
+        "x": 1295,
+        "y": 1380,
         "wires": [],
-        "l": false
-    },
-    {
-        "id": "4194d0a647c40273",
-        "type": "template",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Payload",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
-        "output": "json",
-        "x": 1005,
-        "y": 2660,
-        "wires": [
-            []
-        ],
         "l": false
     },
     {
         "id": "68bcce7fd6fe1421",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "0c53975c6ac43f46",
         "name": "function 1",
         "func": "msg.payload = {\n  contents: [\n    {\n      parts: [{\n        fileData: {\n          mimeType: msg.mediaType,\n          fileUri:  msg.fileUri\n        }\n      }],\n      role: \"user\"\n    },\n    {\n      parts: [{ text: msg.userPrompt }],\n      role: \"user\"\n    }\n  ]\n};\nreturn msg;\n",
         "outputs": 1,
@@ -3121,8 +2711,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 935,
-        "y": 2560,
+        "x": 1375,
+        "y": 1320,
         "wires": [
             [
                 "6f1cabb71c4652da"
@@ -3131,541 +2721,10 @@
         "l": false
     },
     {
-        "id": "c070f7d9b66e90ea",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Url",
-        "rules": [
-            {
-                "t": "set",
-                "p": "url",
-                "pt": "msg",
-                "to": "https://generativelanguage.googleapis.com/v1beta/models/\" & model & \":generateContent",
-                "tot": "str"
-            },
-            {
-                "t": "delete",
-                "p": "authHeaders",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "statusCode",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1065,
-        "y": 2620,
-        "wires": [
-            []
-        ],
-        "l": false
-    },
-    {
-        "id": "f1b6a7dfc122ec1d",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Init Gemini file poll",
-        "func": "// locate the resource name, e.g. \"files/89ui0j8x6ybo\"\nconst fileName = msg.uploadResponse?.fileName?.uploadResponse?.file?.name ||\n                 msg.payload?.uploadResponse?.file?.name ||\n                 msg.fileName || \"\";\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\nmsg.fileName = fileName;\nmsg.url = `https://generativelanguage.googleapis.com/v1beta/${fileName}`;\nmsg.attempt = 0;           // reset counter\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1805,
-        "y": 2280,
-        "wires": [
-            [
-                "8c6fcd7eb82a6a57",
-                "5f3f4e8d583182d0"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "8d1a55d90ddc1d41",
-        "type": "switch",
-        "z": "bb119fa58e5b3485",
-        "name": "State ACTIVE?",
-        "property": "payload.file.state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "ACTIVE",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1860,
-        "y": 2540,
-        "wires": [
-            [
-                "9d519008cd96668f"
-            ],
-            [
-                "4e23486c3eeb2ae0",
-                "47b31ff5d40d68d0"
-            ]
-        ]
-    },
-    {
-        "id": "4e23486c3eeb2ae0",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "++attempt",
-        "func": "msg.attempt = (msg.attempt || 0) + 1;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2050,
-        "y": 2540,
-        "wires": [
-            [
-                "340f70f7d4e36db0"
-            ]
-        ]
-    },
-    {
-        "id": "340f70f7d4e36db0",
-        "type": "switch",
-        "z": "bb119fa58e5b3485",
-        "name": "max 30 tries?",
-        "property": "attempt",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gte",
-                "v": "30",
-                "vt": "num"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 2230,
-        "y": 2540,
-        "wires": [
-            [
-                "bcd28e87e37b32b0"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "bcd28e87e37b32b0",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Not Ready",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2230,
-        "y": 2600,
-        "wires": []
-    },
-    {
-        "id": "9d519008cd96668f",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Ready",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2050,
-        "y": 2480,
-        "wires": []
-    },
-    {
-        "id": "56a46021eca67fe3",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1560,
-        "y": 2440,
-        "wires": []
-    },
-    {
-        "id": "47b31ff5d40d68d0",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2020,
-        "y": 2600,
-        "wires": []
-    },
-    {
-        "id": "8c6fcd7eb82a6a57",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Gemini file poll",
-        "active": false,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1805,
-        "y": 2220,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "cd7be5c741a1d232",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Gemini file poll",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1925,
-        "y": 2220,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "f5f75eab64a752aa",
-        "type": "switch",
-        "z": "bb119fa58e5b3485",
-        "name": "State ACTIVE?",
-        "property": "payload.state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "ACTIVE",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "PROCESSING",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 3,
-        "x": 2005,
-        "y": 2280,
-        "wires": [
-            [
-                "ab1bdb7c509b65a5"
-            ],
-            [
-                "3b550ecf90ec5ee8"
-            ],
-            [
-                "d5fecac62090b2c0"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "d5fecac62090b2c0",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Gemini File status",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 2015,
-        "y": 2340,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "3d426f8308661af0",
-        "type": "delay",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "20",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2270,
-        "y": 2280,
-        "wires": [
-            [
-                "f1b6a7dfc122ec1d"
-            ]
-        ]
-    },
-    {
-        "id": "3b550ecf90ec5ee8",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2115,
-        "y": 2280,
-        "wires": [
-            [
-                "3d426f8308661af0"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "ab1bdb7c509b65a5",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Gemini File status",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 2025,
-        "y": 2200,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "6d09b7a433e66101",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "function 2",
-        "func": "/**\n * Resolve the resource name returned by the\n * Gemini “files.upload” call – e.g. \"files/51oaysyrk7mo\".\n * The function supports several message shapes so it\n * doesn’t break if Google tweaks the response again.\n */\nconst getResourceName = (msg) => {\n    // ❶ most-recent Gemini response you pasted\n    let name =\n        msg.gemini?.Upload?.uploadResponse?.file?.name ??\n        // ❷ sometimes “Upload” comes back lowercase\n        msg.gemini?.uploadResponse?.file?.name ??\n        // ❸ legacy paths you were already handling\n        msg.uploadResponse?.fileName?.uploadResponse?.file?.name ??\n        msg.payload?.uploadResponse?.file?.name;\n\n    // ❹ fall-back: pull it out of the full URI if that’s all we have\n    if (!name) {\n        const uri =\n            msg.gemini?.Upload?.uploadResponse?.file?.uri ??\n            msg.gemini?.uploadResponse?.file?.uri;\n        if (uri) {\n            // keep only the part after “…/v1beta/”\n            name = uri.split(\"/v1beta/\")[1];\n        }\n    }\n    return name || \"\";\n};\n\n// ──────────────────────────────────────────────────────────\n// main\n// ──────────────────────────────────────────────────────────\nconst fileName = getResourceName(msg);\n\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\n\n// Normalise just in case the name still contains a leading URL bit\nmsg.fileName = fileName.replace(/^https?:\\/\\/[^/]+\\/v1beta\\//, \"\");\nmsg.url      = `https://generativelanguage.googleapis.com/v1beta/${msg.fileName}`;\nmsg.attempt  = 0;               // reset retry counter\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 2400,
-        "wires": [
-            [
-                "6c15da536f15063c"
-            ]
-        ]
-    },
-    {
-        "id": "6c15da536f15063c",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1000,
-        "y": 2460,
-        "wires": []
-    },
-    {
-        "id": "8615818aaf9a2ee4",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Init Gemini file poll",
-        "func": "// Locate the resource name from various possible message structures\nconst fileName = msg.gemini?.upload?.uploadResponse?.file?.name ||\n                 msg.payload?.uploadResponse?.file?.name ||\n                 msg.fileName || \"\";\n\n// Validate that the file name exists\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\n\n// Set the file name and construct the polling URL\nmsg.fileName = fileName;\nmsg.url = `https://generativelanguage.googleapis.com/v1beta/${fileName}?key=${msg.apiKey}`;\n\n// Reset retry counter\nmsg.attempt = 0;\nreturn msg;\n\n// Return the updated message object\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1645,
-        "y": 2340,
-        "wires": [
-            [
-                "0ee4b92377f89454"
-            ]
-        ],
-        "l": false,
-        "info": "# Init Gemini File Poll\n\n## Purpose\nThis function node initializes the polling process for a Gemini file by extracting the file name from the incoming message and constructing the appropriate polling URL. It also resets the polling attempt counter.\n\n## Input\n- The file name can be located in one of the following message structures:\n  - `msg.uploadResponse.fileName.uploadResponse.file.name`\n  - `msg.payload.uploadResponse.file.name`\n  - `msg.fileName`\n\n## Output\n- `msg.fileName`: The extracted file name.\n- `msg.url`: The constructed polling URL in the format `https://generativelanguage.googleapis.com/v1beta/{fileName}`.\n- `msg.attempt`: The polling attempt counter, initialized to `0`.\n\n## Logic\n1. Attempt to locate the file name from multiple possible message structures.\n2. If the file name is not found, log an error and stop further processing.\n3. If the file name is found:\n   - Set `msg.fileName` to the extracted file name.\n   - Construct the polling URL and set it in `msg.url`.\n   - Initialize the polling attempt counter (`msg.attempt`) to `0`.\n4. Return the updated message object.\n\n## Notes\n> Ensure that the incoming message contains the file name in one of the expected structures. If not, the function will log an error and terminate.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
-        "id": "5f3f4e8d583182d0",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Get file state",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "x-goog-api-key",
-                "valueType": "msg",
-                "valueValue": "apiKey"
-            }
-        ],
-        "x": 1925,
-        "y": 2280,
-        "wires": [
-            [
-                "cd7be5c741a1d232",
-                "f5f75eab64a752aa"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "0ee4b92377f89454",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Get file state",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "x-goog-api-key",
-                "valueType": "msg",
-                "valueValue": "apiKey"
-            }
-        ],
-        "x": 1695,
-        "y": 2340,
-        "wires": [
-            [
-                "1e4b15291ecd905b"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "1e4b15291ecd905b",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Fetch Status Http",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1695,
-        "y": 2280,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "26ab50404625f7b2",
-        "type": "json",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "property": "payload",
-        "action": "obj",
-        "pretty": false,
-        "x": 1305,
-        "y": 2500,
-        "wires": [
-            []
-        ],
-        "l": false
-    },
-    {
         "id": "0efcf4cff626690b",
         "type": "delay",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "",
         "pauseType": "delay",
         "timeout": "30",
@@ -3679,8 +2738,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 2325,
-        "y": 1780,
+        "x": 1865,
+        "y": 1060,
         "wires": [
             [
                 "28d6c48d41f27f7f"
@@ -3692,6 +2751,7 @@
         "id": "41dc5b97da49fd1d",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Upload File to FileAPI(Google)",
         "func": "/**\n * Fetch Gemini file status and route the flow.\n *\n *  ▸ OUTPUT 1 → msg while state is PROCESSING  or  SUCCEEDED\n *  ▸ OUTPUT 2 → msg when state is FAILED  or any exception occurs\n *\n *  Prerequisites:\n *    • External modules enabled in Node-RED (functionExternalModules: true)\n *    • npm install @google/generative-ai   (already declared in the node)\n *    • msg.apiKey  contains your Google API key\n */\n// ──────────────────────────────────────────────────────────\n// 0.  Make sure we really have an API key and build the helper\n// ──────────────────────────────────────────────────────────\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Missing or invalid msg.apiKey\", msg);\n  return [ null, msg ];                 // error output (#2)\n}\n\nconst { GoogleAIFileManager } = googleGenerativeAiServer;\nconst fileManager = new GoogleAIFileManager(msg.apiKey);   // 👈 pass the *string*\n\n// ──────────────────────────────────────────────────────────\n// 1. Resolve the resource name (“files/abc123…”)\n// ──────────────────────────────────────────────────────────\nlet resourceName =\n        msg.uploadResponse?.file?.name ??                         // canonical\n        msg.gemini?.upload?.uploadResponse?.file?.name ??         // older path\n        msg.uploadResponse?.fileName ??                           // legacy\n        msg.fileName ??                                           // manual override\n        null;\n\n// Fallback: extract “…/v1beta/**files/xxx**” from a URI, if that’s all we have\nif (!resourceName) {\n    const uri =\n          msg.uploadResponse?.file?.uri ??\n          msg.gemini?.upload?.uploadResponse?.file?.uri;\n    if (uri) {\n        const parts = uri.split(\"/v1beta/\");\n        if (parts.length === 2) resourceName = parts[1];\n    }\n}\n\n// Abort if still nothing\nif (!resourceName) {\n    node.error(\"Fetch Upload Status: cannot find Gemini file resource name\", msg);\n    return [ null, msg ];          // send to error output (#2)\n}\n\n// Normalise: ensure it starts with “files/”\nif (!resourceName.startsWith(\"files/\")) {\n    resourceName = `files/${resourceName}`;\n}\n\n// ──────────────────────────────────────────────────────────\n// 2. Query Gemini  (return a Promise so Node-RED waits)\n// ──────────────────────────────────────────────────────────\nreturn fileManager.getFile(resourceName)\n  .then(file => {\n      // expose full response downstream\n      msg.file = file;\n\n      // record progress for UI / logs\n      msg.uploadResponse = msg.uploadResponse || {};\n      msg.uploadResponse.status = file.state;      // PROCESSING | SUCCEEDED | FAILED\n\n      switch (file.state) {\n          case \"FAILED\":\n              node.error(\"Gemini processing FAILED\", msg);\n              return [ null, msg ];                // error output (#2)\n\n          case \"PROCESSING\":\n          case \"SUCCEEDED\":\n              return [ msg, null ];                // success output (#1)\n\n          default:\n              node.warn(`Unexpected file state: ${file.state}`, msg);\n              return [ null, msg ];                // treat unknown as error\n      }\n  })\n.catch(err => {\n    // SDK bug: 500 + “Failed to convert server response to JSON”\n    // really means the file endpoint isn’t ready yet.\n    const msgTxt = err.message || \"\";\n    if (msgTxt.includes(\"Failed to convert server response to JSON\")) {\n        msg.uploadResponse = msg.uploadResponse || {};\n        msg.uploadResponse.status = \"PROCESSING\";   // pretend it’s still working\n        return [ msg, null ];                       // success output (#1)\n    }\n\n    node.error(`Gemini SDK error: ${msgTxt}`, msg);\n    return [ null, msg ];                           // error output (#2)\n});\n\n",
         "outputs": 2,
@@ -3709,8 +2769,8 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 2465,
-        "y": 1780,
+        "x": 2005,
+        "y": 1060,
         "wires": [
             [
                 "f509407a070a4c76",
@@ -3727,6 +2787,7 @@
         "id": "f509407a070a4c76",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Debug OK: Fetch Status Payload",
         "active": true,
         "tosidebar": true,
@@ -3736,8 +2797,8 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 2465,
-        "y": 1720,
+        "x": 2005,
+        "y": 1000,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3746,6 +2807,7 @@
         "id": "28d6c48d41f27f7f",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
@@ -3791,8 +2853,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2385,
-        "y": 1780,
+        "x": 1925,
+        "y": 1060,
         "wires": [
             [
                 "41dc5b97da49fd1d"
@@ -3804,14 +2866,15 @@
         "id": "35e25fd2f23e27c7",
         "type": "while-loop",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Is Status Active? ",
         "condi": "msg.uploadResponse.status!== \"ACTIVE\"",
         "limit": true,
         "limitTime": "60",
         "time": "counter",
         "timeType": "msg",
-        "x": 2585,
-        "y": 1780,
+        "x": 2125,
+        "y": 1060,
         "wires": [
             [
                 "cf48b48773b9aed4"
@@ -3827,6 +2890,7 @@
         "id": "24aa412b7d47c7c6",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Debug OK: True",
         "active": true,
         "tosidebar": true,
@@ -3836,8 +2900,8 @@
         "targetType": "full",
         "statusVal": "counter",
         "statusType": "msg",
-        "x": 2585,
-        "y": 1840,
+        "x": 2125,
+        "y": 1120,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3846,6 +2910,7 @@
         "id": "cf48b48773b9aed4",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Debug OK: False",
         "active": true,
         "tosidebar": true,
@@ -3855,53 +2920,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 2585,
-        "y": 1720,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "8a435b17d1851e02",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Gemini Paramaters ",
-        "rules": [
-            {
-                "t": "set",
-                "p": "apiKey",
-                "pt": "msg",
-                "to": "SECRETS.GEMINI_API_KEY",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2015,
-        "y": 1780,
-        "wires": [
-            []
-        ],
-        "l": false
-    },
-    {
-        "id": "0ab93d4988fe8e09",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: List File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "files",
-        "statusType": "msg",
         "x": 2125,
-        "y": 1700,
+        "y": 1000,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3910,6 +2930,7 @@
         "id": "d8fcce508cc82af4",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "beccbfe6d618a7ca",
         "name": "Debug Error: Fetch Status Payload",
         "active": true,
         "tosidebar": true,
@@ -3919,207 +2940,11 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 2465,
-        "y": 1840,
+        "x": 2005,
+        "y": 1120,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
-    },
-    {
-        "id": "fe2046cc4b18fe95",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug Error: List File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2125,
-        "y": 1840,
-        "wires": [],
-        "icon": "node-red/alert.svg",
-        "l": false
-    },
-    {
-        "id": "1e3d202d3470e1a9",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "List File",
-        "func": "/**\n * Gemini – robust listFiles (JSON header + exp-back-off) with Debug\n *\n * OUTPUT 1 : msg.files    – array (may be empty)\n * OUTPUT 2 : msg          – error path\n * Additional Debug Output: exact API request details\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini List: msg.apiKey missing or invalid\", msg);\n  return [null, msg];\n}\n\nconst fetchFn = globalThis.fetch || nodeFetch;\n\nconst MAX_ATTEMPTS = 12;\nconst BASE_DELAY = 1000;\n\nfunction sleep(ms) { return new Promise(r => setTimeout(r, ms)); }\n\nasync function fetchOnePage(key, pageToken) {\n  const url =\n    \"https://generativelanguage.googleapis.com/v1beta/files?\" +\n    \"key=\" + encodeURIComponent(key) +\n    \"&pageSize=100\" +\n    (pageToken ? \"&pageToken=\" + encodeURIComponent(pageToken) : \"\");\n\n  // Debugging: output the exact request details\n  node.send({ debugRequest: { url, headers: { \"accept\": \"application/json\" } } });\n\n  const res = await fetchFn(url, { headers: { \"accept\": \"application/json\" } });\n  const text = await res.text();\n\n  if (res.ok && text.trim().startsWith(\"{\")) {\n    return JSON.parse(text);\n  }\n\n  if (res.status === 500 || text.includes(\"Failed to convert server response\")) {\n    throw new Error(\"RETRY\");\n  }\n\n  throw new Error(`HTTP ${res.status}: ${text.slice(0, 120)}`);\n}\n\nasync function listAllFiles(key) {\n  let files = [], pageToken, attempt = 0;\n\n  do {\n    let success = false, body;\n    while (!success && attempt < MAX_ATTEMPTS) {\n      try {\n        body = await fetchOnePage(key, pageToken);\n        success = true;\n      } catch (e) {\n        if (e.message === \"RETRY\") {\n          attempt++;\n          const wait = BASE_DELAY * Math.pow(2, attempt);\n          node.warn(`listFiles 500 – retry ${attempt}/${MAX_ATTEMPTS} in ${wait / 1000}s`);\n          await sleep(wait);\n        } else {\n          throw e;\n        }\n      }\n    }\n\n    if (!success) {\n      throw new Error(\"listFiles gave up after repeated 500s\");\n    }\n\n    files.push(...(body.files || []));\n    pageToken = body.nextPageToken;\n\n  } while (pageToken);\n\n  return files;\n}\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini List: msg.apiKey missing or invalid\", msg);\n  return [null, msg];\n}\n\nreturn listAllFiles(msg.apiKey)\n  .then(arr => {\n    msg.files = arr;\n    return [msg, null];\n  })\n  .catch(err => {\n    node.error(`listFiles failed: ${err}`, msg);\n    return [null, msg];\n  });\n",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "googleGenerativeAiServer",
-                "module": "@google/generative-ai/server"
-            },
-            {
-                "var": "googleGenerativeAi",
-                "module": "@google/generative-ai"
-            },
-            {
-                "var": "nodeFetch",
-                "module": "node-fetch"
-            }
-        ],
-        "x": 2125,
-        "y": 1780,
-        "wires": [
-            [
-                "0ab93d4988fe8e09"
-            ],
-            [
-                "fe2046cc4b18fe95"
-            ]
-        ],
-        "l": false,
-        "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
-        "id": "8ec7937d908e248c",
-        "type": "google-gemini-api-client",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "selectedOperation": "",
-        "api": "",
-        "errorHandlingModeSelectedIndex": "",
-        "security": "",
-        "requestContentTypeSelectedIndex": "",
-        "responseContentTypeSelectedIndex": "",
-        "parameters": "",
-        "uiFeatures": "",
-        "credentialValues": "",
-        "operationSelectedIndex": "",
-        "tagSelectedIndex": "",
-        "outputs": 1,
-        "debugEnabled": false,
-        "input": "",
-        "output": "",
-        "host": "",
-        "x": 1350,
-        "y": 2420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "0f4eb2ab142dba2c",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Google-Cloud Upload",
-        "func": "// ─────────────────────────────────────────────────────────────────────────────\n//  Function node: “Upload to GCS (from Array-of-bytes payload)”\n//\n//  Expects (in msg):\n//    • msg.payload    → an Array of byte values (e.g. [123,34,...]) \n//                       (or already a Buffer, in which case we skip conversion)\n//    • msg.filename   → a string path, e.g. \"/tmp/temp_video.mp4\"\n//    • msg.bucket     → (optional) override bucket name; otherwise DEFAULT_BUCKET\n//\n//  On success:\n//    • sets msg.gcsUri = \"gs://<bucketName>/<basename-of-filename>\"\n//    • passes msg downstream\n//  On failure:\n//    • node.error(...) and drops the message\n//\n//  Prereqs:\n//    • In ~/.node-red:  npm install @google-cloud/storage\n//    • settings.js must have functionExternalModules: true\n//    • In this node’s “Library” view, add:\n//         Module:        @google-cloud/storage\n//         Variable Name: googleCloudStorage\n//\n//  Authentication:\n//    • By default, uses GOOGLE_APPLICATION_CREDENTIALS if set.\n//    • To hard-code, uncomment the keyFilename section below.\n// ─────────────────────────────────────────────────────────────────────────────\n\n\n// ─── ❶  Load the GCS SDK (injected by Node-RED because of the “Library” entry) ─\nconst { Storage } = googleCloudStorage;\n\n// ─── ❷  Initialize the Storage client ────────────────────────────────────────\nlet storage;\n\n// OPTION A: Use ADC via GOOGLE_APPLICATION_CREDENTIALS\nstorage = new Storage();\n\n// OPTION B: Hard-code the key file (uncomment if you need this)\n// storage = new Storage({\n//   keyFilename: \"/home/you/path/to/your-service-account.json\"\n// });\n\n\n// ─── ❸  Determine bucket & destination filename ──────────────────────────────\nconst DEFAULT_BUCKET = \"qibb-test-bucket-francois\";\n// ← change this to your real bucket name\n\nconst bucketName = (msg.bucket && typeof msg.bucket === \"string\")\n  ? msg.bucket\n  : DEFAULT_BUCKET;\n\nif (!bucketName || typeof bucketName !== \"string\") {\n  node.error(\n    \"❌ No bucket specified. Set msg.bucket or update DEFAULT_BUCKET.\",\n    msg\n  );\n  return null;\n}\n\nif (!msg.filename || typeof msg.filename !== \"string\") {\n  node.error(\n    \"❌ msg.filename must be a non-empty string (e.g. '/tmp/temp_video.mp4').\",\n    msg\n  );\n  return null;\n}\n\n// Strip off any leading directories via split(\"/\")\nconst parts = msg.filename.split(\"/\");\nconst destFilename = parts[parts.length - 1];\n\n\n// ─── ❹  Convert msg.payload into a Buffer if needed ─────────────────────────\nlet videoBuffer;\nif (Buffer.isBuffer(msg.payload)) {\n  videoBuffer = msg.payload;\n}\nelse if (Array.isArray(msg.payload)) {\n  videoBuffer = Buffer.from(msg.payload);\n}\nelse {\n  node.error(\n    \"❌ msg.payload must be either a Buffer or an Array of bytes.\",\n    msg\n  );\n  return null;\n}\n\n\n// ─── ❺  Perform the upload asynchronously ───────────────────────────────────\nreturn (async () => {\n  try {\n    const bucket = storage.bucket(bucketName);\n    const file = bucket.file(destFilename);\n\n    // Set MIME type to video/mp4 (adjust if your file is different)\n    const writeStream = file.createWriteStream({\n      metadata: {\n        contentType: \"video/mp4\"\n      },\n      // If your file is very large, set resumable: true\n      resumable: false\n    });\n\n    // Push the Buffer into GCS\n    writeStream.end(videoBuffer);\n\n    // Await completion\n    await new Promise((resolve, reject) => {\n      writeStream.on(\"finish\", resolve);\n      writeStream.on(\"error\", reject);\n    });\n\n    // Attach the GCS URI for downstream nodes\n    msg.gcsUri = `gs://${bucketName}/${destFilename}`;\n\n    // (Optionally) delete the in-memory Buffer if you no longer need it:\n    // delete msg.payload;\n\n    return msg;\n  }\n  catch (err) {\n    node.error(\"❌ Upload to GCS failed: \" + err.message, msg);\n    return null;\n  }\n})();\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "googleCloudStorage",
-                "module": "@google-cloud/storage"
-            }
-        ],
-        "x": 1320,
-        "y": 2340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4e6ceaa27a504c87",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Get file",
-        "func": "/**\n * Node-RED Function: Gemini File Metadata Fetch\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.fileName || typeof msg.fileName !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.fileName missing or invalid\", msg);\n  return null;\n}\n\n// Use the genai.GoogleGenAI object from Setup tab\nasync function getFileMetadata(apiKey, fileName) {\n  const ai = new genai.GoogleGenAI({ apiKey });\n  const fetchedFile = await ai.files.get({ name: fileName });\n  return fetchedFile;\n}\n\ngetFileMetadata(msg.apiKey, msg.fileName)\n  .then(fileMetadata => {\n    msg.fileMetadata = fileMetadata;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`File metadata fetch failed: ${err.message}`, msg);\n  });\n\nreturn null;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "genai",
-                "module": "@google/genai"
-            }
-        ],
-        "x": 1240,
-        "y": 1960,
-        "wires": [
-            [
-                "a3091cf2245c7b13"
-            ]
-        ]
-    },
-    {
-        "id": "a3091cf2245c7b13",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1400,
-        "y": 1960,
-        "wires": []
-    },
-    {
-        "id": "6776409fff77979b",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1500,
-        "y": 2360,
-        "wires": []
-    },
-    {
-        "id": "af60f61b0c6a871a",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "props": [
-            {
-                "p": "fileName",
-                "v": "files/qy9igtslp6kp",
-                "vt": "str"
-            },
-            {
-                "p": "apiKey",
-                "v": "AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 1110,
-        "y": 1960,
-        "wires": [
-            [
-                "4e6ceaa27a504c87"
-            ]
-        ]
     },
     {
         "id": "7c4629e2b4e1baf0",
@@ -4317,417 +3142,6 @@
         ]
     },
     {
-        "id": "52eb4f146e7d98f0",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "Download Sample Image",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 750,
-        "y": 2180,
-        "wires": [
-            [
-                "c87b4dc4f9be2124"
-            ]
-        ]
-    },
-    {
-        "id": "c87b4dc4f9be2124",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Fetch Sample PNG",
-        "method": "GET",
-        "ret": "bin",
-        "paytoqs": "ignore",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Example.jpg/320px-Example.jpg",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 970,
-        "y": 2180,
-        "wires": [
-            [
-                "0595ae56a6c3a9cd"
-            ]
-        ]
-    },
-    {
-        "id": "0595ae56a6c3a9cd",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Save to Disk",
-        "func": "// fs is imported via Setup tab\nconst path = \"sample-image.png\";\n\nfs.writeFileSync(path, msg.payload);\nmsg.payload = `Image saved to ${path}`;\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "fs",
-                "module": "fs"
-            }
-        ],
-        "x": 1170,
-        "y": 2180,
-        "wires": [
-            [
-                "c408bcdcf67876d1"
-            ]
-        ]
-    },
-    {
-        "id": "c408bcdcf67876d1",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Saved Message",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1380,
-        "y": 2180,
-        "wires": []
-    },
-    {
-        "id": "1859ed80ed890657",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Save to Disk",
-        "func": "// fs is declared in Setup tab\nconst path = \"/temp_video.mp4\";\nfs.writeFileSync(path, msg.payload);  // binary buffer\nmsg.payload = `Saved to ${path}`;\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "fs",
-                "module": "fs"
-            }
-        ],
-        "x": 1040,
-        "y": 1680,
-        "wires": [
-            [
-                "6f1172918ffaee90"
-            ]
-        ]
-    },
-    {
-        "id": "6f1172918ffaee90",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "5f2970019d9fe440",
-        "name": "Saved Message",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 1720,
-        "wires": []
-    },
-    {
-        "id": "3acda589b43d5291",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1410,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "913682a5d0262ec6",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "Start Upload",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 1090,
-        "y": 1480,
-        "wires": [
-            [
-                "fe0d9fe97fef881a"
-            ]
-        ]
-    },
-    {
-        "id": "fe0d9fe97fef881a",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Read File to Context",
-        "func": "const filePath = 'temp_video.mp4';\nmsg.apiKey = 'AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k';\n\nmsg.fileBuffer = fs.readFileSync(filePath);\nmsg.fileSize = msg.fileBuffer.length;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "fs",
-                "module": "fs"
-            }
-        ],
-        "x": 1340,
-        "y": 1480,
-        "wires": [
-            [
-                "29480427e8325cf6",
-                "3acda589b43d5291"
-            ]
-        ]
-    },
-    {
-        "id": "29480427e8325cf6",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Prepare Upload Metadata",
-        "func": "msg.headers = {\n  'X-Goog-Upload-Protocol': 'resumable',\n  'X-Goog-Upload-Command': 'start',\n  'X-Goog-Upload-Header-Content-Length': msg.fileSize,\n  'X-Goog-Upload-Header-Content-Type': 'video/mp4',\n  'Content-Type': 'application/json'\n};\n\nmsg.payload = {\n  file: {\n    display_name: 'temp_video.mp4'\n  }\n};\n\nmsg.method = 'POST';\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${msg.apiKey}`;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1610,
-        "y": 1480,
-        "wires": [
-            [
-                "c1b1e904893f2f80",
-                "056fd37c3253a2f7"
-            ]
-        ]
-    },
-    {
-        "id": "c1b1e904893f2f80",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Start Resumable Session",
-        "method": "use",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1880,
-        "y": 1480,
-        "wires": [
-            [
-                "623181450612a19f",
-                "7993d167843be75d"
-            ]
-        ]
-    },
-    {
-        "id": "623181450612a19f",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Extract Upload URL",
-        "func": "const uploadUrl = msg.headers['x-goog-upload-url'];\nif (!uploadUrl) {\n  node.error('Upload URL not found', msg);\n  return null;\n}\n\nmsg.url = uploadUrl;\nmsg.method = 'POST';\nmsg.payload = msg.fileBuffer;\n\nmsg.headers = {\n  'X-Goog-Upload-Offset': '0',\n  'X-Goog-Upload-Command': 'upload, finalize',\n  'Content-Length': msg.fileSize,\n  'Content-Type': 'video/mp4'\n};\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2110,
-        "y": 1480,
-        "wires": [
-            [
-                "1d24a665c04ea9bf",
-                "4951d5f2b2c860e9"
-            ]
-        ]
-    },
-    {
-        "id": "1d24a665c04ea9bf",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Upload File Finalize",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 2340,
-        "y": 1480,
-        "wires": [
-            [
-                "28e140232f97dad0"
-            ]
-        ]
-    },
-    {
-        "id": "28e140232f97dad0",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Upload Result",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 2560,
-        "y": 1480,
-        "wires": []
-    },
-    {
-        "id": "056fd37c3253a2f7",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "upload",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1670,
-        "y": 1420,
-        "wires": []
-    },
-    {
-        "id": "7993d167843be75d",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "http",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1930,
-        "y": 1420,
-        "wires": []
-    },
-    {
-        "id": "4951d5f2b2c860e9",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "extract url",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2180,
-        "y": 1420,
-        "wires": []
-    },
-    {
-        "id": "7a893d1cfe2f891b",
-        "type": "exec",
-        "z": "bb119fa58e5b3485",
-        "command": "stat -c %s /tmp/temp_video.mp4",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 430,
-        "y": 1480,
-        "wires": [
-            [
-                "35c54a70ed21d5e7"
-            ],
-            [
-                "35c54a70ed21d5e7"
-            ],
-            [
-                "35c54a70ed21d5e7"
-            ]
-        ]
-    },
-    {
-        "id": "35c54a70ed21d5e7",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 1480,
-        "wires": []
-    },
-    {
-        "id": "050bd9cad638ea90",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "",
-        "x": 130,
-        "y": 1440,
-        "wires": [
-            [
-                "7a893d1cfe2f891b"
-            ]
-        ]
-    },
-    {
         "id": "766a3fcca5fb2b44",
         "type": "exec",
         "z": "bb119fa58e5b3485",
@@ -4842,211 +3256,6 @@
         "icon": "font-awesome/fa-book"
     },
     {
-        "id": "inject_test",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "Trigger Download",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "",
-        "topic": "",
-        "x": 160,
-        "y": 1680,
-        "wires": [
-            [
-                "http_download"
-            ]
-        ]
-    },
-    {
-        "id": "http_download",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Download Video",
-        "method": "GET",
-        "ret": "bin",
-        "paytoqs": "ignore",
-        "url": "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 360,
-        "y": 1680,
-        "wires": [
-            [
-                "file_save",
-                "debug_http"
-            ]
-        ]
-    },
-    {
-        "id": "file_save",
-        "type": "file",
-        "z": "bb119fa58e5b3485",
-        "name": "Save Video",
-        "filename": "/tmp/temp_video.mp4",
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 590,
-        "y": 1680,
-        "wires": [
-            [
-                "debug_save"
-            ]
-        ]
-    },
-    {
-        "id": "debug_http",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug HTTP Response",
-        "active": true,
-        "tosidebar": true,
-        "complete": "payload",
-        "x": 360,
-        "y": 1740,
-        "wires": []
-    },
-    {
-        "id": "debug_save",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Saved to Disk",
-        "active": true,
-        "tosidebar": true,
-        "complete": "true",
-        "x": 610,
-        "y": 1740,
-        "wires": []
-    },
-    {
-        "id": "e49c9e3adbf880df",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "",
-        "x": 170,
-        "y": 1840,
-        "wires": [
-            [
-                "f2be8e0dc8858ab2"
-            ]
-        ]
-    },
-    {
-        "id": "57b27546a135f2c0",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 280,
-        "y": 1960,
-        "wires": []
-    },
-    {
-        "id": "f2be8e0dc8858ab2",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Download Large Video",
-        "func": "const path = \"/tmp/temp_video2.mp4\";\nconst url = \"https://storage.googleapis.com/iconik-eu-proxies/9e392c9c-e28e-11ec-8906-82ba1484052f/be58fd7c-2e40-11ef-b7b3-4221c25f1e76.mp4?GoogleAccessId=bucket-access%40iconik-production-environments.iam.gserviceaccount.com&Expires=1749114968&Signature=fkHotWVKZzqGh2Qnv%2BgMRNXHsxLwgYHP6sI9GUqnUelvzTPX%2B64P1d1lf2Uz0yR6WI7Bi6XgCTPOBa55u6%2B%2B0qYsRHb0ydV3GuSdueEQOLdTEZIpNVTRU9mwH9RP8lhJjm3nthCkV3MkFvxMwycfFRhtOf%2FZE%2FXQPavHdFoczyqvWPTN1%2BZ52Xej7WefQfU0e1C%2Flg7WM01E%2FV%2F4LHB2Ab19al0pYc9pDuZ8pxGwwl3PADCTeJgbwNG36%2BthF3PC2SCCEuwlVSOilfJfkLpaXkzOdUrsfNVggXeCQaSJWNlzdZ7LRpuYxQlfrZ1Q1qbvIhBkiFtDBa3cfQz0Jv4WRw%3D%3D&response-content-disposition=attachment%3B%20filename%3D%22tearsofsteel_4k_cut-lowres.mp4%22%3B%20filename%2A%3Dutf-8%27%27tearsofsteel_4k_cut-lowres.mp4\";\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "fs",
-                "module": "fs"
-            },
-            {
-                "var": "https",
-                "module": "https"
-            }
-        ],
-        "x": 120,
-        "y": 2000,
-        "wires": [
-            [
-                "57b27546a135f2c0"
-            ]
-        ]
-    },
-    {
-        "id": "3c3c3c3c3c3c3c3c",
-        "type": "exec",
-        "z": "bb119fa58e5b3485",
-        "command": "stat -c %s /tmp/temp_video.mp4",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "Get File Size",
-        "x": 170,
-        "y": 1220,
-        "wires": [
-            [
-                "4d4d4d4d4d4d4d4d",
-                "ed66bcd0ca7c94c7"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "4d4d4d4d4d4d4d4d",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Compare Sizes",
-        "func": "\nconst expected = parseInt(msg.iconik.get_proxies.payload.objects[0].metadata[0].size);\nconst actual = parseInt(msg.payload.trim());\n\nmsg.result = actual === expected ? \"✅ File size matches\" : `❌ Size mismatch: ${actual} != ${expected}`;\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 380,
-        "y": 1220,
-        "wires": [
-            [
-                "5e5e5e5e5e5e5e5e"
-            ]
-        ]
-    },
-    {
-        "id": "5e5e5e5e5e5e5e5e",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Show Result",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 600,
-        "y": 1220,
-        "wires": []
-    },
-    {
         "id": "e9bd83a847a44710",
         "type": "function",
         "z": "bb119fa58e5b3485",
@@ -5078,23 +3287,6 @@
         "l": false
     },
     {
-        "id": "ed66bcd0ca7c94c7",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 200,
-        "y": 1340,
-        "wires": []
-    },
-    {
         "id": "6fff48a362cc4e88",
         "type": "debug",
         "z": "bb119fa58e5b3485",
@@ -5110,111 +3302,6 @@
         "x": 345,
         "y": 860,
         "wires": [],
-        "l": false
-    },
-    {
-        "id": "cee667defe70948f",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Download Proxy",
-        "method": "GET",
-        "ret": "bin",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 775,
-        "y": 1360,
-        "wires": [
-            [
-                "e82edd5464bf08da",
-                "20e7594f4028321b"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "e82edd5464bf08da",
-        "type": "file",
-        "z": "bb119fa58e5b3485",
-        "name": "Write File",
-        "filename": "/tmp/temp_video.mp4",
-        "filenameType": "str",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "binary",
-        "x": 835,
-        "y": 1360,
-        "wires": [
-            [
-                "de2b376541d17335"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "de2b376541d17335",
-        "type": "file in",
-        "z": "bb119fa58e5b3485",
-        "name": "Read File",
-        "filename": "/tmp/temp_video.mp4",
-        "filenameType": "str",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": true,
-        "x": 895,
-        "y": 1360,
-        "wires": [
-            [
-                "d83f3e4df6ce480a"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "20e7594f4028321b",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Fetch Proxies",
-        "active": false,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "statusCode",
-        "statusType": "msg",
-        "x": 775,
-        "y": 1300,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
-    },
-    {
-        "id": "d83f3e4df6ce480a",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Write File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 895,
-        "y": 1300,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     }
 ]
