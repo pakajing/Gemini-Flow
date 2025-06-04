@@ -651,6 +651,13 @@
                 "pt": "msg",
                 "to": "authHeaders",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "iconik.get_format",
+                "pt": "msg",
+                "to": "iconik.output",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -658,11 +665,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 800,
-        "y": 440,
+        "x": 1115,
+        "y": 200,
         "wires": [
             []
-        ]
+        ],
+        "l": false
     },
     {
         "id": "230e41d4586e1df9",
@@ -737,7 +745,8 @@
         "y": 200,
         "wires": [
             [
-                "35b8dea63f9feb3a"
+                "35b8dea63f9feb3a",
+                "d7f2baca4a091580"
             ],
             [
                 "c1897c6216b8e8dc"
