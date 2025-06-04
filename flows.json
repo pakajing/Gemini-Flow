@@ -2085,7 +2085,7 @@
         "z": "bb119fa58e5b3485",
         "g": "7b9495278bbc1acd",
         "name": "Debug OK: Upload File",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -2229,7 +2229,8 @@
         "y": 500,
         "wires": [
             [
-                "e275a6f33aae3894"
+                "e275a6f33aae3894",
+                "6d09b7a433e66101"
             ]
         ],
         "l": false
@@ -3449,6 +3450,43 @@
         "statusType": "auto",
         "x": 1420,
         "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6d09b7a433e66101",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "function 2",
+        "func": "/**\n * Resolve the resource name returned by the\n * Gemini “files.upload” call – e.g. \"files/51oaysyrk7mo\".\n * The function supports several message shapes so it\n * doesn’t break if Google tweaks the response again.\n */\nconst getResourceName = (msg) => {\n    // ❶ most-recent Gemini response you pasted\n    let name =\n        msg.gemini?.Upload?.uploadResponse?.file?.name ??\n        // ❷ sometimes “Upload” comes back lowercase\n        msg.gemini?.uploadResponse?.file?.name ??\n        // ❸ legacy paths you were already handling\n        msg.uploadResponse?.fileName?.uploadResponse?.file?.name ??\n        msg.payload?.uploadResponse?.file?.name;\n\n    // ❹ fall-back: pull it out of the full URI if that’s all we have\n    if (!name) {\n        const uri =\n            msg.gemini?.Upload?.uploadResponse?.file?.uri ??\n            msg.gemini?.uploadResponse?.file?.uri;\n        if (uri) {\n            // keep only the part after “…/v1beta/”\n            name = uri.split(\"/v1beta/\")[1];\n        }\n    }\n    return name || \"\";\n};\n\n// ──────────────────────────────────────────────────────────\n// main\n// ──────────────────────────────────────────────────────────\nconst fileName = getResourceName(msg);\n\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\n\n// Normalise just in case the name still contains a leading URL bit\nmsg.fileName = fileName.replace(/^https?:\\/\\/[^/]+\\/v1beta\\//, \"\");\nmsg.url      = `https://generativelanguage.googleapis.com/v1beta/${msg.fileName}`;\nmsg.attempt  = 0;               // reset retry counter\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 720,
+        "wires": [
+            [
+                "6c15da536f15063c"
+            ]
+        ]
+    },
+    {
+        "id": "6c15da536f15063c",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 720,
         "wires": []
     }
 ]
