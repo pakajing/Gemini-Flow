@@ -407,10 +407,12 @@
             "a2ea3d519a01e1a1",
             "1a313660c43ee208",
             "8b15a63895cb51a3",
-            "321a1621e0a7aed1"
+            "321a1621e0a7aed1",
+            "1859ed80ed890657",
+            "6f1172918ffaee90"
         ],
-        "x": 714,
-        "y": 359,
+        "x": 924,
+        "y": 1579,
         "w": 292,
         "h": 202
     },
@@ -464,18 +466,70 @@
             "label": true
         },
         "nodes": [
-            "cee667defe70948f",
-            "e82edd5464bf08da",
-            "de2b376541d17335",
-            "20e7594f4028321b",
             "ea7e0cc8aa8ba6ab",
-            "d83f3e4df6ce480a",
-            "711b16e72058a346"
+            "711b16e72058a346",
+            "e9bd83a847a44710"
         ],
         "x": 234,
         "y": 619,
-        "w": 312,
+        "w": 292,
         "h": 202
+    },
+    {
+        "id": "c69e9338a69f4b55",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "8 check size",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "766a3fcca5fb2b44",
+            "e98a084b941a301b",
+            "b31beec551160cc2"
+        ],
+        "x": 574,
+        "y": 619,
+        "w": 672,
+        "h": 109.5
+    },
+    {
+        "id": "310881b5cb56aa03",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "9 upload",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "fd6f3ec4e3d5c64f",
+            "02a284a071dd6792",
+            "1fdb61060179eeed",
+            "b4a84f425b07ea82"
+        ],
+        "x": 874,
+        "y": 759,
+        "w": 952,
+        "h": 82
+    },
+    {
+        "id": "a4b528dbe3ac6232",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "10 check file size and state",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "7c4629e2b4e1baf0",
+            "dc0c5588c30a29c5",
+            "f0d85a75e3e8494c",
+            "49f0f0fa0dc4bcd7"
+        ],
+        "x": 1014,
+        "y": 859,
+        "w": 1052,
+        "h": 82
     },
     {
         "id": "4f68b793021e13a7",
@@ -1925,8 +1979,8 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 875,
-        "y": 520,
+        "x": 1085,
+        "y": 1740,
         "wires": [
             [
                 "7b587903328434c4"
@@ -1951,8 +2005,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 815,
-        "y": 520,
+        "x": 1025,
+        "y": 1740,
         "wires": [
             [
                 "e3df322b4395c4b8",
@@ -1975,8 +2029,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": true,
-        "x": 935,
-        "y": 520,
+        "x": 1145,
+        "y": 1740,
         "wires": [
             [
                 "8b15a63895cb51a3"
@@ -1998,8 +2052,8 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 815,
-        "y": 460,
+        "x": 1025,
+        "y": 1680,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2036,8 +2090,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 755,
-        "y": 520,
+        "x": 965,
+        "y": 1740,
         "wires": [
             [
                 "593245d270ac9b82"
@@ -2059,8 +2113,8 @@
         "targetType": "full",
         "statusVal": "iconik.assetName",
         "statusType": "msg",
-        "x": 935,
-        "y": 460,
+        "x": 1145,
+        "y": 1680,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2187,8 +2241,8 @@
         "g": "5f2970019d9fe440",
         "name": "[7] 📖 Doc - Download Proxy",
         "info": "",
-        "x": 860,
-        "y": 400,
+        "x": 1070,
+        "y": 1620,
         "wires": [],
         "icon": "font-awesome/fa-book"
     },
@@ -4071,6 +4125,7 @@
         "id": "7c4629e2b4e1baf0",
         "type": "inject",
         "z": "bb119fa58e5b3485",
+        "g": "a4b528dbe3ac6232",
         "name": "Inject API key and fileName",
         "props": [
             {
@@ -4089,8 +4144,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 930,
-        "y": 2060,
+        "x": 1170,
+        "y": 900,
         "wires": [
             [
                 "dc0c5588c30a29c5"
@@ -4101,6 +4156,7 @@
         "id": "dc0c5588c30a29c5",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "a4b528dbe3ac6232",
         "name": "Build Gemini GET Request",
         "func": "// Construct Gemini File GET URL with API key\nconst baseUrl = \"https://generativelanguage.googleapis.com/v1beta/\";\nconst fileName = msg.fileName;\nconst apiKey = msg.apiKey;\n\nmsg.method = \"GET\";\nmsg.url = `${baseUrl}${fileName}?key=${apiKey}`;\nmsg.headers = {\n    \"Accept\": \"application/json\"\n};\n\nreturn msg;",
         "outputs": 1,
@@ -4109,8 +4165,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1190,
-        "y": 2060,
+        "x": 1430,
+        "y": 900,
         "wires": [
             [
                 "f0d85a75e3e8494c"
@@ -4121,6 +4177,7 @@
         "id": "f0d85a75e3e8494c",
         "type": "http request",
         "z": "bb119fa58e5b3485",
+        "g": "a4b528dbe3ac6232",
         "name": "Call Gemini Files GET",
         "method": "use",
         "ret": "obj",
@@ -4133,8 +4190,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1460,
-        "y": 2060,
+        "x": 1700,
+        "y": 900,
         "wires": [
             [
                 "49f0f0fa0dc4bcd7"
@@ -4145,6 +4202,7 @@
         "id": "49f0f0fa0dc4bcd7",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "a4b528dbe3ac6232",
         "name": "Metadata Response",
         "active": true,
         "tosidebar": true,
@@ -4154,14 +4212,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1690,
-        "y": 2060,
+        "x": 1930,
+        "y": 900,
         "wires": []
     },
     {
         "id": "fd6f3ec4e3d5c64f",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "310881b5cb56aa03",
         "name": "Prepare Upload Request",
         "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = \"/tmp/temp_video.mp4\";\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"video/mp4\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;\n",
         "outputs": 1,
@@ -4175,8 +4234,8 @@
                 "module": "fs"
             }
         ],
-        "x": 1030,
-        "y": 2120,
+        "x": 1270,
+        "y": 800,
         "wires": [
             [
                 "02a284a071dd6792"
@@ -4187,6 +4246,7 @@
         "id": "02a284a071dd6792",
         "type": "http request",
         "z": "bb119fa58e5b3485",
+        "g": "310881b5cb56aa03",
         "name": "Upload File",
         "method": "use",
         "ret": "obj",
@@ -4199,8 +4259,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1250,
-        "y": 2120,
+        "x": 1490,
+        "y": 800,
         "wires": [
             [
                 "1fdb61060179eeed"
@@ -4211,6 +4271,7 @@
         "id": "1fdb61060179eeed",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "310881b5cb56aa03",
         "name": "Upload Response",
         "active": true,
         "tosidebar": true,
@@ -4220,14 +4281,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1450,
-        "y": 2120,
+        "x": 1690,
+        "y": 800,
         "wires": []
     },
     {
         "id": "b4a84f425b07ea82",
         "type": "inject",
         "z": "bb119fa58e5b3485",
+        "g": "310881b5cb56aa03",
         "name": "Inject API key and fileName",
         "props": [
             {
@@ -4246,8 +4308,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 790,
-        "y": 2120,
+        "x": 1030,
+        "y": 800,
         "wires": [
             [
                 "fd6f3ec4e3d5c64f"
@@ -4343,6 +4405,7 @@
         "id": "1859ed80ed890657",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "5f2970019d9fe440",
         "name": "Save to Disk",
         "func": "// fs is declared in Setup tab\nconst path = \"/temp_video.mp4\";\nfs.writeFileSync(path, msg.payload);  // binary buffer\nmsg.payload = `Saved to ${path}`;\nreturn msg;\n",
         "outputs": 1,
@@ -4356,8 +4419,8 @@
                 "module": "fs"
             }
         ],
-        "x": 870,
-        "y": 620,
+        "x": 1040,
+        "y": 1680,
         "wires": [
             [
                 "6f1172918ffaee90"
@@ -4368,6 +4431,7 @@
         "id": "6f1172918ffaee90",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "5f2970019d9fe440",
         "name": "Saved Message",
         "active": true,
         "tosidebar": true,
@@ -4377,8 +4441,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 660,
+        "x": 1050,
+        "y": 1720,
         "wires": []
     },
     {
@@ -4667,6 +4731,7 @@
         "id": "766a3fcca5fb2b44",
         "type": "exec",
         "z": "bb119fa58e5b3485",
+        "g": "c69e9338a69f4b55",
         "command": "ls -lh temp_video.mp4",
         "addpay": "",
         "append": "",
@@ -4675,8 +4740,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 400,
-        "y": 1560,
+        "x": 860,
+        "y": 680,
         "wires": [
             [
                 "e98a084b941a301b"
@@ -4693,6 +4758,7 @@
         "id": "e98a084b941a301b",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "c69e9338a69f4b55",
         "name": "debug 9",
         "active": true,
         "tosidebar": true,
@@ -4701,14 +4767,15 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 1560,
+        "x": 1140,
+        "y": 680,
         "wires": []
     },
     {
         "id": "b31beec551160cc2",
         "type": "inject",
         "z": "bb119fa58e5b3485",
+        "g": "c69e9338a69f4b55",
         "name": "",
         "props": [],
         "repeat": "",
@@ -4718,103 +4785,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "",
-        "x": 130,
-        "y": 1520,
+        "x": 670,
+        "y": 660,
         "wires": [
             [
                 "766a3fcca5fb2b44"
             ]
         ]
-    },
-    {
-        "id": "cee667defe70948f",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "g": "4a5f270e7e34714c",
-        "name": "Download Proxy",
-        "method": "GET",
-        "ret": "bin",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 365,
-        "y": 780,
-        "wires": [
-            [
-                "e82edd5464bf08da",
-                "20e7594f4028321b"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "e82edd5464bf08da",
-        "type": "file",
-        "z": "bb119fa58e5b3485",
-        "g": "4a5f270e7e34714c",
-        "name": "Write File",
-        "filename": "/tmp/temp_video.mp4",
-        "filenameType": "str",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "binary",
-        "x": 425,
-        "y": 780,
-        "wires": [
-            [
-                "de2b376541d17335"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "de2b376541d17335",
-        "type": "file in",
-        "z": "bb119fa58e5b3485",
-        "g": "4a5f270e7e34714c",
-        "name": "Read File",
-        "filename": "/tmp/temp_video.mp4",
-        "filenameType": "str",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": true,
-        "x": 485,
-        "y": 780,
-        "wires": [
-            [
-                "d83f3e4df6ce480a"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "20e7594f4028321b",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "4a5f270e7e34714c",
-        "name": "Debug OK: Fetch Proxies",
-        "active": false,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "statusCode",
-        "statusType": "msg",
-        "x": 365,
-        "y": 720,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
     },
     {
         "id": "ea7e0cc8aa8ba6ab",
@@ -4850,26 +4827,6 @@
                 "e9bd83a847a44710"
             ]
         ],
-        "l": false
-    },
-    {
-        "id": "d83f3e4df6ce480a",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "4a5f270e7e34714c",
-        "name": "Debug OK: Write File",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 485,
-        "y": 720,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     },
     {
@@ -5093,6 +5050,7 @@
         "id": "e9bd83a847a44710",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
         "name": "Download to /tmp/temp_video.mp4",
         "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
         "outputs": 1,
@@ -5110,8 +5068,8 @@
                 "module": "https"
             }
         ],
-        "x": 335,
-        "y": 960,
+        "x": 345,
+        "y": 780,
         "wires": [
             [
                 "6fff48a362cc4e88"
@@ -5149,8 +5107,114 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 940,
-        "wires": []
+        "x": 345,
+        "y": 860,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "cee667defe70948f",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Download Proxy",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 775,
+        "y": 1360,
+        "wires": [
+            [
+                "e82edd5464bf08da",
+                "20e7594f4028321b"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "e82edd5464bf08da",
+        "type": "file",
+        "z": "bb119fa58e5b3485",
+        "name": "Write File",
+        "filename": "/tmp/temp_video.mp4",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "binary",
+        "x": 835,
+        "y": 1360,
+        "wires": [
+            [
+                "de2b376541d17335"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "de2b376541d17335",
+        "type": "file in",
+        "z": "bb119fa58e5b3485",
+        "name": "Read File",
+        "filename": "/tmp/temp_video.mp4",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": true,
+        "x": 895,
+        "y": 1360,
+        "wires": [
+            [
+                "d83f3e4df6ce480a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "20e7594f4028321b",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Fetch Proxies",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 775,
+        "y": 1300,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "d83f3e4df6ce480a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Write File",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 895,
+        "y": 1300,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
