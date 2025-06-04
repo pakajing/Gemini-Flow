@@ -3973,7 +3973,7 @@
                 "module": "@google/genai"
             }
         ],
-        "x": 1520,
+        "x": 1260,
         "y": 660,
         "wires": [
             [
@@ -3994,8 +3994,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1520,
-        "y": 720,
+        "x": 1420,
+        "y": 660,
         "wires": []
     },
     {
@@ -4011,8 +4011,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1340,
-        "y": 720,
+        "x": 1500,
+        "y": 780,
         "wires": []
     },
     {
