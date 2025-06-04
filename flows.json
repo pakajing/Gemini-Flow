@@ -450,10 +450,10 @@
             "20107de6bd37a1b5",
             "c6316525076d23bd"
         ],
-        "x": 1074,
+        "x": 1034,
         "y": 359,
-        "w": 252,
-        "h": 242
+        "w": 262,
+        "h": 262
     },
     {
         "id": "4f68b793021e13a7",
@@ -2065,8 +2065,8 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1175,
-        "y": 500,
+        "x": 1155,
+        "y": 520,
         "wires": [
             [
                 "5eedb1308b3932a6",
@@ -2093,8 +2093,8 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1175,
-        "y": 440,
+        "x": 1155,
+        "y": 460,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2149,8 +2149,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1115,
-        "y": 500,
+        "x": 1095,
+        "y": 520,
         "wires": [
             [
                 "aba3f61d19b83110"
@@ -2184,8 +2184,8 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1175,
-        "y": 560,
+        "x": 1155,
+        "y": 580,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2225,8 +2225,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1275,
-        "y": 500,
+        "x": 1255,
+        "y": 520,
         "wires": [
             [
                 "8a435b17d1851e02"
@@ -2315,7 +2315,7 @@
         "g": "7b9495278bbc1acd",
         "name": "[8] 📖 Doc - Upload File",
         "info": "",
-        "x": 1200,
+        "x": 1160,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3957,8 +3957,8 @@
                 "module": "@google-cloud/storage"
             }
         ],
-        "x": 1140,
-        "y": 660,
+        "x": 1040,
+        "y": 740,
         "wires": [
             [
                 "a3091cf2245c7b13"
