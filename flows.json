@@ -2766,7 +2766,7 @@
         "syntax": "mustache",
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
-        "x": 865,
+        "x": 875,
         "y": 720,
         "wires": [
             [
@@ -2804,7 +2804,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 945,
+        "x": 955,
         "y": 720,
         "wires": [
             [
