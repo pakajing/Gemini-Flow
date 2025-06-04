@@ -1401,7 +1401,7 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "statusCode",
+        "statusVal": "assetName",
         "statusType": "msg",
         "x": 915,
         "y": 460,
