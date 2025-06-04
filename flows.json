@@ -1361,6 +1361,13 @@
             },
             {
                 "t": "set",
+                "p": "iconik.asset_id",
+                "pt": "msg",
+                "to": "iconik.webhook.asset_ids[0]",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
                 "p": "headers",
                 "pt": "msg",
                 "to": "authHeaders",
