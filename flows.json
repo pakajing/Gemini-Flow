@@ -4482,7 +4482,8 @@
         "y": 880,
         "wires": [
             [
-                "1d24a665c04ea9bf"
+                "1d24a665c04ea9bf",
+                "4951d5f2b2c860e9"
             ]
         ]
     },
@@ -4556,6 +4557,23 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1410,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "4951d5f2b2c860e9",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "extract url",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1660,
         "y": 820,
         "wires": []
     }
