@@ -872,7 +872,7 @@
         "z": "bb119fa58e5b3485",
         "g": "fd02e1eb88ae35ab",
         "name": "Debug OK: Check MediaType",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1008,7 +1008,8 @@
         "y": 200,
         "wires": [
             [
-                "7e2eb0fab7bc6a69"
+                "7e2eb0fab7bc6a69",
+                "02e11a7b88f98708"
             ],
             [
                 "c8e84af63e546d14"
@@ -1027,7 +1028,7 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "statusCode",
+        "statusVal": "iconik.output.statusCode",
         "statusType": "msg",
         "x": 1675,
         "y": 140,
@@ -1046,12 +1047,38 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "statusCode",
+        "statusVal": "iconik.output.statusCode",
         "statusType": "msg",
         "x": 1675,
         "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "02e11a7b88f98708",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Save Media type",
+        "rules": [
+            {
+                "t": "set",
+                "p": "iconik.get_proxies",
+                "pt": "msg",
+                "to": "iconik.output",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1765,
+        "y": 200,
+        "wires": [
+            []
+        ],
         "l": false
     }
 ]
