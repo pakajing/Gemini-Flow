@@ -3667,5 +3667,35 @@
             ]
         ],
         "l": false
+    },
+    {
+        "id": "41dc5b97da49fd1d",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload File to FileAPI(Google)",
+        "func": "/**\n * Fetch the current state of a Gemini-uploaded file.\n *\n * OUTPUT 1 → msg when state is PROCESSING or SUCCEEDED\n * OUTPUT 2 → msg when state is FAILED or an exception occurs\n *\n * Requires external module  : @google/generative-ai/server\n * Expects msg.apiKey        : your Google Cloud API key\n * Accepts the resource name : in msg.fileName  OR\n *                              msg.uploadResponse.fileName  OR\n *                              msg.uploadResponse.file.name\n */\nconst { GoogleAIFileManager } = googleGenerativeAiServer;\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\n// ──────────────────────────────────────────────────────────\n// 1. Resolve the resource name (“files/abc123…”)\n// ──────────────────────────────────────────────────────────\nconst resourceName =\n        msg.fileName ??\n        msg.uploadResponse?.fileName ??\n        msg.uploadResponse?.file?.name;\n\nif (!resourceName) {\n    node.error(\"Fetch Upload Status: cannot find file resource name\", msg);\n    // send the message to the error output so the flow can react\n    return [ null, msg ];\n}\n\n// ──────────────────────────────────────────────────────────\n// 2. Query Gemini and route the message\n//    We return a Promise → Node-RED waits for completion.\n// ──────────────────────────────────────────────────────────\nreturn fileManager\n    .getFile(resourceName)\n    .then(file => {\n        // expose the full server response for anything downstream\n        msg.file = file;\n\n        switch (file.state) {\n            case \"FAILED\":\n                node.error(\"Gemini processing FAILED\", msg);\n                return [ null, msg ];     // output #2\n            case \"PROCESSING\":            // fall-through\n            case \"SUCCEEDED\":\n                // keep track of progress for your UI / logs\n                msg.uploadResponse = msg.uploadResponse || {};\n                msg.uploadResponse.status = file.state;\n                return [ msg, null ];     // output #1\n            default:\n                // unknown state – treat as error but keep the payload\n                node.warn(`Unexpected file state: ${file.state}`, msg);\n                return [ null, msg ];\n        }\n    })\n    .catch(err => {\n        node.error(`Gemini SDK error: ${err.message || err}`, msg);\n        return [ null, msg ];             // output #2\n    });\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "googleGenerativeAiServer",
+                "module": "@google/generative-ai/server"
+            },
+            {
+                "var": "googleGenerativeAi",
+                "module": "@google/generative-ai"
+            }
+        ],
+        "x": 1415,
+        "y": 600,
+        "wires": [
+            [],
+            []
+        ],
+        "l": false,
+        "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
     }
 ]
