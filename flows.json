@@ -2096,7 +2096,7 @@
         "z": "bb119fa58e5b3485",
         "g": "7b9495278bbc1acd",
         "name": "Debug OK: Upload File",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -2206,7 +2206,9 @@
         "x": 1235,
         "y": 500,
         "wires": [
-            []
+            [
+                "16a44ea1c96c8bf4"
+            ]
         ],
         "l": false
     },
@@ -3040,5 +3042,22 @@
             []
         ],
         "l": false
+    },
+    {
+        "id": "16a44ea1c96c8bf4",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 500,
+        "wires": []
     }
 ]
