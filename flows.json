@@ -69,7 +69,7 @@
             "187792eede51b3c7"
         ],
         "x": 54,
-        "y": 319,
+        "y": 299,
         "w": 272,
         "h": 142
     },
@@ -302,7 +302,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 175,
-        "y": 420,
+        "y": 400,
         "wires": [
             [
                 "template_create_payload"
@@ -323,7 +323,7 @@
         "template": "{\n  \"user_id\": \"49c7bd08-0e06-11f0-a1f8-a6363a946122\",\n  \"system_domain_id\": \"9e392c9c-e28e-11ec-8906-82ba1484052f\",\n  \"context\": \"ASSET\",\n  \"action_id\": \"66ed6750-459f-11ef-afd9-1ec546efc4f6\",\n  \"asset_ids\": [\"{{asset_id}}\"],\n  \"collection_ids\": [],\n  \"saved_search_ids\": [],\n  \"metadata_view_id\": null,\n  \"metadata_values\": null,\n  \"date_created\": \"2025-06-04T07:20:34.362212\"\n}",
         "output": "str",
         "x": 235,
-        "y": 420,
+        "y": 400,
         "wires": [
             [
                 "80369f7995b0a4cc"
@@ -339,7 +339,7 @@
         "name": "[0] 📖 Doc - Manual payload",
         "info": "",
         "x": 190,
-        "y": 360,
+        "y": 340,
         "wires": [],
         "icon": "font-awesome/fa-book"
     },
