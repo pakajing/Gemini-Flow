@@ -1175,7 +1175,8 @@
                 "1912e80aa826d7f5"
             ],
             [
-                "c17bc71b9a4caec4"
+                "c17bc71b9a4caec4",
+                "593245d270ac9b82"
             ]
         ],
         "l": false
@@ -1243,5 +1244,69 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "e3df322b4395c4b8",
+        "type": "file",
+        "z": "bb119fa58e5b3485",
+        "name": "Write File",
+        "filename": "/tmp/temp_video.mp4",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "binary",
+        "x": 855,
+        "y": 520,
+        "wires": [
+            [
+                "7b587903328434c4"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "593245d270ac9b82",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Download Proxy",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 775,
+        "y": 520,
+        "wires": [
+            [
+                "e3df322b4395c4b8"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7b587903328434c4",
+        "type": "file in",
+        "z": "bb119fa58e5b3485",
+        "name": "Read File ",
+        "filename": "/tmp/temp_video.mp4",
+        "filenameType": "str",
+        "format": "stream",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": true,
+        "x": 935,
+        "y": 520,
+        "wires": [
+            []
+        ],
+        "l": false
     }
 ]
