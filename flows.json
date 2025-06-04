@@ -171,6 +171,25 @@
         "h": 262
     },
     {
+        "id": "fd02e1eb88ae35ab",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[4] Check MediaType",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "8e41cb773d695eb6",
+            "62e2db5dec5eeda8",
+            "c6921afbb473bc70",
+            "016fac0e773e7897"
+        ],
+        "x": 1314,
+        "y": 39,
+        "w": 292,
+        "h": 262
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -803,6 +822,7 @@
         "id": "62e2db5dec5eeda8",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "fd02e1eb88ae35ab",
         "name": "Check MediaType",
         "func": "// Define supported media types for images and videos\nconst supportedMediaTypes = {\n  image: [\"image/jpeg\", \"image/png\", \"image/webp\", \"image/heic\", \"image/heif\"],\n  video: [\"video/mp4\", \"video/mpeg\", \"video/mov\", \"video/avi\", \"video/x-flv\", \"video/mpg\", \"video/webm\", \"video/wmx\", \"video/3gpp\"]\n};\n\n// Extract the media type from the incoming message\nconst assetMediaType = msg.mediaType;\n\n// Function to check if the media type is supported\nconst isSupportedMediaType = (type, mediaType) => supportedMediaTypes[type].includes(mediaType);\n\ntry {\n  // Validate the media type\n  if (!isSupportedMediaType('image', assetMediaType) && !isSupportedMediaType('video', assetMediaType)) {\n    // If unsupported, set the error message and supported media types\n    msg.statusInfo = `The selected asset has a media type of \"${assetMediaType}\", which is not among the supported media types. Please choose a compatible media type.`;\n    msg.supportedMediaTypes = supportedMediaTypes;\n    msg.statusCode = 400; // Set status code for unsupported media type\n    return [null, msg]; // Send to output 2\n  } else {\n    // If supported, set a success message\n    msg.statusInfo = `The selected asset has a supported media type: \"${assetMediaType}\".`;\n    msg.statusCode = 200; // Set status code for supported media type\n    return [msg, null]; // Send to output 1\n  }\n} catch (error) {\n  // Handle unexpected errors\n  node.error(\"An error occurred while checking the media type\", msg);\n  msg.statusInfo = \"An internal error occurred.\";\n  msg.statusCode = 500; // Set status code for internal error\n  return [null, msg]; // Send to output 2\n}",
         "outputs": 2,
@@ -811,8 +831,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 715,
-        "y": 420,
+        "x": 1455,
+        "y": 200,
         "wires": [
             [
                 "016fac0e773e7897"
@@ -828,6 +848,7 @@
         "id": "c6921afbb473bc70",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "fd02e1eb88ae35ab",
         "name": "Debug OK: Check MediaType",
         "active": true,
         "tosidebar": true,
@@ -837,8 +858,8 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 715,
-        "y": 480,
+        "x": 1455,
+        "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -847,6 +868,7 @@
         "id": "016fac0e773e7897",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "fd02e1eb88ae35ab",
         "name": "Debug OK: Check MediaType",
         "active": true,
         "tosidebar": true,
@@ -856,8 +878,8 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 715,
-        "y": 360,
+        "x": 1455,
+        "y": 140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -870,6 +892,18 @@
         "name": "[3] 📖 Doc - Iconik Get Format",
         "info": "",
         "x": 1140,
+        "y": 80,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "8e41cb773d695eb6",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "fd02e1eb88ae35ab",
+        "name": "[4] 📖 Doc - Check MediaType",
+        "info": "",
+        "x": 1460,
         "y": 80,
         "wires": [],
         "icon": "font-awesome/fa-book"
