@@ -4100,7 +4100,7 @@
         "z": "bb119fa58e5b3485",
         "name": "Call Gemini Files GET",
         "method": "use",
-        "ret": "txt",
+        "ret": "obj",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
