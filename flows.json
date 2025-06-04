@@ -4036,5 +4036,30 @@
         "x": 1340,
         "y": 660,
         "wires": []
+    },
+    {
+        "id": "af60f61b0c6a871a",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.uploadResponse.file.name",
+                "v": "files/qy9igtslp6kp",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1130,
+        "y": 660,
+        "wires": [
+            [
+                "template_set_fileName"
+            ]
+        ]
     }
 ]
