@@ -2229,7 +2229,7 @@
         "y": 520,
         "wires": [
             [
-                "8a435b17d1851e02"
+                "4e6ceaa27a504c87"
             ]
         ],
         "l": false
@@ -3965,27 +3965,8 @@
         "x": 1040,
         "y": 740,
         "wires": [
-            [
-                "a3091cf2245c7b13"
-            ]
+            []
         ]
-    },
-    {
-        "id": "a3091cf2245c7b13",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1220,
-        "y": 760,
-        "wires": []
     },
     {
         "id": "4e6ceaa27a504c87",
@@ -4007,7 +3988,26 @@
         "x": 1460,
         "y": 700,
         "wires": [
-            []
+            [
+                "a3091cf2245c7b13"
+            ]
         ]
+    },
+    {
+        "id": "a3091cf2245c7b13",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1620,
+        "y": 700,
+        "wires": []
     }
 ]
