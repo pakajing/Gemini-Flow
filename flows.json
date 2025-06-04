@@ -3927,8 +3927,8 @@
         "input": "",
         "output": "",
         "host": "",
-        "x": 1210,
-        "y": 920,
+        "x": 1390,
+        "y": 1080,
         "wires": [
             []
         ]
@@ -3950,8 +3950,8 @@
                 "module": "@google-cloud/storage"
             }
         ],
-        "x": 1180,
-        "y": 840,
+        "x": 1360,
+        "y": 1000,
         "wires": [
             []
         ]
@@ -3960,7 +3960,7 @@
         "id": "4e6ceaa27a504c87",
         "type": "function",
         "z": "bb119fa58e5b3485",
-        "name": "function 3",
+        "name": "Get file",
         "func": "/**\n * Node-RED Function: Gemini File Metadata Fetch\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.fileName || typeof msg.fileName !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.fileName missing or invalid\", msg);\n  return null;\n}\n\n// Use the genai.GoogleGenAI object from Setup tab\nasync function getFileMetadata(apiKey, fileName) {\n  const ai = new genai.GoogleGenAI({ apiKey });\n  const fetchedFile = await ai.files.get({ name: fileName });\n  return fetchedFile;\n}\n\ngetFileMetadata(msg.apiKey, msg.fileName)\n  .then(fileMetadata => {\n    msg.fileMetadata = fileMetadata;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`File metadata fetch failed: ${err.message}`, msg);\n  });\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
@@ -4011,8 +4011,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1500,
-        "y": 780,
+        "x": 1540,
+        "y": 1020,
         "wires": []
     },
     {
@@ -4082,6 +4082,7 @@
         "name": "Build Gemini GET Request",
         "func": "// Construct Gemini File GET URL with API key\nconst baseUrl = \"https://generativelanguage.googleapis.com/v1beta/\";\nconst fileName = msg.fileName;\nconst apiKey = msg.apiKey;\n\nmsg.method = \"GET\";\nmsg.url = `${baseUrl}${fileName}?key=${apiKey}`;\nmsg.headers = {\n    \"Accept\": \"application/json\"\n};\n\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -4133,6 +4134,90 @@
         "statusType": "auto",
         "x": 1730,
         "y": 720,
+        "wires": []
+    },
+    {
+        "id": "edbcf6f28f3fcd9d",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "Start Upload",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 850,
+        "y": 840,
+        "wires": [
+            [
+                "fd6f3ec4e3d5c64f"
+            ]
+        ]
+    },
+    {
+        "id": "fd6f3ec4e3d5c64f",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Prepare Upload Request",
+        "func": "// Configure your image path and API key\nconst filePath = \"/home/node-red/sample-image.png\"; // adjust this path\nconst apiKey = \"YOUR_API_KEY_HERE\";\n\nconst fs = require(\"fs\");\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"application/octet-stream\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 1070,
+        "y": 840,
+        "wires": [
+            [
+                "02a284a071dd6792"
+            ]
+        ]
+    },
+    {
+        "id": "02a284a071dd6792",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload File",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1280,
+        "y": 840,
+        "wires": [
+            [
+                "1fdb61060179eeed"
+            ]
+        ]
+    },
+    {
+        "id": "1fdb61060179eeed",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 840,
         "wires": []
     }
 ]
