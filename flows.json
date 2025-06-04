@@ -1363,9 +1363,9 @@
         "rules": [
             {
                 "t": "set",
-                "p": "authHeaders",
+                "p": "headers",
                 "pt": "msg",
-                "to": "headers",
+                "to": "authHeaders",
                 "tot": "msg"
             },
             {
