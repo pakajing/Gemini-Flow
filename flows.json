@@ -566,14 +566,14 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "g": "d29e7cdb2d5dd084",
-        "name": "Debug OK: Webhook Receive",
+        "name": "Debug OK: Manual Payload",
         "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "payload.asset_ids[0]",
+        "statusVal": "iconik.webhook.asset_ids[0]",
         "statusType": "msg",
         "x": 255,
         "y": 380,
@@ -644,7 +644,8 @@
         "y": 440,
         "wires": [
             [
-                "4ba858c9bd77a3a7"
+                "4ba858c9bd77a3a7",
+                "13443591230511c3"
             ]
         ],
         "l": false
