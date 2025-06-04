@@ -2228,9 +2228,7 @@
         "x": 1235,
         "y": 500,
         "wires": [
-            [
-                "0efcf4cff626690b"
-            ]
+            []
         ],
         "l": false
     },
@@ -3578,7 +3576,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1335,
+        "x": 1455,
         "y": 500,
         "wires": [
             [
@@ -3608,7 +3606,7 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1475,
+        "x": 1595,
         "y": 500,
         "wires": [
             [
@@ -3635,7 +3633,7 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 1475,
+        "x": 1595,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3654,7 +3652,7 @@
         "targetType": "full",
         "statusVal": "attempt",
         "statusType": "msg",
-        "x": 1475,
+        "x": 1595,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3709,7 +3707,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1395,
+        "x": 1515,
         "y": 500,
         "wires": [
             [
@@ -3728,7 +3726,7 @@
         "limitTime": "60",
         "time": "counter",
         "timeType": "msg",
-        "x": 1595,
+        "x": 1715,
         "y": 500,
         "wires": [
             [
@@ -3754,7 +3752,7 @@
         "targetType": "full",
         "statusVal": "counter",
         "statusType": "msg",
-        "x": 1595,
+        "x": 1715,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3773,7 +3771,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1595,
+        "x": 1715,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
