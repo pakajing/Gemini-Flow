@@ -1902,7 +1902,7 @@
         "appendNewline": false,
         "createDir": true,
         "overwriteFile": "true",
-        "encoding": "binary",
+        "encoding": "base64",
         "x": 875,
         "y": 520,
         "wires": [
