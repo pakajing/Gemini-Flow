@@ -2656,7 +2656,7 @@
         "y": 720,
         "wires": [
             [
-                "7dea554c6ac7de37"
+                "26b4a64ae183c139"
             ]
         ],
         "l": false
@@ -2746,11 +2746,11 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 935,
+        "x": 895,
         "y": 720,
         "wires": [
             [
-                "1f8c1b6bdc1fa53d"
+                "7dea554c6ac7de37"
             ]
         ],
         "l": false
