@@ -1947,7 +1947,7 @@
         "name": "Read File ",
         "filename": "/tmp/temp_video.mp4",
         "filenameType": "str",
-        "format": "stream",
+        "format": "",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
