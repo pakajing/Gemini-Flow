@@ -3307,18 +3307,23 @@
                 "t": "eq",
                 "v": "PROCESSING",
                 "vt": "str"
+            },
+            {
+                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 3,
         "x": 1555,
         "y": 500,
         "wires": [
             [],
             [
-                "d5fecac62090b2c0",
                 "3d426f8308661af0"
+            ],
+            [
+                "d5fecac62090b2c0"
             ]
         ],
         "l": false
@@ -3337,7 +3342,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1555,
-        "y": 540,
+        "y": 620,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
