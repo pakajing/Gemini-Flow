@@ -4481,5 +4481,85 @@
         "x": 1800,
         "y": 760,
         "wires": []
+    },
+    {
+        "id": "bafb373709c940f8",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "Start Upload",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 670,
+        "y": 860,
+        "wires": [
+            [
+                "d2d188c46b5e765f"
+            ]
+        ]
+    },
+    {
+        "id": "d2d188c46b5e765f",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload File (Direct)",
+        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = \"temp_video.mp4\";\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"video/mp4\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 950,
+        "y": 860,
+        "wires": [
+            [
+                "0aab8620dbef2432"
+            ]
+        ]
+    },
+    {
+        "id": "0aab8620dbef2432",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "HTTP Upload File",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1200,
+        "y": 860,
+        "wires": [
+            [
+                "388256e73ee9e195"
+            ]
+        ]
+    },
+    {
+        "id": "388256e73ee9e195",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1410,
+        "y": 860,
+        "wires": []
     }
 ]
