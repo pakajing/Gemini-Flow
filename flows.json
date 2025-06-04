@@ -3964,12 +3964,12 @@
         "func": "/**\n * Node-RED Function: Gemini File Metadata Fetch\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.apiKey missing or invalid\", msg);\n  return null;\n}\n\nif (!msg.fileName || typeof msg.fileName !== \"string\") {\n  node.error(\"Gemini File Fetch: msg.fileName missing or invalid\", msg);\n  return null;\n}\n\n// Use the genai.GoogleGenAI object from Setup tab\nasync function getFileMetadata(apiKey, fileName) {\n  const ai = new genai.GoogleGenAI({ apiKey });\n  const fetchedFile = await ai.files.get({ name: fileName });\n  return fetchedFile;\n}\n\ngetFileMetadata(msg.apiKey, msg.fileName)\n  .then(fileMetadata => {\n    msg.fileMetadata = fileMetadata;\n    node.send(msg);\n  })\n  .catch(err => {\n    node.error(`File metadata fetch failed: ${err.message}`, msg);\n  });\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
-        "noerr": 3,
+        "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
             {
-                "var": "GoogleGenAI",
+                "var": "genai",
                 "module": "@google/genai"
             }
         ],
