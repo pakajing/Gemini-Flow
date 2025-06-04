@@ -2230,7 +2230,8 @@
         "wires": [
             [
                 "e275a6f33aae3894",
-                "35e25fd2f23e27c7"
+                "35e25fd2f23e27c7",
+                "8615818aaf9a2ee4"
             ]
         ],
         "l": false
@@ -3078,45 +3079,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1535,
+        "x": 1775,
         "y": 500,
         "wires": [
             [
-                "5f3f4e8d583182d0",
-                "8c6fcd7eb82a6a57"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "5f3f4e8d583182d0",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "name": "Get file state",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "x-goog-api-key",
-                "valueType": "msg",
-                "valueValue": "apiKey"
-            }
-        ],
-        "x": 1655,
-        "y": 500,
-        "wires": [
-            [
-                "cd7be5c741a1d232",
-                "f5f75eab64a752aa"
+                "8c6fcd7eb82a6a57",
+                "5f3f4e8d583182d0"
             ]
         ],
         "l": false
@@ -3283,7 +3251,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1535,
+        "x": 1775,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3302,7 +3270,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1655,
+        "x": 1895,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3333,7 +3301,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 1735,
+        "x": 1975,
         "y": 500,
         "wires": [
             [
@@ -3361,7 +3329,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1745,
+        "x": 1985,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3384,7 +3352,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 2000,
+        "x": 2240,
         "y": 500,
         "wires": [
             [
@@ -3409,7 +3377,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1845,
+        "x": 2085,
         "y": 500,
         "wires": [
             [
@@ -3431,7 +3399,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1755,
+        "x": 1995,
         "y": 420,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3450,8 +3418,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1420,
-        "y": 560,
+        "x": 1180,
+        "y": 660,
         "wires": []
     },
     {
@@ -3466,8 +3434,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
-        "y": 720,
+        "x": 1040,
+        "y": 700,
         "wires": [
             [
                 "6c15da536f15063c"
@@ -3487,8 +3455,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1360,
-        "y": 720,
+        "x": 1060,
+        "y": 760,
         "wires": []
     },
     {
@@ -3545,5 +3513,109 @@
         "x": 1440,
         "y": 800,
         "wires": []
+    },
+    {
+        "id": "8615818aaf9a2ee4",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Init Gemini file poll",
+        "func": "// Locate the resource name from various possible message structures\nconst fileName = msg.uploadResponse?.fileName?.uploadResponse?.file?.name ||\n                 msg.payload?.uploadResponse?.file?.name ||\n                 msg.fileName || \"\";\n\n// Validate that the file name exists\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\n\n// Set the file name and construct the polling URL\nmsg.fileName = fileName;\nmsg.url = `https://generativelanguage.googleapis.com/v1beta/${fileName}`;\n\n// Initialize the polling attempt counter\nmsg.attempt = 0;\n\n// Return the updated message object\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1395,
+        "y": 500,
+        "wires": [
+            [
+                "f509407a070a4c76"
+            ]
+        ],
+        "l": false,
+        "info": "# Init Gemini File Poll\n\n## Purpose\nThis function node initializes the polling process for a Gemini file by extracting the file name from the incoming message and constructing the appropriate polling URL. It also resets the polling attempt counter.\n\n## Input\n- The file name can be located in one of the following message structures:\n  - `msg.uploadResponse.fileName.uploadResponse.file.name`\n  - `msg.payload.uploadResponse.file.name`\n  - `msg.fileName`\n\n## Output\n- `msg.fileName`: The extracted file name.\n- `msg.url`: The constructed polling URL in the format `https://generativelanguage.googleapis.com/v1beta/{fileName}`.\n- `msg.attempt`: The polling attempt counter, initialized to `0`.\n\n## Logic\n1. Attempt to locate the file name from multiple possible message structures.\n2. If the file name is not found, log an error and stop further processing.\n3. If the file name is found:\n   - Set `msg.fileName` to the extracted file name.\n   - Construct the polling URL and set it in `msg.url`.\n   - Initialize the polling attempt counter (`msg.attempt`) to `0`.\n4. Return the updated message object.\n\n## Notes\n> Ensure that the incoming message contains the file name in one of the expected structures. If not, the function will log an error and terminate.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "5f3f4e8d583182d0",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Get file state",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
+        "x": 1895,
+        "y": 500,
+        "wires": [
+            [
+                "cd7be5c741a1d232",
+                "f5f75eab64a752aa"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "0ee4b92377f89454",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Get file state",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
+        "x": 1515,
+        "y": 500,
+        "wires": [
+            []
+        ],
+        "l": false
+    },
+    {
+        "id": "f509407a070a4c76",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Fetch Status",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1395,
+        "y": 460,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
