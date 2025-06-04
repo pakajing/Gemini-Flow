@@ -1307,34 +1307,9 @@
         "y": 520,
         "wires": [
             [
-                "8b15a63895cb51a3"
+                "8b15a63895cb51a3",
+                "a5e7a5ce7a1abf87"
             ]
-        ],
-        "l": false
-    },
-    {
-        "id": "9f0e4b157f97680a",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Gemini Paramaters ",
-        "rules": [
-            {
-                "t": "set",
-                "p": "apiKey",
-                "pt": "msg",
-                "to": "SECRETS.GEMINI_API_KEY",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1055,
-        "y": 520,
-        "wires": [
-            []
         ],
         "l": false
     },
@@ -1408,5 +1383,32 @@
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "a5e7a5ce7a1abf87",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload File to FileAPI(Google)",
+        "func": "const { GoogleAIFileManager} = googleGenerativeAiServer;\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\n// Upload the file and specify a display name.\nconst uploadResponse = await fileManager.uploadFile(msg.filename, {\n    mimeType: \"video/mp4\",\n    displayName: msg.filename,\n});\n\nmsg.payload = uploadResponse;\n\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "googleGenerativeAiServer",
+                "module": "@google/generative-ai/server"
+            },
+            {
+                "var": "googleGenerativeAi",
+                "module": "@google/generative-ai"
+            }
+        ],
+        "x": 1150,
+        "y": 520,
+        "wires": [
+            []
+        ]
     }
 ]
