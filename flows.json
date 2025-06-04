@@ -1752,7 +1752,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "url",
+                "p": "iconik.url",
                 "pt": "msg",
                 "to": "iconik.output.responseUrl",
                 "tot": "msg"
@@ -1998,6 +1998,13 @@
                 "t": "delete",
                 "p": "payload",
                 "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "iconik.url",
+                "tot": "msg"
             }
         ],
         "action": "",
