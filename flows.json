@@ -1795,7 +1795,7 @@
         "z": "bb119fa58e5b3485",
         "g": "1eba5f0f11ebce0e",
         "name": "Image or Video?",
-        "property": "mediaType",
+        "property": "iconik.mediaType",
         "propertyType": "msg",
         "rules": [
             {
