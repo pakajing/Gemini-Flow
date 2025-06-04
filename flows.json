@@ -182,7 +182,8 @@
             "8e41cb773d695eb6",
             "62e2db5dec5eeda8",
             "c6921afbb473bc70",
-            "016fac0e773e7897"
+            "016fac0e773e7897",
+            "1af3f73061416777"
         ],
         "x": 1314,
         "y": 39,
@@ -835,7 +836,8 @@
         "y": 200,
         "wires": [
             [
-                "016fac0e773e7897"
+                "016fac0e773e7897",
+                "1af3f73061416777"
             ],
             [
                 "c6921afbb473bc70"
@@ -907,5 +909,35 @@
         "y": 80,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "1af3f73061416777",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "g": "fd02e1eb88ae35ab",
+        "name": "Save Media type",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusInfo",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1545,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "l": false
     }
 ]
