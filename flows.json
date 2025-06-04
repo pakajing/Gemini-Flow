@@ -2625,7 +2625,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
+        "x": 575,
         "y": 720,
         "wires": [
             [
@@ -2635,6 +2635,7 @@
                 "7d223f269faec961"
             ]
         ],
+        "l": false,
         "info": "# Check Selected Option\n\n## Purpose\nThis function node validates the selected options and ensures that at least one option is chosen. It also checks for the presence of a Gemini model ID.\n\n## Input\n- No specific input fields are required, but the following are hardcoded for testing:\n  - `highlights`: Boolean indicating if the Highlights option is selected.\n  - `keywords`: Boolean indicating if the Keywords option is selected.\n  - `summary`: Boolean indicating if the Summary option is selected.\n  - `captioning`: Boolean indicating if the Video Captioning option is selected.\n  - `actionRecognition`: Boolean indicating if the Video Action Recognition option is selected.\n  - `msg.model`: The Gemini model ID (hardcoded as `models/gemini-pro-vision` for testing).\n\n## Output\n- **Output 1**: For valid selections.\n  - `msg.selectedOptions`: An array of selected options (e.g., `['Highlights', 'Summary']`).\n  - `msg.model`: The Gemini model ID.\n- **Output 2**: For errors or invalid selections.\n  - `msg.payload`: Contains the error message.\n\n## Logic\n1. Define hardcoded test values for the options (`highlights`, `keywords`, `summary`, `captioning`, `actionRecognition`).\n2. Initialize an empty array `selectedOptions` to store the selected options.\n3. Check each option and add it to `selectedOptions` if selected.\n4. Validate that at least one option is selected:\n   - If none are selected, log an error, update the node status, and send the message to **Output 2**.\n5. Validate the presence of `msg.model`:\n   - If missing, log an error, update the node status, and send the message to **Output 2**.\n6. If all validations pass, send the message to **Output 1**.\n\n## Notes\n> Replace the hardcoded values with dynamic inputs as needed for production use.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
     },
     {
@@ -2678,7 +2679,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Check Selected Option",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -2686,7 +2687,7 @@
         "targetType": "full",
         "statusVal": "selectedOptions",
         "statusType": "msg",
-        "x": 745,
+        "x": 575,
         "y": 660,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -2705,7 +2706,7 @@
         "targetType": "full",
         "statusVal": "selectedOptions",
         "statusType": "msg",
-        "x": 745,
+        "x": 575,
         "y": 780,
         "wires": [],
         "icon": "node-red/alert.svg",
