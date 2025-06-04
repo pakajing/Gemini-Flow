@@ -2228,7 +2228,9 @@
         "x": 1235,
         "y": 500,
         "wires": [
-            []
+            [
+                "8a435b17d1851e02"
+            ]
         ],
         "l": false
     },
@@ -3807,7 +3809,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1385,
+        "x": 1375,
         "y": 760,
         "wires": [
             [
@@ -3821,7 +3823,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Upload File to FileAPI(Google)",
-        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\ntry {\n    const uploadResponse = await fileManager.uploadFile(msg.filename, {\n        mimeType: \"video/mp4\",\n        displayName: msg.filename\n    });\n\n    msg.payload = {\n        statusCode: 200,\n        statusInfo: \"File uploaded successfully\",\n        uploadResponse: uploadResponse\n    };\n\n    return [msg, null]; // Output 1: success\n} catch (error) {\n    node.error(\"File upload failed\", error);\n\n    msg.payload = {\n        statusCode: 500,\n        statusInfo: \"File upload failed\",\n        error: error.message\n    };\n\n    return [null, msg]; // Output 2: failure\n}\n",
+        "func": "/**\n * Pull a complete listing of every file the Gemini “Files” service\n * knows about and attach it as msg.files (array of file objects).\n *\n *  OUTPUT 1 – success (msg.files is an array, may be empty)\n *  OUTPUT 2 – error path\n *\n *  Requires:\n *     • msg.apiKey (string) – same key you already set in the Change node\n *     • External-modules enabled + @google/generative-ai/server present\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n    node.error(\"Gemini List: msg.apiKey missing or invalid\", msg);\n    return [ null, msg ];           // error output (#2)\n}\n\nconst { GoogleAIFileManager } = googleGenerativeAiServer;\nconst fm = new GoogleAIFileManager(msg.apiKey);\n\nasync function listAll() {\n    let pageToken;\n    const files = [];\n\n    do {\n        const { files: chunk = [], nextPageToken } = await fm.listFiles({\n            pageSize: 100,\n            pageToken\n        });\n        files.push(...chunk);\n        pageToken = nextPageToken;\n    } while (pageToken);\n\n    return files;\n}\n\nreturn listAll()\n    .then(all => {\n        msg.files = all;         // expose downstream\n        return [ msg, null ];    // success output (#1)\n    })\n    .catch(err => {\n        node.error(`Gemini List failed: ${err.message || err}`, msg);\n        return [ null, msg ];    // error output (#2)\n    });",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -3837,13 +3839,15 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1445,
+        "x": 1435,
         "y": 760,
         "wires": [
             [
                 "0ab93d4988fe8e09"
             ],
-            []
+            [
+                "fe2046cc4b18fe95"
+            ]
         ],
         "l": false,
         "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
@@ -3852,16 +3856,16 @@
         "id": "0ab93d4988fe8e09",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Fetch Status Payload",
+        "name": "Debug OK: List File",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "uploadResponse.status",
-        "statusType": "msg",
-        "x": 1445,
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1435,
         "y": 700,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3882,6 +3886,25 @@
         "statusType": "msg",
         "x": 1595,
         "y": 560,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "fe2046cc4b18fe95",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: List File",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1435,
+        "y": 820,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
