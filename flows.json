@@ -4667,7 +4667,7 @@
         "id": "766a3fcca5fb2b44",
         "type": "exec",
         "z": "bb119fa58e5b3485",
-        "command": "ls -lh /temp_video.mp4",
+        "command": "ls -lh temp_video.mp4",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
