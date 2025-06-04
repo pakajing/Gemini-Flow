@@ -4044,5 +4044,94 @@
                 "4e6ceaa27a504c87"
             ]
         ]
+    },
+    {
+        "id": "7c4629e2b4e1baf0",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "Inject API key and fileName",
+        "props": [
+            {
+                "p": "fileName",
+                "v": "files/qy9igtslp6kp",
+                "vt": "str"
+            },
+            {
+                "p": "apiKey",
+                "v": "AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 970,
+        "y": 720,
+        "wires": [
+            [
+                "dc0c5588c30a29c5"
+            ]
+        ]
+    },
+    {
+        "id": "dc0c5588c30a29c5",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Build Gemini GET Request",
+        "func": "// Construct Gemini File GET URL with API key\nconst baseUrl = \"https://generativelanguage.googleapis.com/v1beta/\";\nconst fileName = msg.fileName;\nconst apiKey = msg.apiKey;\n\nmsg.method = \"GET\";\nmsg.url = `${baseUrl}${fileName}?key=${apiKey}`;\nmsg.headers = {\n    \"Accept\": \"application/json\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 720,
+        "wires": [
+            [
+                "f0d85a75e3e8494c"
+            ]
+        ]
+    },
+    {
+        "id": "f0d85a75e3e8494c",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Call Gemini Files GET",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1500,
+        "y": 720,
+        "wires": [
+            [
+                "49f0f0fa0dc4bcd7"
+            ]
+        ]
+    },
+    {
+        "id": "49f0f0fa0dc4bcd7",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Metadata Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1730,
+        "y": 720,
+        "wires": []
     }
 ]
