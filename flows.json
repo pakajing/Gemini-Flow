@@ -3318,7 +3318,9 @@
         "x": 1555,
         "y": 500,
         "wires": [
-            [],
+            [
+                "ab1bdb7c509b65a5"
+            ],
             [
                 "3b550ecf90ec5ee8"
             ],
@@ -3396,6 +3398,25 @@
                 "3d426f8308661af0"
             ]
         ],
+        "l": false
+    },
+    {
+        "id": "ab1bdb7c509b65a5",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Gemini File status",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1575,
+        "y": 420,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     }
 ]
