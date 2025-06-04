@@ -3467,7 +3467,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Init Gemini file poll",
-        "func": "// Locate the resource name from various possible message structures\nconst fileName = msg.gemini?.upload?.uploadResponse?.file?.name ||\n                 msg.payload?.uploadResponse?.file?.name ||\n                 msg.fileName || \"\";\n\n// Validate that the file name exists\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\n\n// Set the file name and construct the polling URL\nmsg.fileName = fileName;\nmsg.url = `https://generativelanguage.googleapis.com/v1beta/${fileName}`;\n\n// Initialize the polling attempt counter\nmsg.attempt = 0;\n\n// Return the updated message object\nreturn msg;",
+        "func": "// Locate the resource name from various possible message structures\nconst fileName = msg.gemini?.upload?.uploadResponse?.file?.name ||\n                 msg.payload?.uploadResponse?.file?.name ||\n                 msg.fileName || \"\";\n\n// Validate that the file name exists\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\n\n// Set the file name and construct the polling URL\nmsg.fileName = fileName;\nmsg.url = `https://generativelanguage.googleapis.com/v1beta/${fileName}?key=${msg.apiKey}`;\n\n// Reset retry counter\nmsg.attempt = 0;\nreturn msg;\n\n// Return the updated message object\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
