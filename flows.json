@@ -1308,7 +1308,7 @@
         "wires": [
             [
                 "8b15a63895cb51a3",
-                "a5e7a5ce7a1abf87"
+                "9f0e4b157f97680a"
             ]
         ],
         "l": false
@@ -1482,5 +1482,32 @@
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "9f0e4b157f97680a",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 680,
+        "wires": [
+            [
+                "aba3f61d19b83110"
+            ]
+        ]
     }
 ]
