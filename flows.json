@@ -4580,7 +4580,7 @@
         "id": "7a893d1cfe2f891b",
         "type": "exec",
         "z": "bb119fa58e5b3485",
-        "command": "ls -lh temp_video.mp4",
+        "command": "ls -lh /tmp/temp_video.mp4",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -4588,7 +4588,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 980,
+        "x": 1000,
         "y": 1060,
         "wires": [
             [
