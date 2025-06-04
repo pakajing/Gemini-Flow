@@ -2634,7 +2634,9 @@
         "x": 755,
         "y": 720,
         "wires": [
-            []
+            [
+                "7dea554c6ac7de37"
+            ]
         ],
         "l": false
     },
@@ -2966,5 +2968,23 @@
             [],
             []
         ]
+    },
+    {
+        "id": "7dea554c6ac7de37",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 895,
+        "y": 860,
+        "wires": [],
+        "l": false
     }
 ]
