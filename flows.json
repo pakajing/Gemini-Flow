@@ -1009,7 +1009,7 @@
         "wires": [
             [
                 "7e2eb0fab7bc6a69",
-                "02e11a7b88f98708"
+                "8278629e61d3b099"
             ],
             [
                 "c8e84af63e546d14"
@@ -1056,17 +1056,36 @@
         "l": false
     },
     {
-        "id": "02e11a7b88f98708",
+        "id": "8278629e61d3b099",
         "type": "change",
         "z": "bb119fa58e5b3485",
-        "name": "Save Media type",
+        "name": "Save Proxy Url",
         "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "iconik.output.responseUrl",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "assetName",
+                "pt": "msg",
+                "to": "iconik.output.payload.objects[0].name",
+                "tot": "msg"
+            },
             {
                 "t": "set",
                 "p": "iconik.get_proxies",
                 "pt": "msg",
                 "to": "iconik.output",
                 "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
             }
         ],
         "action": "",
@@ -1074,7 +1093,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1775,
+        "x": 1755,
         "y": 200,
         "wires": [
             []
