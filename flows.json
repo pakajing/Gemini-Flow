@@ -1256,7 +1256,7 @@
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "binary",
-        "x": 855,
+        "x": 835,
         "y": 520,
         "wires": [
             [
@@ -1302,7 +1302,7 @@
         "sendError": false,
         "encoding": "none",
         "allProps": true,
-        "x": 935,
+        "x": 895,
         "y": 520,
         "wires": [
             []
