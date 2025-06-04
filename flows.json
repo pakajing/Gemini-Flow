@@ -2207,7 +2207,6 @@
         "y": 500,
         "wires": [
             [
-                "16a44ea1c96c8bf4",
                 "f1b6a7dfc122ec1d"
             ]
         ],
@@ -3045,23 +3044,6 @@
         "l": false
     },
     {
-        "id": "16a44ea1c96c8bf4",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1380,
-        "y": 440,
-        "wires": []
-    },
-    {
         "id": "f1b6a7dfc122ec1d",
         "type": "function",
         "z": "bb119fa58e5b3485",
@@ -3073,14 +3055,15 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
+        "x": 1355,
         "y": 500,
         "wires": [
             [
                 "5f3f4e8d583182d0",
-                "474074ae169349ec"
+                "8c6fcd7eb82a6a57"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "5f3f4e8d583182d0",
@@ -3198,23 +3181,6 @@
         ]
     },
     {
-        "id": "474074ae169349ec",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 740,
-        "wires": []
-    },
-    {
         "id": "bcd28e87e37b32b0",
         "type": "debug",
         "z": "bb119fa58e5b3485",
@@ -3304,5 +3270,24 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "8c6fcd7eb82a6a57",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Gemini file poll",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1355,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
