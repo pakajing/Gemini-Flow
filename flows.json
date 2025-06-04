@@ -2230,7 +2230,7 @@
         "wires": [
             [
                 "e275a6f33aae3894",
-                "6d09b7a433e66101"
+                "35e25fd2f23e27c7"
             ]
         ],
         "l": false
@@ -3489,6 +3489,61 @@
         "statusType": "auto",
         "x": 1360,
         "y": 720,
+        "wires": []
+    },
+    {
+        "id": "35e25fd2f23e27c7",
+        "type": "while-loop",
+        "z": "bb119fa58e5b3485",
+        "name": "Is Status Active? ",
+        "condi": "gemini.Upload.uploadResponse.file.state !== \"ACTIVE\"",
+        "limit": true,
+        "limitTime": "60",
+        "time": "wla933c2eae34c402a",
+        "timeType": "msg",
+        "x": 1400,
+        "y": 660,
+        "wires": [
+            [
+                "91e20528c7aab34d"
+            ],
+            [
+                "767cb2ad91a4a0e4"
+            ]
+        ]
+    },
+    {
+        "id": "91e20528c7aab34d",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "767cb2ad91a4a0e4",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 800,
         "wires": []
     }
 ]
