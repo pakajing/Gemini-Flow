@@ -2199,16 +2199,9 @@
         "rules": [
             {
                 "t": "set",
-                "p": "uploadResponse.fileName",
+                "p": "gemini.Upload",
                 "pt": "msg",
                 "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "fileUri",
-                "pt": "msg",
-                "to": "payload.uploadResponse.file.uri",
                 "tot": "msg"
             },
             {
