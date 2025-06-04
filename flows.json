@@ -2629,7 +2629,7 @@
         "finalize": "",
         "libs": [],
         "x": 575,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "c6480ce55b348f13",
@@ -2654,7 +2654,7 @@
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
         "x": 755,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "8f14f2d0ab60c0d3"
@@ -2675,7 +2675,7 @@
         "finalize": "",
         "libs": [],
         "x": 815,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "26b4a64ae183c139"
@@ -2697,7 +2697,7 @@
         "statusVal": "selectedOptions",
         "statusType": "msg",
         "x": 575,
-        "y": 840,
+        "y": 1160,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2716,7 +2716,7 @@
         "statusVal": "selectedOptions",
         "statusType": "msg",
         "x": 575,
-        "y": 960,
+        "y": 1280,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2735,7 +2735,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1560,
-        "y": 900,
+        "y": 1220,
         "wires": []
     },
     {
@@ -2769,7 +2769,7 @@
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
         "x": 895,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "7dea554c6ac7de37",
@@ -2808,7 +2808,7 @@
         "to": "",
         "reg": false,
         "x": 1095,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "41c5a0c10342a1bc"
@@ -2840,7 +2840,7 @@
             }
         ],
         "x": 1080,
-        "y": 1180,
+        "y": 1500,
         "wires": [
             [
                 "5b5d6bb37b9005f6"
@@ -2868,7 +2868,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1240,
-        "y": 1180,
+        "y": 1500,
         "wires": [
             [
                 "90bae9be7c39ac67"
@@ -2891,7 +2891,7 @@
         "finalize": "",
         "libs": [],
         "x": 1480,
-        "y": 1220,
+        "y": 1540,
         "wires": [
             []
         ]
@@ -2909,7 +2909,7 @@
         "finalize": "",
         "libs": [],
         "x": 1490,
-        "y": 1140,
+        "y": 1460,
         "wires": [
             []
         ]
@@ -2938,7 +2938,7 @@
             }
         ],
         "x": 1240,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "0a00ea4d7c10bef4"
@@ -2966,7 +2966,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1300,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [],
             []
@@ -2986,7 +2986,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 895,
-        "y": 1040,
+        "y": 1360,
         "wires": [],
         "l": false
     },
@@ -3002,7 +3002,7 @@
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
         "x": 1045,
-        "y": 1000,
+        "y": 1320,
         "wires": [
             []
         ],
@@ -3021,7 +3021,7 @@
         "finalize": "",
         "libs": [],
         "x": 975,
-        "y": 900,
+        "y": 1220,
         "wires": [
             [
                 "6f1cabb71c4652da"
@@ -3059,7 +3059,7 @@
         "to": "",
         "reg": false,
         "x": 1105,
-        "y": 960,
+        "y": 1280,
         "wires": [
             []
         ],
@@ -3077,8 +3077,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1775,
-        "y": 500,
+        "x": 1845,
+        "y": 940,
         "wires": [
             [
                 "8c6fcd7eb82a6a57",
@@ -3107,8 +3107,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1660,
-        "y": 680,
+        "x": 1900,
+        "y": 1200,
         "wires": [
             [
                 "9d519008cd96668f"
@@ -3131,8 +3131,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1850,
-        "y": 680,
+        "x": 2090,
+        "y": 1200,
         "wires": [
             [
                 "340f70f7d4e36db0"
@@ -3159,8 +3159,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 2030,
-        "y": 680,
+        "x": 2270,
+        "y": 1200,
         "wires": [
             [
                 "bcd28e87e37b32b0"
@@ -3181,8 +3181,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2030,
-        "y": 740,
+        "x": 2270,
+        "y": 1260,
         "wires": []
     },
     {
@@ -3198,8 +3198,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1850,
-        "y": 620,
+        "x": 2090,
+        "y": 1140,
         "wires": []
     },
     {
@@ -3215,8 +3215,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1460,
-        "y": 720,
+        "x": 1600,
+        "y": 1100,
         "wires": []
     },
     {
@@ -3232,8 +3232,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1820,
-        "y": 740,
+        "x": 2060,
+        "y": 1260,
         "wires": []
     },
     {
@@ -3249,8 +3249,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1775,
-        "y": 440,
+        "x": 1845,
+        "y": 880,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3268,8 +3268,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1895,
-        "y": 440,
+        "x": 1965,
+        "y": 880,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3299,8 +3299,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 1975,
-        "y": 500,
+        "x": 2045,
+        "y": 940,
         "wires": [
             [
                 "ab1bdb7c509b65a5"
@@ -3327,8 +3327,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1985,
-        "y": 560,
+        "x": 2055,
+        "y": 1000,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3350,8 +3350,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 2240,
-        "y": 500,
+        "x": 2310,
+        "y": 940,
         "wires": [
             [
                 "f1b6a7dfc122ec1d"
@@ -3375,8 +3375,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2085,
-        "y": 500,
+        "x": 2155,
+        "y": 940,
         "wires": [
             [
                 "3d426f8308661af0"
@@ -3397,8 +3397,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1995,
-        "y": 420,
+        "x": 2065,
+        "y": 860,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3415,8 +3415,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 700,
+        "x": 1020,
+        "y": 1060,
         "wires": [
             [
                 "6c15da536f15063c"
@@ -3436,8 +3436,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1060,
-        "y": 760,
+        "x": 1040,
+        "y": 1120,
         "wires": []
     },
     {
@@ -3450,8 +3450,8 @@
         "limitTime": "60",
         "time": "wla933c2eae34c402a",
         "timeType": "msg",
-        "x": 1635,
-        "y": 500,
+        "x": 1705,
+        "y": 900,
         "wires": [
             [
                 "cf48b48773b9aed4"
@@ -3474,11 +3474,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1395,
-        "y": 500,
+        "x": 1565,
+        "y": 900,
         "wires": [
             [
-                "f509407a070a4c76",
                 "0ee4b92377f89454"
             ]
         ],
@@ -3508,8 +3507,8 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1895,
-        "y": 500,
+        "x": 1965,
+        "y": 940,
         "wires": [
             [
                 "cd7be5c741a1d232",
@@ -3541,33 +3540,14 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1495,
-        "y": 500,
+        "x": 1615,
+        "y": 900,
         "wires": [
             [
                 "1e4b15291ecd905b",
                 "35e25fd2f23e27c7"
             ]
         ],
-        "l": false
-    },
-    {
-        "id": "f509407a070a4c76",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Fetch Status Payload",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "attempt",
-        "statusType": "msg",
-        "x": 1395,
-        "y": 440,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     },
     {
@@ -3583,8 +3563,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1495,
-        "y": 440,
+        "x": 1615,
+        "y": 840,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3602,8 +3582,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1635,
-        "y": 560,
+        "x": 1705,
+        "y": 960,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3621,8 +3601,8 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1635,
-        "y": 440,
+        "x": 1705,
+        "y": 840,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3635,8 +3615,8 @@
         "property": "payload",
         "action": "obj",
         "pretty": false,
-        "x": 1335,
-        "y": 680,
+        "x": 1345,
+        "y": 1160,
         "wires": [
             []
         ],
@@ -3663,7 +3643,7 @@
         "y": 500,
         "wires": [
             [
-                "8615818aaf9a2ee4"
+                "41dc5b97da49fd1d"
             ]
         ],
         "l": false
@@ -3690,12 +3670,54 @@
             }
         ],
         "x": 1415,
-        "y": 600,
+        "y": 500,
         "wires": [
-            [],
-            []
+            [
+                "f509407a070a4c76"
+            ],
+            [
+                "787adb3fd8dfb255"
+            ]
         ],
         "l": false,
         "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "f509407a070a4c76",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Fetch Status Payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "attempt",
+        "statusType": "msg",
+        "x": 1415,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "787adb3fd8dfb255",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Fetch Status Payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "attempt",
+        "statusType": "msg",
+        "x": 1415,
+        "y": 560,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
