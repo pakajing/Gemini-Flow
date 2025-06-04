@@ -2685,7 +2685,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Check Selected Option",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
