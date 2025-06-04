@@ -450,7 +450,7 @@
             "20107de6bd37a1b5",
             "c6316525076d23bd"
         ],
-        "x": 1034,
+        "x": 1394,
         "y": 359,
         "w": 252,
         "h": 242
@@ -1957,7 +1957,7 @@
         "wires": [
             [
                 "8b15a63895cb51a3",
-                "9f0e4b157f97680a"
+                "0f4eb2ab142dba2c"
             ]
         ],
         "l": false
@@ -2065,7 +2065,7 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1135,
+        "x": 1495,
         "y": 500,
         "wires": [
             [
@@ -2093,7 +2093,7 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1135,
+        "x": 1495,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -2149,7 +2149,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1075,
+        "x": 1435,
         "y": 500,
         "wires": [
             [
@@ -2184,7 +2184,7 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1135,
+        "x": 1495,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -2225,7 +2225,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1235,
+        "x": 1595,
         "y": 500,
         "wires": [
             [
@@ -2315,7 +2315,7 @@
         "g": "7b9495278bbc1acd",
         "name": "[8] 📖 Doc - Upload File",
         "info": "",
-        "x": 1160,
+        "x": 1520,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3578,7 +3578,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1535,
+        "x": 1895,
         "y": 500,
         "wires": [
             [
@@ -3608,7 +3608,7 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1675,
+        "x": 2035,
         "y": 500,
         "wires": [
             [
@@ -3635,7 +3635,7 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 1675,
+        "x": 2035,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3690,7 +3690,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1595,
+        "x": 1955,
         "y": 500,
         "wires": [
             [
@@ -3709,7 +3709,7 @@
         "limitTime": "60",
         "time": "counter",
         "timeType": "msg",
-        "x": 1795,
+        "x": 2155,
         "y": 500,
         "wires": [
             [
@@ -3735,7 +3735,7 @@
         "targetType": "full",
         "statusVal": "counter",
         "statusType": "msg",
-        "x": 1795,
+        "x": 2155,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3754,7 +3754,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1795,
+        "x": 2155,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3809,7 +3809,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1355,
+        "x": 1715,
         "y": 500,
         "wires": [
             [
@@ -3831,7 +3831,7 @@
         "targetType": "full",
         "statusVal": "files",
         "statusType": "msg",
-        "x": 1415,
+        "x": 1775,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3850,7 +3850,7 @@
         "targetType": "full",
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
-        "x": 1675,
+        "x": 2035,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3869,7 +3869,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1415,
+        "x": 1775,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3900,7 +3900,7 @@
                 "module": "node-fetch"
             }
         ],
-        "x": 1415,
+        "x": 1775,
         "y": 500,
         "wires": [
             [
@@ -3945,7 +3945,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Google-Cloud Upload",
-        "func": "// ─────────────────────────────────────────────────────────────────────────────\n//  Function node: Upload buffer to GCS\n//\n//  Expects:\n//    • msg.payload       → a Buffer or Uint8Array containing the video bytes\n//    • msg.filename      → the desired destination filename (e.g. \"myClip.mp4\")\n//    • msg.bucket        → (optional) a string bucket name; if absent, falls back to DEFAULT_BUCKET\n//\n//  Outputs:\n//    • On success: msg.gcsUri = \"gs://<bucket>/<filename>\" and msg.payload unchanged (or you can clean it up)\n//    • On failure: logs error and does NOT send anything downstream\n//\n//  Prereqs:\n//    • You did `npm install @google-cloud/storage` in your ~/.node-red folder\n//    • Your service account JSON key is pointed to by GOOGLE_APPLICATION_CREDENTIALS\n//      OR you explicitly load it below (see NOTE ❸).\n// ─────────────────────────────────────────────────────────────────────────────\n\n\nconst { Storage } = require('@google-cloud/storage');\n\n// ─── ❶  Bucket & credentials setup ────────────────────────────────────────────\n\n//  Option A: rely on GOOGLE_APPLICATION_CREDENTIALS env var\n//           ↓ No need to pass anything special; the client will auto-pick up the JSON key.\n// const storage = new Storage();\n\n//  Option B: explicitly provide path to your service account JSON key\n//            (uncomment & edit the line below if you want to hard-code your key path)\n// const storage = new Storage({ keyFilename: \"/home/you/keys/my-sa-key.json\" });\n\n//  Option C: pass a service‐account JSON *object* directly\n//            (not recommended unless you have the JSON blob in a flow/global variable)\n// const jsonKey = global.get(\"myServiceAccountJson\");\n// const storage = new Storage({ credentials: jsonKey });\n\n//\n//  If none of the above lines are uncommented, by default we do Option A:\n//\nconst storage = new Storage();\n\n\n// ─── ❷  Determine bucket & filename ────────────────────────────────────────────\n\nconst DEFAULT_BUCKET = \"<YOUR-BUCKET-NAME-HERE>\";\n// e.g. \"my-video-bucket\"\n\nlet bucketName = msg.bucket || DEFAULT_BUCKET;\nif (!bucketName) {\n  node.error(\"No bucket specified. Set msg.bucket or change DEFAULT_BUCKET in the code.\", msg);\n  return null;\n}\n\nif (!msg.filename || typeof msg.filename !== \"string\") {\n  node.error(\"No msg.filename provided (e.g. 'myClip.mp4')\", msg);\n  return null;\n}\n\n// We'll upload to: gs://<bucketName>/<msg.filename>\nconst destFilename = msg.filename;\n\n\n// ─── ❸  Ensure payload is a Buffer ────────────────────────────────────────────\n\nif (!msg.payload || !Buffer.isBuffer(msg.payload)) {\n  node.error(\"msg.payload must be a Buffer (binary video data). Did you wire a File node into this Function?\", msg);\n  return null;\n}\n\n\n// ─── ❹  Perform the upload ─────────────────────────────────────────────────────\n\nreturn (async () => {\n  try {\n    const bucket = storage.bucket(bucketName);\n    const file = bucket.file(destFilename);\n\n    // Set content type (adjust if your video is not MP4)\n    const writeStream = file.createWriteStream({\n      metadata: { contentType: \"video/mp4\" },\n      resumable: false   // for large files you might want resumable: true\n    });\n\n    // Pipe the in‐memory buffer into GCS\n    writeStream.end(msg.payload);\n\n    // Wait for upload completion\n    await new Promise((resolve, reject) => {\n      writeStream.on('finish', resolve);\n      writeStream.on('error', reject);\n    });\n\n    // On success, set the GCS URI for downstream nodes\n    msg.gcsUri = `gs://${bucketName}/${destFilename}`;\n\n    // (optional) if you no longer need the raw video in memory, you can delete it:\n    // delete msg.payload; \n\n    return msg;\n  }\n  catch (err) {\n    node.error(\"Upload to GCS failed: \" + err.message, msg);\n    return null;\n  }\n})();\n",
+        "func": "// ─────────────────────────────────────────────────────────────────────────────\n//  Function node: Upload buffer to GCS\n//\n//  Expects:\n//    • msg.payload       → a Buffer or Uint8Array containing the video bytes\n//    • msg.filename      → the desired destination filename (e.g. \"myClip.mp4\")\n//    • msg.bucket        → (optional) a string bucket name; if absent, falls back to DEFAULT_BUCKET\n//\n//  Outputs:\n//    • On success: msg.gcsUri = \"gs://<bucket>/<filename>\" and msg.payload unchanged (or you can clean it up)\n//    • On failure: logs error and does NOT send anything downstream\n//\n//  Prereqs:\n//    • You did `npm install @google-cloud/storage` in your ~/.node-red folder\n//    • Your service account JSON key is pointed to by GOOGLE_APPLICATION_CREDENTIALS\n//      OR you explicitly load it below (see NOTE ❸).\n// ─────────────────────────────────────────────────────────────────────────────\n\n\nconst { Storage } = require('@google-cloud/storage');\n\n// ─── ❶  Bucket & credentials setup ────────────────────────────────────────────\n\n//  Option A: rely on GOOGLE_APPLICATION_CREDENTIALS env var\n//           ↓ No need to pass anything special; the client will auto-pick up the JSON key.\n// const storage = new Storage();\n\n//  Option B: explicitly provide path to your service account JSON key\n//            (uncomment & edit the line below if you want to hard-code your key path)\n// const storage = new Storage({ keyFilename: \"/home/you/keys/my-sa-key.json\" });\n\n//  Option C: pass a service‐account JSON *object* directly\n//            (not recommended unless you have the JSON blob in a flow/global variable)\n// const jsonKey = global.get(\"myServiceAccountJson\");\n// const storage = new Storage({ credentials: jsonKey });\n\n//\n//  If none of the above lines are uncommented, by default we do Option A:\n//\nconst storage = new Storage();\n\n\n// ─── ❷  Determine bucket & filename ────────────────────────────────────────────\n\nconst DEFAULT_BUCKET = \"qibb-test-bucket-francois\";\n// e.g. \"my-video-bucket\"\n\nlet bucketName = msg.bucket || DEFAULT_BUCKET;\nif (!bucketName) {\n  node.error(\"No bucket specified. Set msg.bucket or change DEFAULT_BUCKET in the code.\", msg);\n  return null;\n}\n\nif (!msg.filename || typeof msg.filename !== \"string\") {\n  node.error(\"No msg.filename provided (e.g. 'myClip.mp4')\", msg);\n  return null;\n}\n\n// We'll upload to: gs://<bucketName>/<msg.filename>\nconst destFilename = msg.filename;\n\n\n// ─── ❸  Ensure payload is a Buffer ────────────────────────────────────────────\n\nif (!msg.payload || !Buffer.isBuffer(msg.payload)) {\n  node.error(\"msg.payload must be a Buffer (binary video data). Did you wire a File node into this Function?\", msg);\n  return null;\n}\n\n\n// ─── ❹  Perform the upload ─────────────────────────────────────────────────────\n\nreturn (async () => {\n  try {\n    const bucket = storage.bucket(bucketName);\n    const file = bucket.file(destFilename);\n\n    // Set content type (adjust if your video is not MP4)\n    const writeStream = file.createWriteStream({\n      metadata: { contentType: \"video/mp4\" },\n      resumable: false   // for large files you might want resumable: true\n    });\n\n    // Pipe the in‐memory buffer into GCS\n    writeStream.end(msg.payload);\n\n    // Wait for upload completion\n    await new Promise((resolve, reject) => {\n      writeStream.on('finish', resolve);\n      writeStream.on('error', reject);\n    });\n\n    // On success, set the GCS URI for downstream nodes\n    msg.gcsUri = `gs://${bucketName}/${destFilename}`;\n\n    // (optional) if you no longer need the raw video in memory, you can delete it:\n    // delete msg.payload; \n\n    return msg;\n  }\n  catch (err) {\n    node.error(\"Upload to GCS failed: \" + err.message, msg);\n    return null;\n  }\n})();\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3957,8 +3957,8 @@
                 "module": "@google-cloud/storage"
             }
         ],
-        "x": 1040,
-        "y": 760,
+        "x": 1160,
+        "y": 520,
         "wires": [
             []
         ]
