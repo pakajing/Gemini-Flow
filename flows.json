@@ -3320,7 +3320,7 @@
         "wires": [
             [],
             [
-                "3d426f8308661af0"
+                "3b550ecf90ec5ee8"
             ],
             [
                 "d5fecac62090b2c0"
@@ -3364,12 +3364,38 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1700,
+        "x": 1820,
         "y": 500,
         "wires": [
             [
                 "5f3f4e8d583182d0"
             ]
         ]
+    },
+    {
+        "id": "3b550ecf90ec5ee8",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1665,
+        "y": 500,
+        "wires": [
+            [
+                "3d426f8308661af0"
+            ]
+        ],
+        "l": false
     }
 ]
