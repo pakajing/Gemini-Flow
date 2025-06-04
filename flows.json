@@ -191,6 +191,45 @@
         "h": 262
     },
     {
+        "id": "55b3c47cc59469f5",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[5] Get Proxies",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "378749f3f7f8db51",
+            "7e2eb0fab7bc6a69",
+            "c8e84af63e546d14",
+            "8278629e61d3b099",
+            "f4d3219677e48ac3"
+        ],
+        "x": 1634,
+        "y": 39,
+        "w": 252,
+        "h": 262
+    },
+    {
+        "id": "1eba5f0f11ebce0e",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[6] Mediatype",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "60f01beb32c02861",
+            "1912e80aa826d7f5",
+            "c17bc71b9a4caec4",
+            "c7bd865a40778920"
+        ],
+        "x": 434,
+        "y": 359,
+        "w": 252,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -946,6 +985,7 @@
         "id": "378749f3f7f8db51",
         "type": "iconik-files-client",
         "z": "bb119fa58e5b3485",
+        "g": "55b3c47cc59469f5",
         "name": "GET /v1/assets/{asset_id}/proxies/",
         "selectedOperation": {
             "method": "get",
@@ -1004,7 +1044,7 @@
             "value": "",
             "refType": "type"
         },
-        "x": 1675,
+        "x": 1695,
         "y": 200,
         "wires": [
             [
@@ -1021,8 +1061,9 @@
         "id": "7e2eb0fab7bc6a69",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "55b3c47cc59469f5",
         "name": "Debug OK: Get Proxies",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -1030,7 +1071,7 @@
         "targetType": "full",
         "statusVal": "iconik.output.statusCode",
         "statusType": "msg",
-        "x": 1675,
+        "x": 1695,
         "y": 140,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -1040,6 +1081,7 @@
         "id": "c8e84af63e546d14",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "55b3c47cc59469f5",
         "name": "Debug Error: Get Proxies",
         "active": true,
         "tosidebar": true,
@@ -1049,7 +1091,7 @@
         "targetType": "full",
         "statusVal": "iconik.output.statusCode",
         "statusType": "msg",
-        "x": 1675,
+        "x": 1695,
         "y": 260,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -1059,6 +1101,7 @@
         "id": "8278629e61d3b099",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "55b3c47cc59469f5",
         "name": "Save Proxy Url",
         "rules": [
             {
@@ -1093,7 +1136,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1755,
+        "x": 1775,
         "y": 200,
         "wires": [
             [
@@ -1106,6 +1149,7 @@
         "id": "60f01beb32c02861",
         "type": "switch",
         "z": "bb119fa58e5b3485",
+        "g": "1eba5f0f11ebce0e",
         "name": "Image or Video?",
         "property": "mediaType",
         "propertyType": "msg",
@@ -1124,8 +1168,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1295,
-        "y": 400,
+        "x": 575,
+        "y": 500,
         "wires": [
             [
                 "1912e80aa826d7f5"
@@ -1140,6 +1184,7 @@
         "id": "1912e80aa826d7f5",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "1eba5f0f11ebce0e",
         "name": "Debug OK: Iconik Image",
         "active": true,
         "tosidebar": true,
@@ -1149,8 +1194,8 @@
         "targetType": "full",
         "statusVal": "mediaType",
         "statusType": "msg",
-        "x": 1295,
-        "y": 340,
+        "x": 575,
+        "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -1159,6 +1204,7 @@
         "id": "c17bc71b9a4caec4",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "1eba5f0f11ebce0e",
         "name": "Debug OK: Iconik Video",
         "active": true,
         "tosidebar": true,
@@ -1168,10 +1214,34 @@
         "targetType": "full",
         "statusVal": "mediaType",
         "statusType": "msg",
-        "x": 1295,
-        "y": 460,
+        "x": 575,
+        "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "f4d3219677e48ac3",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "55b3c47cc59469f5",
+        "name": "[5] 📖 Doc - Get Proxies",
+        "info": "",
+        "x": 1760,
+        "y": 80,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "c7bd865a40778920",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "1eba5f0f11ebce0e",
+        "name": "[6] 📖 Doc - Mediatype",
+        "info": "",
+        "x": 560,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
     }
 ]
