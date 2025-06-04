@@ -2229,7 +2229,6 @@
         "y": 500,
         "wires": [
             [
-                "e275a6f33aae3894",
                 "8615818aaf9a2ee4"
             ]
         ],
@@ -3405,24 +3404,6 @@
         "l": false
     },
     {
-        "id": "e275a6f33aae3894",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1315,
-        "y": 560,
-        "wires": [],
-        "l": false
-    },
-    {
         "id": "6d09b7a433e66101",
         "type": "function",
         "z": "bb119fa58e5b3485",
@@ -3560,7 +3541,7 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1515,
+        "x": 1495,
         "y": 500,
         "wires": [
             [
@@ -3594,7 +3575,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Fetch Status Http",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -3602,7 +3583,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1515,
+        "x": 1495,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
