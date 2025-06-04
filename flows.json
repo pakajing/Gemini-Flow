@@ -1902,7 +1902,7 @@
         "appendNewline": false,
         "createDir": true,
         "overwriteFile": "true",
-        "encoding": "base64",
+        "encoding": "none",
         "x": 875,
         "y": 520,
         "wires": [
@@ -2029,7 +2029,7 @@
         "z": "bb119fa58e5b3485",
         "g": "5f2970019d9fe440",
         "name": "Debug OK: Write File",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
