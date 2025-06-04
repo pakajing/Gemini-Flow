@@ -851,7 +851,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "g": "fd02e1eb88ae35ab",
-        "name": "Debug OK: Check MediaType",
+        "name": "Debug Error: Check MediaType",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -936,8 +936,122 @@
         "x": 1545,
         "y": 200,
         "wires": [
-            []
+            [
+                "378749f3f7f8db51"
+            ]
         ],
+        "l": false
+    },
+    {
+        "id": "378749f3f7f8db51",
+        "type": "iconik-files-client",
+        "z": "bb119fa58e5b3485",
+        "name": "GET /v1/assets/{asset_id}/proxies/",
+        "selectedOperation": {
+            "method": "get",
+            "path": "/v1/assets/{asset_id}/proxies/",
+            "summary": "Get all asset's proxies",
+            "description": "Get all asset's proxies\n\nRequired roles:\n - can_read_proxies\n",
+            "tag": "Other",
+            "operationId": "get_v1_assets__asset_id__proxies_"
+        },
+        "api": "api-0",
+        "errorHandlingModeSelectedIndex": 1,
+        "security": [],
+        "requestContentTypeSelectedIndex": 0,
+        "responseContentTypeSelectedIndex": 0,
+        "parameters": [
+            {
+                "name": "asset_id",
+                "value": "asset_id",
+                "in": "path",
+                "refType": "msg"
+            },
+            {
+                "name": "per_page",
+                "value": "",
+                "in": "query",
+                "refType": "type"
+            },
+            {
+                "name": "generate_signed_url",
+                "value": "true",
+                "in": "query",
+                "refType": "type"
+            },
+            {
+                "name": "content_disposition",
+                "value": "attachment",
+                "in": "query",
+                "refType": "type"
+            },
+            {
+                "name": "last_id",
+                "value": "",
+                "in": "query",
+                "refType": "type"
+            }
+        ],
+        "uiFeatures": {
+            "operations": {
+                "advancedMode": true
+            }
+        },
+        "outputs": 2,
+        "output": "iconik.output",
+        "host": {
+            "type": "string",
+            "value": "",
+            "refType": "type"
+        },
+        "x": 1685,
+        "y": 200,
+        "wires": [
+            [
+                "7e2eb0fab7bc6a69"
+            ],
+            [
+                "c8e84af63e546d14"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7e2eb0fab7bc6a69",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Get Proxies",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1685,
+        "y": 140,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "c8e84af63e546d14",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: Get Proxies",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1685,
+        "y": 260,
+        "wires": [],
+        "icon": "node-red/alert.svg",
         "l": false
     }
 ]
