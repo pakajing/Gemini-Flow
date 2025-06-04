@@ -2229,7 +2229,7 @@
         "y": 520,
         "wires": [
             [
-                "4e6ceaa27a504c87"
+                "8a435b17d1851e02"
             ]
         ],
         "l": false
@@ -3818,7 +3818,7 @@
         "y": 520,
         "wires": [
             [
-                "1e3d202d3470e1a9"
+                "71eeabdc3545298c"
             ]
         ],
         "l": false
@@ -4009,5 +4009,24 @@
         "x": 1620,
         "y": 700,
         "wires": []
+    },
+    {
+        "id": "71eeabdc3545298c",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "field": "prompt",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n  \"apiKey\": \"{{{apiKey}}}\",\n  \"prompt\": \"this is a test\"\n}\n",
+        "output": "str",
+        "x": 1340,
+        "y": 620,
+        "wires": [
+            [
+                "4e6ceaa27a504c87"
+            ]
+        ]
     }
 ]
