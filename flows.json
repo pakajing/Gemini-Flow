@@ -2049,7 +2049,7 @@
         "z": "bb119fa58e5b3485",
         "g": "7b9495278bbc1acd",
         "name": "Upload File to FileAPI(Google)",
-        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\ntry {\n    const uploadResponse = await fileManager.uploadFile(msg.filename, {\n        mimeType: \"video/mp4\",\n        displayName: msg.filename\n    });\n\n    msg.payload = {\n        statusCode: 200,\n        statusInfo: \"File uploaded successfully\",\n        uploadResponse: uploadResponse\n    };\n\n    return [msg, null]; // Output 1: success\n} catch (error) {\n    node.error(\"File upload failed\", error);\n\n    msg.payload = {\n        statusCode: 500,\n        statusInfo: \"File upload failed\",\n        error: error.message\n    };\n\n    return [null, msg]; // Output 2: failure\n}\n",
+        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nreturn (async () => {\n  const fm = new GoogleAIFileManager(msg.apiKey);\n\n  const uploadResponse = await fm.uploadFile(\n    msg.filename,\n    { mimeType: \"video/mp4\", displayName: msg.filename }\n  );\n\n  msg.payload = {\n    statusCode: 200,\n    statusInfo: \"File uploaded successfully\",\n    uploadResponse\n  };\n  return [msg, null];          // 1️⃣ success output\n})().catch(err => {\n  node.error(\"File upload failed\", err);\n  msg.payload = { statusCode: 500, statusInfo: \"File upload failed\", error: err.message };\n  return [null, msg];          // 2️⃣ error output\n});\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -3822,8 +3822,8 @@
         "id": "660763a2126521a7",
         "type": "function",
         "z": "bb119fa58e5b3485",
-        "name": "Upload File to FileAPI(Google)",
-        "func": "/**\n * Gemini – robust listFiles (JSON header + exp-back-off)\n *\n *  OUTPUT 1 : msg.files   – array (may be empty)\n *  OUTPUT 2 : msg         – error path\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini List: msg.apiKey missing or invalid\", msg);\n  return [null, msg];\n}\n\nconst fetchFn = globalThis.fetch || nodeFetch;\n\n// Runtime-tuning constants\nconst MAX_ATTEMPTS = 12;      // ≃ 5 min total (1+2+4+…)\nconst BASE_DELAY = 1000;    // start at 1 s\n\nfunction sleep(ms) { return new Promise(r => setTimeout(r, ms)); }\n\nasync function fetchOnePage(key, pageToken) {\n  const url =\n    \"https://generativelanguage.googleapis.com/v1beta/files?\" +\n    \"key=\" + encodeURIComponent(key) +\n    \"&pageSize=100\" +\n    (pageToken ? \"&pageToken=\" + encodeURIComponent(pageToken) : \"\");\n\n  const res = await fetchFn(url, { headers: { \"accept\": \"application/json\" } });\n  const text = await res.text();\n\n  // convert only if status OK and body looks like JSON\n  if (res.ok && text.trim().startsWith(\"{\")) return JSON.parse(text);\n\n  // Treat every 500 with that message as retry-able\n  if (res.status === 500 || text.includes(\"Failed to convert server response\")) {\n    throw new Error(\"RETRY\");\n  }\n  throw new Error(`HTTP ${res.status}: ${text.slice(0, 120)}`);\n}\n\nasync function listAllFiles(key) {\n  let files = [], pageToken, attempt = 0;\n\n  do {\n    let success = false, body;\n    while (!success && attempt < MAX_ATTEMPTS) {\n      try {\n        body = await fetchOnePage(key, pageToken);\n        success = true;\n      } catch (e) {\n        if (e.message === \"RETRY\") {\n          attempt++;\n          const wait = BASE_DELAY * Math.pow(2, attempt);   // exp back-off\n          node.warn(`listFiles 500 – retry ${attempt}/${MAX_ATTEMPTS} in ${wait / 1000}s`);\n          await sleep(wait);\n        } else { throw e; }\n      }\n    }\n    if (!success) throw new Error(\"listFiles gave up after repeated 500s\");\n\n    files.push(...(body.files || []));\n    pageToken = body.nextPageToken;\n\n  } while (pageToken);\n\n  return files;\n}\n\nreturn listAllFiles(msg.apiKey)\n  .then(arr => { msg.files = arr; return [msg, null]; })\n  .catch(err => { node.error(`listFiles failed: ${err}`, msg); return [null, msg]; });\n",
+        "name": "List File",
+        "func": "/*  ----------  Function node “List Files”  ----------  */\n\nconst fetchFn = globalThis.fetch || nodeFetch;\nconst PROJECT   = \"123456789012\";   //  <--  your project number\nconst LOCATION  = \"us-central1\";    //  <--  or \"global\"\nconst PAGE_SIZE = 100;\n\nfunction sleep(ms){ return new Promise(r => setTimeout(r, ms)); }\n\nasync function fetchPage(key, token){\n  const url =\n    `https://generativelanguage.googleapis.com/v1beta/projects/${PROJECT}/locations/${LOCATION}/files` +\n    `?key=${encodeURIComponent(key)}&pageSize=${PAGE_SIZE}` +\n    (token ? `&pageToken=${encodeURIComponent(token)}` : \"\");\n\n  const res  = await fetchFn(url, { headers:{accept:\"application/json\"} });\n  const text = await res.text();\n\n  if (res.ok && text.trim().startsWith(\"{\")) return JSON.parse(text);\n  if (res.status === 500 || text.includes(\"Failed to convert\")) throw new Error(\"RETRY\");\n  throw new Error(`HTTP ${res.status}: ${text.slice(0,120)}`);\n}\n\nasync function listAllFiles(key){\n  const MAX=12, BASE=1000;\n  let token, out=[], attempt=0;\n  do{\n    let body, ok=false;\n    while(!ok && attempt<MAX){\n      try{ body = await fetchPage(key, token); ok=true; }\n      catch(e){\n        if(e.message===\"RETRY\"){ attempt++; const wait=BASE*2**attempt; node.warn(`listFiles retry ${attempt}/${MAX} …`); await sleep(wait); }\n        else throw e;\n      }\n    }\n    if(!ok) throw new Error(\"listFiles gave up\");\n    out.push(...(body.files||[]));\n    token = body.nextPageToken;\n  }while(token);\n  return out;\n}\n\nif(!msg.apiKey){ node.error(\"apiKey missing\",msg); return [null,msg]; }\n\nreturn listAllFiles(msg.apiKey)\n  .then(files=>{ msg.files=files; return [msg,null]; })\n  .catch(err =>{ node.error(`Gemini list failed: ${err}`,msg); return [null,msg]; });\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -3912,5 +3912,69 @@
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
+    },
+    {
+        "id": "f8d73785b5c383e7",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload File to FileAPI(Google)",
+        "func": "const { GoogleAIFileManager } = googleGenerativeAiServer;\n\nconst fileManager = new GoogleAIFileManager(msg.apiKey);\n\ntry {\n    const uploadResponse = await fileManager.uploadFile(msg.filename, {\n        mimeType: \"video/mp4\",\n        displayName: msg.filename\n    });\n\n    msg.payload = {\n        statusCode: 200,\n        statusInfo: \"File uploaded successfully\",\n        uploadResponse: uploadResponse\n    };\n\n    return [msg, null]; // Output 1: success\n} catch (error) {\n    node.error(\"File upload failed\", error);\n\n    msg.payload = {\n        statusCode: 500,\n        statusInfo: \"File upload failed\",\n        error: error.message\n    };\n\n    return [null, msg]; // Output 2: failure\n}\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "googleGenerativeAiServer",
+                "module": "@google/generative-ai/server"
+            },
+            {
+                "var": "googleGenerativeAi",
+                "module": "@google/generative-ai"
+            }
+        ],
+        "x": 1120,
+        "y": 691.25,
+        "wires": [
+            [],
+            []
+        ],
+        "l": false,
+        "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "1e3d202d3470e1a9",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "List File",
+        "func": "/**\n * Gemini – robust listFiles (JSON header + exp-back-off)\n *\n *  OUTPUT 1 : msg.files   – array (may be empty)\n *  OUTPUT 2 : msg         – error path\n */\n\nif (!msg.apiKey || typeof msg.apiKey !== \"string\") {\n  node.error(\"Gemini List: msg.apiKey missing or invalid\", msg);\n  return [null, msg];\n}\n\nconst fetchFn = globalThis.fetch || nodeFetch;\n\n// Runtime-tuning constants\nconst MAX_ATTEMPTS = 12;      // ≃ 5 min total (1+2+4+…)\nconst BASE_DELAY = 1000;    // start at 1 s\n\nfunction sleep(ms) { return new Promise(r => setTimeout(r, ms)); }\n\nasync function fetchOnePage(key, pageToken) {\n  const url =\n    \"https://generativelanguage.googleapis.com/v1beta/files?\" +\n    \"key=\" + encodeURIComponent(key) +\n    \"&pageSize=100\" +\n    (pageToken ? \"&pageToken=\" + encodeURIComponent(pageToken) : \"\");\n\n  const res = await fetchFn(url, { headers: { \"accept\": \"application/json\" } });\n  const text = await res.text();\n\n  // convert only if status OK and body looks like JSON\n  if (res.ok && text.trim().startsWith(\"{\")) return JSON.parse(text);\n\n  // Treat every 500 with that message as retry-able\n  if (res.status === 500 || text.includes(\"Failed to convert server response\")) {\n    throw new Error(\"RETRY\");\n  }\n  throw new Error(`HTTP ${res.status}: ${text.slice(0, 120)}`);\n}\n\nasync function listAllFiles(key) {\n  let files = [], pageToken, attempt = 0;\n\n  do {\n    let success = false, body;\n    while (!success && attempt < MAX_ATTEMPTS) {\n      try {\n        body = await fetchOnePage(key, pageToken);\n        success = true;\n      } catch (e) {\n        if (e.message === \"RETRY\") {\n          attempt++;\n          const wait = BASE_DELAY * Math.pow(2, attempt);   // exp back-off\n          node.warn(`listFiles 500 – retry ${attempt}/${MAX_ATTEMPTS} in ${wait / 1000}s`);\n          await sleep(wait);\n        } else { throw e; }\n      }\n    }\n    if (!success) throw new Error(\"listFiles gave up after repeated 500s\");\n\n    files.push(...(body.files || []));\n    pageToken = body.nextPageToken;\n\n  } while (pageToken);\n\n  return files;\n}\n\nreturn listAllFiles(msg.apiKey)\n  .then(arr => { msg.files = arr; return [msg, null]; })\n  .catch(err => { node.error(`listFiles failed: ${err}`, msg); return [null, msg]; });\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "googleGenerativeAiServer",
+                "module": "@google/generative-ai/server"
+            },
+            {
+                "var": "googleGenerativeAi",
+                "module": "@google/generative-ai"
+            },
+            {
+                "var": "nodeFetch",
+                "module": "node-fetch"
+            }
+        ],
+        "x": 1355,
+        "y": 720,
+        "wires": [
+            [],
+            []
+        ],
+        "l": false,
+        "info": "# Google AI File Upload\n\n## Purpose\nThis function node uploads a file to Google AI services using the `GoogleAIFileManager` class. It allows specifying the file's MIME type and display name during the upload process.\n\n## Input\n- `msg.apiKey`: The API key for authenticating with Google AI services.\n- `msg.filename`: The name of the file to be uploaded.\n\n## Output\n- `msg.payload`: Contains the response from the file upload operation.\n  - On success: The upload response from Google AI.\n  - On failure: An error object with details about the failure.\n\n## Logic\n1. Import the `GoogleAIFileManager` class from `googleGenerativeAiServer`.\n2. Initialize the file manager with the provided API key (`msg.apiKey`).\n3. Use the `uploadFile` method to upload the file:\n   - Specify the MIME type as `video/mp4`.\n   - Use the filename (`msg.filename`) as the display name.\n4. If the upload is successful:\n   - Set the upload response as `msg.payload`.\n   - Return the updated `msg` object.\n5. If an error occurs:\n   - Log the error using `node.error`.\n   - Set an error object in `msg.payload` with details about the failure.\n   - Return the updated `msg` object.\n\n## Notes\n> Ensure that the `msg.apiKey` and `msg.filename` fields are provided in the input message. Missing fields will result in an error.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
     }
 ]
