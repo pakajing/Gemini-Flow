@@ -3746,7 +3746,7 @@
         "limitTime": "60",
         "time": "wla933c2eae34c402a",
         "timeType": "msg",
-        "x": 1605,
+        "x": 1595,
         "y": 500,
         "wires": [
             [
@@ -3771,7 +3771,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1605,
+        "x": 1595,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3790,7 +3790,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1605,
+        "x": 1595,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
