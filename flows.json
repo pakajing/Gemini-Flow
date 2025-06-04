@@ -3643,7 +3643,7 @@
         "y": 500,
         "wires": [
             [
-                "41dc5b97da49fd1d"
+                "28d6c48d41f27f7f"
             ]
         ],
         "l": false
@@ -3669,7 +3669,7 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1415,
+        "x": 1475,
         "y": 500,
         "wires": [
             [
@@ -3695,7 +3695,7 @@
         "targetType": "full",
         "statusVal": "attempt",
         "statusType": "msg",
-        "x": 1415,
+        "x": 1475,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3714,10 +3714,68 @@
         "targetType": "full",
         "statusVal": "attempt",
         "statusType": "msg",
-        "x": 1415,
+        "x": 1475,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "28d6c48d41f27f7f",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "parts",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1405,
+        "y": 500,
+        "wires": [
+            [
+                "41dc5b97da49fd1d"
+            ]
+        ],
         "l": false
     }
 ]
