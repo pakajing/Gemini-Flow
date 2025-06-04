@@ -1285,7 +1285,8 @@
         "y": 520,
         "wires": [
             [
-                "e3df322b4395c4b8"
+                "e3df322b4395c4b8",
+                "a2ea3d519a01e1a1"
             ]
         ],
         "l": false
@@ -1328,10 +1329,30 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1120,
+        "x": 1035,
         "y": 520,
         "wires": [
             []
-        ]
+        ],
+        "l": false
+    },
+    {
+        "id": "a2ea3d519a01e1a1",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Fetch Proxies",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 775,
+        "y": 460,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
