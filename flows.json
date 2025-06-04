@@ -4321,7 +4321,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Save to Disk",
-        "func": "// fs is imported via Setup tab\nconst path = \"temp_video.mp4\";\n\nfs.writeFileSync(path, msg.payload);\nmsg.payload = `Image saved to ${path}`;\n\nreturn msg;\n",
+        "func": "// fs is declared in Setup tab\nconst path = \"/temp_video.mp4\";\nfs.writeFileSync(path, msg.payload);  // binary buffer\nmsg.payload = `Saved to ${path}`;\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -4636,6 +4636,69 @@
         "wires": [
             [
                 "7a893d1cfe2f891b"
+            ]
+        ]
+    },
+    {
+        "id": "766a3fcca5fb2b44",
+        "type": "exec",
+        "z": "bb119fa58e5b3485",
+        "command": "ls -lh /temp_video.mp4",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 980,
+        "y": 1140,
+        "wires": [
+            [
+                "e98a084b941a301b"
+            ],
+            [
+                "e98a084b941a301b"
+            ],
+            [
+                "e98a084b941a301b"
+            ]
+        ]
+    },
+    {
+        "id": "e98a084b941a301b",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "b31beec551160cc2",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "",
+        "x": 710,
+        "y": 1100,
+        "wires": [
+            [
+                "766a3fcca5fb2b44"
             ]
         ]
     }
