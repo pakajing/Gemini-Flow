@@ -3410,7 +3410,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
