@@ -3088,14 +3088,14 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1470,
-        "y": 680,
+        "x": 1475,
+        "y": 500,
         "wires": [
             [
-                "8d1a55d90ddc1d41",
-                "56a46021eca67fe3"
+                "cd7be5c741a1d232"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "8d1a55d90ddc1d41",
@@ -3285,6 +3285,25 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1355,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "cd7be5c741a1d232",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Gemini file poll",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1475,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
