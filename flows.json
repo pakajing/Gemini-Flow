@@ -3810,7 +3810,7 @@
         "to": "",
         "reg": false,
         "x": 1395,
-        "y": 500,
+        "y": 520,
         "wires": [
             [
                 "1e3d202d3470e1a9"
@@ -3832,7 +3832,7 @@
         "statusVal": "files",
         "statusType": "msg",
         "x": 1455,
-        "y": 440,
+        "y": 460,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -3870,7 +3870,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1455,
-        "y": 560,
+        "y": 580,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -3901,7 +3901,7 @@
             }
         ],
         "x": 1455,
-        "y": 500,
+        "y": 520,
         "wires": [
             [
                 "0ab93d4988fe8e09"
