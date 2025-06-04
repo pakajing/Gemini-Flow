@@ -2207,7 +2207,7 @@
         "y": 500,
         "wires": [
             [
-                "d8623f819ca6d58b"
+                "2609e6172b5089e6"
             ]
         ],
         "l": false
@@ -2297,23 +2297,6 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
-    },
-    {
-        "id": "d8623f819ca6d58b",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1040,
-        "y": 680,
-        "wires": []
     },
     {
         "id": "e4cfda2ae41f5038",
@@ -2629,5 +2612,42 @@
                 "16148f21184c4cb9"
             ]
         ]
+    },
+    {
+        "id": "2609e6172b5089e6",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "function 1",
+        "func": "// Hardcoded test values (override env and global context)\nconst highlights = true;\nconst keywords = false;\nconst summary = true;\nconst captioning = true;\nconst actionRecognition = false;\n\nconst selectedOptions = [];\n\n// Hardcoded model for testing\nmsg.model = \"models/gemini-pro-vision\"; // replace with your actual model ID if needed\n\n// Determine the selected options\nif (highlights) {\n    selectedOptions.push(\"Highlights\");\n}\nif (keywords) {\n    selectedOptions.push(\"Keywords\");\n}\nif (summary) {\n    selectedOptions.push(\"Summary\");\n}\nif (captioning) {\n    selectedOptions.push(\"Video Captioning\");\n}\nif (actionRecognition) {\n    selectedOptions.push(\"Video Action Recognition\");\n}\n\nmsg.selectedOptions = selectedOptions;\n\n// Validate that at least one option is selected\nif (!highlights && !keywords && !summary) {\n    const errorMsg = \"You must select at least one option\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\n// Validate the model presence\nif (!msg.model) {\n    const errorMsg = \"You must provide a Gemini Model\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\nreturn [msg, null];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 720,
+        "wires": [
+            [
+                "d8623f819ca6d58b"
+            ]
+        ]
+    },
+    {
+        "id": "d8623f819ca6d58b",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 720,
+        "wires": []
     }
 ]
