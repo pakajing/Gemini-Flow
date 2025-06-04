@@ -2607,7 +2607,7 @@
         "finalize": "",
         "libs": [],
         "x": 575,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "c6480ce55b348f13",
@@ -2632,7 +2632,7 @@
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
         "x": 755,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "8f14f2d0ab60c0d3"
@@ -2653,7 +2653,7 @@
         "finalize": "",
         "libs": [],
         "x": 815,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "26b4a64ae183c139"
@@ -2675,7 +2675,7 @@
         "statusVal": "selectedOptions",
         "statusType": "msg",
         "x": 575,
-        "y": 660,
+        "y": 840,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2694,7 +2694,7 @@
         "statusVal": "selectedOptions",
         "statusType": "msg",
         "x": 575,
-        "y": 780,
+        "y": 960,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2713,7 +2713,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1560,
-        "y": 720,
+        "y": 900,
         "wires": []
     },
     {
@@ -2747,7 +2747,7 @@
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
         "x": 895,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "7dea554c6ac7de37",
@@ -2786,7 +2786,7 @@
         "to": "",
         "reg": false,
         "x": 1095,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "41c5a0c10342a1bc"
@@ -2817,8 +2817,8 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1100,
-        "y": 960,
+        "x": 1080,
+        "y": 1180,
         "wires": [
             [
                 "5b5d6bb37b9005f6"
@@ -2845,8 +2845,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1260,
-        "y": 960,
+        "x": 1240,
+        "y": 1180,
         "wires": [
             [
                 "90bae9be7c39ac67"
@@ -2868,8 +2868,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1500,
-        "y": 1000,
+        "x": 1480,
+        "y": 1220,
         "wires": [
             []
         ]
@@ -2886,8 +2886,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1510,
-        "y": 920,
+        "x": 1490,
+        "y": 1140,
         "wires": [
             []
         ]
@@ -2916,7 +2916,7 @@
             }
         ],
         "x": 1240,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "0a00ea4d7c10bef4"
@@ -2944,7 +2944,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1300,
-        "y": 800,
+        "y": 980,
         "wires": [
             [],
             []
@@ -2964,7 +2964,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 895,
-        "y": 860,
+        "y": 1040,
         "wires": [],
         "l": false
     },
@@ -2980,7 +2980,7 @@
         "template": "{\n    \"contents\": [\n        {\n            \"parts\": [\n                {\n                    \"fileData\": {\n                        \"mimeType\": \"{{{mediaType}}}\",\n                        \"fileUri\": \"{{{fileUri}}}\"\n                    }\n                }\n            ],\n            \"role\": \"user\"\n        },\n        {\n            \"parts\": [\n                {\n                    \"text\": \"{{{userPrompt}}}\"\n                }\n            ],\n            \"role\": \"user\"\n        }\n    ]\n}",
         "output": "json",
         "x": 1045,
-        "y": 820,
+        "y": 1000,
         "wires": [
             []
         ],
@@ -2999,7 +2999,7 @@
         "finalize": "",
         "libs": [],
         "x": 975,
-        "y": 720,
+        "y": 900,
         "wires": [
             [
                 "6f1cabb71c4652da"
@@ -3037,7 +3037,7 @@
         "to": "",
         "reg": false,
         "x": 1105,
-        "y": 780,
+        "y": 960,
         "wires": [
             []
         ],
@@ -3058,6 +3058,193 @@
         "statusType": "auto",
         "x": 1380,
         "y": 500,
+        "wires": []
+    },
+    {
+        "id": "f1b6a7dfc122ec1d",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Init Gemini file poll",
+        "func": "// locate the resource name, e.g. \"files/89ui0j8x6ybo\"\nconst fileName = msg.uploadResponse?.fileName?.uploadResponse?.file?.name ||\n                 msg.payload?.uploadResponse?.file?.name ||\n                 msg.fileName || \"\";\nif (!fileName) {\n    node.error(\"file.name not found in message\", msg);\n    return null;\n}\nmsg.fileName = fileName;\nmsg.url = `https://generativelanguage.googleapis.com/v1beta/${fileName}`;\nmsg.attempt = 0;           // reset counter\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 680,
+        "wires": [
+            [
+                "5f3f4e8d583182d0",
+                "474074ae169349ec"
+            ]
+        ]
+    },
+    {
+        "id": "5f3f4e8d583182d0",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Get file state",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
+        "x": 1470,
+        "y": 680,
+        "wires": [
+            [
+                "8d1a55d90ddc1d41"
+            ]
+        ]
+    },
+    {
+        "id": "8d1a55d90ddc1d41",
+        "type": "switch",
+        "z": "bb119fa58e5b3485",
+        "name": "State ACTIVE?",
+        "property": "payload.file.state",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ACTIVE",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 1660,
+        "y": 680,
+        "wires": [
+            [
+                "9d519008cd96668f"
+            ],
+            [
+                "4e23486c3eeb2ae0"
+            ]
+        ]
+    },
+    {
+        "id": "4e23486c3eeb2ae0",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "++attempt",
+        "func": "msg.attempt = (msg.attempt || 0) + 1;\nreturn msg;",
+        "outputs": 1,
+        "x": 1850,
+        "y": 680,
+        "wires": [
+            [
+                "340f70f7d4e36db0"
+            ]
+        ]
+    },
+    {
+        "id": "340f70f7d4e36db0",
+        "type": "switch",
+        "z": "bb119fa58e5b3485",
+        "name": "max 30 tries?",
+        "property": "attempt",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "30",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 2030,
+        "y": 680,
+        "wires": [
+            [
+                "bcd28e87e37b32b0",
+                "9a98049726aab246"
+            ]
+        ]
+    },
+    {
+        "id": "9a98049726aab246",
+        "type": "delay",
+        "z": "bb119fa58e5b3485",
+        "name": "Wait 5s",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "",
+        "nbRateUnits": "",
+        "randomFirst": "",
+        "randomLast": "",
+        "randomUnits": "seconds",
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1480,
+        "y": 600,
+        "wires": [
+            [
+                "5f3f4e8d583182d0"
+            ]
+        ]
+    },
+    {
+        "id": "474074ae169349ec",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "bcd28e87e37b32b0",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Not Ready",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2030,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "9d519008cd96668f",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Ready",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1850,
+        "y": 620,
         "wires": []
     }
 ]
