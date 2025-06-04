@@ -3870,7 +3870,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1435,
-        "y": 700,
+        "y": 660,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
