@@ -450,7 +450,7 @@
             "20107de6bd37a1b5",
             "c6316525076d23bd"
         ],
-        "x": 1394,
+        "x": 1074,
         "y": 359,
         "w": 252,
         "h": 242
@@ -2065,7 +2065,7 @@
                 "module": "@google/generative-ai"
             }
         ],
-        "x": 1495,
+        "x": 1175,
         "y": 500,
         "wires": [
             [
@@ -2093,7 +2093,7 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1495,
+        "x": 1175,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -2149,7 +2149,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1435,
+        "x": 1115,
         "y": 500,
         "wires": [
             [
@@ -2184,7 +2184,7 @@
         "targetType": "full",
         "statusVal": "payload.statusCode",
         "statusType": "msg",
-        "x": 1495,
+        "x": 1175,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -2225,7 +2225,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1595,
+        "x": 1275,
         "y": 500,
         "wires": [
             [
@@ -2315,7 +2315,7 @@
         "g": "7b9495278bbc1acd",
         "name": "[8] 📖 Doc - Upload File",
         "info": "",
-        "x": 1520,
+        "x": 1200,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3809,7 +3809,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1715,
+        "x": 1395,
         "y": 500,
         "wires": [
             [
@@ -3831,7 +3831,7 @@
         "targetType": "full",
         "statusVal": "files",
         "statusType": "msg",
-        "x": 1775,
+        "x": 1455,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3869,7 +3869,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1775,
+        "x": 1455,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3900,7 +3900,7 @@
                 "module": "node-fetch"
             }
         ],
-        "x": 1775,
+        "x": 1455,
         "y": 500,
         "wires": [
             [
