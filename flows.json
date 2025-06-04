@@ -3969,7 +3969,7 @@
         "finalize": "",
         "libs": [
             {
-                "var": "GoogleGenai",
+                "var": "GoogleGenAI",
                 "module": "@google/genai"
             }
         ],
