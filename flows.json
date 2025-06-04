@@ -4141,7 +4141,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Prepare Upload Request",
-        "func": "// Configure your image path and API key\nconst filePath = \"/home/node-red/sample-image.png\"; // adjust this path\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nconst fs = require(\"fs\");\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"application/octet-stream\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;",
+        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = \"/home/node-red/sample-image.png\";\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"application/octet-stream\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
