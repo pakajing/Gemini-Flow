@@ -2629,7 +2629,8 @@
         "y": 720,
         "wires": [
             [
-                "c6480ce55b348f13"
+                "c6480ce55b348f13",
+                "aa06e61eb146281c"
             ],
             [
                 "7d223f269faec961"
@@ -2649,13 +2650,14 @@
         "syntax": "plain",
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
-        "x": 800,
-        "y": 820,
+        "x": 675,
+        "y": 720,
         "wires": [
             [
                 "8f14f2d0ab60c0d3"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "8f14f2d0ab60c0d3",
@@ -2664,15 +2666,17 @@
         "name": "Set Formats (from Template)",
         "func": "const selectedOptions = msg.selectedOptions;\nconst allFormats = msg.payload.formats || {};\nconst outputFormats = {};\n\n// Build output based on selected options\nfor (const option of selectedOptions) {\n    if (allFormats[option]) {\n        const key = option.toLowerCase().replace(/ /g, \"\");\n        outputFormats[key] = allFormats[option];\n    }\n}\n\n// Always add noResultsFormat\nmsg.noResultsFormat = JSON.stringify(msg.payload.noResultsFormat || [], null, 2);\nmsg.formats = JSON.stringify(outputFormats, null, 2);\n\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 820,
+        "x": 735,
+        "y": 720,
         "wires": [
             []
-        ]
+        ],
+        "l": false
     },
     {
         "id": "c6480ce55b348f13",
