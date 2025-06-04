@@ -787,7 +787,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 705,
+        "x": 715,
         "y": 420,
         "wires": [
             [
@@ -813,7 +813,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 705,
+        "x": 715,
         "y": 480,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -832,7 +832,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 705,
+        "x": 715,
         "y": 360,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
