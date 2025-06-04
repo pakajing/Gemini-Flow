@@ -4890,7 +4890,10 @@
         "name": "Trigger Download",
         "props": [],
         "repeat": "",
+        "crontab": "",
         "once": false,
+        "onceDelay": "",
+        "topic": "",
         "x": 180,
         "y": 1260,
         "wires": [
@@ -4932,7 +4935,7 @@
         "filename": "/tmp/temp_video.mp4",
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 570,
+        "x": 610,
         "y": 1260,
         "wires": [
             [
@@ -4960,7 +4963,7 @@
         "active": true,
         "tosidebar": true,
         "complete": "true",
-        "x": 580,
+        "x": 630,
         "y": 1320,
         "wires": []
     }
