@@ -4100,7 +4100,7 @@
         "z": "bb119fa58e5b3485",
         "name": "Call Gemini Files GET",
         "method": "use",
-        "ret": "obj",
+        "ret": "txt",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
@@ -4109,14 +4109,7 @@
         "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "Content-Type",
-                "valueType": "other",
-                "valueValue": "application/json"
-            }
-        ],
+        "headers": [],
         "x": 1500,
         "y": 720,
         "wires": [
