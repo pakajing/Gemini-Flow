@@ -86,7 +86,7 @@
         ],
         "x": 54,
         "y": 39,
-        "w": 352,
+        "w": 362,
         "h": 242
     },
     {
@@ -122,8 +122,8 @@
             "inject_asset_id",
             "template_create_payload",
             "187792eede51b3c7",
-            "046ed01859c753b1",
-            "4ba858c9bd77a3a7"
+            "4ba858c9bd77a3a7",
+            "6ce865beef8237c8"
         ],
         "x": 54,
         "y": 299,
@@ -448,7 +448,7 @@
         "y": 440,
         "wires": [
             [
-                "046ed01859c753b1"
+                "6ce865beef8237c8"
             ]
         ],
         "l": false
@@ -610,27 +610,6 @@
         "info": "# Bearer Slack\n\n## Purpose\nThis function node sets the `Authorization` header in the `msg` object with a Bearer token for Slack API requests.\n\n## Input\n- The `msg` object is passed into the node.\n- The Slack token is retrieved from the global context under `SECRETS.slack_token`.\n\n## Output\n- The `msg` object is returned with an updated `headers` property containing the `Authorization` header.\n\n## Logic\n1. Retrieve the Slack token from the global context (`SECRETS.slack_token`).\n2. Check if the token exists:\n   - If not, log an error and stop further processing.\n3. Add the `Authorization` header to the `msg.headers` object with the Bearer token.\n4. Return the modified `msg` object.\n\n## Notes\n> Ensure that the Slack token is securely stored in the global `SECRETS` object and accessible to this node.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
     },
     {
-        "id": "046ed01859c753b1",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "g": "d29e7cdb2d5dd084",
-        "name": "",
-        "rules": [],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 255,
-        "y": 440,
-        "wires": [
-            [
-                "4ba858c9bd77a3a7"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "4ba858c9bd77a3a7",
         "type": "debug",
         "z": "bb119fa58e5b3485",
@@ -670,11 +649,40 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 365,
+        "x": 375,
         "y": 180,
         "wires": [
             [
                 "80369f7995b0a4cc"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "6ce865beef8237c8",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "g": "d29e7cdb2d5dd084",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "iconik.webhook",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 255,
+        "y": 440,
+        "wires": [
+            [
+                "4ba858c9bd77a3a7"
             ]
         ],
         "l": false
