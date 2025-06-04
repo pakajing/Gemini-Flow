@@ -4422,7 +4422,8 @@
         "y": 760,
         "wires": [
             [
-                "extract_upload_url"
+                "extract_upload_url",
+                "3acda589b43d5291"
             ]
         ]
     },
@@ -4482,6 +4483,23 @@
         "targetType": "full",
         "x": 1840,
         "y": 760,
+        "wires": []
+    },
+    {
+        "id": "3acda589b43d5291",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "upload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 660,
         "wires": []
     }
 ]
