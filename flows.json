@@ -4263,6 +4263,7 @@
         "tls": "",
         "persist": false,
         "proxy": "",
+        "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
         "headers": [],
@@ -4279,8 +4280,9 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Save to Disk",
-        "func": "const fs = require(\"fs\");\nconst path = \"/home/node-red/sample-image.png\";\n\nfs.writeFileSync(path, msg.payload);\nmsg.payload = `Image saved to ${path}`;\n\nreturn msg;",
+        "func": "// fs is imported via Setup tab\nconst path = \"/home/node-red/sample-image.png\";\n\nfs.writeFileSync(path, msg.payload);\nmsg.payload = `Image saved to ${path}`;\n\nreturn msg;\n",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -4311,7 +4313,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1410,
+        "x": 1420,
         "y": 840,
         "wires": []
     }
