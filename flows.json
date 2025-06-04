@@ -4137,30 +4137,11 @@
         "wires": []
     },
     {
-        "id": "edbcf6f28f3fcd9d",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "name": "Start Upload",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 850,
-        "y": 840,
-        "wires": [
-            [
-                "fd6f3ec4e3d5c64f"
-            ]
-        ]
-    },
-    {
         "id": "fd6f3ec4e3d5c64f",
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Prepare Upload Request",
-        "func": "// Configure your image path and API key\nconst filePath = \"/home/node-red/sample-image.png\"; // adjust this path\nconst apiKey = \"YOUR_API_KEY_HERE\";\n\nconst fs = require(\"fs\");\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"application/octet-stream\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;",
+        "func": "// Configure your image path and API key\nconst filePath = \"/home/node-red/sample-image.png\"; // adjust this path\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nconst fs = require(\"fs\");\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"application/octet-stream\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -4220,5 +4201,35 @@
         "x": 1490,
         "y": 840,
         "wires": []
+    },
+    {
+        "id": "b4a84f425b07ea82",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "Inject API key and fileName",
+        "props": [
+            {
+                "p": "fileName",
+                "v": "files/qy9igtslp6kp",
+                "vt": "str"
+            },
+            {
+                "p": "apiKey",
+                "v": "AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 830,
+        "y": 840,
+        "wires": [
+            [
+                "fd6f3ec4e3d5c64f"
+            ]
+        ]
     }
 ]
