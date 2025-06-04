@@ -69,7 +69,7 @@
             "187792eede51b3c7"
         ],
         "x": 54,
-        "y": 299,
+        "y": 319,
         "w": 272,
         "h": 142
     },
@@ -232,31 +232,6 @@
         "l": false
     },
     {
-        "id": "80b502eb86aee4bc",
-        "type": "iconik-auth",
-        "z": "bb119fa58e5b3485",
-        "g": "4e89c03817358d25",
-        "name": "",
-        "ICONIK_BASE_URL": "https://app.iconik.io",
-        "ICONIK_EMAIL": "r.holzhause@techtriq.com",
-        "ICONIK_PASSWORD": {
-            "type": "cred",
-            "value": "ftoeK1ytV9iG89GEFZagD2vHfbLncmuA0t6uyzrvTEtoBTRPVzCB6br8UM3jvPzk"
-        },
-        "l": false,
-        "x": 495,
-        "y": 180,
-        "wires": [
-            [
-                "84e099d8f84ae022",
-                "26f513247a55ca64"
-            ],
-            [
-                "f4319404be2c2735"
-            ]
-        ]
-    },
-    {
         "id": "f4319404be2c2735",
         "type": "debug",
         "z": "bb119fa58e5b3485",
@@ -327,7 +302,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 175,
-        "y": 400,
+        "y": 420,
         "wires": [
             [
                 "template_create_payload"
@@ -348,7 +323,7 @@
         "template": "{\n  \"user_id\": \"49c7bd08-0e06-11f0-a1f8-a6363a946122\",\n  \"system_domain_id\": \"9e392c9c-e28e-11ec-8906-82ba1484052f\",\n  \"context\": \"ASSET\",\n  \"action_id\": \"66ed6750-459f-11ef-afd9-1ec546efc4f6\",\n  \"asset_ids\": [\"{{asset_id}}\"],\n  \"collection_ids\": [],\n  \"saved_search_ids\": [],\n  \"metadata_view_id\": null,\n  \"metadata_values\": null,\n  \"date_created\": \"2025-06-04T07:20:34.362212\"\n}",
         "output": "str",
         "x": 235,
-        "y": 400,
+        "y": 420,
         "wires": [
             [
                 "80369f7995b0a4cc"
@@ -364,8 +339,33 @@
         "name": "[0] 📖 Doc - Manual payload",
         "info": "",
         "x": 190,
-        "y": 340,
+        "y": 360,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "80b502eb86aee4bc",
+        "type": "iconik-auth",
+        "z": "bb119fa58e5b3485",
+        "g": "4e89c03817358d25",
+        "name": "",
+        "ICONIK_BASE_URL": "https://app.iconik.io",
+        "ICONIK_EMAIL": "r.holzhause@techtriq.com",
+        "ICONIK_PASSWORD": {
+            "type": "cred",
+            "value": "ftoeK1ytV9iG89GEFZagD2vHfbLncmuA0t6uyzrvTEtoBTRPVzCB6br8UM3jvPzk"
+        },
+        "x": 495,
+        "y": 180,
+        "wires": [
+            [
+                "84e099d8f84ae022",
+                "26f513247a55ca64"
+            ],
+            [
+                "f4319404be2c2735"
+            ]
+        ],
+        "l": false
     }
 ]
