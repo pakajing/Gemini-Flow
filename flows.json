@@ -1456,7 +1456,8 @@
         "y": 520,
         "wires": [
             [
-                "5eedb1308b3932a6"
+                "5eedb1308b3932a6",
+                "f5a57c6f330d172d"
             ],
             [
                 "43b5ac776f95284a"
@@ -1476,7 +1477,7 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "statusCode",
+        "statusVal": "payload.statusCode",
         "statusType": "msg",
         "x": 1135,
         "y": 460,
@@ -1535,12 +1536,36 @@
         "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "statusCode",
+        "statusVal": "payload.statusCode",
         "statusType": "msg",
         "x": 1135,
         "y": 580,
         "wires": [],
         "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "f5a57c6f330d172d",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1225,
+        "y": 520,
+        "wires": [
+            []
+        ],
         "l": false
     }
 ]
