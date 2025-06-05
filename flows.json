@@ -543,6 +543,29 @@
         "h": 242
     },
     {
+        "id": "0c30a2997401eb5a",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[9] Get File",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "737e8c1dced31d50",
+            "8d519cd6a3836e1c",
+            "24ec17f135c032fd",
+            "f7237e0709b112c6",
+            "de764c04e9e20758",
+            "87ba8df0de8b710d",
+            "49237eea06f5ac58",
+            "c60188f556a94408"
+        ],
+        "x": 1434,
+        "y": 359,
+        "w": 322,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -3525,6 +3548,7 @@
         "id": "737e8c1dced31d50",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
@@ -3547,7 +3571,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1535,
+        "x": 1475,
         "y": 500,
         "wires": [
             [
@@ -3560,6 +3584,7 @@
         "id": "8d519cd6a3836e1c",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Build Gemini GET Request with Status Outputs",
         "func": "// Construct Gemini File GET URL with API key\nconst baseUrl = \"https://generativelanguage.googleapis.com/v1beta/\";\nconst filename = msg.filename;\nconst apiKey = msg.apiKey;\n\ntry {\n    // Validate required inputs\n    if (!filename || !apiKey) {\n        throw new Error(\"Missing required parameters: filename or apiKey\");\n    }\n\n    // Build the GET request\n    msg.method = \"GET\";\n    msg.url = `${baseUrl}${filename}?key=${apiKey}`;\n    msg.headers = {\n        \"Accept\": \"application/json\"\n    };\n\n    // Indicate success and send to the first output\n    msg.statusCode = 200;\n    return [msg, null];\n} catch (error) {\n    // Handle errors, such as missing parameters\n    msg.payload = `❌ Error building GET request: ${error.message}`;\n    msg.statusCode = 400;\n    node.error(msg.payload, msg);\n    return [null, msg]; // Send to the second output for errors\n}",
         "outputs": 2,
@@ -3568,7 +3593,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1595,
+        "x": 1535,
         "y": 500,
         "wires": [
             [
@@ -3586,6 +3611,7 @@
         "id": "24ec17f135c032fd",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Debug OK: Payload Get File",
         "active": false,
         "tosidebar": true,
@@ -3595,7 +3621,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1595,
+        "x": 1535,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3605,6 +3631,7 @@
         "id": "f7237e0709b112c6",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Debug Error: Payload Get File",
         "active": true,
         "tosidebar": true,
@@ -3614,7 +3641,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1595,
+        "x": 1535,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3624,6 +3651,7 @@
         "id": "de764c04e9e20758",
         "type": "http request",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Call Gemini Files GET",
         "method": "use",
         "ret": "obj",
@@ -3636,7 +3664,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1695,
+        "x": 1635,
         "y": 500,
         "wires": [
             [
@@ -3663,8 +3691,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1915,
-        "y": 500,
+        "x": 2025,
+        "y": 380,
         "wires": [
             []
         ],
@@ -3674,9 +3702,10 @@
         "id": "87ba8df0de8b710d",
         "type": "comment",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "[9] 📖 Doc - Get File",
         "info": "",
-        "x": 1650,
+        "x": 1590,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3685,6 +3714,7 @@
         "id": "49237eea06f5ac58",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Debug OK: Get File",
         "active": false,
         "tosidebar": true,
@@ -3694,7 +3724,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1695,
+        "x": 1635,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3704,6 +3734,7 @@
         "id": "c60188f556a94408",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "0c30a2997401eb5a",
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
@@ -3764,11 +3795,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1765,
+        "x": 1715,
         "y": 500,
         "wires": [
             [
-                "11903d3ecab11bc8"
+                "d4e5f6a7b8c90123"
             ]
         ],
         "l": false
@@ -3786,10 +3817,41 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1895,
-        "y": 600,
+        "x": 1955,
+        "y": 500,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "d4e5f6a7b8c90123",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Handle File State",
+        "func": "const fileState = msg.gemini.getFile.state;\n\nswitch (fileState) {\n    case \"PROCESSING\":\n        msg.payload.statusCode = 102; // Processing\n        return [msg, null, null, null];\n    case \"ACTIVE\":\n        msg.payload.statusCode = 200; // OK\n        return [null, msg, null, null];\n    case \"FAILED\":\n        msg.payload.statusCode = 500; // Server Error\n        return [null, null, msg, null];\n    case \"STATE_UNSPECIFIED\":\n    default:\n        msg.payload.statusCode = 400; // Bad Request / Unknown\n        return [null, null, null, msg];\n}",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1835,
+        "y": 500,
+        "wires": [
+            [
+                "11903d3ecab11bc8"
+            ],
+            [
+                "11903d3ecab11bc8"
+            ],
+            [
+                "11903d3ecab11bc8"
+            ],
+            [
+                "11903d3ecab11bc8"
+            ]
+        ],
+        "l": false,
+        "info": "# Handle File State\n\n## Purpose\nThis function processes the state of a file and routes the message to one of four outputs based on the state. It also assigns an appropriate HTTP status code to the message payload.\n\n## Input\n- `msg.payload.state`: The state of the file. Possible values:\n  - `PROCESSING`\n  - `ACTIVE`\n  - `FAILED`\n  - `STATE_UNSPECIFIED` (or any other unknown state)\n\n## Output\n- **Output 1 (Processing)**:\n  - `msg.payload.statusCode`: `102` (Processing).\n- **Output 2 (Active)**:\n  - `msg.payload.statusCode`: `200` (OK).\n- **Output 3 (Failed)**:\n  - `msg.payload.statusCode`: `500` (Server Error).\n- **Output 4 (Unspecified/Default)**:\n  - `msg.payload.statusCode`: `400` (Bad Request / Unknown).\n\n## Logic\n1. Check the value of `msg.payload.state`.\n2. Based on the state:\n   - If `PROCESSING`, set `statusCode` to `102` and send to the first output.\n   - If `ACTIVE`, set `statusCode` to `200` and send to the second output.\n   - If `FAILED`, set `statusCode` to `500` and send to the third output.\n   - If `STATE_UNSPECIFIED` or any other unknown state, set `statusCode` to `400` and send to the fourth output.\n\n## Notes\n> Ensure that `msg.payload.state` is included in the incoming message.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
     }
 ]
