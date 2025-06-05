@@ -3498,6 +3498,11 @@
                 "t": "delete",
                 "p": "payload",
                 "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
             }
         ],
         "action": "",
