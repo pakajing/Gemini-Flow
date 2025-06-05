@@ -3221,7 +3221,7 @@
         "wires": [
             [
                 "5e89b3dbf89ae519",
-                "build-command-template"
+                "a70e6141ecf10683"
             ],
             [
                 "13bc77fc3b58b316"
@@ -4074,10 +4074,7 @@
         "x": 620,
         "y": 700,
         "wires": [
-            [
-                "exec-file-size",
-                "d6af78e56e4299e4"
-            ]
+            []
         ]
     },
     {
@@ -4094,7 +4091,27 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 740,
-        "y": 780,
+        "y": 940,
         "wires": []
+    },
+    {
+        "id": "a70e6141ecf10683",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Build Shell Command",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "ls -lh {{{filePath}}}",
+        "output": "str",
+        "x": 720,
+        "y": 880,
+        "wires": [
+            [
+                "d6af78e56e4299e4",
+                "exec-file-size"
+            ]
+        ]
     }
 ]
