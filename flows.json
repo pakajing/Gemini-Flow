@@ -3320,11 +3320,11 @@
         "z": "bb119fa58e5b3485",
         "g": "2e5787e38e3bb178",
         "name": "Prepare Upload Request with Status Outputs",
-        "func": "const filePath = msg.filePath;\nconst apiKey = msg.apiKey;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });\n\ntry {\n    // Notify file read is starting\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });\n\n    // Read the file from the specified path\n    msg.payload = fs.readFileSync(filePath);\n\n    // Set headers for the upload request\n    msg.headers = {\n        \"Content-Type\": \"video/mp4\"\n    };\n\n    // Set the HTTP method and URL for the upload request\n    msg.method = \"POST\";\n    msg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\n    // Indicate success\n    node.status({ fill: \"green\", shape: \"dot\", text: \"✅ File ready\" });\n    msg.statusCode = 200;\n    return [msg, null];\n\n} catch (error) {\n    // Handle errors (e.g., file not found)\n    msg.payload = `❌ Error preparing upload request: ${error.message}`;\n    msg.statusCode = 400;\n\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ Read failed\" });\n    node.error(msg.payload, msg);\n\n    return [null, msg];\n}\n",
+        "func": "const filePath = msg.filePath;\nconst apiKey = msg.apiKey;\n\ntry {\n    // Notify file read is starting\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });\n\n    // Read the file from the specified path\n    msg.payload = fs.readFileSync(filePath);\n\n    // Set headers for the upload request\n    msg.headers = {\n        \"Content-Type\": \"video/mp4\"\n    };\n\n    // Set the HTTP method and URL for the upload request\n    msg.method = \"POST\";\n    msg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\n    // Indicate success\n    node.status({ fill: \"green\", shape: \"dot\", text: \"✅ File ready\" });\n    msg.statusCode = 200;\n    return [msg, null];\n\n} catch (error) {\n    // Handle errors (e.g., file not found)\n    msg.payload = `❌ Error preparing upload request: ${error.message}`;\n    msg.statusCode = 400;\n\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ Read failed\" });\n    node.error(msg.payload, msg);\n\n    return [null, msg];\n}\n",
         "outputs": 2,
         "timeout": "",
         "noerr": 0,
-        "initialize": "",
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });",
         "finalize": "",
         "libs": [
             {
