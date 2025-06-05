@@ -453,8 +453,8 @@
             "7dea554c6ac7de37",
             "68bcce7fd6fe1421"
         ],
-        "x": 934,
-        "y": 1219,
+        "x": 1454,
+        "y": 719,
         "w": 1132,
         "h": 202
     },
@@ -2369,8 +2369,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 975,
-        "y": 1320,
+        "x": 1495,
+        "y": 820,
         "wires": [
             [
                 "c6480ce55b348f13",
@@ -2395,8 +2395,8 @@
         "syntax": "plain",
         "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
         "output": "json",
-        "x": 1155,
-        "y": 1320,
+        "x": 1675,
+        "y": 820,
         "wires": [
             [
                 "8f14f2d0ab60c0d3"
@@ -2417,8 +2417,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1215,
-        "y": 1320,
+        "x": 1735,
+        "y": 820,
         "wires": [
             [
                 "26b4a64ae183c139"
@@ -2440,8 +2440,8 @@
         "targetType": "full",
         "statusVal": "selectedOptions",
         "statusType": "msg",
-        "x": 975,
-        "y": 1260,
+        "x": 1495,
+        "y": 760,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2460,8 +2460,8 @@
         "targetType": "full",
         "statusVal": "selectedOptions",
         "statusType": "msg",
-        "x": 975,
-        "y": 1380,
+        "x": 1495,
+        "y": 880,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
@@ -2480,8 +2480,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1960,
-        "y": 1320,
+        "x": 2480,
+        "y": 820,
         "wires": []
     },
     {
@@ -2515,8 +2515,8 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 1295,
-        "y": 1320,
+        "x": 1815,
+        "y": 820,
         "wires": [
             [
                 "7dea554c6ac7de37",
@@ -2555,8 +2555,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1495,
-        "y": 1320,
+        "x": 2015,
+        "y": 820,
         "wires": [
             [
                 "41c5a0c10342a1bc"
@@ -2686,8 +2686,8 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 1640,
-        "y": 1320,
+        "x": 2160,
+        "y": 820,
         "wires": [
             [
                 "0a00ea4d7c10bef4"
@@ -2708,8 +2708,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1295,
-        "y": 1380,
+        "x": 1815,
+        "y": 880,
         "wires": [],
         "l": false
     },
@@ -2726,8 +2726,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1375,
-        "y": 1320,
+        "x": 1895,
+        "y": 820,
         "wires": [
             [
                 "6f1cabb71c4652da"
