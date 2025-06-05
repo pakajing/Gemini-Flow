@@ -4106,11 +4106,6 @@
             },
             {
                 "t": "delete",
-                "p": "filePath",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
                 "p": "fileSize",
                 "pt": "msg"
             },
