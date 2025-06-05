@@ -581,7 +581,8 @@
             "a70e6141ecf10683",
             "extract-file-size",
             "f7b4609ecc0fdefd",
-            "e8a11a01daae959b"
+            "e8a11a01daae959b",
+            "f1b9f662d559e27d"
         ],
         "x": 1034,
         "y": 359,
@@ -4084,7 +4085,8 @@
         "y": 500,
         "wires": [
             [
-                "afb8f26b824279c4"
+                "afb8f26b824279c4",
+                "f1b9f662d559e27d"
             ]
         ],
         "l": false
@@ -4120,5 +4122,25 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "f1b9f662d559e27d",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
+        "name": "Save Auth Headers",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "x": 1295,
+        "y": 500,
+        "wires": [
+            []
+        ],
+        "l": false
     }
 ]
