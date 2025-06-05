@@ -3044,7 +3044,7 @@
         "y": 500,
         "wires": [
             [
-                "ce5a2cdc3f9edb7d"
+                "45ad1993d1438f98"
             ]
         ],
         "l": false
@@ -3060,7 +3060,7 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 2875,
+        "x": 2985,
         "y": 500,
         "wires": [
             [
@@ -3081,7 +3081,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2935,
+        "x": 3045,
         "y": 500,
         "wires": [
             [
@@ -3126,7 +3126,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2995,
+        "x": 3105,
         "y": 500,
         "wires": [
             [
@@ -3158,7 +3158,7 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 3055,
+        "x": 3165,
         "y": 500,
         "wires": [
             [
@@ -3180,7 +3180,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2980,
+        "x": 3090,
         "y": 580,
         "wires": []
     },
@@ -3215,5 +3215,35 @@
         ],
         "l": false,
         "info": "# Prepare Upload Request with Status Outputs\n\n## Purpose\nThis function prepares an HTTP POST request to upload a video file to the Google Generative Language API. It handles success and error scenarios, providing appropriate status codes and messages.\n\n## Input\n- `msg.filePath`: The path to the file to be uploaded.\n\n## Output\n- **Output 1 (Success)**:\n  - `msg.payload`: The binary content of the video file.\n  - `msg.headers`: HTTP headers for the upload request, including the `Content-Type`.\n  - `msg.method`: The HTTP method, set to `POST`.\n  - `msg.url`: The API endpoint URL, including the API key.\n  - `msg.statusCode`: HTTP status code `200`.\n- **Output 2 (Error)**:\n  - `msg.payload`: An error message indicating the failure reason.\n  - `msg.statusCode`: HTTP status code `400`.\n\n## Logic\n1. Read the video file from the specified path using `fs.readFileSync`.\n2. Set the `Content-Type` header to `video/mp4`.\n3. Configure the HTTP method as `POST`.\n4. Construct the API endpoint URL with the provided API key.\n5. If successful, send the prepared `msg` object to the first output with a `200` status code.\n6. If an error occurs (e.g., file not found), send an error message to the second output with a `400` status code.\n\n## Notes\n> Ensure the `fs` module is available in your environment and the file path is correct.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "43dde58ef62fbc3c",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "name": "[11] 📖 Doc - File State",
+        "info": "",
+        "x": 2700,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "45ad1993d1438f98",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Prepare Type of Prompt",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "selectedOptions",
+        "statusType": "msg",
+        "x": 2815,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
     }
 ]
