@@ -4075,8 +4075,26 @@
         "y": 700,
         "wires": [
             [
-                "exec-file-size"
+                "exec-file-size",
+                "d6af78e56e4299e4"
             ]
         ]
+    },
+    {
+        "id": "d6af78e56e4299e4",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 780,
+        "wires": []
     }
 ]
