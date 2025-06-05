@@ -562,8 +562,7 @@
             "41dff6a22723fe4a",
             "42771efbbc71d59a",
             "354f194ea8aee5f9",
-            "78e3d12503525e7c",
-            "a62a42c63f57c14f"
+            "205c84df805979c8"
         ],
         "x": 3234,
         "y": 359,
@@ -3379,7 +3378,7 @@
         "targetType": "full",
         "statusVal": "slack.output.payload.ok",
         "statusType": "msg",
-        "x": 3435,
+        "x": 3415,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3400,7 +3399,7 @@
         "targetType": "full",
         "statusVal": "slack.output.payload.ok",
         "statusType": "msg",
-        "x": 3445,
+        "x": 3415,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3418,52 +3417,6 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
-    },
-    {
-        "id": "78e3d12503525e7c",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "g": "ae3236abde85c3f3",
-        "name": "Slack Triage-Ack Builder",
-        "func": "/***********************************************************************\n *  Slack “triage-ack” builder — now with Gemini AI output\n ***********************************************************************/\n\nconst event = msg?.slack_webhook_received?.event || {};\n\nif (event.subtype === 'bot_message') {\n  msg.payload = 'Bot2Bot';\n  return [ null, msg ]; // Bot output\n}\n\n// Helper utilities\nfunction bytesToHuman(bytes = 0) {\n  if (bytes < 1024) return `${bytes} B`;\n  const u = ['kB','MB','GB','TB']; let i = -1;\n  do { bytes /= 1024; i++; } while (bytes >= 1024 && i < u.length - 1);\n  return `${bytes.toFixed(i === 0 ? 0 : 1)} ${u[i]}`;\n}\nconst msToSec = ms => `${(ms / 1000).toFixed(1)} s`;\nfunction summariseFile(f) {\n  const { name='file', filetype='', mimetype='', size, duration_ms } = f;\n  const base = name.length > 35 ? name.slice(0,33)+'…' : name;\n  const sz = size ? ` · ${bytesToHuman(size)}` : '';\n  if (mimetype.startsWith('audio/') || f.subtype === 'slack_audio')\n    return `🎧 ${base}${duration_ms ? ` · ${msToSec(duration_ms)}` : ''}`;\n  if (mimetype.startsWith('video/')) return `📹 ${base}${sz}`;\n  if (mimetype.startsWith('image/')) return `🖼 ${base}${sz}`;\n  if (filetype === 'json' || base.toLowerCase().endsWith('.json'))\n    return `📄 ${base}${sz}`;\n  return `📎 ${base}${sz}`;\n}\n\n// Slack event details\nconst {\n  user: userId = 'U0817CC72KV',\n  channel: eventChannel,\n  text: rawText = '',\n  thread_ts: parentTs,\n  event_ts,\n  ts,\n  files: fileList = []\n} = event;\n\nconst channel = eventChannel ?? msg.channel ?? 'C08SAJJEJNM';\nconst thread_ts = parentTs || event_ts || ts;\nconst mongoId = msg?.mongoInsertId ?? 'n/a';\nconst messageText = (rawText || '').trim();\n\n// Compose echo\nlet echoText;\nlet extraBlocks = [];\n\nif (messageText && !fileList.length) {\n  echoText = `*You wrote:*\\n>${messageText}`;\n} else if (!messageText && fileList.length) {\n  const firstFile = fileList[0];\n  echoText = `*You sent ${summariseFile(firstFile).replace(/^[^ ]+ /, '')}*`;\n} else if (messageText && fileList.length) {\n  echoText = `*You wrote:*\\n>${messageText}`;\n  const MAX = 10;\n  const fields = fileList.slice(0, MAX).map(f => ({ type:'mrkdwn', text: summariseFile(f) }));\n  if (fileList.length > MAX) {\n    fields.push({ type:'mrkdwn', text: `…and *${fileList.length - MAX}* more` });\n  }\n  extraBlocks.push({\n    type: 'section',\n    block_id: 'attachment_summary',\n    text: { type:'mrkdwn', text: '*You also attached:*' },\n    fields\n  });\n} else {\n  echoText = '*I received your message.*';\n}\n\n// Attempt to parse Gemini output if available\nlet aiBlocks = [];\ntry {\n  const geminiRaw = msg.payload?.candidates?.[0]?.content?.parts?.[0]?.text;\n  if (geminiRaw) {\n    const parsed = JSON.parse(geminiRaw);\n\n    if (parsed.summary) {\n      aiBlocks.push({\n        type: 'section',\n        block_id: 'ai_summary',\n        text: { type: 'mrkdwn', text: `:memo: *Summary:*\\n${parsed.summary}` }\n      });\n    }\n\n    if (Array.isArray(parsed.highlights)) {\n      const fields = parsed.highlights.map(h => ({\n        type: 'mrkdwn',\n        text: `*${h.timestamp}* — ${h.highlight} _(Duration: ${h.duration})_`\n      }));\n      aiBlocks.push({\n        type: 'section',\n        block_id: 'ai_highlights',\n        text: { type: 'mrkdwn', text: '*:high_brightness: Highlights:*' },\n        fields\n      });\n    }\n\n    if (Array.isArray(parsed.videocaptioning)) {\n      const captions = parsed.videocaptioning.map(vc => {\n        const desc = vc.sceneDescription?.overall || '';\n        const ts = vc.timestamp;\n        return `• *${ts}* — ${desc}`;\n      }).slice(0, 5); // Limit to 5 to avoid Slack block overflow\n      if (captions.length) {\n        aiBlocks.push({\n          type: 'section',\n          block_id: 'ai_captions',\n          text: { type: 'mrkdwn', text: '*:clapper: Video Captions:*\\n' + captions.join('\\n') }\n        });\n      }\n    }\n  }\n} catch (e) {\n  aiBlocks.push({\n    type: 'context',\n    elements: [{ type: 'mrkdwn', text: ':warning: Could not parse Gemini output' }]\n  });\n}\n\n// Build Slack Block Kit payload\nmsg.payload = {\n  channel,\n  thread_ts,\n  text: `Hi <@${userId}>! I’m on it.`,\n  icon_url: 'https://media.licdn.com/dms/image/v2/C4E0BAQHdxTG-h3JKjA/company-logo_200_200/company-logo_200_200/0/1657884149973/qibb_techtriq_logo',\n  username: 'qibb-TriageAgent',\n  blocks: [\n    {\n      type: 'section',\n      block_id: 'greeting_#noresponse',\n      text: { type: 'mrkdwn', text: `Hi <@${userId}> :wave:` }\n    },\n    {\n      type: 'section',\n      block_id: 'user_message',\n      text: { type: 'mrkdwn', text: `${echoText}\\n\\nGive me a second to read it.` }\n    },\n    ...extraBlocks,\n    ...aiBlocks,\n    {\n      type: 'context',\n      block_id: 'mongo_ref',\n      elements: [\n        { type: 'mrkdwn', text: `:file_cabinet: *MongoDB record ID:* ${mongoId}` }\n      ]\n    }\n  ]\n};\n\nreturn [ msg, null ]; // Normal user path\n",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3365,
-        "y": 500,
-        "wires": [
-            [
-                "4419d574585d1c97"
-            ],
-            [
-                "a62a42c63f57c14f"
-            ]
-        ],
-        "l": false,
-        "info": "# Slack Triage-Ack Builder\n\n## Purpose\nThis function node processes incoming Slack events and generates an acknowledgment message based on the content of the event. It handles text, file attachments, or a combination of both, and provides a fallback for empty messages.\n\n## Input\n- `msg.slack_webhook_received.event`: The Slack event object containing details such as `text`, `files`, `user`, and `channel`.\n- `msg.mongoInsertId`: MongoDB record ID for reference.\n\n## Output\n- **Output 1**: Normal user messages (text, files, or both).\n- **Output 2**: Events with subtype `bot_message` (responds with “Ok Bot”).\n\n## Logic\n1. **Helper Utilities**:\n   - `bytesToHuman`: Converts file sizes to human-readable formats.\n   - `msToSec`: Converts milliseconds to seconds.\n   - `summariseFile`: Generates a short description for file attachments.\n\n2. **Event Extraction**:\n   - Extracts relevant fields from the Slack event, such as `text`, `files`, and `user`.\n\n3. **Acknowledgment Wording**:\n   - Handles four cases:\n     1. Text only: Echoes the text.\n     2. Files only: Describes the first file.\n     3. Text + files: Echoes the text and lists attached files.\n     4. Neither: Provides a generic fallback message.\n\n4. **Payload Assembly**:\n   - Constructs a Slack Block Kit payload with:\n     - A greeting block.\n     - An echo block for the user message.\n     - An optional attachment summary block.\n     - A MongoDB reference block.\n\n5. **Bot Message Handling**:\n   - If the event subtype is `bot_message`, responds with “Bot2Bot” and sends the message to the second output.\n\n## Notes\n> Ensure the Slack webhook integration is properly configured to receive events and send responses.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
-        "id": "a62a42c63f57c14f",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "ae3236abde85c3f3",
-        "name": "Debug OK: BotToBot",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "match.status",
-        "statusType": "msg",
-        "x": 3365,
-        "y": 560,
-        "wires": [],
-        "icon": "font-awesome/fa-user-secret",
-        "l": false
     },
     {
         "id": "4419d574585d1c97",
@@ -3517,7 +3470,7 @@
             "value": "",
             "refType": "type"
         },
-        "x": 3445,
+        "x": 3415,
         "y": 500,
         "wires": [
             [
@@ -3533,7 +3486,8 @@
         "id": "205c84df805979c8",
         "type": "function",
         "z": "bb119fa58e5b3485",
-        "name": "function 1",
+        "g": "ae3236abde85c3f3",
+        "name": "Prepare Message",
         "func": "/************************************************************************\n *  Simple Slack Message Builder — Raw Gemini Output\n *\n *  Input:  msg.payload.candidates[0].content.parts[0].text (string)\n *  Output: Slack message with full content in a single Block section\n ************************************************************************/\n\n// Extract the raw Gemini output\nconst rawText = msg?.payload?.candidates?.[0]?.content?.parts?.[0]?.text || '*No content found.*';\n\n// Set basic Slack message structure\nmsg.payload = {\n  channel: msg.channel || 'C08SAJJEJNM',  // fallback default channel\n  text: 'Gemini Analysis Result',\n  icon_url: 'https://media.licdn.com/dms/image/v2/C4E0BAQHdxTG-h3JKjA/company-logo_200_200/company-logo_200_200/0/1657884149973/qibb_techtriq_logo',\n  username: 'qibb-TriageAgent',\n  blocks: [\n    {\n      type: 'section',\n      block_id: 'raw_output',\n      text: {\n        type: 'mrkdwn',\n        text: `\\`\\`\\`\\n${rawText}\\n\\`\\`\\``\n      }\n    }\n  ]\n};\n\n// Send to output 1\nreturn [msg, null];\n",
         "outputs": 1,
         "timeout": 0,
@@ -3541,12 +3495,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3220,
-        "y": 220,
+        "x": 3335,
+        "y": 500,
         "wires": [
             [
                 "4419d574585d1c97"
             ]
-        ]
+        ],
+        "l": false
     }
 ]
