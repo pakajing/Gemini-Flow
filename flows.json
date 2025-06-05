@@ -570,6 +570,27 @@
         "h": 242
     },
     {
+        "id": "7a72dacc89b13b80",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[14] Send Slack Message",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "812f38807e567e96",
+            "cfc0e4a6f6daf27a",
+            "97a79b9f6e43db7c",
+            "762c1b3ebbd661b2",
+            "194755e7bf735bdb",
+            "33891a8af57a3b21"
+        ],
+        "x": 3234,
+        "y": 39,
+        "w": 312,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -3500,6 +3521,170 @@
         "wires": [
             [
                 "4419d574585d1c97"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "812f38807e567e96",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "g": "7a72dacc89b13b80",
+        "name": "Bearer Slack",
+        "func": "// Retrieve the Slack token from global secrets\nvar slack_token = global.get(\"SECRETS.slack_token\");\n\n// Ensure the token exists before proceeding\nif (!slack_token) {\n    node.error(\"Slack token is not available in global secrets.\", msg);\n    return null; // Stop further processing\n}\n\n// Set the Authorization header with the Bearer token\nmsg.headers = {\n    \"Authorization\": `Bearer ${slack_token}`\n};\n\n// Return the modified message object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3275,
+        "y": 180,
+        "wires": [
+            [
+                "33891a8af57a3b21"
+            ]
+        ],
+        "icon": "font-awesome/fa-lock",
+        "l": false,
+        "info": "# Bearer Slack\n\n## Purpose\nThis function node retrieves a Slack token from global secrets and sets it as a Bearer token in the `Authorization` header of the outgoing message.\n\n## Input\n- The `msg` object is passed into the function.\n\n## Output\n- The `msg` object is returned with an updated `headers` property containing the `Authorization` header.\n\n## Logic\n1. Retrieve the Slack token from `global.get(\"SECRETS.slack_token\")`.\n2. Check if the token exists:\n   - If not, log an error and stop further processing.\n3. Set the `Authorization` header with the Bearer token.\n4. Return the modified `msg` object.\n\n## Notes\n> Ensure that the Slack token is stored securely in the global secrets under the key `SECRETS.slack_token`.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "cfc0e4a6f6daf27a",
+        "type": "slack-web-client",
+        "z": "bb119fa58e5b3485",
+        "g": "7a72dacc89b13b80",
+        "name": "POST /chat.postMessage",
+        "selectedOperation": {
+            "method": "post",
+            "path": "/chat.postMessage",
+            "summary": "Sends a message to a channel.",
+            "description": "Sends a message to a channel.\nAuthentication token requires scope: `chat:write`\n",
+            "tag": "chat",
+            "operationId": "chat_postMessage"
+        },
+        "api": "api-0",
+        "errorHandlingModeSelectedIndex": 1,
+        "security": [
+            {
+                "id": "bearerAuth",
+                "type": "http",
+                "description": "",
+                "scheme": "bearer"
+            },
+            {
+                "id": "slackAuth",
+                "type": "oauth2",
+                "description": ""
+            }
+        ],
+        "requestContentTypeSelectedIndex": 0,
+        "responseContentTypeSelectedIndex": 0,
+        "parameters": [
+            {
+                "name": "body",
+                "value": "{}\n",
+                "in": "body",
+                "refType": "jsonata"
+            }
+        ],
+        "uiFeatures": {
+            "operations": {
+                "advancedMode": false
+            }
+        },
+        "outputs": 2,
+        "debugEnabled": false,
+        "output": "slack.output",
+        "host": {
+            "type": "string",
+            "value": "",
+            "refType": "type"
+        },
+        "x": 3415,
+        "y": 180,
+        "wires": [
+            [
+                "97a79b9f6e43db7c"
+            ],
+            [
+                "762c1b3ebbd661b2"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "97a79b9f6e43db7c",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "7a72dacc89b13b80",
+        "name": "Debug OK: Post Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "slack.output.payload.ok",
+        "statusType": "msg",
+        "x": 3415,
+        "y": 120,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false,
+        "info": "# Flow Debug Get Secret\n\n## Description\nThis `Debug` node is used to verify the successful retrieval of secrets. It logs the full message object (`msg`) to the debug sidebar and displays the `msg.statusCode` in the node's status field for quick monitoring.\n\n## Input\n- **Trigger:**\n  - The node is triggered by the output of a preceding node in the flow, typically after a secret retrieval process.\n- **Context / Global Vars:** None required.\n- **Expected Secrets:** None required.\n\n## Output\n- **Success Path:**\n  - Logs the full incoming message (`msg`) to the debug sidebar.\n  - Displays the `msg.statusCode` in the node's status field for quick reference.\n  - Outputs the message for further processing if connected downstream.\n- **Error Path:**\n  - This node does not handle errors but can be used to inspect issues in the incoming message.\n\n## Notes\n> - The debug node is disabled by default. Enable it to view logs in the debug sidebar.\n> - Use this node during development or troubleshooting to ensure secrets are being retrieved and processed correctly.\n> - The `msg.statusCode` is displayed in the node's status field for quick monitoring of the HTTP response status.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)\n"
+    },
+    {
+        "id": "762c1b3ebbd661b2",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "7a72dacc89b13b80",
+        "name": "Debug Error: Post Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "slack.output.payload.ok",
+        "statusType": "msg",
+        "x": 3415,
+        "y": 240,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false,
+        "info": "# Flow Debug Error Get Secret\n\n## Description\nThis `Debug` node is used to log and inspect errors that occur during the secret retrieval process. It captures the full message object (`msg`) and displays the `msg.statusCode` in the node's status field for quick monitoring.\n\n## Input\n- **Trigger:**\n  - The node is triggered by the output of a preceding node in the flow, typically when an error occurs during secret retrieval.\n- **Context / Global Vars:** None required.\n- **Expected Secrets:** None required.\n\n## Output\n- **Success Path:**\n  - Logs the full incoming message (`msg`) to the debug sidebar for inspection.\n  - Displays the `msg.statusCode` in the node's status field for quick reference.\n  - Outputs the message for further processing if connected downstream.\n- **Error Path:**\n  - This node does not handle errors but is used to inspect and debug issues in the incoming message.\n\n## Notes\n> - The debug node is enabled by default to assist in troubleshooting.\n> - Use this node during development or troubleshooting to identify and resolve issues in the secret retrieval process.\n> - The `msg.statusCode` is displayed in the node's status field for quick monitoring of the HTTP response status.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)\n"
+    },
+    {
+        "id": "194755e7bf735bdb",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "7a72dacc89b13b80",
+        "name": "[14] 📖 Doc - Send Slack Message",
+        "info": "",
+        "x": 3390,
+        "y": 80,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "33891a8af57a3b21",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "g": "7a72dacc89b13b80",
+        "name": "Prepare Message",
+        "func": "/************************************************************************\n *  Simple Slack Message Builder — Raw Gemini Output\n *\n *  Input:  msg.payload.candidates[0].content.parts[0].text (string)\n *  Output: Slack message with full content in a single Block section\n ************************************************************************/\n\n// Extract the raw Gemini output\nconst rawText = msg?.payload?.candidates?.[0]?.content?.parts?.[0]?.text || '*No content found.*';\n\n// Set basic Slack message structure\nmsg.payload = {\n  channel: msg.channel || 'C08SAJJEJNM',  // fallback default channel\n  text: 'Gemini Analysis Result',\n  icon_url: 'https://media.licdn.com/dms/image/v2/C4E0BAQHdxTG-h3JKjA/company-logo_200_200/company-logo_200_200/0/1657884149973/qibb_techtriq_logo',\n  username: 'qibb-TriageAgent',\n  blocks: [\n    {\n      type: 'section',\n      block_id: 'raw_output',\n      text: {\n        type: 'mrkdwn',\n        text: `\\`\\`\\`\\n${rawText}\\n\\`\\`\\``\n      }\n    }\n  ]\n};\n\n// Send to output 1\nreturn [msg, null];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3335,
+        "y": 180,
+        "wires": [
+            [
+                "cfc0e4a6f6daf27a"
             ]
         ],
         "l": false
