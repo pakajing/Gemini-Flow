@@ -4128,5 +4128,16 @@
             ]
         ],
         "l": false
+    },
+    {
+        "id": "91a23112b019db30",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "name": "[11] 📖 Doc - File State",
+        "info": "",
+        "x": 2360,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
     }
 ]
