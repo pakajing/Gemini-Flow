@@ -3693,7 +3693,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 2005,
+        "x": 1995,
         "y": 480,
         "wires": [
             [
@@ -3821,7 +3821,7 @@
         "targetType": "full",
         "statusVal": "statusInfo",
         "statusType": "msg",
-        "x": 1905,
+        "x": 1895,
         "y": 420,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3839,7 +3839,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1905,
+        "x": 1895,
         "y": 500,
         "wires": [
             [
@@ -3869,7 +3869,7 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 2065,
+        "x": 2055,
         "y": 480,
         "wires": [
             []
