@@ -288,8 +288,8 @@
             "4ba858c9bd77a3a7",
             "6ce865beef8237c8"
         ],
-        "x": 54,
-        "y": 319,
+        "x": 74,
+        "y": 359,
         "w": 272,
         "h": 202
     },
@@ -1227,8 +1227,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 115,
-        "y": 480,
+        "x": 135,
+        "y": 520,
         "wires": [
             [
                 "template_create_payload"
@@ -1248,8 +1248,8 @@
         "syntax": "mustache",
         "template": "{\n  \"user_id\": \"49c7bd08-0e06-11f0-a1f8-a6363a946122\",\n  \"system_domain_id\": \"9e392c9c-e28e-11ec-8906-82ba1484052f\",\n  \"context\": \"ASSET\",\n  \"action_id\": \"66ed6750-459f-11ef-afd9-1ec546efc4f6\",\n  \"asset_ids\": [\"{{asset_id}}\"],\n  \"collection_ids\": [],\n  \"saved_search_ids\": [],\n  \"metadata_view_id\": null,\n  \"metadata_values\": null,\n  \"date_created\": \"2025-06-04T07:20:34.362212\"\n}",
         "output": "json",
-        "x": 175,
-        "y": 480,
+        "x": 195,
+        "y": 520,
         "wires": [
             [
                 "6ce865beef8237c8"
@@ -1264,8 +1264,8 @@
         "g": "d29e7cdb2d5dd084",
         "name": "[0] 📖 Doc - Manual payload",
         "info": "",
-        "x": 190,
-        "y": 360,
+        "x": 210,
+        "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
     },
@@ -1382,8 +1382,8 @@
         "targetType": "full",
         "statusVal": "iconik.webhook.asset_ids[0]",
         "statusType": "msg",
-        "x": 255,
-        "y": 420,
+        "x": 275,
+        "y": 460,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -1447,8 +1447,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 255,
-        "y": 480,
+        "x": 275,
+        "y": 520,
         "wires": [
             [
                 "4ba858c9bd77a3a7",
