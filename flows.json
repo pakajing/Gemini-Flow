@@ -3799,7 +3799,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 1170,
+        "x": 1070,
         "y": 820,
         "wires": [
             [
@@ -3818,12 +3818,35 @@
         "syntax": "mustache",
         "template": "{\n  \"name\": \"files/5zra7gkwnzlc\",\n  \"mimeType\": \"video/mp4\",\n  \"sizeBytes\": \"2269410\",\n  \"createTime\": \"2025-06-05T11:50:08.153138Z\",\n  \"updateTime\": \"2025-06-05T11:50:10.015429Z\",\n  \"expirationTime\": \"2025-06-07T11:50:07.684568119Z\",\n  \"sha256Hash\": \"ZWJhOWNmYmRhOGVkZjkzOTBmYmM2OTEyMjk3ZGI2MDhkMGM1MTYxMDI3ZmYxNTc2NmNiMjQwMGQ1M2U5MTUxMQ==\",\n  \"uri\": \"https://generativelanguage.googleapis.com/v1beta/files/5zra7gkwnzlc\",\n  \"state\": \"ACTIVE\",\n  \"videoMetadata\": {\n    \"videoDuration\": \"30s\"\n  },\n  \"source\": \"UPLOADED\"\n}",
         "output": "json",
-        "x": 1330,
+        "x": 1230,
+        "y": 820,
+        "wires": [
+            [
+                "8eeb35fac11b0a85"
+            ]
+        ]
+    },
+    {
+        "id": "8eeb35fac11b0a85",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Save Auth Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "msg.fileUri",
+                "pt": "msg",
+                "to": "payload.uri",
+                "tot": "msg"
+            }
+        ],
+        "x": 1375,
         "y": 820,
         "wires": [
             [
                 "056246df9904ea45"
             ]
-        ]
+        ],
+        "l": false
     }
 ]
