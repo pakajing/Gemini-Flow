@@ -488,7 +488,7 @@
             "d8fcce508cc82af4"
         ],
         "x": 1824,
-        "y": 959,
+        "y": 779,
         "w": 362,
         "h": 202
     },
@@ -2771,7 +2771,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1865,
-        "y": 1060,
+        "y": 880,
         "wires": [
             [
                 "28d6c48d41f27f7f"
@@ -2802,7 +2802,7 @@
             }
         ],
         "x": 2005,
-        "y": 1060,
+        "y": 880,
         "wires": [
             [
                 "f509407a070a4c76",
@@ -2830,7 +2830,7 @@
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
         "x": 2005,
-        "y": 1000,
+        "y": 820,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2886,7 +2886,7 @@
         "to": "",
         "reg": false,
         "x": 1925,
-        "y": 1060,
+        "y": 880,
         "wires": [
             [
                 "41dc5b97da49fd1d"
@@ -2906,7 +2906,7 @@
         "time": "counter",
         "timeType": "msg",
         "x": 2125,
-        "y": 1060,
+        "y": 880,
         "wires": [
             [
                 "cf48b48773b9aed4"
@@ -2933,7 +2933,7 @@
         "statusVal": "counter",
         "statusType": "msg",
         "x": 2125,
-        "y": 1120,
+        "y": 940,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2953,7 +2953,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 2125,
-        "y": 1000,
+        "y": 820,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
@@ -2973,7 +2973,7 @@
         "statusVal": "uploadResponse.status",
         "statusType": "msg",
         "x": 2005,
-        "y": 1120,
+        "y": 940,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
