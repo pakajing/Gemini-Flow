@@ -3811,7 +3811,7 @@
         "id": "11903d3ecab11bc8",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK: State Processing",
+        "name": "Debug OK: State PROCESSING",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -3848,7 +3848,9 @@
             [
                 "7bed0d93c18f9cfe"
             ],
-            [],
+            [
+                "fd8c423c7c5b2418"
+            ],
             []
         ],
         "l": false,
@@ -3890,7 +3892,7 @@
         "id": "7bed0d93c18f9cfe",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK: State Active",
+        "name": "Debug OK: State ACTIVE",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -3901,6 +3903,25 @@
         "statusType": "msg",
         "x": 1935,
         "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "fd8c423c7c5b2418",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: State FAILED",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusInfo",
+        "statusType": "msg",
+        "x": 1935,
+        "y": 480,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
