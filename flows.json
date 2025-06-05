@@ -3997,102 +3997,31 @@
         "l": false
     },
     {
-        "id": "98cf6f5dc338f5c7",
+        "id": "exec-file-size",
         "type": "exec",
         "z": "bb119fa58e5b3485",
         "command": "",
-        "addpay": true,
+        "addpay": "payload",
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "winHide": false,
         "oldrc": false,
         "name": "Check File Size",
-        "x": 1100,
-        "y": 640,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "94f4bb17cb8600b9",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "`ls -lh ${filePath}`",
-                "tot": "jsonata"
-            }
-        ],
-        "x": 995,
-        "y": 720,
+        "x": 1115,
+        "y": 500,
         "wires": [
             [
-                "98cf6f5dc338f5c7"
+                "extract-file-size"
+            ],
+            [
+                "f7b4609ecc0fdefd"
+            ],
+            [
+                "f7b4609ecc0fdefd"
             ]
         ],
         "l": false
-    },
-    {
-        "id": "exec-file-size",
-        "type": "exec",
-        "z": "bb119fa58e5b3485",
-        "command": "",
-        "addpay": true,
-        "append": "",
-        "useSpawn": false,
-        "timer": "",
-        "oldrc": false,
-        "name": "Check File Size",
-        "x": 1120,
-        "y": 800,
-        "wires": [
-            [
-                "afb8f26b824279c4"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "build-command-template",
-        "type": "template",
-        "z": "bb119fa58e5b3485",
-        "name": "Build Shell Command",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "ls -lh {{filePath}}",
-        "output": "str",
-        "x": 620,
-        "y": 700,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d6af78e56e4299e4",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 940,
-        "wires": []
     },
     {
         "id": "a70e6141ecf10683",
@@ -4105,13 +4034,53 @@
         "syntax": "mustache",
         "template": "ls -lh {{{filePath}}}",
         "output": "str",
-        "x": 720,
-        "y": 880,
+        "x": 1055,
+        "y": 500,
         "wires": [
             [
-                "d6af78e56e4299e4",
                 "exec-file-size"
             ]
-        ]
+        ],
+        "l": false
+    },
+    {
+        "id": "extract-file-size",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Extract File Size",
+        "func": "try {\n    // Start parsing status\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"🔍 Parsing file size...\" });\n\n    const output = msg.payload.trim().split(/\\s+/);\n\n    // Size is typically at index 4 in ls -lh output\n    msg.fileSize = output[4];\n    msg.payload = msg.fileSize;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: `📦 Size: ${msg.fileSize}` });\n\n    return msg;\n\n} catch (err) {\n    msg.payload = `❌ Error parsing file size: ${err.message}`;\n    msg.statusCode = 500;\n\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ Parse error\" });\n    node.error(msg.payload, msg);\n\n    return msg;\n}\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1175,
+        "y": 500,
+        "wires": [
+            [
+                "afb8f26b824279c4"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "f7b4609ecc0fdefd",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: File Size",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1115,
+        "y": 580,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
     }
 ]
