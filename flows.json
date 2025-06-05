@@ -2725,7 +2725,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "g": "0c53975c6ac43f46",
-        "name": "function 1",
+        "name": "Prepare Payload",
         "func": "msg.payload = {\n  contents: [\n    {\n      parts: [{\n        fileData: {\n          mimeType: msg.mediaType,\n          fileUri:  msg.fileUri\n        }\n      }],\n      role: \"user\"\n    },\n    {\n      parts: [{ text: msg.userPrompt }],\n      role: \"user\"\n    }\n  ]\n};\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -3910,8 +3910,166 @@
         "x": 2755,
         "y": 500,
         "wires": [
-            []
+            [
+                "5c8395152289be4c"
+            ]
         ],
         "l": false
+    },
+    {
+        "id": "5c8395152289be4c",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Formats (from Template)",
+        "func": "const selectedOptions = msg.selectedOptions;\nconst allFormats = msg.payload.formats || {};\nconst outputFormats = {};\n\n// Build output based on selected options\nfor (const option of selectedOptions) {\n    if (allFormats[option]) {\n        const key = option.toLowerCase().replace(/ /g, \"\");\n        outputFormats[key] = allFormats[option];\n    }\n}\n\n// Always add noResultsFormat\nmsg.noResultsFormat = JSON.stringify(msg.payload.noResultsFormat || [], null, 2);\nmsg.formats = JSON.stringify(outputFormats, null, 2);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2815,
+        "y": 500,
+        "wires": [
+            [
+                "ce5a2cdc3f9edb7d"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "ce5a2cdc3f9edb7d",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Prompt",
+        "field": "userPrompt",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
+        "output": "str",
+        "x": 2875,
+        "y": 500,
+        "wires": [
+            [
+                "0b8fffbda05739f7"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "0b8fffbda05739f7",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Prepare Payload",
+        "func": "msg.payload = {\n  contents: [\n    {\n      parts: [{\n        fileData: {\n          mimeType: msg.mediaType,\n          fileUri:  msg.fileUri\n        }\n      }],\n      role: \"user\"\n    },\n    {\n      parts: [{ text: msg.userPrompt }],\n      role: \"user\"\n    }\n  ]\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2935,
+        "y": 500,
+        "wires": [
+            [
+                "be5d248002aa6ef5"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "be5d248002aa6ef5",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Url",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "authHeaders",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2995,
+        "y": 500,
+        "wires": [
+            [
+                "b20eb6ca8f88330f"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "b20eb6ca8f88330f",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Gemini Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "x-goog-api-key",
+                "valueType": "msg",
+                "valueValue": "apiKey"
+            }
+        ],
+        "x": 3055,
+        "y": 500,
+        "wires": [
+            [
+                "489209dabc0815de"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "489209dabc0815de",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2980,
+        "y": 580,
+        "wires": []
     }
 ]
