@@ -530,6 +530,27 @@
         "h": 242
     },
     {
+        "id": "a145ee043908522d",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[11] File State",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ab7d56461f19d6b5",
+            "11903d3ecab11bc8",
+            "d4e5f6a7b8c90123",
+            "6512a0b82795e4c1",
+            "39f07156ad43064d",
+            "91a23112b019db30"
+        ],
+        "x": 2214,
+        "y": 359,
+        "w": 272,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -3228,6 +3249,7 @@
         "id": "ab7d56461f19d6b5",
         "type": "delay",
         "z": "bb119fa58e5b3485",
+        "g": "a145ee043908522d",
         "name": "",
         "pauseType": "delay",
         "timeout": "10",
@@ -3360,6 +3382,7 @@
         "id": "11903d3ecab11bc8",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "a145ee043908522d",
         "name": "Debug OK: State",
         "active": true,
         "tosidebar": true,
@@ -3379,6 +3402,7 @@
         "id": "d4e5f6a7b8c90123",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "a145ee043908522d",
         "name": "Handle File State",
         "func": "const fileState = msg.gemini.getFile.state;\n\nswitch (fileState) {\n    case \"PROCESSING\":\n        msg.statusCode = 102; // Processing\n        msg.statusInfo = \"PROCESSING\";\n        return [msg, null, null, null];\n    case \"ACTIVE\":\n        msg.statusCode = 200; // OK\n        msg.statusInfo = \"ACTIVE\";\n        return [null, msg, null, null];\n    case \"FAILED\":\n        msg.statusCode = 500; // Server Error\n        msg.statusInfo = \"FAILED\";\n        return [null, null, msg, null];\n    case \"STATE_UNSPECIFIED\":\n    default:\n        msg.statusCode = 400; // Bad Request / Unknown\n        msg.statusInfo = \"STATE_UNSPECIFIED\";\n        return [null, null, null, msg];\n}",
         "outputs": 4,
@@ -3395,7 +3419,8 @@
                 "ab7d56461f19d6b5"
             ],
             [
-                "11903d3ecab11bc8"
+                "11903d3ecab11bc8",
+                "2e93be67ef02f9b2"
             ],
             [
                 "39f07156ad43064d"
@@ -3411,6 +3436,7 @@
         "id": "6512a0b82795e4c1",
         "type": "link call",
         "z": "bb119fa58e5b3485",
+        "g": "a145ee043908522d",
         "name": "State Processing",
         "links": [
             "40c124dd6121de0e"
@@ -3456,6 +3482,7 @@
         "id": "39f07156ad43064d",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "a145ee043908522d",
         "name": "Debug Error: State",
         "active": true,
         "tosidebar": true,
@@ -3686,11 +3713,72 @@
         "id": "91a23112b019db30",
         "type": "comment",
         "z": "bb119fa58e5b3485",
+        "g": "a145ee043908522d",
         "name": "[11] 📖 Doc - File State",
         "info": "",
         "x": 2360,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "2e93be67ef02f9b2",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            },
+            {
+                "t": "delete",
+                "p": "statusInfo",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "_linkSource",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2585,
+        "y": 500,
+        "wires": [
+            [
+                "c247de8e0c9018aa"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "c247de8e0c9018aa",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2640,
+        "y": 640,
+        "wires": []
     }
 ]
