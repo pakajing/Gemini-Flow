@@ -3598,7 +3598,8 @@
         "y": 500,
         "wires": [
             [
-                "24ec17f135c032fd"
+                "24ec17f135c032fd",
+                "de764c04e9e20758"
             ],
             [
                 "f7237e0709b112c6"
@@ -3611,7 +3612,7 @@
         "id": "24ec17f135c032fd",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Get File",
+        "name": "Debug OK: Payload Get File",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -3630,7 +3631,7 @@
         "id": "f7237e0709b112c6",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug Error: Get File",
+        "name": "Debug Error: Payload Get File",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3643,6 +3644,50 @@
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "de764c04e9e20758",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Call Gemini Files GET",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1695,
+        "y": 500,
+        "wires": [
+            [
+                "0e57f3980c89d355"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "0e57f3980c89d355",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Get File",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1765,
+        "y": 500,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     }
 ]
