@@ -4134,6 +4134,36 @@
                 "t": "delete",
                 "p": "payload",
                 "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusInfo",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "filePath",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "fileSize",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "rc",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
             }
         ],
         "x": 1295,
