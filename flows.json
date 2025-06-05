@@ -552,7 +552,7 @@
         "id": "ae3236abde85c3f3",
         "type": "group",
         "z": "bb119fa58e5b3485",
-        "name": "[14] Response User",
+        "name": "[14] Send Slack Message",
         "style": {
             "label": true
         },
@@ -566,7 +566,7 @@
         ],
         "x": 3234,
         "y": 359,
-        "w": 292,
+        "w": 312,
         "h": 242
     },
     {
@@ -3411,9 +3411,9 @@
         "type": "comment",
         "z": "bb119fa58e5b3485",
         "g": "ae3236abde85c3f3",
-        "name": "[004] 📖 Doc - Response User",
+        "name": "[14] 📖 Doc - Send Slack Message",
         "info": "",
-        "x": 3380,
+        "x": 3390,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
