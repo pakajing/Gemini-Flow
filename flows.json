@@ -3221,7 +3221,7 @@
         "wires": [
             [
                 "5e89b3dbf89ae519",
-                "94f4bb17cb8600b9"
+                "set-payload-command"
             ],
             [
                 "13bc77fc3b58b316"
@@ -4011,9 +4011,7 @@
         "x": 1100,
         "y": 640,
         "wires": [
-            [
-                "afb8f26b824279c4"
-            ],
+            [],
             [],
             []
         ]
@@ -4040,5 +4038,48 @@
             ]
         ],
         "l": false
+    },
+    {
+        "id": "set-payload-command",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Build Shell Command",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "`ls -lh ${filePath}`",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 840,
+        "y": 800,
+        "wires": [
+            [
+                "exec-file-size"
+            ]
+        ]
+    },
+    {
+        "id": "exec-file-size",
+        "type": "exec",
+        "z": "bb119fa58e5b3485",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": false,
+        "timer": "",
+        "oldrc": false,
+        "name": "Check File Size",
+        "x": 1120,
+        "y": 800,
+        "wires": [
+            [
+                "afb8f26b824279c4"
+            ],
+            [],
+            []
+        ]
     }
 ]
