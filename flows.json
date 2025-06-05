@@ -3290,7 +3290,8 @@
         "y": 500,
         "wires": [
             [
-                "5e89b3dbf89ae519"
+                "5e89b3dbf89ae519",
+                "6b790f2d4a4bf3e0"
             ],
             [
                 "13bc77fc3b58b316"
@@ -3298,34 +3299,6 @@
         ],
         "l": false,
         "info": "# Download File with Status Codes\n\n## Purpose\nThis function downloads a file from a given URL and saves it to a specified path. It handles success and error scenarios, providing appropriate status codes and messages.\n\n## Input\n- `msg.url`: The URL of the file to download.\n\n## Output\n- **Output 1 (Success)**: \n  - `msg.payload`: A success message indicating the file was saved.\n  - `msg.filePath`: The path where the file was saved.\n  - `msg.statusCode`: HTTP status code `200`.\n- **Output 2 (Error)**:\n  - `msg.payload`: An error message indicating the failure reason.\n  - `msg.statusCode`: The HTTP status code or `400` for other errors.\n\n## Logic\n1. Create a writable stream to save the file to the specified path.\n2. Use `https.get` to fetch the file from the provided URL.\n3. Check the HTTP response status code:\n   - If not `200`, send an error message to the second output.\n   - If `200`, pipe the response to the file stream.\n4. On successful download, send a success message to the first output.\n5. Handle errors during the download process and send error messages to the second output.\n\n## Notes\n> Ensure the `fs` and `https` modules are available in your environment.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
-        "id": "d07c4db767e5d1ad",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "name": "Download to /tmp/temp_video.mp4",
-        "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "fs",
-                "module": "fs"
-            },
-            {
-                "var": "https",
-                "module": "https"
-            }
-        ],
-        "x": 675,
-        "y": 700,
-        "wires": [
-            []
-        ],
-        "l": false
     },
     {
         "id": "5e89b3dbf89ae519",
@@ -3362,6 +3335,143 @@
         "statusVal": "statusCode",
         "statusType": "msg",
         "x": 855,
+        "y": 560,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "1b5b959be1fb75e8",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Prepare Upload Request",
+        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = msg.filePath;\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\ntry {\n    // Read the file from the specified path\n    msg.payload = fs.readFileSync(filePath);\n\n    // Set headers for the upload request\n    msg.headers = {\n        \"Content-Type\": \"video/mp4\"\n    };\n\n    // Set the HTTP method and URL for the upload request\n    msg.method = \"POST\";\n    msg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\n    return msg;\n} catch (error) {\n    // Handle errors, such as file not found\n    node.error(`Error preparing upload request: ${error.message}`, msg);\n    return null;\n}",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 1135,
+        "y": 720,
+        "wires": [
+            [],
+            []
+        ],
+        "l": false,
+        "info": "# Prepare Upload Request\n\n## Purpose\nThis function prepares an HTTP POST request to upload a video file to the Google Generative Language API.\n\n## Input\n- The function assumes the file to be uploaded is located at `/tmp/temp_video.mp4`.\n\n## Output\n- `msg.payload`: The binary content of the video file.\n- `msg.headers`: HTTP headers for the upload request, including the `Content-Type`.\n- `msg.method`: The HTTP method, set to `POST`.\n- `msg.url`: The API endpoint URL, including the API key.\n\n## Logic\n1. Read the video file from the specified path using `fs.readFileSync`.\n2. Set the `Content-Type` header to `video/mp4`.\n3. Configure the HTTP method as `POST`.\n4. Construct the API endpoint URL with the provided API key.\n5. Return the prepared `msg` object for the HTTP request.\n6. Handle errors, such as missing or inaccessible files, and log them using `node.error`.\n\n## Notes\n> Ensure the `fs` module is available in your environment and the file path is correct.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "6b790f2d4a4bf3e0",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusInfo",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1075,
+        "y": 500,
+        "wires": [
+            [
+                "f1a2b3c4d5e67890"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "f1a2b3c4d5e67890",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Prepare Upload Request with Status Outputs",
+        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = msg.filePath;\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\ntry {\n    // Read the file from the specified path\n    msg.payload = fs.readFileSync(filePath);\n\n    // Set headers for the upload request\n    msg.headers = {\n        \"Content-Type\": \"video/mp4\"\n    };\n\n    // Set the HTTP method and URL for the upload request\n    msg.method = \"POST\";\n    msg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\n    // Indicate success and send to the first output\n    msg.statusCode = 200;\n    return [msg, null];\n} catch (error) {\n    // Handle errors, such as file not found\n    msg.payload = `❌ Error preparing upload request: ${error.message}`;\n    msg.statusCode = 400;\n    node.error(msg.payload, msg);\n    return [null, msg]; // Send to the second output for errors\n}",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 1135,
+        "y": 500,
+        "wires": [
+            [
+                "6db4c154c084378c"
+            ],
+            [
+                "38880de9afe4fd3a"
+            ]
+        ],
+        "l": false,
+        "info": "# Prepare Upload Request with Status Outputs\n\n## Purpose\nThis function prepares an HTTP POST request to upload a video file to the Google Generative Language API. It handles success and error scenarios, providing appropriate status codes and messages.\n\n## Input\n- `msg.filePath`: The path to the file to be uploaded.\n\n## Output\n- **Output 1 (Success)**:\n  - `msg.payload`: The binary content of the video file.\n  - `msg.headers`: HTTP headers for the upload request, including the `Content-Type`.\n  - `msg.method`: The HTTP method, set to `POST`.\n  - `msg.url`: The API endpoint URL, including the API key.\n  - `msg.statusCode`: HTTP status code `200`.\n- **Output 2 (Error)**:\n  - `msg.payload`: An error message indicating the failure reason.\n  - `msg.statusCode`: HTTP status code `400`.\n\n## Logic\n1. Read the video file from the specified path using `fs.readFileSync`.\n2. Set the `Content-Type` header to `video/mp4`.\n3. Configure the HTTP method as `POST`.\n4. Construct the API endpoint URL with the provided API key.\n5. If successful, send the prepared `msg` object to the first output with a `200` status code.\n6. If an error occurs (e.g., file not found), send an error message to the second output with a `400` status code.\n\n## Notes\n> Ensure the `fs` module is available in your environment and the file path is correct.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "6db4c154c084378c",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Upload File",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1135,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "38880de9afe4fd3a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: Upload File",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1135,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
