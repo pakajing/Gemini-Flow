@@ -3500,7 +3500,8 @@
         "y": 500,
         "wires": [
             [
-                "3510ebc7baaa1485"
+                "3510ebc7baaa1485",
+                "aea43ccdf90168cd"
             ]
         ],
         "l": false
@@ -3563,5 +3564,29 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "aea43ccdf90168cd",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1435,
+        "y": 500,
+        "wires": [
+            []
+        ],
+        "l": false
     }
 ]
