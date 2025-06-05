@@ -3762,31 +3762,14 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2555,
+        "x": 2575,
         "y": 500,
         "wires": [
             [
-                "c247de8e0c9018aa"
+                "0bf9a1460ffee345"
             ]
         ],
         "l": false
-    },
-    {
-        "id": "c247de8e0c9018aa",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2640,
-        "y": 640,
-        "wires": []
     },
     {
         "id": "a1e6a3c5e67f3a1d",
@@ -3846,6 +3829,88 @@
             [
                 "056246df9904ea45"
             ]
+        ],
+        "l": false
+    },
+    {
+        "id": "0bf9a1460ffee345",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Check Selected Option",
+        "func": "// Hardcoded test values (override env and global context)\nconst highlights = true;\nconst keywords = false;\nconst summary = true;\nconst captioning = true;\nconst actionRecognition = false;\n\nconst selectedOptions = [];\n\n// Hardcoded model for testing\nmsg.model = \"models/gemini-pro-vision\"; // replace with your actual model ID if needed\n\n// Determine the selected options\nif (highlights) {\n    selectedOptions.push(\"Highlights\");\n}\nif (keywords) {\n    selectedOptions.push(\"Keywords\");\n}\nif (summary) {\n    selectedOptions.push(\"Summary\");\n}\nif (captioning) {\n    selectedOptions.push(\"Video Captioning\");\n}\nif (actionRecognition) {\n    selectedOptions.push(\"Video Action Recognition\");\n}\n\nmsg.selectedOptions = selectedOptions;\n\n// Validate that at least one option is selected\nif (!highlights && !keywords && !summary && !captioning && !actionRecognition) {\n    const errorMsg = \"You must select at least one option\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\n// Validate the model presence\nif (!msg.model) {\n    const errorMsg = \"You must provide a Gemini Model\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2655,
+        "y": 500,
+        "wires": [
+            [
+                "f432314d5813a502",
+                "21ffd078614e3d10"
+            ],
+            [
+                "f64c75c2bd7b08f5"
+            ]
+        ],
+        "l": false,
+        "info": "# Check Selected Option\n\n## Purpose\nThis function node validates the selected options and ensures that at least one option is chosen. It also checks for the presence of a Gemini model ID.\n\n## Input\n- No specific input fields are required, but the following are hardcoded for testing:\n  - `highlights`: Boolean indicating if the Highlights option is selected.\n  - `keywords`: Boolean indicating if the Keywords option is selected.\n  - `summary`: Boolean indicating if the Summary option is selected.\n  - `captioning`: Boolean indicating if the Video Captioning option is selected.\n  - `actionRecognition`: Boolean indicating if the Video Action Recognition option is selected.\n  - `msg.model`: The Gemini model ID (hardcoded as `models/gemini-pro-vision` for testing).\n\n## Output\n- **Output 1**: For valid selections.\n  - `msg.selectedOptions`: An array of selected options (e.g., `['Highlights', 'Summary']`).\n  - `msg.model`: The Gemini model ID.\n- **Output 2**: For errors or invalid selections.\n  - `msg.payload`: Contains the error message.\n\n## Logic\n1. Define hardcoded test values for the options (`highlights`, `keywords`, `summary`, `captioning`, `actionRecognition`).\n2. Initialize an empty array `selectedOptions` to store the selected options.\n3. Check each option and add it to `selectedOptions` if selected.\n4. Validate that at least one option is selected:\n   - If none are selected, log an error, update the node status, and send the message to **Output 2**.\n5. Validate the presence of `msg.model`:\n   - If missing, log an error, update the node status, and send the message to **Output 2**.\n6. If all validations pass, send the message to **Output 1**.\n\n## Notes\n> Replace the hardcoded values with dynamic inputs as needed for production use.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "f432314d5813a502",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Check Selected Option",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "selectedOptions",
+        "statusType": "msg",
+        "x": 2655,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "f64c75c2bd7b08f5",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: Check Selected Option",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "selectedOptions",
+        "statusType": "msg",
+        "x": 2655,
+        "y": 560,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
+    },
+    {
+        "id": "21ffd078614e3d10",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Prompt Formats (Template)",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "plain",
+        "template": "{\n  \"formats\": {\n    \"Highlights\": [\n      {\n        \"highlight\": \"[Brief description of the important moments]\",\n        \"timestamp\": \"[Timestamp for the start and end time of the highlight in the format HH:MM:SS]\",\n        \"duration\": \"Duration of the highlight in the video\"\n      }\n    ],\n    \"Summary\": \"Provide a detailed summary of the key events, scenes, and main content of the video\",\n    \"Keywords\": [\n      \"Generate a list of most relevant keywords or topics related to the video content\"\n    ],\n    \"Video Captioning\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:01:23']\",\n        \"sceneDescription\": {\n          \"overall\": \"[Description of the environment, e.g., 'A sunny park with children playing in the background']\",\n          \"objects\": [\n            {\n              \"objectName\": \"[Name of detected object, e.g., 'dog', 'tree']\",\n              \"position\": \"[Position of the object in the frame, e.g., 'center', 'top-left']\"\n            }\n          ]\n        }\n      }\n    ],\n    \"Video Action Recognition\": [\n      {\n        \"timestamp\": \"[Time in the video, e.g., '00:02:05']\",\n        \"action\": \"[Detected action, e.g., 'running', 'jumping', etc...]\",\n        \"subject\": \"[Who is performing the action, e.g., 'man', 'child']\",\n        \"duration\": \"[Duration of the action in seconds, e.g., '3.5 seconds']\",\n        \"objectInteraction\": \"[Object being interacted with, if any, e.g., 'holding a tennis racket']\"\n      }\n    ]\n  },\n  \"noResultsFormat\": [\n    {\n      \"option\": \"[Selected option]\",\n      \"message\": \"No descriptive content could be generated for this image.\"\n    }\n  ]\n}",
+        "output": "json",
+        "x": 2745,
+        "y": 500,
+        "wires": [
+            []
         ],
         "l": false
     }
