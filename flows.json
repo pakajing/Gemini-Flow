@@ -537,7 +537,7 @@
             "bffb661f516fb5b5",
             "aea43ccdf90168cd"
         ],
-        "x": 1304,
+        "x": 1484,
         "y": 359,
         "w": 362,
         "h": 242
@@ -562,9 +562,30 @@
             "40c124dd6121de0e",
             "b55083f2ef45d619"
         ],
-        "x": 1684,
+        "x": 1864,
         "y": 359,
         "w": 402,
+        "h": 242
+    },
+    {
+        "id": "7f211edd6fe4a0ee",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[8] Check Local Filesize",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "afb8f26b824279c4",
+            "exec-file-size",
+            "a70e6141ecf10683",
+            "extract-file-size",
+            "f7b4609ecc0fdefd",
+            "e8a11a01daae959b"
+        ],
+        "x": 1034,
+        "y": 359,
+        "w": 312,
         "h": 242
     },
     {
@@ -3305,7 +3326,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1345,
+        "x": 1525,
         "y": 500,
         "wires": [
             [
@@ -3332,7 +3353,7 @@
                 "module": "fs"
             }
         ],
-        "x": 1405,
+        "x": 1585,
         "y": 500,
         "wires": [
             [
@@ -3360,7 +3381,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1405,
+        "x": 1585,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3380,7 +3401,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1405,
+        "x": 1585,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3403,7 +3424,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1545,
+        "x": 1725,
         "y": 500,
         "wires": [
             [
@@ -3426,7 +3447,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1545,
+        "x": 1725,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3450,7 +3471,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1485,
+        "x": 1665,
         "y": 500,
         "wires": [
             [
@@ -3466,7 +3487,7 @@
         "g": "2e5787e38e3bb178",
         "name": "[8] 📖 Doc - Upload Proxy",
         "info": "",
-        "x": 1480,
+        "x": 1660,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3536,7 +3557,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1625,
+        "x": 1805,
         "y": 500,
         "wires": [
             [
@@ -3572,7 +3593,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1725,
+        "x": 1905,
         "y": 500,
         "wires": [
             [
@@ -3594,7 +3615,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1865,
+        "x": 2045,
         "y": 500,
         "wires": [
             [
@@ -3622,7 +3643,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1865,
+        "x": 2045,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3642,7 +3663,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1865,
+        "x": 2045,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3665,7 +3686,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1965,
+        "x": 2145,
         "y": 500,
         "wires": [
             [
@@ -3692,7 +3713,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 2265,
+        "x": 2445,
         "y": 480,
         "wires": [
             [
@@ -3708,7 +3729,7 @@
         "g": "0c30a2997401eb5a",
         "name": "[9] 📖 Doc - Get File",
         "info": "",
-        "x": 1880,
+        "x": 2060,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3727,7 +3748,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1965,
+        "x": 2145,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3798,7 +3819,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2045,
+        "x": 2225,
         "y": 500,
         "wires": [
             [
@@ -3820,7 +3841,7 @@
         "targetType": "full",
         "statusVal": "statusInfo",
         "statusType": "msg",
-        "x": 2165,
+        "x": 2345,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3838,7 +3859,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2165,
+        "x": 2345,
         "y": 500,
         "wires": [
             [
@@ -3868,7 +3889,7 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 2325,
+        "x": 2505,
         "y": 480,
         "wires": [
             []
@@ -3882,7 +3903,7 @@
         "g": "0c30a2997401eb5a",
         "name": "Get File State",
         "links": [],
-        "x": 1725,
+        "x": 1905,
         "y": 560,
         "wires": [
             [
@@ -3899,7 +3920,7 @@
         "name": "State Call Return",
         "mode": "return",
         "links": [],
-        "x": 1785,
+        "x": 1965,
         "y": 560,
         "wires": []
     },
@@ -3916,7 +3937,7 @@
         "targetType": "full",
         "statusVal": "statusInfo",
         "statusType": "msg",
-        "x": 2165,
+        "x": 2345,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3951,7 +3972,7 @@
                 "module": "url"
             }
         ],
-        "x": 1510,
+        "x": 1690,
         "y": 640,
         "wires": [
             [
@@ -3973,7 +3994,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1750,
+        "x": 1930,
         "y": 640,
         "wires": []
     },
@@ -3981,6 +4002,7 @@
         "id": "afb8f26b824279c4",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
         "name": "Debug OK: File Size",
         "active": true,
         "tosidebar": true,
@@ -3990,7 +4012,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "msg",
-        "x": 1175,
+        "x": 1215,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -4000,6 +4022,7 @@
         "id": "exec-file-size",
         "type": "exec",
         "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
         "command": "",
         "addpay": "payload",
         "append": "",
@@ -4008,7 +4031,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "Check File Size",
-        "x": 1115,
+        "x": 1155,
         "y": 500,
         "wires": [
             [
@@ -4027,6 +4050,7 @@
         "id": "a70e6141ecf10683",
         "type": "template",
         "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
         "name": "Build Shell Command",
         "field": "payload",
         "fieldType": "msg",
@@ -4034,7 +4058,7 @@
         "syntax": "mustache",
         "template": "ls -lh {{{filePath}}}",
         "output": "str",
-        "x": 1055,
+        "x": 1095,
         "y": 500,
         "wires": [
             [
@@ -4047,6 +4071,7 @@
         "id": "extract-file-size",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
         "name": "Extract File Size",
         "func": "try {\n    // Start parsing status\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"🔍 Parsing file size...\" });\n\n    const output = msg.payload.trim().split(/\\s+/);\n\n    // Size is typically at index 4 in ls -lh output\n    msg.fileSize = output[4];\n    msg.payload = msg.fileSize;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: `📦 Size: ${msg.fileSize}` });\n\n    return msg;\n\n} catch (err) {\n    msg.payload = `❌ Error parsing file size: ${err.message}`;\n    msg.statusCode = 500;\n\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ Parse error\" });\n    node.error(msg.payload, msg);\n\n    return msg;\n}\n",
         "outputs": 1,
@@ -4055,7 +4080,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1175,
+        "x": 1215,
         "y": 500,
         "wires": [
             [
@@ -4068,6 +4093,7 @@
         "id": "f7b4609ecc0fdefd",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
         "name": "Debug Error: File Size",
         "active": false,
         "tosidebar": true,
@@ -4077,10 +4103,22 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1115,
-        "y": 580,
+        "x": 1155,
+        "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
+    },
+    {
+        "id": "e8a11a01daae959b",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "7f211edd6fe4a0ee",
+        "name": "[8] 📖 Doc - Check Local Filesize",
+        "info": "",
+        "x": 1190,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
     }
 ]
