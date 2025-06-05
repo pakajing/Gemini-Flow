@@ -3799,8 +3799,7 @@
         "y": 500,
         "wires": [
             [
-                "d4e5f6a7b8c90123",
-                "ba6d4d874c91bd13"
+                "d4e5f6a7b8c90123"
             ]
         ],
         "l": false
@@ -3854,24 +3853,5 @@
         ],
         "l": false,
         "info": "# Handle File State\n\n## Purpose\nThis function processes the state of a file and routes the message to one of four outputs based on the state. It also assigns an appropriate HTTP status code to the message payload.\n\n## Input\n- `msg.payload.state`: The state of the file. Possible values:\n  - `PROCESSING`\n  - `ACTIVE`\n  - `FAILED`\n  - `STATE_UNSPECIFIED` (or any other unknown state)\n\n## Output\n- **Output 1 (Processing)**:\n  - `msg.payload.statusCode`: `102` (Processing).\n- **Output 2 (Active)**:\n  - `msg.payload.statusCode`: `200` (OK).\n- **Output 3 (Failed)**:\n  - `msg.payload.statusCode`: `500` (Server Error).\n- **Output 4 (Unspecified/Default)**:\n  - `msg.payload.statusCode`: `400` (Bad Request / Unknown).\n\n## Logic\n1. Check the value of `msg.payload.state`.\n2. Based on the state:\n   - If `PROCESSING`, set `statusCode` to `102` and send to the first output.\n   - If `ACTIVE`, set `statusCode` to `200` and send to the second output.\n   - If `FAILED`, set `statusCode` to `500` and send to the third output.\n   - If `STATE_UNSPECIFIED` or any other unknown state, set `statusCode` to `400` and send to the fourth output.\n\n## Notes\n> Ensure that `msg.payload.state` is included in the incoming message.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
-    },
-    {
-        "id": "ba6d4d874c91bd13",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "Debug OK: ",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "statusCode",
-        "statusType": "msg",
-        "x": 1863.75,
-        "y": 603.75,
-        "wires": [],
-        "icon": "font-awesome/fa-check-circle-o",
-        "l": false
     }
 ]
