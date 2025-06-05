@@ -543,7 +543,7 @@
             "9beeb9fb16cca6fa",
             "1e0691b0dc58ab3c"
         ],
-        "x": 2924,
+        "x": 2934,
         "y": 359,
         "w": 292,
         "h": 182
@@ -3313,7 +3313,7 @@
         "g": "09450da2071dc2cb",
         "name": "[13] 📖 Doc - Send To Gemini",
         "info": "",
-        "x": 3070,
+        "x": 3080,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
