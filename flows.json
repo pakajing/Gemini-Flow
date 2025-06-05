@@ -3358,7 +3358,7 @@
         "y": 500,
         "wires": [
             [
-                "78e3d12503525e7c"
+                "205c84df805979c8"
             ]
         ],
         "icon": "font-awesome/fa-lock",
@@ -3400,7 +3400,7 @@
         "targetType": "full",
         "statusVal": "slack.output.payload.ok",
         "statusType": "msg",
-        "x": 3435,
+        "x": 3445,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3432,7 +3432,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3355,
+        "x": 3365,
         "y": 500,
         "wires": [
             [
@@ -3459,7 +3459,7 @@
         "targetType": "full",
         "statusVal": "match.status",
         "statusType": "msg",
-        "x": 3355,
+        "x": 3365,
         "y": 560,
         "wires": [],
         "icon": "font-awesome/fa-user-secret",
@@ -3517,7 +3517,7 @@
             "value": "",
             "refType": "type"
         },
-        "x": 3435,
+        "x": 3445,
         "y": 500,
         "wires": [
             [
@@ -3528,5 +3528,25 @@
             ]
         ],
         "l": false
+    },
+    {
+        "id": "205c84df805979c8",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "function 1",
+        "func": "/************************************************************************\n *  Simple Slack Message Builder — Raw Gemini Output\n *\n *  Input:  msg.payload.candidates[0].content.parts[0].text (string)\n *  Output: Slack message with full content in a single Block section\n ************************************************************************/\n\n// Extract the raw Gemini output\nconst rawText = msg?.payload?.candidates?.[0]?.content?.parts?.[0]?.text || '*No content found.*';\n\n// Set basic Slack message structure\nmsg.payload = {\n  channel: msg.channel || 'C08SAJJEJNM',  // fallback default channel\n  text: 'Gemini Analysis Result',\n  icon_url: 'https://media.licdn.com/dms/image/v2/C4E0BAQHdxTG-h3JKjA/company-logo_200_200/company-logo_200_200/0/1657884149973/qibb_techtriq_logo',\n  username: 'qibb-TriageAgent',\n  blocks: [\n    {\n      type: 'section',\n      block_id: 'raw_output',\n      text: {\n        type: 'mrkdwn',\n        text: `\\`\\`\\`\\n${rawText}\\n\\`\\`\\``\n      }\n    }\n  ]\n};\n\n// Send to output 1\nreturn [msg, null];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3220,
+        "y": 220,
+        "wires": [
+            [
+                "4419d574585d1c97"
+            ]
+        ]
     }
 ]
