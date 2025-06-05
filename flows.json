@@ -3780,5 +3780,43 @@
         "x": 2640,
         "y": 640,
         "wires": []
+    },
+    {
+        "id": "a1e6a3c5e67f3a1d",
+        "type": "inject",
+        "z": "bb119fa58e5b3485",
+        "name": "Trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1090,
+        "y": 840,
+        "wires": [
+            [
+                "b2f3d9a72a4d1a3f"
+            ]
+        ]
+    },
+    {
+        "id": "b2f3d9a72a4d1a3f",
+        "type": "template",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n  \"name\": \"files/5zra7gkwnzlc\",\n  \"mimeType\": \"video/mp4\",\n  \"sizeBytes\": \"2269410\",\n  \"createTime\": \"2025-06-05T11:50:08.153138Z\",\n  \"updateTime\": \"2025-06-05T11:50:10.015429Z\",\n  \"expirationTime\": \"2025-06-07T11:50:07.684568119Z\",\n  \"sha256Hash\": \"ZWJhOWNmYmRhOGVkZjkzOTBmYmM2OTEyMjk3ZGI2MDhkMGM1MTYxMDI3ZmYxNTc2NmNiMjQwMGQ1M2U5MTUxMQ==\",\n  \"uri\": \"https://generativelanguage.googleapis.com/v1beta/files/5zra7gkwnzlc\",\n  \"state\": \"ACTIVE\",\n  \"videoMetadata\": {\n    \"videoDuration\": \"30s\"\n  },\n  \"source\": \"UPLOADED\"\n}",
+        "output": "json",
+        "x": 1280,
+        "y": 840,
+        "wires": [
+            [
+                "056246df9904ea45"
+            ]
+        ]
     }
 ]
