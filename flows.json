@@ -2534,6 +2534,13 @@
         "rules": [
             {
                 "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            },
+            {
+                "t": "set",
                 "p": "url",
                 "pt": "msg",
                 "to": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
