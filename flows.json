@@ -3483,7 +3483,7 @@
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.status({ fill: \"green\", shape: \"dot\", text: `Upload Starting` });",
+        "initialize": "",
         "finalize": "",
         "libs": [
             {
@@ -4057,7 +4057,7 @@
         "outputs": 2,
         "timeout": "",
         "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });",
+        "initialize": "",
         "finalize": "",
         "libs": [
             {
@@ -4088,7 +4088,7 @@
         "outputs": 2,
         "timeout": "",
         "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });",
+        "initialize": "",
         "finalize": "",
         "libs": [
             {
@@ -4114,7 +4114,7 @@
         "outputs": 2,
         "timeout": "",
         "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Reading file...\" });",
+        "initialize": "",
         "finalize": "",
         "libs": [
             {
