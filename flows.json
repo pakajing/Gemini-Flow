@@ -543,7 +543,7 @@
             "9beeb9fb16cca6fa",
             "1e0691b0dc58ab3c"
         ],
-        "x": 2934,
+        "x": 2914,
         "y": 359,
         "w": 292,
         "h": 182
@@ -3112,7 +3112,7 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 2975,
+        "x": 2955,
         "y": 500,
         "wires": [
             [
@@ -3134,7 +3134,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3035,
+        "x": 3015,
         "y": 500,
         "wires": [
             [
@@ -3180,7 +3180,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 3095,
+        "x": 3075,
         "y": 500,
         "wires": [
             [
@@ -3213,7 +3213,7 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 3155,
+        "x": 3135,
         "y": 500,
         "wires": [
             [
@@ -3300,7 +3300,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3155,
+        "x": 3135,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3313,7 +3313,7 @@
         "g": "09450da2071dc2cb",
         "name": "[13] 📖 Doc - Send To Gemini",
         "info": "",
-        "x": 3080,
+        "x": 3060,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
