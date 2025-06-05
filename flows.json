@@ -505,6 +505,50 @@
         "h": 242
     },
     {
+        "id": "1c2a148553880aa6",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[12] Prompt Format",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "2e93be67ef02f9b2",
+            "0bf9a1460ffee345",
+            "f432314d5813a502",
+            "f64c75c2bd7b08f5",
+            "21ffd078614e3d10",
+            "5c8395152289be4c",
+            "43dde58ef62fbc3c",
+            "45ad1993d1438f98"
+        ],
+        "x": 2534,
+        "y": 359,
+        "w": 342,
+        "h": 242
+    },
+    {
+        "id": "09450da2071dc2cb",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[13] Send To Gemini",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ce5a2cdc3f9edb7d",
+            "0b8fffbda05739f7",
+            "be5d248002aa6ef5",
+            "b20eb6ca8f88330f",
+            "9beeb9fb16cca6fa",
+            "1e0691b0dc58ab3c"
+        ],
+        "x": 2914,
+        "y": 359,
+        "w": 292,
+        "h": 182
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -2898,6 +2942,7 @@
         "id": "2e93be67ef02f9b2",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
@@ -2948,6 +2993,7 @@
         "id": "0bf9a1460ffee345",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Check Selected Option",
         "func": "// Hardcoded test values (override env and global context)\nconst highlights = true;\nconst keywords = false;\nconst summary = true;\nconst captioning = true;\nconst actionRecognition = false;\n\nconst selectedOptions = [];\n\n// Hardcoded model for testing\nmsg.model = \"models/gemini-pro-vision\"; // replace with your actual model ID if needed\n\n// Determine the selected options\nif (highlights) {\n    selectedOptions.push(\"Highlights\");\n}\nif (keywords) {\n    selectedOptions.push(\"Keywords\");\n}\nif (summary) {\n    selectedOptions.push(\"Summary\");\n}\nif (captioning) {\n    selectedOptions.push(\"Video Captioning\");\n}\nif (actionRecognition) {\n    selectedOptions.push(\"Video Action Recognition\");\n}\n\nmsg.selectedOptions = selectedOptions;\n\n// Validate that at least one option is selected\nif (!highlights && !keywords && !summary && !captioning && !actionRecognition) {\n    const errorMsg = \"You must select at least one option\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\n// Validate the model presence\nif (!msg.model) {\n    const errorMsg = \"You must provide a Gemini Model\";\n    node.error(errorMsg);\n    node.status({ fill: \"red\", shape: \"ring\", text: errorMsg });\n    setTimeout(() => node.status({}), 2000);\n    return [null, msg];\n}\n\nreturn [msg, null];",
         "outputs": 2,
@@ -2974,8 +3020,9 @@
         "id": "f432314d5813a502",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Debug OK: Check Selected Option",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -2993,6 +3040,7 @@
         "id": "f64c75c2bd7b08f5",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Debug Error: Check Selected Option",
         "active": true,
         "tosidebar": true,
@@ -3012,6 +3060,7 @@
         "id": "21ffd078614e3d10",
         "type": "template",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Prompt Formats (Template)",
         "field": "payload",
         "fieldType": "msg",
@@ -3032,6 +3081,7 @@
         "id": "5c8395152289be4c",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Set Formats (from Template)",
         "func": "const selectedOptions = msg.selectedOptions;\nconst allFormats = msg.payload.formats || {};\nconst outputFormats = {};\n\n// Build output based on selected options\nfor (const option of selectedOptions) {\n    if (allFormats[option]) {\n        const key = option.toLowerCase().replace(/ /g, \"\");\n        outputFormats[key] = allFormats[option];\n    }\n}\n\n// Always add noResultsFormat\nmsg.noResultsFormat = JSON.stringify(msg.payload.noResultsFormat || [], null, 2);\nmsg.formats = JSON.stringify(outputFormats, null, 2);\n\nreturn msg;",
         "outputs": 1,
@@ -3044,7 +3094,8 @@
         "y": 500,
         "wires": [
             [
-                "45ad1993d1438f98"
+                "45ad1993d1438f98",
+                "ce5a2cdc3f9edb7d"
             ]
         ],
         "l": false
@@ -3053,6 +3104,7 @@
         "id": "ce5a2cdc3f9edb7d",
         "type": "template",
         "z": "bb119fa58e5b3485",
+        "g": "09450da2071dc2cb",
         "name": "Set Prompt",
         "field": "userPrompt",
         "fieldType": "msg",
@@ -3060,7 +3112,7 @@
         "syntax": "mustache",
         "template": "Using the provided video and selected options, generate text content that accurately represents the relevant details for each option while adhering to the given formats. \nEnsure that each object is formatted properly and that redundant information is avoided.\nDo not use Markdown formatting in your output.\n\nFor each selected option, use the corresponding format as outlined below:\n-Selected options: {{{selectedOptions}}}\n-Expected format: {{{formats}}}\n\nIf no relevant results are available for any selected option, return the following format: {{noResultsFormat}}, indicating that no relevant data could be generated for the option.",
         "output": "str",
-        "x": 2985,
+        "x": 2965,
         "y": 500,
         "wires": [
             [
@@ -3073,6 +3125,7 @@
         "id": "0b8fffbda05739f7",
         "type": "function",
         "z": "bb119fa58e5b3485",
+        "g": "09450da2071dc2cb",
         "name": "Prepare Payload",
         "func": "msg.payload = {\n  contents: [\n    {\n      parts: [{\n        fileData: {\n          mimeType: msg.mediaType,\n          fileUri:  msg.fileUri\n        }\n      }],\n      role: \"user\"\n    },\n    {\n      parts: [{ text: msg.userPrompt }],\n      role: \"user\"\n    }\n  ]\n};\nreturn msg;\n",
         "outputs": 1,
@@ -3081,7 +3134,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3045,
+        "x": 3025,
         "y": 500,
         "wires": [
             [
@@ -3094,6 +3147,7 @@
         "id": "be5d248002aa6ef5",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "09450da2071dc2cb",
         "name": "Set Url",
         "rules": [
             {
@@ -3126,7 +3180,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 3105,
+        "x": 3085,
         "y": 500,
         "wires": [
             [
@@ -3139,6 +3193,7 @@
         "id": "b20eb6ca8f88330f",
         "type": "http request",
         "z": "bb119fa58e5b3485",
+        "g": "09450da2071dc2cb",
         "name": "Gemini Request",
         "method": "POST",
         "ret": "obj",
@@ -3158,31 +3213,14 @@
                 "valueValue": "apiKey"
             }
         ],
-        "x": 3165,
+        "x": 3145,
         "y": 500,
         "wires": [
             [
-                "489209dabc0815de"
+                "9beeb9fb16cca6fa"
             ]
         ],
         "l": false
-    },
-    {
-        "id": "489209dabc0815de",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3090,
-        "y": 580,
-        "wires": []
     },
     {
         "id": "01e40a0a0af010d0",
@@ -3220,7 +3258,8 @@
         "id": "43dde58ef62fbc3c",
         "type": "comment",
         "z": "bb119fa58e5b3485",
-        "name": "[11] 📖 Doc - File State",
+        "g": "1c2a148553880aa6",
+        "name": "[12] 📖 Doc - Prompt Format",
         "info": "",
         "x": 2700,
         "y": 400,
@@ -3231,8 +3270,9 @@
         "id": "45ad1993d1438f98",
         "type": "debug",
         "z": "bb119fa58e5b3485",
+        "g": "1c2a148553880aa6",
         "name": "Debug OK: Prepare Type of Prompt",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -3245,5 +3285,37 @@
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "9beeb9fb16cca6fa",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "09450da2071dc2cb",
+        "name": "Debug OK: Send to Gemini",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3145,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "1e0691b0dc58ab3c",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "09450da2071dc2cb",
+        "name": "[13] 📖 Doc - Send To Gemini",
+        "info": "",
+        "x": 3060,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
     }
 ]
