@@ -534,11 +534,12 @@
             "01b66cb140e416c2",
             "3510ebc7baaa1485",
             "f5c76e4a184c6ffd",
-            "bffb661f516fb5b5"
+            "bffb661f516fb5b5",
+            "aea43ccdf90168cd"
         ],
         "x": 1034,
         "y": 359,
-        "w": 322,
+        "w": 362,
         "h": 242
     },
     {
@@ -3377,7 +3378,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1295,
+        "x": 1275,
         "y": 500,
         "wires": [
             [
@@ -3401,7 +3402,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1295,
+        "x": 1275,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3450,6 +3451,7 @@
         "id": "aea43ccdf90168cd",
         "type": "change",
         "z": "bb119fa58e5b3485",
+        "g": "2e5787e38e3bb178",
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
@@ -3510,20 +3512,106 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1435,
+        "x": 1355,
         "y": 500,
         "wires": [
             [
-                "73f81da274b5ab14"
+                "ab7d56461f19d6b5"
             ]
         ],
         "l": false
     },
     {
-        "id": "73f81da274b5ab14",
+        "id": "ab7d56461f19d6b5",
+        "type": "delay",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1475,
+        "y": 500,
+        "wires": [
+            [
+                "737e8c1dced31d50"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "737e8c1dced31d50",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "apiKey",
+                "pt": "msg",
+                "to": "SECRETS.GEMINI_API_KEY",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "gemini.upload.file.name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1535,
+        "y": 500,
+        "wires": [
+            [
+                "8d519cd6a3836e1c"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "8d519cd6a3836e1c",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "name": "Build Gemini GET Request with Status Outputs",
+        "func": "// Construct Gemini File GET URL with API key\nconst baseUrl = \"https://generativelanguage.googleapis.com/v1beta/\";\nconst fileName = msg.fileName;\nconst apiKey = msg.apiKey;\n\ntry {\n    // Validate required inputs\n    if (!fileName || !apiKey) {\n        throw new Error(\"Missing required parameters: fileName or apiKey\");\n    }\n\n    // Build the GET request\n    msg.method = \"GET\";\n    msg.url = `${baseUrl}${fileName}?key=${apiKey}`;\n    msg.headers = {\n        \"Accept\": \"application/json\"\n    };\n\n    // Indicate success and send to the first output\n    msg.statusCode = 200;\n    return [msg, null];\n} catch (error) {\n    // Handle errors, such as missing parameters\n    msg.payload = `❌ Error building GET request: ${error.message}`;\n    msg.statusCode = 400;\n    node.error(msg.payload, msg);\n    return [null, msg]; // Send to the second output for errors\n}",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1595,
+        "y": 500,
+        "wires": [
+            [
+                "24ec17f135c032fd"
+            ],
+            [
+                "f7237e0709b112c6"
+            ]
+        ],
+        "l": false,
+        "info": "# Build Gemini GET Request with Status Outputs\n\n## Purpose\nThis function constructs a GET request to retrieve a file from the Gemini API. It handles success and error scenarios, providing appropriate status codes and messages.\n\n## Input\n- `msg.fileName`: The name of the file to retrieve.\n- `msg.apiKey`: The API key for authentication.\n\n## Output\n- **Output 1 (Success)**:\n  - `msg.method`: The HTTP method, set to `GET`.\n  - `msg.url`: The constructed API endpoint URL.\n  - `msg.headers`: HTTP headers for the request, including `Accept: application/json`.\n  - `msg.statusCode`: HTTP status code `200`.\n- **Output 2 (Error)**:\n  - `msg.payload`: An error message indicating the failure reason.\n  - `msg.statusCode`: HTTP status code `400`.\n\n## Logic\n1. Validate that `fileName` and `apiKey` are provided.\n2. Construct the GET request URL using the base URL, file name, and API key.\n3. Set the HTTP method to `GET` and add the `Accept` header.\n4. If successful, send the prepared `msg` object to the first output with a `200` status code.\n5. If an error occurs (e.g., missing parameters), send an error message to the second output with a `400` status code.\n\n## Notes\n> Ensure that `fileName` and `apiKey` are included in the incoming `msg` object.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "24ec17f135c032fd",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK:",
+        "name": "Debug OK: Get File",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -3532,10 +3620,29 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1545,
-        "y": 500,
+        "x": 1595,
+        "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "f7237e0709b112c6",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: Get File",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1595,
+        "y": 560,
+        "wires": [],
+        "icon": "node-red/alert.svg",
         "l": false
     }
 ]
