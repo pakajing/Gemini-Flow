@@ -451,25 +451,6 @@
         "h": 109.5
     },
     {
-        "id": "310881b5cb56aa03",
-        "type": "group",
-        "z": "bb119fa58e5b3485",
-        "name": "9 upload",
-        "style": {
-            "label": true
-        },
-        "nodes": [
-            "fd6f3ec4e3d5c64f",
-            "1fdb61060179eeed",
-            "b4a84f425b07ea82",
-            "02a284a071dd6792"
-        ],
-        "x": 874,
-        "y": 759,
-        "w": 952,
-        "h": 82
-    },
-    {
         "id": "a4b528dbe3ac6232",
         "type": "group",
         "z": "bb119fa58e5b3485",
@@ -483,8 +464,8 @@
             "f0d85a75e3e8494c",
             "49f0f0fa0dc4bcd7"
         ],
-        "x": 1014,
-        "y": 859,
+        "x": 894,
+        "y": 679,
         "w": 1052,
         "h": 82
     },
@@ -2994,8 +2975,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 1170,
-        "y": 900,
+        "x": 1050,
+        "y": 720,
         "wires": [
             [
                 "dc0c5588c30a29c5"
@@ -3015,8 +2996,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
-        "y": 900,
+        "x": 1310,
+        "y": 720,
         "wires": [
             [
                 "f0d85a75e3e8494c"
@@ -3040,8 +3021,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1700,
-        "y": 900,
+        "x": 1580,
+        "y": 720,
         "wires": [
             [
                 "49f0f0fa0dc4bcd7"
@@ -3062,84 +3043,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1930,
-        "y": 900,
+        "x": 1810,
+        "y": 720,
         "wires": []
-    },
-    {
-        "id": "fd6f3ec4e3d5c64f",
-        "type": "function",
-        "z": "bb119fa58e5b3485",
-        "g": "310881b5cb56aa03",
-        "name": "Prepare Upload Request",
-        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = \"/tmp/temp_video.mp4\";\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\nmsg.payload = fs.readFileSync(filePath);\nmsg.headers = {\n    \"Content-Type\": \"video/mp4\"\n};\nmsg.method = \"POST\";\nmsg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "fs",
-                "module": "fs"
-            }
-        ],
-        "x": 1270,
-        "y": 800,
-        "wires": [
-            [
-                "02a284a071dd6792"
-            ]
-        ]
-    },
-    {
-        "id": "1fdb61060179eeed",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "g": "310881b5cb56aa03",
-        "name": "Upload Response",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1690,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "b4a84f425b07ea82",
-        "type": "inject",
-        "z": "bb119fa58e5b3485",
-        "g": "310881b5cb56aa03",
-        "name": "Inject API key and fileName",
-        "props": [
-            {
-                "p": "fileName",
-                "v": "files/qy9igtslp6kp",
-                "vt": "str"
-            },
-            {
-                "p": "apiKey",
-                "v": "AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 1030,
-        "y": 800,
-        "wires": [
-            [
-                "fd6f3ec4e3d5c64f"
-            ]
-        ]
     },
     {
         "id": "766a3fcca5fb2b44",
@@ -3455,31 +3361,6 @@
         "l": false
     },
     {
-        "id": "02a284a071dd6792",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "g": "310881b5cb56aa03",
-        "name": "Upload File",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1490,
-        "y": 800,
-        "wires": [
-            [
-                "1fdb61060179eeed"
-            ]
-        ]
-    },
-    {
         "id": "01b66cb140e416c2",
         "type": "http request",
         "z": "bb119fa58e5b3485",
@@ -3572,8 +3453,50 @@
         "name": "Set Gemini Paramaters ",
         "rules": [
             {
+                "t": "set",
+                "p": "gemini.upload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
                 "t": "delete",
                 "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "filePath",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "method",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
                 "pt": "msg"
             }
         ],
@@ -3585,8 +3508,29 @@
         "x": 1435,
         "y": 500,
         "wires": [
-            []
+            [
+                "73f81da274b5ab14"
+            ]
         ],
+        "l": false
+    },
+    {
+        "id": "73f81da274b5ab14",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK:",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1545,
+        "y": 500,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
         "l": false
     }
 ]
