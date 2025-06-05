@@ -549,6 +549,28 @@
         "h": 182
     },
     {
+        "id": "ae3236abde85c3f3",
+        "type": "group",
+        "z": "bb119fa58e5b3485",
+        "name": "[14] Response User",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "fff8217e6cbac37f",
+            "4419d574585d1c97",
+            "41dff6a22723fe4a",
+            "42771efbbc71d59a",
+            "354f194ea8aee5f9",
+            "78e3d12503525e7c",
+            "a62a42c63f57c14f"
+        ],
+        "x": 3234,
+        "y": 359,
+        "w": 292,
+        "h": 242
+    },
+    {
         "id": "4f68b793021e13a7",
         "type": "status",
         "z": "97b77bc4b98052be",
@@ -3217,7 +3239,8 @@
         "y": 500,
         "wires": [
             [
-                "9beeb9fb16cca6fa"
+                "9beeb9fb16cca6fa",
+                "fff8217e6cbac37f"
             ]
         ],
         "l": false
@@ -3317,5 +3340,193 @@
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "fff8217e6cbac37f",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "Bearer Slack",
+        "func": "// Retrieve the Slack token from global secrets\nvar slack_token = global.get(\"SECRETS.slack_token\");\n\n// Ensure the token exists before proceeding\nif (!slack_token) {\n    node.error(\"Slack token is not available in global secrets.\", msg);\n    return null; // Stop further processing\n}\n\n// Set the Authorization header with the Bearer token\nmsg.headers = {\n    \"Authorization\": `Bearer ${slack_token}`\n};\n\n// Return the modified message object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3275,
+        "y": 500,
+        "wires": [
+            [
+                "78e3d12503525e7c"
+            ]
+        ],
+        "icon": "font-awesome/fa-lock",
+        "l": false,
+        "info": "# Bearer Slack\n\n## Purpose\nThis function node retrieves a Slack token from global secrets and sets it as a Bearer token in the `Authorization` header of the outgoing message.\n\n## Input\n- The `msg` object is passed into the function.\n\n## Output\n- The `msg` object is returned with an updated `headers` property containing the `Authorization` header.\n\n## Logic\n1. Retrieve the Slack token from `global.get(\"SECRETS.slack_token\")`.\n2. Check if the token exists:\n   - If not, log an error and stop further processing.\n3. Set the `Authorization` header with the Bearer token.\n4. Return the modified `msg` object.\n\n## Notes\n> Ensure that the Slack token is stored securely in the global secrets under the key `SECRETS.slack_token`.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "41dff6a22723fe4a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "Debug OK: Post Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "slack.output.payload.ok",
+        "statusType": "msg",
+        "x": 3435,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false,
+        "info": "# Flow Debug Get Secret\n\n## Description\nThis `Debug` node is used to verify the successful retrieval of secrets. It logs the full message object (`msg`) to the debug sidebar and displays the `msg.statusCode` in the node's status field for quick monitoring.\n\n## Input\n- **Trigger:**\n  - The node is triggered by the output of a preceding node in the flow, typically after a secret retrieval process.\n- **Context / Global Vars:** None required.\n- **Expected Secrets:** None required.\n\n## Output\n- **Success Path:**\n  - Logs the full incoming message (`msg`) to the debug sidebar.\n  - Displays the `msg.statusCode` in the node's status field for quick reference.\n  - Outputs the message for further processing if connected downstream.\n- **Error Path:**\n  - This node does not handle errors but can be used to inspect issues in the incoming message.\n\n## Notes\n> - The debug node is disabled by default. Enable it to view logs in the debug sidebar.\n> - Use this node during development or troubleshooting to ensure secrets are being retrieved and processed correctly.\n> - The `msg.statusCode` is displayed in the node's status field for quick monitoring of the HTTP response status.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)\n"
+    },
+    {
+        "id": "42771efbbc71d59a",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "Debug Error: Post Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "slack.output.payload.ok",
+        "statusType": "msg",
+        "x": 3435,
+        "y": 560,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false,
+        "info": "# Flow Debug Error Get Secret\n\n## Description\nThis `Debug` node is used to log and inspect errors that occur during the secret retrieval process. It captures the full message object (`msg`) and displays the `msg.statusCode` in the node's status field for quick monitoring.\n\n## Input\n- **Trigger:**\n  - The node is triggered by the output of a preceding node in the flow, typically when an error occurs during secret retrieval.\n- **Context / Global Vars:** None required.\n- **Expected Secrets:** None required.\n\n## Output\n- **Success Path:**\n  - Logs the full incoming message (`msg`) to the debug sidebar for inspection.\n  - Displays the `msg.statusCode` in the node's status field for quick reference.\n  - Outputs the message for further processing if connected downstream.\n- **Error Path:**\n  - This node does not handle errors but is used to inspect and debug issues in the incoming message.\n\n## Notes\n> - The debug node is enabled by default to assist in troubleshooting.\n> - Use this node during development or troubleshooting to identify and resolve issues in the secret retrieval process.\n> - The `msg.statusCode` is displayed in the node's status field for quick monitoring of the HTTP response status.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)\n"
+    },
+    {
+        "id": "354f194ea8aee5f9",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "[004] 📖 Doc - Response User",
+        "info": "",
+        "x": 3380,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "78e3d12503525e7c",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "Slack Triage-Ack Builder",
+        "func": "/***********************************************************************\n *  Slack “triage-ack” builder — 2-output version\n *\n *  • Output 1 → normal user messages (text / files / both)\n *  • Output 2 → events with subtype: \"bot_message\"  (“Ok Bot”)\n ***********************************************************************/\n\n\n/* ── 0 · Extract the raw Slack event right away ──────────────────── */\nconst event = msg?.slack_webhook_received?.event || {};\n\n\n/* ── 0a · SHORT-CIRCUIT if this is our own bot message ───────────── */\nif (event.subtype === 'bot_message') {\n  /* Respond with a minimal “Bot2Bot” and send to 2nd output */\n  msg.payload = 'Bot2Bot';\n  return [ null, msg ];      //   [out1, out2]\n}\n\n\n/* ── 1 · Helper utilities (unchanged) ────────────────────────────── */\nfunction bytesToHuman(bytes = 0) {\n  if (bytes < 1024) return `${bytes} B`;\n  const u = ['kB','MB','GB','TB']; let i = -1;\n  do { bytes /= 1024; i++; } while (bytes >= 1024 && i < u.length - 1);\n  return `${bytes.toFixed(i === 0 ? 0 : 1)} ${u[i]}`;\n}\nconst msToSec = ms => `${(ms / 1000).toFixed(1)} s`;\nfunction summariseFile(f) {\n  const { name='file', filetype='', mimetype='', size, duration_ms } = f;\n  const base = name.length > 35 ? name.slice(0,33)+'…' : name;\n  const sz = size ? ` · ${bytesToHuman(size)}` : '';\n  if (mimetype.startsWith('audio/') || f.subtype === 'slack_audio')\n    return `🎧 ${base}${duration_ms ? ` · ${msToSec(duration_ms)}` : ''}`;\n  if (mimetype.startsWith('video/'))  return `📹 ${base}${sz}`;\n  if (mimetype.startsWith('image/'))  return `🖼 ${base}${sz}`;\n  if (filetype === 'json' || base.toLowerCase().endsWith('.json'))\n    return `📄 ${base}${sz}`;\n  return `📎 ${base}${sz}`;\n}\n\n\n/* ── 2 · Pull details used for ACK construction ──────────────────── */\nconst {\n  user:       userId       = 'unknown',\n  channel:    eventChannel,\n  text:       rawText      = '',\n  thread_ts:  parentTs,\n  event_ts,\n  ts,\n  files:      fileList     = []\n} = event;\n\nconst channel   = eventChannel ?? msg.channel ?? '';\nconst thread_ts = parentTs || event_ts || ts;\nconst mongoId   = msg?.mongoInsertId ?? 'n/a';\nconst messageText = (rawText || '').trim();\n\n\n/* ── 3 · Compose the echo + optional attachment summary ──────────── */\nlet echoText;\nlet extraBlocks = [];\n\nif (messageText && !fileList.length) {\n  /* Text only */\n  echoText = `*You wrote:*\\n>${messageText}`;\n\n} else if (!messageText && fileList.length) {\n  /* Files only (describe first attachment) */\n  const firstFile = fileList[0];\n  echoText = `*You sent ${summariseFile(firstFile).replace(/^[^ ]+ /, '')}*`;\n\n} else if (messageText && fileList.length) {\n  /* Text + files */\n  echoText = `*You wrote:*\\n>${messageText}`;\n\n  const MAX = 10;\n  const fields = fileList.slice(0, MAX).map(f => ({ type:'mrkdwn', text: summariseFile(f) }));\n  if (fileList.length > MAX) {\n    fields.push({ type:'mrkdwn', text: `…and *${fileList.length - MAX}* more` });\n  }\n  extraBlocks.push({\n    type: 'section',\n    block_id: 'attachment_summary',\n    text: { type:'mrkdwn', text: '*You also attached:*' },\n    fields\n  });\n\n} else {\n  /* Empty edge-case */\n  echoText = '*I received your message.*';\n}\n\n\n/* ── 4 · Build Slack Block Kit payload ───────────────────────────── */\nconst fallbackText = `Hi <@${userId}>! I’m on it.`;\n\nmsg.payload = {\n  channel,\n  thread_ts,\n  text: fallbackText,\n  icon_url:\n    'https://media.licdn.com/dms/image/v2/C4E0BAQHdxTG-h3JKjA/company-logo_200_200/company-logo_200_200/0/1657884149973/qibb_techtriq_logo?e=2147483647&v=beta&t=AxsYC2lP0o7H6YORDacGWgl9Fb3kJ4yDr-sx56fO59M',\n  username: 'qibb-TriageAgent',\n  blocks: [\n    /* Greeting — DO NOT CHANGE block_id */\n    {\n      type: 'section',\n      block_id: 'greeting_#noresponse',\n      text: { type:'mrkdwn', text: `Hi <@${userId}> :wave:` }\n    },\n    /* Main echo */\n    {\n      type: 'section',\n      block_id: 'user_message',\n      text: { type:'mrkdwn', text: `${echoText}\\n\\nGive me a second to read it.` }\n    },\n    /* Attachment summary when needed */\n    ...extraBlocks,\n    /* Mongo reference */\n    {\n      type: 'context',\n      block_id: 'mongo_ref',\n      elements: [\n        { type:'mrkdwn', text: `:file_cabinet: *MongoDB record ID:* ${mongoId}` }\n      ]\n    }\n  ]\n};\n\n\n/* ── 5 · Send to first output (normal path) ──────────────────────── */\nreturn [ msg, null ];          //   [out1, out2]\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3355,
+        "y": 500,
+        "wires": [
+            [
+                "4419d574585d1c97"
+            ],
+            [
+                "a62a42c63f57c14f"
+            ]
+        ],
+        "l": false,
+        "info": "# Slack Triage-Ack Builder\n\n## Purpose\nThis function node processes incoming Slack events and generates an acknowledgment message based on the content of the event. It handles text, file attachments, or a combination of both, and provides a fallback for empty messages.\n\n## Input\n- `msg.slack_webhook_received.event`: The Slack event object containing details such as `text`, `files`, `user`, and `channel`.\n- `msg.mongoInsertId`: MongoDB record ID for reference.\n\n## Output\n- **Output 1**: Normal user messages (text, files, or both).\n- **Output 2**: Events with subtype `bot_message` (responds with “Ok Bot”).\n\n## Logic\n1. **Helper Utilities**:\n   - `bytesToHuman`: Converts file sizes to human-readable formats.\n   - `msToSec`: Converts milliseconds to seconds.\n   - `summariseFile`: Generates a short description for file attachments.\n\n2. **Event Extraction**:\n   - Extracts relevant fields from the Slack event, such as `text`, `files`, and `user`.\n\n3. **Acknowledgment Wording**:\n   - Handles four cases:\n     1. Text only: Echoes the text.\n     2. Files only: Describes the first file.\n     3. Text + files: Echoes the text and lists attached files.\n     4. Neither: Provides a generic fallback message.\n\n4. **Payload Assembly**:\n   - Constructs a Slack Block Kit payload with:\n     - A greeting block.\n     - An echo block for the user message.\n     - An optional attachment summary block.\n     - A MongoDB reference block.\n\n5. **Bot Message Handling**:\n   - If the event subtype is `bot_message`, responds with “Bot2Bot” and sends the message to the second output.\n\n## Notes\n> Ensure the Slack webhook integration is properly configured to receive events and send responses.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "a62a42c63f57c14f",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "Debug OK: BotToBot",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "match.status",
+        "statusType": "msg",
+        "x": 3355,
+        "y": 560,
+        "wires": [],
+        "icon": "font-awesome/fa-user-secret",
+        "l": false
+    },
+    {
+        "id": "4419d574585d1c97",
+        "type": "slack-web-client",
+        "z": "bb119fa58e5b3485",
+        "g": "ae3236abde85c3f3",
+        "name": "POST /chat.postMessage",
+        "selectedOperation": {
+            "method": "post",
+            "path": "/chat.postMessage",
+            "summary": "Sends a message to a channel.",
+            "description": "Sends a message to a channel.\nAuthentication token requires scope: `chat:write`\n",
+            "tag": "chat",
+            "operationId": "chat_postMessage"
+        },
+        "api": "api-0",
+        "errorHandlingModeSelectedIndex": 1,
+        "security": [
+            {
+                "id": "bearerAuth",
+                "type": "http",
+                "description": "",
+                "scheme": "bearer"
+            },
+            {
+                "id": "slackAuth",
+                "type": "oauth2",
+                "description": ""
+            }
+        ],
+        "requestContentTypeSelectedIndex": 0,
+        "responseContentTypeSelectedIndex": 0,
+        "parameters": [
+            {
+                "name": "body",
+                "value": "{}\n",
+                "in": "body",
+                "refType": "jsonata"
+            }
+        ],
+        "uiFeatures": {
+            "operations": {
+                "advancedMode": false
+            }
+        },
+        "outputs": 2,
+        "debugEnabled": false,
+        "output": "slack.output",
+        "host": {
+            "type": "string",
+            "value": "",
+            "refType": "type"
+        },
+        "x": 3435,
+        "y": 500,
+        "wires": [
+            [
+                "41dff6a22723fe4a"
+            ],
+            [
+                "42771efbbc71d59a"
+            ]
+        ],
+        "l": false
     }
 ]
