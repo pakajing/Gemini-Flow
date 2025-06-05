@@ -3405,7 +3405,8 @@
         "y": 500,
         "wires": [
             [
-                "6db4c154c084378c"
+                "6db4c154c084378c",
+                "f5c76e4a184c6ffd"
             ],
             [
                 "38880de9afe4fd3a"
@@ -3418,7 +3419,7 @@
         "id": "6db4c154c084378c",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug OK: Upload File",
+        "name": "Debug OK: Upload Payload",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -3437,7 +3438,7 @@
         "id": "38880de9afe4fd3a",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "Debug Error: Upload File",
+        "name": "Debug Error: Upload Payload",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3493,10 +3494,58 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1330,
+        "x": 1295,
         "y": 500,
         "wires": [
-            []
-        ]
+            [
+                "3510ebc7baaa1485"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "3510ebc7baaa1485",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: Upload File",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1295,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "f5c76e4a184c6ffd",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1215,
+        "y": 500,
+        "wires": [
+            [
+                "01b66cb140e416c2"
+            ]
+        ],
+        "l": false
     }
 ]
