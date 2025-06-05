@@ -3978,33 +3978,6 @@
         "wires": []
     },
     {
-        "id": "4c813645f6b2cd53",
-        "type": "exec",
-        "z": "bb119fa58e5b3485",
-        "command": "",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1015,
-        "y": 740,
-        "wires": [
-            [
-                "afb8f26b824279c4"
-            ],
-            [
-                "afb8f26b824279c4"
-            ],
-            [
-                "afb8f26b824279c4"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "1926cdde5531f464",
         "type": "change",
         "z": "bb119fa58e5b3485",
@@ -4022,7 +3995,7 @@
         "y": 740,
         "wires": [
             [
-                "4c813645f6b2cd53"
+                "98cf6f5dc338f5c7"
             ]
         ],
         "l": false
@@ -4045,5 +4018,31 @@
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
+    },
+    {
+        "id": "98cf6f5dc338f5c7",
+        "type": "exec",
+        "z": "bb119fa58e5b3485",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Check File Size",
+        "x": 1100,
+        "y": 640,
+        "wires": [
+            [
+                "afb8f26b824279c4"
+            ],
+            [
+                "afb8f26b824279c4"
+            ],
+            [
+                "afb8f26b824279c4"
+            ]
+        ]
     }
 ]
