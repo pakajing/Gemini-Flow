@@ -460,9 +460,9 @@
         },
         "nodes": [
             "fd6f3ec4e3d5c64f",
-            "02a284a071dd6792",
             "1fdb61060179eeed",
-            "b4a84f425b07ea82"
+            "b4a84f425b07ea82",
+            "02a284a071dd6792"
         ],
         "x": 874,
         "y": 759,
@@ -3070,31 +3070,6 @@
         ]
     },
     {
-        "id": "02a284a071dd6792",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "g": "310881b5cb56aa03",
-        "name": "Upload File",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1490,
-        "y": 800,
-        "wires": [
-            [
-                "1fdb61060179eeed"
-            ]
-        ]
-    },
-    {
         "id": "1fdb61060179eeed",
         "type": "debug",
         "z": "bb119fa58e5b3485",
@@ -3414,7 +3389,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Prepare Upload Request with Status Outputs",
-        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = msg.filePath;\nconst apiKey = \"AIzaSyAhoOz0EJPM2mt-MQQRZ42d3iwjjgyof4k\";\n\ntry {\n    // Read the file from the specified path\n    msg.payload = fs.readFileSync(filePath);\n\n    // Set headers for the upload request\n    msg.headers = {\n        \"Content-Type\": \"video/mp4\"\n    };\n\n    // Set the HTTP method and URL for the upload request\n    msg.method = \"POST\";\n    msg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\n    // Indicate success and send to the first output\n    msg.statusCode = 200;\n    return [msg, null];\n} catch (error) {\n    // Handle errors, such as file not found\n    msg.payload = `❌ Error preparing upload request: ${error.message}`;\n    msg.statusCode = 400;\n    node.error(msg.payload, msg);\n    return [null, msg]; // Send to the second output for errors\n}",
+        "func": "// No require() needed, fs is declared via Setup tab\nconst filePath = msg.filePath;\nconst apiKey = msg.apiKey;\n\ntry {\n    // Read the file from the specified path\n    msg.payload = fs.readFileSync(filePath);\n\n    // Set headers for the upload request\n    msg.headers = {\n        \"Content-Type\": \"video/mp4\"\n    };\n\n    // Set the HTTP method and URL for the upload request\n    msg.method = \"POST\";\n    msg.url = `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`;\n\n    // Indicate success and send to the first output\n    msg.statusCode = 200;\n    return [msg, null];\n} catch (error) {\n    // Handle errors, such as file not found\n    msg.payload = `❌ Error preparing upload request: ${error.message}`;\n    msg.statusCode = 400;\n    node.error(msg.payload, msg);\n    return [null, msg]; // Send to the second output for errors\n}",
         "outputs": 2,
         "timeout": "",
         "noerr": 0,
@@ -3476,5 +3451,52 @@
         "wires": [],
         "icon": "node-red/alert.svg",
         "l": false
+    },
+    {
+        "id": "02a284a071dd6792",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "g": "310881b5cb56aa03",
+        "name": "Upload File",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1490,
+        "y": 800,
+        "wires": [
+            [
+                "1fdb61060179eeed"
+            ]
+        ]
+    },
+    {
+        "id": "01b66cb140e416c2",
+        "type": "http request",
+        "z": "bb119fa58e5b3485",
+        "name": "Upload File",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1330,
+        "y": 500,
+        "wires": [
+            []
+        ]
     }
 ]
