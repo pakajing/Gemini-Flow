@@ -3829,7 +3829,7 @@
         "type": "function",
         "z": "bb119fa58e5b3485",
         "name": "Handle File State",
-        "func": "const fileState = msg.gemini.getFile.state;\n\nswitch (fileState) {\n    case \"PROCESSING\":\n        msg.statusCode = 102; // Processing\n        return [msg, null, null, null];\n    case \"ACTIVE\":\n        msg.statusCode = 200; // OK\n        return [null, msg, null, null];\n    case \"FAILED\":\n        msg.statusCode = 500; // Server Error\n        return [null, null, msg, null];\n    case \"STATE_UNSPECIFIED\":\n    default:\n        msg.statusCode = 400; // Bad Request / Unknown\n        return [null, null, null, msg];\n}",
+        "func": "const fileState = msg.gemini.getFile.state;\n\nswitch (fileState) {\n    case \"PROCESSING\":\n        msg.statusCode = 102; // Processing\n        msg.statusInfo = \"PROCESSING\";\n        return [msg, null, null, null];\n    case \"ACTIVE\":\n        msg.statusCode = 200; // OK\n        msg.statusInfo = \"ACTIVE\";\n        return [null, msg, null, null];\n    case \"FAILED\":\n        msg.statusCode = 500; // Server Error\n        msg.statusInfo = \"FAILED\";\n        return [null, null, msg, null];\n    case \"STATE_UNSPECIFIED\":\n    default:\n        msg.statusCode = 400; // Bad Request / Unknown\n        msg.statusInfo = \"STATE_UNSPECIFIED\t\";\n        return [null, null, null, msg];\n}",
         "outputs": 4,
         "timeout": "",
         "noerr": 0,
