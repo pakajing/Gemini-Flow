@@ -423,12 +423,14 @@
         "nodes": [
             "ea7e0cc8aa8ba6ab",
             "711b16e72058a346",
-            "e9bd83a847a44710"
+            "558efa184d525b6e",
+            "5e89b3dbf89ae519",
+            "13bc77fc3b58b316"
         ],
-        "x": 234,
-        "y": 619,
+        "x": 714,
+        "y": 359,
         "w": 292,
-        "h": 202
+        "h": 242
     },
     {
         "id": "c69e9338a69f4b55",
@@ -443,8 +445,8 @@
             "e98a084b941a301b",
             "b31beec551160cc2"
         ],
-        "x": 574,
-        "y": 619,
+        "x": 274,
+        "y": 1099,
         "w": 672,
         "h": 109.5
     },
@@ -3154,8 +3156,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 860,
-        "y": 680,
+        "x": 560,
+        "y": 1160,
         "wires": [
             [
                 "e98a084b941a301b"
@@ -3181,8 +3183,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 680,
+        "x": 840,
+        "y": 1160,
         "wires": []
     },
     {
@@ -3199,8 +3201,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "",
-        "x": 670,
-        "y": 660,
+        "x": 370,
+        "y": 1140,
         "wires": [
             [
                 "766a3fcca5fb2b44"
@@ -3234,11 +3236,11 @@
                 "tot": "msg"
             }
         ],
-        "x": 275,
-        "y": 780,
+        "x": 775,
+        "y": 500,
         "wires": [
             [
-                "e9bd83a847a44710"
+                "558efa184d525b6e"
             ]
         ],
         "l": false
@@ -3250,16 +3252,50 @@
         "g": "4a5f270e7e34714c",
         "name": "[7] 📖 Doc - Download Proxy",
         "info": "",
-        "x": 380,
-        "y": 660,
+        "x": 860,
+        "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
     },
     {
-        "id": "e9bd83a847a44710",
+        "id": "558efa184d525b6e",
         "type": "function",
         "z": "bb119fa58e5b3485",
         "g": "4a5f270e7e34714c",
+        "name": "Download File with Status Codes",
+        "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            // Handle non-200 status codes\n            msg.payload = `❌ Failed to download file. Status code: ${response.statusCode}`;\n            msg.statusCode = response.statusCode;\n            return resolve([null, msg]); // Send to second output for errors\n        }\n\n        response.pipe(file);\n\n        file.on(\"finish\", () => {\n            file.close(() => {\n                // File successfully downloaded\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                msg.statusCode = 200;\n                resolve([msg, null]); // Send to first output for success\n            });\n        });\n    }).on(\"error\", (err) => {\n        // Handle download errors\n        fs.unlinkSync(path); // Remove partially downloaded file\n        msg.payload = `❌ Error downloading file: ${err.message}`;\n        msg.statusCode = 400;\n        resolve([null, msg]); // Send to second output for errors\n    });\n});",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            },
+            {
+                "var": "https",
+                "module": "https"
+            }
+        ],
+        "x": 855,
+        "y": 500,
+        "wires": [
+            [
+                "5e89b3dbf89ae519"
+            ],
+            [
+                "13bc77fc3b58b316"
+            ]
+        ],
+        "l": false,
+        "info": "# Download File with Status Codes\n\n## Purpose\nThis function downloads a file from a given URL and saves it to a specified path. It handles success and error scenarios, providing appropriate status codes and messages.\n\n## Input\n- `msg.url`: The URL of the file to download.\n\n## Output\n- **Output 1 (Success)**: \n  - `msg.payload`: A success message indicating the file was saved.\n  - `msg.filePath`: The path where the file was saved.\n  - `msg.statusCode`: HTTP status code `200`.\n- **Output 2 (Error)**:\n  - `msg.payload`: An error message indicating the failure reason.\n  - `msg.statusCode`: The HTTP status code or `400` for other errors.\n\n## Logic\n1. Create a writable stream to save the file to the specified path.\n2. Use `https.get` to fetch the file from the provided URL.\n3. Check the HTTP response status code:\n   - If not `200`, send an error message to the second output.\n   - If `200`, pipe the response to the file stream.\n4. On successful download, send a success message to the first output.\n5. Handle errors during the download process and send error messages to the second output.\n\n## Notes\n> Ensure the `fs` and `https` modules are available in your environment.\n\n## Author\n[Created by francois.brisson@qibb.com](mailto:francois.brisson@qibb.com)\n\n## qibb Docs\n[📚 qibb Platform Documentation](https://docs.qibb.com/platform/latest/)"
+    },
+    {
+        "id": "d07c4db767e5d1ad",
+        "type": "function",
+        "z": "bb119fa58e5b3485",
         "name": "Download to /tmp/temp_video.mp4",
         "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            return reject(new Error(`Failed with status ${response.statusCode}`));\n        }\n\n        response.pipe(file);\n        file.on(\"finish\", () => {\n            file.close(() => {\n                msg.payload = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                resolve(msg);\n            });\n        });\n    }).on(\"error\", (err) => {\n        fs.unlinkSync(path);\n        reject(err);\n    });\n});",
         "outputs": 1,
@@ -3277,31 +3313,51 @@
                 "module": "https"
             }
         ],
-        "x": 345,
-        "y": 780,
+        "x": 675,
+        "y": 700,
         "wires": [
-            [
-                "6fff48a362cc4e88"
-            ]
+            []
         ],
         "l": false
     },
     {
-        "id": "6fff48a362cc4e88",
+        "id": "5e89b3dbf89ae519",
         "type": "debug",
         "z": "bb119fa58e5b3485",
-        "name": "debug 11",
+        "g": "4a5f270e7e34714c",
+        "name": "Debug OK: Download File",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 855,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "13bc77fc3b58b316",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "g": "4a5f270e7e34714c",
+        "name": "Debug Error: Download File",
         "active": true,
         "tosidebar": true,
         "console": false,
-        "tostatus": false,
+        "tostatus": true,
         "complete": "true",
         "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 345,
-        "y": 860,
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 855,
+        "y": 560,
         "wires": [],
+        "icon": "node-red/alert.svg",
         "l": false
     }
 ]
