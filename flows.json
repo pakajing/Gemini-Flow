@@ -522,7 +522,7 @@
         "id": "2e5787e38e3bb178",
         "type": "group",
         "z": "bb119fa58e5b3485",
-        "name": "[8] Upload Proxy",
+        "name": "[9] Upload Proxy",
         "style": {
             "label": true
         },
@@ -531,13 +531,13 @@
             "f1a2b3c4d5e67890",
             "6db4c154c084378c",
             "38880de9afe4fd3a",
-            "01b66cb140e416c2",
             "3510ebc7baaa1485",
             "f5c76e4a184c6ffd",
             "bffb661f516fb5b5",
-            "aea43ccdf90168cd"
+            "aea43ccdf90168cd",
+            "4116f467356ceb1b"
         ],
-        "x": 1484,
+        "x": 1374,
         "y": 359,
         "w": 362,
         "h": 242
@@ -546,7 +546,7 @@
         "id": "0c30a2997401eb5a",
         "type": "group",
         "z": "bb119fa58e5b3485",
-        "name": "[9] Get File",
+        "name": "[10] Get File",
         "style": {
             "label": true
         },
@@ -562,7 +562,7 @@
             "40c124dd6121de0e",
             "b55083f2ef45d619"
         ],
-        "x": 1864,
+        "x": 1774,
         "y": 359,
         "w": 402,
         "h": 242
@@ -3327,7 +3327,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1525,
+        "x": 1415,
         "y": 500,
         "wires": [
             [
@@ -3354,7 +3354,7 @@
                 "module": "fs"
             }
         ],
-        "x": 1585,
+        "x": 1475,
         "y": 500,
         "wires": [
             [
@@ -3382,7 +3382,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1585,
+        "x": 1475,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3402,36 +3402,10 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1585,
+        "x": 1475,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
-        "l": false
-    },
-    {
-        "id": "01b66cb140e416c2",
-        "type": "http request",
-        "z": "bb119fa58e5b3485",
-        "g": "2e5787e38e3bb178",
-        "name": "Upload File",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1725,
-        "y": 500,
-        "wires": [
-            [
-                "3510ebc7baaa1485"
-            ]
-        ],
         "l": false
     },
     {
@@ -3448,7 +3422,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1725,
+        "x": 1615,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3472,7 +3446,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1665,
+        "x": 1555,
         "y": 500,
         "wires": [
             [
@@ -3486,9 +3460,9 @@
         "type": "comment",
         "z": "bb119fa58e5b3485",
         "g": "2e5787e38e3bb178",
-        "name": "[8] 📖 Doc - Upload Proxy",
+        "name": "[9] 📖 Doc - Upload Proxy",
         "info": "",
-        "x": 1660,
+        "x": 1550,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3558,7 +3532,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1805,
+        "x": 1695,
         "y": 500,
         "wires": [
             [
@@ -3594,7 +3568,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1905,
+        "x": 1815,
         "y": 500,
         "wires": [
             [
@@ -3616,7 +3590,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2045,
+        "x": 1955,
         "y": 500,
         "wires": [
             [
@@ -3644,7 +3618,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 2045,
+        "x": 1955,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3664,7 +3638,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 2045,
+        "x": 1955,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3687,7 +3661,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 2145,
+        "x": 2055,
         "y": 500,
         "wires": [
             [
@@ -3714,7 +3688,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 2445,
+        "x": 2355,
         "y": 480,
         "wires": [
             [
@@ -3728,9 +3702,9 @@
         "type": "comment",
         "z": "bb119fa58e5b3485",
         "g": "0c30a2997401eb5a",
-        "name": "[9] 📖 Doc - Get File",
+        "name": "[10] 📖 Doc - Get File",
         "info": "",
-        "x": 2060,
+        "x": 1970,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3749,7 +3723,7 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 2145,
+        "x": 2055,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3820,7 +3794,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2225,
+        "x": 2135,
         "y": 500,
         "wires": [
             [
@@ -3842,7 +3816,7 @@
         "targetType": "full",
         "statusVal": "statusInfo",
         "statusType": "msg",
-        "x": 2345,
+        "x": 2255,
         "y": 440,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
@@ -3860,7 +3834,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2345,
+        "x": 2255,
         "y": 500,
         "wires": [
             [
@@ -3890,7 +3864,7 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 2505,
+        "x": 2415,
         "y": 480,
         "wires": [
             []
@@ -3904,7 +3878,7 @@
         "g": "0c30a2997401eb5a",
         "name": "Get File State",
         "links": [],
-        "x": 1905,
+        "x": 1815,
         "y": 560,
         "wires": [
             [
@@ -3921,7 +3895,7 @@
         "name": "State Call Return",
         "mode": "return",
         "links": [],
-        "x": 1965,
+        "x": 1875,
         "y": 560,
         "wires": []
     },
@@ -3938,7 +3912,7 @@
         "targetType": "full",
         "statusVal": "statusInfo",
         "statusType": "msg",
-        "x": 2345,
+        "x": 2255,
         "y": 560,
         "wires": [],
         "icon": "node-red/alert.svg",
@@ -3948,7 +3922,8 @@
         "id": "4116f467356ceb1b",
         "type": "function",
         "z": "bb119fa58e5b3485",
-        "name": "function 2",
+        "g": "2e5787e38e3bb178",
+        "name": "Upload File",
         "func": "const filePath = msg.filePath;\nconst apiKey = msg.apiKey;\nconst url = new urlLib.URL(`https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`);\n\n// Progress tracking\nlet totalSize = fs.statSync(filePath).size;\nlet uploaded = 0;\n\nconst readStream = fs.createReadStream(filePath);\nconst options = {\n    method: \"POST\",\n    headers: {\n        \"Content-Type\": \"video/mp4\",\n        \"Content-Length\": totalSize\n    }\n};\n\nconst req = https.request(url, options, (res) => {\n    let response = \"\";\n\n    res.on(\"data\", chunk => response += chunk);\n\n    res.on(\"end\", () => {\n        try {\n            msg.payload = JSON.parse(response);\n        } catch (err) {\n            msg.payload = response;\n            msg.parseError = true;\n        }\n\n        msg.statusCode = res.statusCode;\n        node.status({ fill: \"green\", shape: \"dot\", text: `✅ Upload complete` });\n        node.send([msg, null]);\n    });\n});\n\nreq.on(\"error\", (err) => {\n    msg.payload = `❌ Upload failed: ${err.message}`;\n    msg.statusCode = 500;\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ Upload error\" });\n    node.error(msg.payload, msg);\n    node.send([null, msg]);\n});\n\nreadStream.on(\"data\", (chunk) => {\n    uploaded += chunk.length;\n    let percent = Math.round((uploaded / totalSize) * 100);\n    node.status({ fill: \"blue\", shape: \"dot\", text: `Uploading: ${percent}%` });\n});\n\nreadStream.pipe(req);\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
@@ -3973,31 +3948,15 @@
                 "module": "url"
             }
         ],
-        "x": 1690,
-        "y": 640,
+        "x": 1615,
+        "y": 500,
         "wires": [
             [
                 "aea43ccdf90168cd",
-                "5cd18aa49876764b"
+                "3510ebc7baaa1485"
             ]
-        ]
-    },
-    {
-        "id": "5cd18aa49876764b",
-        "type": "debug",
-        "z": "bb119fa58e5b3485",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1930,
-        "y": 640,
-        "wires": []
+        ],
+        "l": false
     },
     {
         "id": "afb8f26b824279c4",
@@ -4169,7 +4128,9 @@
         "x": 1295,
         "y": 500,
         "wires": [
-            []
+            [
+                "6b790f2d4a4bf3e0"
+            ]
         ],
         "l": false
     }
