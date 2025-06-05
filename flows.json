@@ -3221,7 +3221,7 @@
         "wires": [
             [
                 "5e89b3dbf89ae519",
-                "1926cdde5531f464"
+                "94f4bb17cb8600b9"
             ],
             [
                 "13bc77fc3b58b316"
@@ -3978,29 +3978,6 @@
         "wires": []
     },
     {
-        "id": "1926cdde5531f464",
-        "type": "change",
-        "z": "bb119fa58e5b3485",
-        "name": "Set Payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "ls -lh /tmp/temp_video.mp4",
-                "tot": "str"
-            }
-        ],
-        "x": 955,
-        "y": 740,
-        "wires": [
-            [
-                "98cf6f5dc338f5c7"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "afb8f26b824279c4",
         "type": "debug",
         "z": "bb119fa58e5b3485",
@@ -4037,12 +4014,31 @@
             [
                 "afb8f26b824279c4"
             ],
-            [
-                "afb8f26b824279c4"
-            ],
-            [
-                "afb8f26b824279c4"
-            ]
+            [],
+            []
         ]
+    },
+    {
+        "id": "94f4bb17cb8600b9",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "`ls -lh ${filePath}`",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 995,
+        "y": 720,
+        "wires": [
+            [
+                "98cf6f5dc338f5c7"
+            ]
+        ],
+        "l": false
     }
 ]
