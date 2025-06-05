@@ -3394,7 +3394,7 @@
         "z": "bb119fa58e5b3485",
         "g": "2e5787e38e3bb178",
         "name": "Debug OK: Upload File",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -3442,7 +3442,7 @@
         "g": "2e5787e38e3bb178",
         "name": "[8] 📖 Doc - Upload Proxy",
         "info": "",
-        "x": 1190,
+        "x": 1210,
         "y": 400,
         "wires": [],
         "icon": "font-awesome/fa-book"
@@ -3513,32 +3513,6 @@
         "to": "",
         "reg": false,
         "x": 1355,
-        "y": 500,
-        "wires": [
-            [
-                "ab7d56461f19d6b5"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "ab7d56461f19d6b5",
-        "type": "delay",
-        "z": "bb119fa58e5b3485",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "10",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1475,
         "y": 500,
         "wires": [
             [
@@ -3613,7 +3587,7 @@
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Payload Get File",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": true,
         "tostatus": true,
@@ -3666,16 +3640,144 @@
         "y": 500,
         "wires": [
             [
-                "0e57f3980c89d355"
+                "49237eea06f5ac58",
+                "c60188f556a94408"
             ]
         ],
         "l": false
     },
     {
-        "id": "0e57f3980c89d355",
+        "id": "ab7d56461f19d6b5",
+        "type": "delay",
+        "z": "bb119fa58e5b3485",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1915,
+        "y": 500,
+        "wires": [
+            []
+        ],
+        "l": false
+    },
+    {
+        "id": "87ba8df0de8b710d",
+        "type": "comment",
+        "z": "bb119fa58e5b3485",
+        "name": "[9] 📖 Doc - Get File",
+        "info": "",
+        "x": 1650,
+        "y": 400,
+        "wires": [],
+        "icon": "font-awesome/fa-book"
+    },
+    {
+        "id": "49237eea06f5ac58",
         "type": "debug",
         "z": "bb119fa58e5b3485",
         "name": "Debug OK: Get File",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1695,
+        "y": 440,
+        "wires": [],
+        "icon": "font-awesome/fa-check-circle-o",
+        "l": false
+    },
+    {
+        "id": "c60188f556a94408",
+        "type": "change",
+        "z": "bb119fa58e5b3485",
+        "name": "Set Gemini Paramaters ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gemini.getFile",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "filename",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "method",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "url",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retry",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1765,
+        "y": 500,
+        "wires": [
+            [
+                "11903d3ecab11bc8"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "11903d3ecab11bc8",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug OK: ",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -3684,8 +3786,8 @@
         "targetType": "full",
         "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 1765,
-        "y": 500,
+        "x": 1895,
+        "y": 600,
         "wires": [],
         "icon": "font-awesome/fa-check-circle-o",
         "l": false
