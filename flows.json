@@ -3755,6 +3755,13 @@
                 "t": "delete",
                 "p": "_linkSource",
                 "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fileUri",
+                "pt": "msg",
+                "to": "gemini.getFile.uri",
+                "tot": "msg"
             }
         ],
         "action": "",
