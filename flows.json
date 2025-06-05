@@ -3234,6 +3234,13 @@
                 "pt": "msg",
                 "to": "iconik.get_proxies.payload.objects[0].url",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "filePath",
+                "pt": "msg",
+                "to": "/tmp/temp_video.mp4",
+                "tot": "str"
             }
         ],
         "x": 775,
@@ -3263,7 +3270,7 @@
         "z": "bb119fa58e5b3485",
         "g": "4a5f270e7e34714c",
         "name": "Download File with Status Codes",
-        "func": "const path = \"/tmp/temp_video.mp4\";\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            // Handle non-200 status codes\n            msg.statusInfo = `❌ Failed to download file. Status code: ${response.statusCode}`;\n            msg.statusCode = response.statusCode;\n            return resolve([null, msg]); // Send to second output for errors\n        }\n\n        response.pipe(file);\n\n        file.on(\"finish\", () => {\n            file.close(() => {\n                // File successfully downloaded\n                msg.statusInfo = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                msg.statusCode = 200;\n                resolve([msg, null]); // Send to first output for success\n            });\n        });\n    }).on(\"error\", (err) => {\n        // Handle download errors\n        fs.unlinkSync(path); // Remove partially downloaded file\n        msg.statusInfo = `❌ Error downloading file: ${err.message}`;\n        msg.statusCode = 400;\n        resolve([null, msg]); // Send to second output for errors\n    });\n});",
+        "func": "const path = msg.filePath;\nconst url = msg.url;\n\nreturn new Promise((resolve, reject) => {\n    const file = fs.createWriteStream(path);\n\n    https.get(url, (response) => {\n        if (response.statusCode !== 200) {\n            // Handle non-200 status codes\n            msg.statusInfo = `❌ Failed to download file. Status code: ${response.statusCode}`;\n            msg.statusCode = response.statusCode;\n            return resolve([null, msg]); // Send to second output for errors\n        }\n\n        response.pipe(file);\n\n        file.on(\"finish\", () => {\n            file.close(() => {\n                // File successfully downloaded\n                msg.statusInfo = `✅ File saved to ${path}`;\n                msg.filePath = path;\n                msg.statusCode = 200;\n                resolve([msg, null]); // Send to first output for success\n            });\n        });\n    }).on(\"error\", (err) => {\n        // Handle download errors\n        fs.unlinkSync(path); // Remove partially downloaded file\n        msg.statusInfo = `❌ Error downloading file: ${err.message}`;\n        msg.statusCode = 400;\n        resolve([null, msg]); // Send to second output for errors\n    });\n});",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
