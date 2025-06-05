@@ -3792,8 +3792,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 1090,
-        "y": 840,
+        "x": 1170,
+        "y": 820,
         "wires": [
             [
                 "b2f3d9a72a4d1a3f"
@@ -3811,8 +3811,8 @@
         "syntax": "mustache",
         "template": "{\n  \"name\": \"files/5zra7gkwnzlc\",\n  \"mimeType\": \"video/mp4\",\n  \"sizeBytes\": \"2269410\",\n  \"createTime\": \"2025-06-05T11:50:08.153138Z\",\n  \"updateTime\": \"2025-06-05T11:50:10.015429Z\",\n  \"expirationTime\": \"2025-06-07T11:50:07.684568119Z\",\n  \"sha256Hash\": \"ZWJhOWNmYmRhOGVkZjkzOTBmYmM2OTEyMjk3ZGI2MDhkMGM1MTYxMDI3ZmYxNTc2NmNiMjQwMGQ1M2U5MTUxMQ==\",\n  \"uri\": \"https://generativelanguage.googleapis.com/v1beta/files/5zra7gkwnzlc\",\n  \"state\": \"ACTIVE\",\n  \"videoMetadata\": {\n    \"videoDuration\": \"30s\"\n  },\n  \"source\": \"UPLOADED\"\n}",
         "output": "json",
-        "x": 1280,
-        "y": 840,
+        "x": 1330,
+        "y": 820,
         "wires": [
             [
                 "056246df9904ea45"
