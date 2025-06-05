@@ -3850,10 +3850,10 @@
                 "11903d3ecab11bc8"
             ],
             [
-                "11903d3ecab11bc8"
+                "39f07156ad43064d"
             ],
             [
-                "11903d3ecab11bc8"
+                "39f07156ad43064d"
             ]
         ],
         "l": false,
@@ -3903,5 +3903,24 @@
         "x": 1515,
         "y": 560,
         "wires": []
+    },
+    {
+        "id": "39f07156ad43064d",
+        "type": "debug",
+        "z": "bb119fa58e5b3485",
+        "name": "Debug Error: State",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusInfo",
+        "statusType": "msg",
+        "x": 1895,
+        "y": 560,
+        "wires": [],
+        "icon": "node-red/alert.svg",
+        "l": false
     }
 ]
