@@ -3930,7 +3930,7 @@
         "func": "const filePath = msg.filePath;\nconst apiKey = msg.apiKey;\nconst url = new URL(`https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`);\n\n// Progress emitter\nlet totalSize = fs.statSync(filePath).size;\nlet uploaded = 0;\n\nconst readStream = fs.createReadStream(filePath);\nconst options = {\n    method: \"POST\",\n    headers: {\n        \"Content-Type\": \"video/mp4\",\n        \"Content-Length\": totalSize\n    }\n};\n\n// Start request\nconst req = https.request(url, options, (res) => {\n    let response = \"\";\n\n    res.on(\"data\", chunk => response += chunk);\n    res.on(\"end\", () => {\n        msg.payload = response;\n        msg.statusCode = res.statusCode;\n        node.status({ fill: \"green\", shape: \"dot\", text: `✅ Upload complete` });\n        node.send([msg, null]);\n    });\n});\n\nreq.on(\"error\", (err) => {\n    msg.payload = `❌ Upload failed: ${err.message}`;\n    msg.statusCode = 500;\n    node.error(msg.payload, msg);\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ Upload error\" });\n    node.send([null, msg]);\n});\n\n// Track progress\nreadStream.on(\"data\", (chunk) => {\n    uploaded += chunk.length;\n    let percent = Math.round((uploaded / totalSize) * 100);\n    node.status({ fill: \"blue\", shape: \"dot\", text: `Uploading: ${percent}%` });\n});\n\nreadStream.pipe(req);\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
-        "noerr": 0,
+        "noerr": 3,
         "initialize": "",
         "finalize": "",
         "libs": [
@@ -3947,7 +3947,7 @@
                 "module": "path"
             },
             {
-                "var": "url",
+                "var": "URL",
                 "module": "url"
             }
         ],
